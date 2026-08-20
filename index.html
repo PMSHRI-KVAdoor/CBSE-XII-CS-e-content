@@ -1,0 +1,1699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Class XII Computer Science - Interactive E-Content</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f4f7fb;
+    color: #1e293b;
+}
+
+/* ================= HEADER ================= */
+
+header {
+    background: linear-gradient(135deg, #123c69, #2563a6);
+    color: white;
+    padding: 20px;
+}
+
+.header-container {
+    max-width: 1400px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* logo boxes */
+
+.logo 
+{
+    width: 85px;
+    height: 85px;
+    background: white;
+    color: #123c69;
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.school-title 
+{
+    flex: 1;
+}
+
+.school-title h1 
+{
+    margin: 0;
+    font-size: 28px;
+}
+.school-title h3 
+{
+    margin: 0;
+    font-size: 20px;
+}
+
+.school-title p 
+{
+    margin: 5px 0;
+}
+
+/* ================= TOP MENU ================= */
+
+.top-menu {
+    background: #09243f;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.top-menu-container {
+    max-width: 1400px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.top-menu button {
+    border: none;
+    background: transparent;
+    color: white;
+    padding: 14px 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.top-menu button:hover {
+    background: #2563a6;
+}
+
+/* ================= MAIN AREA ================= */
+
+.main-container {
+    max-width: 1400px;
+    margin: auto;
+    display: flex;
+    min-height: 700px;
+}
+
+/* ================= SIDEBAR ================= */
+
+.sidebar {
+    width: 300px;
+    background: white;
+    border-right: 1px solid #dbe3ef;
+    padding: 20px;
+
+    position: sticky;
+    top: 50px;
+
+    height: calc(100vh - 50px);
+    overflow-y: auto;
+}
+
+.sidebar h3 {
+    color: #123c69;
+    margin-top: 0;
+}
+
+/* UNIT */
+
+.unit-button {
+    width: 100%;
+    text-align: left;
+
+    border: none;
+    background: #e5eff9;
+
+    color: #123c69;
+
+    padding: 14px;
+    margin-bottom: 5px;
+
+    border-radius: 8px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.unit-button:hover {
+    background: #d4e7f8;
+}
+
+/* TOPICS */
+
+.topic-container {
+    display: none;
+    padding-left: 8px;
+}
+
+.topic-button {
+    width: 100%;
+    text-align: left;
+
+    border: none;
+    background: #f7f9fc;
+
+    padding: 11px;
+    margin: 3px 0;
+
+    border-left: 4px solid #2563a6;
+
+    cursor: pointer;
+
+    font-weight: 600;
+}
+
+.topic-button:hover {
+    background: #edf5ff;
+}
+
+/* SUBTOPICS */
+
+.subtopic-container {
+    display: none;
+    padding-left: 15px;
+}
+
+.subtopic-container button {
+    width: 100%;
+
+    text-align: left;
+
+    border: none;
+
+    background: white;
+
+    padding: 8px;
+
+    cursor: pointer;
+
+    color: #475569;
+}
+
+.subtopic-container button:hover {
+    background: #f1f7ff;
+    color: #2563a6;
+}
+
+/* ================= CONTENT ================= */
+
+.content {
+    flex: 1;
+    padding: 40px;
+}
+
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+.page h2 {
+    color: #123c69;
+    font-size: 34px;
+}
+
+.page h3 {
+    color: #2563a6;
+}
+
+/* ================= CARDS ================= */
+
+.cards {
+    display: grid;
+
+    grid-template-columns:
+    repeat(auto-fit, minmax(220px, 1fr));
+
+    gap: 20px;
+
+    margin: 25px 0;
+}
+
+.card {
+    background: white;
+
+    border: 1px solid #dbe3ef;
+
+    border-radius: 12px;
+
+    padding: 22px;
+
+    box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+}
+
+/* ================= WELCOME ================= */
+
+.welcome {
+    background: linear-gradient(135deg,#eaf4ff,#ffffff);
+
+    border-left: 6px solid #2563a6;
+
+    padding: 25px;
+
+    border-radius: 12px;
+
+    margin-bottom: 25px;
+}
+
+/* ================= NOTE ================= */
+
+.note {
+    background: #fff8d8;
+
+    border-left: 5px solid #eab308;
+
+    padding: 15px;
+
+    border-radius: 8px;
+
+    margin: 20px 0;
+}
+
+/* ================= BUTTON ================= */
+
+.btn {
+    display: inline-block;
+
+    padding: 11px 18px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background: #2563a6;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #123c69;
+}
+
+/* ================= FOOTER ================= */
+
+footer {
+    background: #09243f;
+
+    color: white;
+
+    text-align: center;
+
+    padding: 20px;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:800px) {
+
+    .main-container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+
+    .header-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .content {
+        padding: 25px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+                    HEADER
+===================================================== -->
+
+<header>
+
+<div class="header-container">
+<div class="logo">
+    <img src="images/kv-logo.png" alt="Kendriya Vidyalaya Sangathan Logo">
+</div>
+<div class="school-title">
+
+<h1> <center> केन्द्रीय विद्यालय संगठन क्षेत्रीय कार्यालय, एर्नाकुलम <center></h1>
+<h1> <center> KENDRIYA VIDYALAYA SANGATHAN REGIONAL OFFICE, ERNAKULAM <center></h1>
+<h3> <center> शिक्षा मंत्रालय, भारत सरकार के अधीन एक स्वायत्त निकाय  <center></h3>
+<h3> <center> An Autonomous Body Under Ministry Of Education, Government Of India <center></h3>
+
+<p>
+Class XII – Computer Science
+</p>
+
+<p>
+Interactive E-Content | Academic Session 2026–27
+</p>
+
+</div>
+
+
+<div class="logo">
+    <img src="images/school-logo.png" alt="Kendriya Vidyalaya Sangathan Logo">
+</div>
+
+
+</div>
+
+</header>
+
+
+<!-- =====================================================
+                    TOP MENU
+===================================================== -->
+
+<nav class="top-menu">
+
+<div class="top-menu-container">
+
+<button onclick="showPage('home')">
+🏠 Home
+</button>
+
+<button onclick="showPage('about')">
+👨‍🏫 Patron & Content Team
+</button>
+
+<button onclick="showPage('assessment')">
+📝 Assessment Centre
+</button>
+
+</div>
+
+</nav>
+
+
+<!-- =====================================================
+                    MAIN CONTAINER
+===================================================== -->
+
+<div class="main-container">
+
+
+<!-- =====================================================
+                    SIDEBAR
+===================================================== -->
+
+<aside class="sidebar">
+
+<h3>
+📚 Course Contents
+</h3>
+
+
+<!-- ================= UNIT I ================= -->
+
+<button
+class="unit-button"
+onclick="toggleSection('sql-unit')">
+
+▶ Unit I – SQL
+
+</button>
+
+
+<div
+class="topic-container"
+id="sql-unit">
+
+
+<!-- SQL INTRODUCTION -->
+
+<button
+class="topic-button"
+onclick="toggleSection('sql-introduction')">
+
+📌 Introduction to SQL
+
+</button>
+
+
+<div
+class="subtopic-container"
+id="sql-introduction">
+
+<button onclick="showPage('sql-intro')">
+Introduction
+</button>
+
+<button onclick="showPage('sql-objectives')">
+Learning Objectives
+</button>
+
+<button onclick="showPage('sql-concepts')">
+Concepts
+</button>
+
+<button onclick="showPage('sql-examples')">
+Examples
+</button>
+
+<button onclick="showPage('sql-practice')">
+Practice
+</button>
+
+<button onclick="showPage('sql-assessment')">
+Assessment
+</button>
+
+<button onclick="showPage('sql-mindmap')">
+Mind Map
+</button>
+
+</div>
+
+
+<!-- SQL COMMANDS -->
+
+<button
+class="topic-button"
+onclick="toggleSection('sql-commands')">
+
+📌 SQL Commands
+
+</button>
+
+
+<div
+class="subtopic-container"
+id="sql-commands">
+
+<button onclick="showPage('sql-command-intro')">
+Introduction
+</button>
+
+<button onclick="showPage('sql-command-concepts')">
+Concepts
+</button>
+
+<button onclick="showPage('sql-command-practice')">
+Practice
+</button>
+
+</div>
+
+
+<!-- SQL FUNCTIONS -->
+
+<button
+class="topic-button"
+onclick="toggleSection('sql-functions')">
+
+📌 SQL Functions
+
+</button>
+
+
+<div
+class="subtopic-container"
+id="sql-functions">
+
+<button onclick="showPage('sql-functions-intro')">
+Introduction
+</button>
+
+<button onclick="showPage('sql-functions-concepts')">
+Concepts
+</button>
+
+<button onclick="showPage('sql-functions-practice')">
+Practice
+</button>
+
+</div>
+
+
+</div>
+
+
+<!-- ================= UNIT II ================= -->
+
+<button
+class="unit-button"
+onclick="toggleSection('python-unit')">
+
+▶ Unit II – Python
+
+</button>
+
+
+<div
+class="topic-container"
+id="python-unit">
+
+
+<button
+class="topic-button"
+onclick="toggleSection('python-introduction')">
+
+📌 Python Basics
+
+</button>
+
+
+<div
+class="subtopic-container"
+id="python-introduction">
+
+<button onclick="showPage('python-intro')">
+Introduction
+</button>
+
+<button onclick="showPage('python-objectives')">
+Learning Objectives
+</button>
+
+<button onclick="showPage('python-concepts')">
+Concepts
+</button>
+
+<button onclick="showPage('python-examples')">
+Examples
+</button>
+
+<button onclick="showPage('python-practice')">
+Practice
+</button>
+
+</div>
+
+
+<button
+class="topic-button"
+onclick="toggleSection('python-functions')">
+
+📌 Functions
+
+</button>
+
+
+<div
+class="subtopic-container"
+id="python-functions">
+
+<button onclick="showPage('function-intro')">
+Introduction
+</button>
+
+<button onclick="showPage('function-concepts')">
+Concepts
+</button>
+
+<button onclick="showPage('function-examples')">
+Examples
+</button>
+
+<button onclick="showPage('function-practice')">
+Practice
+</button>
+
+</div>
+
+
+<button
+class="topic-button"
+onclick="toggleSection('python-files')">
+
+📌 File Handling
+
+</button>
+
+
+<div
+class="subtopic-container"
+id="python-files">
+
+<button onclick="showPage('file-intro')">
+Introduction
+</button>
+
+<button onclick="showPage('file-concepts')">
+Concepts
+</button>
+
+<button onclick="showPage('file-examples')">
+Examples
+</button>
+
+<button onclick="showPage('file-practice')">
+Practice
+</button>
+
+</div>
+
+
+</div>
+
+
+<!-- ================= UNIT III ================= -->
+
+<button
+class="unit-button"
+onclick="toggleSection('network-unit')">
+
+▶ Unit III – Computer Networks
+
+</button>
+
+
+<div
+class="topic-container"
+id="network-unit">
+
+
+<button
+class="topic-button"
+onclick="toggleSection('network-basics')">
+
+📌 Networking Basics
+
+</button>
+
+
+<div
+class="subtopic-container"
+id="network-basics">
+
+<button onclick="showPage('network-intro')">
+Introduction
+</button>
+
+<button onclick="showPage('network-objectives')">
+Learning Objectives
+</button>
+
+<button onclick="showPage('network-concepts')">
+Concepts
+</button>
+
+<button onclick="showPage('network-devices')">
+Network Devices
+</button>
+
+<button onclick="showPage('network-practice')">
+Practice
+</button>
+
+</div>
+
+
+<button
+class="topic-button"
+onclick="toggleSection('network-protocols')">
+
+📌 Network Protocols
+
+</button>
+
+
+<div
+class="subtopic-container"
+id="network-protocols">
+
+<button onclick="showPage('protocol-intro')">
+Introduction
+</button>
+
+<button onclick="showPage('protocol-concepts')">
+Concepts
+</button>
+
+<button onclick="showPage('protocol-practice')">
+Practice
+</button>
+
+</div>
+
+
+</div>
+
+</aside>
+
+
+<!-- =====================================================
+                    CONTENT
+===================================================== -->
+
+<main class="content">
+
+
+<!-- ================= HOME ================= -->
+
+<section
+id="home"
+class="page active">
+
+
+<div class="welcome">
+
+<h2>
+Welcome to Class XII Computer Science
+</h2>
+
+<p>
+
+Welcome to the Interactive E-Content
+Portal for Class XII Computer Science.
+
+</p>
+
+<p>
+
+This resource brings together learning
+materials developed by PGT Computer
+Science teachers from Kendriya Vidyalayas.
+
+</p>
+
+</div>
+
+
+<h2>
+📚 Course Overview
+</h2>
+
+
+<div class="cards">
+
+
+<div class="card">
+
+<h3>
+Unit I – SQL
+</h3>
+
+<p>
+Structured Query Language and
+Database concepts.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+Unit II – Python
+</h3>
+
+<p>
+Python programming concepts and
+problem solving.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+Unit III – Computer Networks
+</h3>
+
+<p>
+Computer networking concepts,
+devices and protocols.
+</p>
+
+</div>
+
+
+</div>
+
+
+<div class="note">
+
+<strong>💡 How to use this portal</strong>
+
+<br><br>
+
+1. Select a Unit from the left menu.
+
+<br>
+
+2. Select a Topic.
+
+<br>
+
+3. Select a Subtopic.
+
+<br>
+
+4. Study the content.
+
+<br>
+
+5. Practise the questions.
+
+<br>
+
+6. Attempt the assessment.
+
+<br>
+
+7. Use the Mind Map for revision.
+
+</div>
+
+
+</section>
+
+
+<!-- ================= ABOUT ================= -->
+
+<section
+id="about"
+class="page">
+
+
+<h2>
+👨‍🏫 Patron & Content Development Team
+</h2>
+
+
+<div class="card">
+
+<h3>
+Patron
+</h3>
+
+<p>
+
+<strong>
+NAME OF PRINCIPAL
+</strong>
+
+</p>
+
+<p>
+Principal<br>
+Kendriya Vidyalaya __________
+</p>
+
+</div>
+
+
+<h2>
+Content Development Team
+</h2>
+
+
+<div class="cards">
+
+
+<div class="card">
+<h3>Prajun P P</h3>
+<p>PGT Computer Science</p>
+</div>
+
+
+<div class="card">
+<h3>Hema C N</h3>
+<p>PGT Computer Science</p>
+</div>
+
+
+<div class="card">
+<h3>Sunilkumar T</h3>
+<p>PGT Computer Science</p>
+</div>
+
+
+<div class="card">
+<h3>Latha Ramakrishnan</h3>
+<p>PGT Computer Science</p>
+</div>
+
+
+<div class="card">
+<h3>Abhilash V Jose</h3>
+<p>PGT Computer Science</p>
+</div>
+
+
+<div class="card">
+<h3>Suja P Nair</h3>
+<p>PGT Computer Science</p>
+</div>
+
+
+<div class="card">
+<h3>Suni Abraham</h3>
+<p>PGT Computer Science</p>
+</div>
+
+
+<div class="card">
+<h3>Hema R</h3>
+<p>PGT Computer Science</p>
+</div>
+
+
+<div class="card">
+<h3>Haripriya Nair</h3>
+<p>PGT Computer Science</p>
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- ================= SQL ================= -->
+
+<section
+id="sql-intro"
+class="page">
+
+<h2>
+Unit I – SQL
+</h2>
+
+<h3>
+Introduction
+</h3>
+
+<p>
+
+This section will contain the
+teacher-provided introduction to SQL.
+
+</p>
+
+<div class="note">
+
+📌 This is temporary content.
+We will replace it with the actual
+teacher material.
+
+</div>
+
+</section>
+
+
+<section
+id="sql-objectives"
+class="page">
+
+<h2>
+SQL – Learning Objectives
+</h2>
+
+<p>
+Students will be able to understand
+and apply SQL concepts.
+</p>
+
+</section>
+
+
+<section
+id="sql-concepts"
+class="page">
+
+<h2>
+SQL – Concepts
+</h2>
+
+<p>
+Teacher-provided SQL concepts will
+be placed here.
+</p>
+
+</section>
+
+
+<section
+id="sql-examples"
+class="page">
+
+<h2>
+SQL – Examples
+</h2>
+
+<pre>
+
+SELECT * FROM STUDENT;
+
+</pre>
+
+</section>
+
+
+<section
+id="sql-practice"
+class="page">
+
+<h2>
+SQL – Practice
+</h2>
+
+<p>
+Interactive practice questions will
+be added here.
+</p>
+
+</section>
+
+
+<section
+id="sql-assessment"
+class="page">
+
+<h2>
+SQL – Unit Assessment
+</h2>
+
+<p>
+Interactive assessment resources
+prepared by the teachers.
+</p>
+
+<a
+class="btn"
+href="https://drive.google.com/file/d/1n63wFF4Y3A02-2T7prHfUY05Xi-cJigS/view"
+target="_blank">
+
+Open Assessment
+
+</a>
+
+<br><br>
+
+<a
+class="btn"
+href="https://drive.google.com/file/d/14LMMy5lbqHydBiWqIIegD_fn1qEIhN4o/view"
+target="_blank">
+
+Open Assessment 2
+
+</a>
+
+</section>
+
+
+<section
+id="sql-mindmap"
+class="page">
+
+<h2>
+SQL – Mind Map
+</h2>
+
+<a
+class="btn"
+href="https://drive.google.com/file/d/1fBRpxcfWEgR8TZ4ZCsGl4egKEEBt4gqN/view"
+target="_blank">
+
+Open Mind Map
+
+</a>
+
+</section>
+
+
+<!-- ================= PYTHON ================= -->
+
+<section
+id="python-intro"
+class="page">
+
+<h2>
+Unit II – Python
+</h2>
+
+<h3>
+Introduction
+</h3>
+
+<p>
+Teacher-provided Python introduction
+will be placed here.
+</p>
+
+</section>
+
+
+<section
+id="python-objectives"
+class="page">
+
+<h2>
+Python – Learning Objectives
+</h2>
+
+<p>
+Learning objectives will be added here.
+</p>
+
+</section>
+
+
+<section
+id="python-concepts"
+class="page">
+
+<h2>
+Python – Concepts
+</h2>
+
+<p>
+Teacher content will be inserted here.
+</p>
+
+</section>
+
+
+<section
+id="python-examples"
+class="page">
+
+<h2>
+Python – Examples
+</h2>
+
+<pre>
+
+print("Hello World")
+
+</pre>
+
+</section>
+
+
+<section
+id="python-practice"
+class="page">
+
+<h2>
+Python – Practice
+</h2>
+
+<p>
+Practice questions will be added here.
+</p>
+
+</section>
+
+
+<!-- FUNCTIONS -->
+
+<section
+id="function-intro"
+class="page">
+
+<h2>
+Python Functions – Introduction
+</h2>
+
+<p>
+A function is a reusable block of
+code designed to perform a particular
+task.
+</p>
+
+</section>
+
+
+<section
+id="function-concepts"
+class="page">
+
+<h2>
+Python Functions – Concepts
+</h2>
+
+<pre>
+
+def add(a, b):
+    return a + b
+
+</pre>
+
+</section>
+
+
+<section
+id="function-examples"
+class="page">
+
+<h2>
+Python Functions – Examples
+</h2>
+
+<p>
+Teacher examples will be placed here.
+</p>
+
+</section>
+
+
+<section
+id="function-practice"
+class="page">
+
+<h2>
+Python Functions – Practice
+</h2>
+
+<p>
+Practice questions will be added here.
+</p>
+
+</section>
+
+
+<!-- FILE HANDLING -->
+
+<section
+id="file-intro"
+class="page">
+
+<h2>
+File Handling – Introduction
+</h2>
+
+<p>
+File handling allows a program to
+store and retrieve information from files.
+</p>
+
+</section>
+
+
+<section
+id="file-concepts"
+class="page">
+
+<h2>
+File Handling – Concepts
+</h2>
+
+<p>
+Teacher-provided content will be
+placed here.
+</p>
+
+</section>
+
+
+<section
+id="file-examples"
+class="page">
+
+<h2>
+File Handling – Examples
+</h2>
+
+<pre>
+
+file = open("data.txt", "r")
+
+data = file.read()
+
+print(data)
+
+file.close()
+
+</pre>
+
+</section>
+
+
+<section
+id="file-practice"
+class="page">
+
+<h2>
+File Handling – Practice
+</h2>
+
+<p>
+Practice questions will be added here.
+</p>
+
+</section>
+
+
+<!-- ================= NETWORKS ================= -->
+
+<section
+id="network-intro"
+class="page">
+
+<h2>
+Unit III – Computer Networks
+</h2>
+
+<h3>
+Introduction
+</h3>
+
+<p>
+
+A computer network is a collection of
+interconnected computers and devices
+that communicate with each other.
+
+</p>
+
+</section>
+
+
+<section
+id="network-objectives"
+class="page">
+
+<h2>
+Networking – Learning Objectives
+</h2>
+
+<p>
+Learning objectives will be added here.
+</p>
+
+</section>
+
+
+<section
+id="network-concepts"
+class="page">
+
+<h2>
+Networking – Concepts
+</h2>
+
+<p>
+Teacher-provided networking content
+will be inserted here.
+</p>
+
+</section>
+
+
+<section
+id="network-devices"
+class="page">
+
+<h2>
+Network Devices
+</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>Hub</h3>
+<p>Connects multiple devices in a network.</p>
+</div>
+
+<div class="card">
+<h3>Switch</h3>
+<p>Connects devices within a network.</p>
+</div>
+
+<div class="card">
+<h3>Router</h3>
+<p>Connects different networks.</p>
+</div>
+
+</div>
+
+</section>
+
+
+<section
+id="network-practice"
+class="page">
+
+<h2>
+Networking – Practice
+</h2>
+
+<p>
+Practice questions will be added here.
+</p>
+
+</section>
+
+
+<!-- PROTOCOLS -->
+
+<section
+id="protocol-intro"
+class="page">
+
+<h2>
+Network Protocols – Introduction
+</h2>
+
+<p>
+Protocols are rules that govern
+communication between devices.
+</p>
+
+</section>
+
+
+<section
+id="protocol-concepts"
+class="page">
+
+<h2>
+Network Protocols – Concepts
+</h2>
+
+<p>
+Teacher-provided content will be
+placed here.
+</p>
+
+</section>
+
+
+<section
+id="protocol-practice"
+class="page">
+
+<h2>
+Network Protocols – Practice
+</h2>
+
+<p>
+Practice questions will be added here.
+</p>
+
+</section>
+
+
+<!-- ================= ASSESSMENT ================= -->
+
+<section
+id="assessment"
+class="page">
+
+<h2>
+📝 Assessment Centre
+</h2>
+
+<div class="cards">
+
+
+<div class="card">
+
+<h3>
+Unit I – SQL
+</h3>
+
+<p>
+Interactive assessment resources.
+</p>
+
+<a
+class="btn"
+href="https://drive.google.com/file/d/1n63wFF4Y3A02-2T7prHfUY05Xi-cJigS/view"
+target="_blank">
+
+Open Assessment
+
+</a>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+Unit II – Python
+</h3>
+
+<p>
+26 Board-Type Questions
+</p>
+
+<a
+class="btn"
+href="#">
+
+Add Assessment Link
+
+</a>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+Unit III – Computer Networks
+</h3>
+
+<p>
+27 Board-Type Questions
+</p>
+
+<a
+class="btn"
+href="#">
+
+Add Assessment Link
+
+</a>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+</main>
+
+</div>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+<strong>
+Class XII Computer Science – Interactive E-Content
+</strong>
+
+<br><br>
+
+Kendriya Vidyalaya __________
+
+<br>
+
+Academic Session 2026–27
+
+</footer>
+
+
+<!-- =====================================================
+                    JAVASCRIPT
+===================================================== -->
+
+<script>
+
+/* OPEN / CLOSE UNITS AND TOPICS */
+
+function toggleSection(id) {
+
+    const section = document.getElementById(id);
+
+    if (section.style.display === "block") {
+
+        section.style.display = "none";
+
+    } else {
+
+        section.style.display = "block";
+
+    }
+
+}
+
+
+/* CHANGE MAIN CONTENT */
+
+function showPage(id) {
+
+    const pages = document.querySelectorAll(".page");
+
+    pages.forEach(function(page) {
+
+        page.classList.remove("active");
+
+    });
+
+
+    const selectedPage =
+        document.getElementById(id);
+
+
+    if (selectedPage) {
+
+        selectedPage.classList.add("active");
+
+    }
+
+
+    window.scrollTo({
+
+        top: 0,
+
+        behavior: "smooth"
+
+    });
+
+}
+
+</script>
+
+
+</body>
+</html>
