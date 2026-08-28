@@ -928,7 +928,7 @@ body
     }
     .right
     {
-        display:none;
+        display:block;
     }
     .header-inner
     {
@@ -1177,75 +1177,158 @@ body
             		</div>
         	</div>
     	 </div>
-    	 <!-- ===================================================UNIT III - NETWORKS================================================ -->
+
+
+    	 <!-- =========================================UNIT III - COMPUTER NETWORKS=================================== -->
     	 <div class="unit">
         	<button class="unit-head network" type="button" onclick="toggleUnit('unitNetwork')">
             		<span>▶ Unit III – Computer Networks</span>
             		<span class="unit-arrow">⌄</span>
         	</button>
+
     		<div class="unit-content nested-content" id="unitNetwork">
-    			<!--  ======================================== NETWORK INTRODUCTION ========================================  -->
+    			<!--  ================================ INTRODUCTION TO COMPUTER NETWORK========================================  -->
     			<div class="topic-block">
                 		<button class="topic-head" type="button" onclick="toggleTopic('netIntro')">
-                    			<span>📌 &nbsp;Introduction to Networks</span>
+                    			<span>📌 &nbsp;INTRODUCTION</span>
                     			<span class="topic-arrow">⌄</span>
                 		</button>
 				<div class="subtopics" id="netIntro">
 		    			<button onclick="showContent('network-pre-reading')">📖 Pre-reading Material</button>
-		    			<button onclick="showContent('network-interactive-video')">🎬 Interactive Video</button>
 		    			<button onclick="showContent('network-quiz')">📝 Quiz</button>
 		    			<button onclick="showContent('network-topologies')">🗺️ Concept Map</button>
 		    			<button onclick="showContent('network-self-assessment')">✅ Self Assessment</button>
-		    			<button onclick="showContent('network-econtent')">📚 e-Content</button>
+					<button onclick="showContent('network-interactive-video')">🎬 Interactive Video& e-Content</button>
 		    			<button onclick="showContent('network-assessment')">📝 Assessment</button>
 		    			<button onclick="showContent('network-unit-assessment')">📝 Unit Assessment – 25 Questions</button>
 				</div>
     			</div>
-        		<!-- ========================================  NETWORK DEVICES  ======================================== -->
+        		<!-- ======================================== EVOLUTION OF NETWORKING======================================== -->
             		<div class="topic-block">
                 		<button class="topic-head" type="button" onclick="toggleTopic('netDevices')">
-                   			<span>📌 &nbsp;Network Devices</span>
+                   			<span>📌 &nbsp;NETWORK DEVICES</span>
                    			<span class="topic-arrow">⌄</span>
                 		</button>
-                		<div class="subtopics" id="netDevices">
-                    			<button onclick="showContent('network-hub')">Hub</button>
-                    			<button onclick="showContent('network-switch')">Switch</button>
-                    			<button onclick="showContent('network-router')">Router</button>
-                    			<button onclick="showContent('network-gateway')">Gateway</button>
+                		<div class="subtopics" id="netEvalution">
+ 		    			<button onclick="showContent('network-pre-reading')">📖 Pre-reading Material</button>
+		    			<button onclick="showContent('network-quiz')">📝 Quiz</button>
+		    			<button onclick="showContent('network-topologies')">🗺️ Concept Map</button>
+		    			<button onclick="showContent('network-self-assessment')">✅ Self Assessment</button>
+					<button onclick="showContent('network-interactive-video')">🎬 Interactive Video& e-Content</button>
+		    			<button onclick="showContent('network-assessment')">📝 Assessment</button>
+		    			<button onclick="showContent('network-unit-assessment')">📝 Unit Assessment – 25 Questions</button>
                 		</div>
             		</div>
-        		<!-- ======================================== TRANSMISSION MEDIA  ======================================== -->
-            		<div class="topic-block">
+        		<!-- ======================= Data communication terminologies:switching techniques ========================= -->            			<div class="topic-block">
                 		<button class="topic-head" type="button" onclick="toggleTopic('netMedia')">
-                    			<span>📌 &nbsp;Transmission Media</span>
+                    			<span>📌 &nbsp;DATA COMMUNICATION TERMINOLOGIES</span>
+                    			<span class="topic-arrow">⌄</span>
+                		</button>
+                		<div class="subtopics" id="netCommn">
+		    			<button onclick="showContent('network-pre-reading')">📖 Pre-reading Material</button>
+		    			<button onclick="showContent('network-quiz')">📝 Quiz</button>
+		    			<button onclick="showContent('network-topologies')">🗺️ Concept Map</button>
+		    			<button onclick="showContent('network-self-assessment')">✅ Self Assessment</button>
+					<button onclick="showContent('network-interactive-video')">🎬 Interactive Video& e-Content</button>
+		    			<button onclick="showContent('network-assessment')">📝 Assessment</button>
+		    			<button onclick="showContent('network-unit-assessment')">📝 Unit Assessment – 25 Questions</button>                				</div>
+            		</div>
+            		<!--  ======================================== TRANSMISSION MEDIA  ======================================== -->
+            		<div class="topic-block">
+                		<button class="topic-head" type="button" onclick="toggleTopic('netProtocols')">
+                    			<span>📌 &nbsp;TRANSMISSION MEDIA</span>
                     			<span class="topic-arrow">⌄</span>
                 		</button>
                 		<div class="subtopics" id="netMedia">
-                    			<button onclick="showContent('guided-media')">Guided Media</button>
-                    			<button onclick="showContent('unguided-media')">Unguided Media</button>
-                    			<button onclick="showContent('wireless-communication')">Wireless Communication</button>
-                		</div>
+		    			<button onclick="showContent('network-pre-reading')">📖 Pre-reading Material</button>
+		    			<button onclick="showContent('network-quiz')">📝 Quiz</button>
+		    			<button onclick="showContent('network-topologies')">🗺️ Concept Map</button>
+		    			<button onclick="showContent('network-self-assessment')">✅ Self Assessment</button>
+					<button onclick="showContent('network-interactive-video')">🎬 Interactive Video& e-Content</button>
+		    			<button onclick="showContent('network-assessment')">📝 Assessment</button>
+		    			<button onclick="showContent('network-unit-assessment')">📝 Unit Assessment – 25 Questions</button>                  				</div>
             		</div>
-            		<!--  ======================================== NETWORK PROTOCOLS  ======================================== -->
+            		<!--  ======================================== TYPES OF NETWORKS ======================================== -->
             		<div class="topic-block">
                 		<button class="topic-head" type="button" onclick="toggleTopic('netProtocols')">
-                    			<span>📌 &nbsp;Network Protocols</span>
+                    			<span>📌 &nbsp;TYPES OF NETWORKS</span>
+                    			<span class="topic-arrow">⌄</span>
+                		</button>
+                		<div class="subtopics" id="netType">
+		    			<button onclick="showContent('network-pre-reading')">📖 Pre-reading Material</button>
+		    			<button onclick="showContent('network-quiz')">📝 Quiz</button>
+		    			<button onclick="showContent('network-topologies')">🗺️ Concept Map</button>
+		    			<button onclick="showContent('network-self-assessment')">✅ Self Assessment</button>
+					<button onclick="showContent('network-interactive-video')">🎬 Interactive Video& e-Content</button>
+		    			<button onclick="showContent('network-assessment')">📝 Assessment</button>
+		    			<button onclick="showContent('network-unit-assessment')">📝 Unit Assessment – 25 Questions</button>                  				</div>
+            		</div>
+            		<!--  ======================================== NETWORK DEVICES ======================================== -->
+            		<div class="topic-block">
+                		<button class="topic-head" type="button" onclick="toggleTopic('netProtocols')">
+                    			<span>📌 &nbsp;NETWORK DEVICES</span>
+                    			<span class="topic-arrow">⌄</span>
+                		</button>
+                		<div class="subtopics" id="netDevices">
+		    			<button onclick="showContent('network-pre-reading')">📖 Pre-reading Material</button>
+		    			<button onclick="showContent('network-quiz')">📝 Quiz</button>
+		    			<button onclick="showContent('network-topologies')">🗺️ Concept Map</button>
+		    			<button onclick="showContent('network-self-assessment')">✅ Self Assessment</button>
+					<button onclick="showContent('network-interactive-video')">🎬 Interactive Video& e-Content</button>
+		    			<button onclick="showContent('network-assessment')">📝 Assessment</button>
+		    			<button onclick="showContent('network-unit-assessment')">📝 Unit Assessment – 25 Questions</button>                  				</div>
+            		</div>
+           		<!--  ======================================== TOPOLOGIES ======================================== -->
+            		<div class="topic-block">
+                		<button class="topic-head" type="button" onclick="toggleTopic('netProtocols')">
+                    			<span>📌 &nbsp;NETWORK TOPOLOGIES</span>
+                    			<span class="topic-arrow">⌄</span>
+                		</button>
+                		<div class="subtopics" id="netTopology">
+		    			<button onclick="showContent('network-pre-reading')">📖 Pre-reading Material</button>
+		    			<button onclick="showContent('network-quiz')">📝 Quiz</button>
+		    			<button onclick="showContent('network-topologies')">🗺️ Concept Map</button>
+		    			<button onclick="showContent('network-self-assessment')">✅ Self Assessment</button>
+					<button onclick="showContent('network-interactive-video')">🎬 Interactive Video& e-Content</button>
+		    			<button onclick="showContent('network-assessment')">📝 Assessment</button>
+		    			<button onclick="showContent('network-unit-assessment')">📝 Unit Assessment – 25 Questions</button>                  				</div>
+            		</div>
+           		<!--  ======================================== NETWORK PROTOCOLS ======================================== -->
+            		<div class="topic-block">
+                		<button class="topic-head" type="button" onclick="toggleTopic('netProtocols')">
+                    			<span>📌 &nbsp;NETWORK PROTOCOLS</span>
                     			<span class="topic-arrow">⌄</span>
                 		</button>
                 		<div class="subtopics" id="netProtocols">
-                    			<button onclick="showContent('http-https')">HTTP / HTTPS</button>
-                    			<button onclick="showContent('ftp')">FTP</button>
-                    			<button onclick="showContent('tcp-ip')">TCP / IP</button>
-                    			<button onclick="showContent('dns')">DNS</button>
-                		</div>
+		    			<button onclick="showContent('network-pre-reading')">📖 Pre-reading Material</button>
+		    			<button onclick="showContent('network-quiz')">📝 Quiz</button>
+		    			<button onclick="showContent('network-topologies')">🗺️ Concept Map</button>
+		    			<button onclick="showContent('network-self-assessment')">✅ Self Assessment</button>
+					<button onclick="showContent('network-interactive-video')">🎬 Interactive Video& e-Content</button>
+		    			<button onclick="showContent('network-assessment')">📝 Assessment</button>
+		    			<button onclick="showContent('network-unit-assessment')">📝 Unit Assessment – 25 Questions</button>                  				</div>
+            		</div>
+           		<!--  ======================================== WEB CONCEPTS ======================================== -->
+            		<div class="topic-block">
+                		<button class="topic-head" type="button" onclick="toggleTopic('netProtocols')">
+                    			<span>📌 &nbsp;WEB CONCEPTS</span>
+                    			<span class="topic-arrow">⌄</span>
+                		</button>
+                		<div class="subtopics" id="webConcept">
+		    			<button onclick="showContent('network-pre-reading')">📖 Pre-reading Material</button>
+		    			<button onclick="showContent('network-quiz')">📝 Quiz</button>
+		    			<button onclick="showContent('network-topologies')">🗺️ Concept Map</button>
+		    			<button onclick="showContent('network-self-assessment')">✅ Self Assessment</button>
+					<button onclick="showContent('network-interactive-video')">🎬 Interactive Video& e-Content</button>
+		    			<button onclick="showContent('network-assessment')">📝 Assessment</button>
+		    			<button onclick="showContent('network-unit-assessment')">📝 Unit Assessment – 25 Questions</button>                  				</div>
             		</div>
         	 </div>
     	   </div>
     </aside>
-
-    <!-- ==================================== CENTRE CONTENT ========================================================= -->
+    <!-- ====================================== CENTRE CONTENT ========================================================= -->
     <main class="center">
-          <!-- ===================================== HOME ========================================================= -->
+          <!-- ======================================== HOME ========================================================= -->
 	  <section class="content-page active" id="home">
     		<div class="welcome">
         		<h1>Welcome to Class XII Computer Science</h1>
@@ -1914,404 +1997,143 @@ print(numbers)
     </div>
 </section>
 
-<!-- ===================================== NETWORK BASICS===================================================== -->
-<section  class="content-page" id="network-basics">
+	<!-- ===================================== Introduction to Computer Networks===================================================== -->
+	<section  class="content-page" id="network-basics">
+    		<div class="welcome">
+        		<h1>Network Basics</h1>
+        		<p> Add your complete network basics lesson material here.</p>
+    		</div>
+    		<div class="content-box">
+        		<h2> Introduction to Computer Networks</h2>
+        		<p> Add textbook-based content here.</p>
+    		</div>
+	</section>
+	<!-- ============================================= NETWORK TYPES  ========================================================= -->
+	<section class="content-page" id="network-types">
+    		<div class="welcome">
+        		<h1>Types of Networks</h1>
+        		<p> Add LAN, MAN, WAN and other network types here.</p>
+    		</div>
+	</section>
+	<!-- ===============================================NETWORK TOPOLOGIES ================================================ -->
+	<section class="content-page" id="network-topologies">
+    		<div class="welcome">
+        		<h1>Network Topologies</h1>
+        		<p>Add topology diagrams and explanations here.</p>
+    		</div>
+	</section>
+	<!-- ================================================== HUB =================================================== -->
+	<section class="content-page" id="network-hub">
+    		<div class="welcome">
+        		<h1>Network Hub</h1>
+        		<p>Add your Hub lesson material here.</p>
+    		</div>
+    		<div class="content-box">
+        		<h2>Hub</h2>
+        		<p>Add definition, working,advantages and limitations here.</p>
+    		</div>
+	</section>
+	<!-- ===========================================SWITCH =================================================== -->
+	<section class="content-page" id="network-switch">
+    		<div class="welcome">
+        		<h1>Network Switch</h1>
+        		<p> Add your Switch lesson material here.</p>
+    		</div>
+	</section>
+	<!-- ====================================================== ROUTER ========================================================= -->
+	<section class="content-page" id="network-router">
+    		<div class="welcome">
+        		<h1>Network Router</h1>
+        		<p>Add your Router lesson material here.</p>
+    		</div>
+	</section>
+	<!-- ======================================================== GATEWAY========================================================= -->
+	<section  class="content-page" id="network-gateway">
+    		<div class="welcome">
+        		<h1>Network Gateway</h1>
+        		<p>Add your Gateway lesson material here.</p>
+    		</div>
+	</section>
+	<!-- =============================================== GUIDED MEDIA ====================================================== -->
+	<section class="content-page" id="guided-media">
+    		<div class="welcome">
+        		<h1>Guided Transmission Media</h1>
+        		<p> Add guided media content here.</p>
+    		</div>
+	</section>
+	<!-- ===================================================UNGUIDED MEDIA========================================= -->
+	<section class="content-page" id="unguided-media">
+    		<div class="welcome">
+        		<h1>Unguided Transmission Media</h1>
+        		<p>Add unguided media content here.</p>
+    		</div>
+	</section>
+	<!-- ================================================ HTTP / HTTPS ============================================= -->
+	<section class="content-page" id="http-https">
+    		<div class="welcome">
+        		<h1>HTTP / HTTPS</h1>
+        		<p>Add HTTP and HTTPS content here.</p>
+    		</div>
+	</section>
+	<!-- ================================================== FTP ========================================================= -->
+	<section class="content-page" id="ftp">
+    		<div class="welcome">
+        		<h1>FTP</h1>
+        		<p>Add FTP lesson material here.</p>
+    		</div>
+	</section>
+	<!-- ========================================================= TCP/IP ============================================== -->
+	<section class="content-page" id="tcp-ip">
+    		<div class="welcome">
+        		<h1>TCP / IP </h1>
+        		<p> Add TCP/IP lesson material here.</p>
+    		</div>
+	</section>
+	<!-- ===================================================== DNS ========================================================= -->
+	<section class="content-page" id="dns">
+    		<div class="welcome">
+        		<h1>DNS</h1>
+        		<p>Add DNS lesson material here.</p>
+    		</div>
+	</section>
+
+	<section class="content-page" id="network-pre-reading">
+    		<div class="material-header">
+      			<h2>📖 Pre-reading Material</h2>
+      			<p> Read the material below before starting the Computer Networks unit.</p>
+      			<a href="https://drive.google.com/file/d/1UVq2OnA8J-yImZEl9FWHh2OG42mpuZmt/view" target="_blank" 
+				class="download-btn">📖 
+				Open Material
+			</a>
+      			<a href="https://drive.google.com/uc?export=download&id=1UVq2OnA8J-yImZEl9FWHh2OG42mpuZmt" download 
+				class="download-btn">
+				⬇ Download Material
+			</a>
+   		</div>
+   		<div class="pdf-container">
+      			<iframe src="https://drive.google.com/file/d/1UVq2OnA8J-yImZEl9FWHh2OG42mpuZmt/preview" 
+				width="100%" height="600" style="border: none;">    
+      			</iframe>
+    		</div>
+	</section>
+
+	<section class="content-page" id="network-quiz">
+    		<h2>📝 Computer Networks – Quiz</h2>
+    		<iframe src="materials/network-quiz.html"
+        		class="activity-frame">
+    		</iframe>
+	</section>
+
+	<section class="content-page" id="network-interactive-video">
+    		<h2>🎬 Interactive Video</h2>
+    		<p> Watch the interactive video and complete the activities.</p>
+    		<div class="interactive-video-container">
+        		<iframe src="file:///C:/Users/dhanu/OneDrive/Desktop/KVS_Class12_CS_EContent/dbmssql-sunil.html" 
+				title="Interactive Computer Networks Video" allowfullscreen>
+        		</iframe>
+    		</div>
+	</section>
 
-
-    <div class="welcome">
-
-        <h1>
-            Network Basics
-        </h1>
-
-        <p>
-            Add your complete network basics
-            lesson material here.
-        </p>
-
-    </div>
-
-
-    <div class="content-box">
-
-        <h2>
-            Introduction to Computer Networks
-        </h2>
-
-        <p>
-            Add textbook-based content here.
-        </p>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     NETWORK TYPES
-     ========================================================= -->
-
-<section
-    class="content-page"
-    id="network-types"
->
-
-
-    <div class="welcome">
-
-        <h1>
-            Types of Networks
-        </h1>
-
-        <p>
-            Add LAN, MAN, WAN and other
-            network types here.
-        </p>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     NETWORK TOPOLOGIES
-     ========================================================= -->
-
-<section
-    class="content-page"
-    id="network-topologies"
->
-
-
-    <div class="welcome">
-
-        <h1>
-            Network Topologies
-        </h1>
-
-        <p>
-            Add topology diagrams and
-            explanations here.
-        </p>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     HUB
-     ========================================================= -->
-
-<section
-    class="content-page"
-    id="network-hub"
->
-
-
-    <div class="welcome">
-
-        <h1>
-            Network Hub
-        </h1>
-
-        <p>
-            Add your Hub lesson material here.
-        </p>
-
-    </div>
-
-
-    <div class="content-box">
-
-        <h2>
-            Hub
-        </h2>
-
-        <p>
-            Add definition, working,
-            advantages and limitations here.
-        </p>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     SWITCH
-     ========================================================= -->
-
-<section
-    class="content-page"
-    id="network-switch"
->
-
-
-    <div class="welcome">
-
-        <h1>
-            Network Switch
-        </h1>
-
-        <p>
-            Add your Switch lesson material here.
-        </p>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     ROUTER
-     ========================================================= -->
-
-<section
-    class="content-page"
-    id="network-router"
->
-
-
-    <div class="welcome">
-
-        <h1>
-            Network Router
-        </h1>
-
-        <p>
-            Add your Router lesson material here.
-        </p>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     GATEWAY
-     ========================================================= -->
-
-<section
-    class="content-page"
-    id="network-gateway"
->
-
-
-    <div class="welcome">
-
-        <h1>
-            Network Gateway
-        </h1>
-
-        <p>
-            Add your Gateway lesson material here.
-        </p>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     GUIDED MEDIA
-     ========================================================= -->
-
-<section
-    class="content-page"
-    id="guided-media"
->
-
-
-    <div class="welcome">
-
-        <h1>
-            Guided Transmission Media
-        </h1>
-
-        <p>
-            Add guided media content here.
-        </p>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     UNGUIDED MEDIA
-     ========================================================= -->
-
-<section
-    class="content-page"
-    id="unguided-media"
->
-
-
-    <div class="welcome">
-
-        <h1>
-            Unguided Transmission Media
-        </h1>
-
-        <p>
-            Add unguided media content here.
-        </p>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     HTTP / HTTPS
-     ========================================================= -->
-
-<section
-    class="content-page"
-    id="http-https"
->
-
-
-    <div class="welcome">
-
-        <h1>
-            HTTP / HTTPS
-        </h1>
-
-        <p>
-            Add HTTP and HTTPS content here.
-        </p>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     FTP
-     ========================================================= -->
-
-<section
-    class="content-page"
-    id="ftp"
->
-
-
-    <div class="welcome">
-
-        <h1>
-            FTP
-        </h1>
-
-        <p>
-            Add FTP lesson material here.
-        </p>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     TCP/IP
-     ========================================================= -->
-
-<section
-    class="content-page"
-    id="tcp-ip"
->
-
-
-    <div class="welcome">
-
-        <h1>
-            TCP / IP
-        </h1>
-
-        <p>
-            Add TCP/IP lesson material here.
-        </p>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     DNS
-     ========================================================= -->
-
-<section
-    class="content-page"
-    id="dns"
->
-
-
-    <div class="welcome">
-
-        <h1>
-            DNS
-        </h1>
-
-        <p>
-            Add DNS lesson material here.
-        </p>
-
-    </div>
-
-</section>
-
-<section class="content-page" id="network-pre-reading">
-    <div class="material-header">
-      	<h2>📖 Pre-reading Material</h2>
-      	<p> Read the material below before starting the Computer Networks unit.</p>
-      	<a href="https://drive.google.com/file/d/1UVq2OnA8J-yImZEl9FWHh2OG42mpuZmt/view" target="_blank" 
-		class="download-btn">📖 
-		Open Material
-	</a>
-      	<a href="https://drive.google.com/uc?export=download&id=1UVq2OnA8J-yImZEl9FWHh2OG42mpuZmt" download 
-		class="download-btn">
-		⬇ Download Material
-	</a>
-   </div>
-   <div class="pdf-container">
-      	<iframe src="https://drive.google.com/file/d/1UVq2OnA8J-yImZEl9FWHh2OG42mpuZmt/preview" 
-		width="100%" height="600" style="border: none;">    
-      	</iframe>
-    </div>
-</section>
-
-<section class="content-page" id="network-interactive-video">
-    <h2>🎬 Interactive Video</h2>
-    <p> Watch the interactive video and complete the activities.</p>
-    <div class="interactive-video-container">
-        <iframe src="file:///C:/Users/dhanu/OneDrive/Desktop/KVS_Class12_CS_EContent/dbmssql-sunil.html" title="Interactive Computer Networks Video" allowfullscreen>
-        </iframe>
-    </div>
-</section>
-
-<section class="content-page" id="network-quiz">
-    <h2>📝 Computer Networks – Quiz</h2>
-
-    <iframe
-        src="materials/network-quiz.html"
-        class="activity-frame">
-    </iframe>
-
-</section>
 
 
 <section class="content-page" id="network-self-assessment">
