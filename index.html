@@ -1,43 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Class XII Computer Science - E-Content Portal</title>
 
-
 <style>
-
-/* =========================================================
-   BASIC
-   ========================================================= */
-
+/* =====================================BASIC===================================== */
 *{
     box-sizing:border-box;
 }
-
-html,body{
+html,body
+{
     margin:0;
     padding:0;
 }
-
-body{
+body
+{
     font-family:"Segoe UI",Arial,sans-serif;
     background:#f5f7fb;
     color:#18233f;
 }
-
-
-/* =========================================================
-   HEADER
-   ========================================================= */
-
-.header{
+/* ======================================HEADER======================================= */
+.header
+{
     min-height:165px;
-
     background:
     linear-gradient(
         105deg,
@@ -50,561 +37,392 @@ body{
     position:relative;
     overflow:hidden;
 }
-
-.header:after{
-
+.header:after
+{
     content:"";
-
     position:absolute;
-
     right:-100px;
     top:-100px;
-
     width:500px;
     height:300px;
-
     background:
-    radial-gradient(
+    radial-gradient
+    (
         circle,
         rgba(255,255,255,.12),
         transparent 65%
     );
 }
-
-
-.header-inner{
-
+.header-inner
+{
     max-width:1536px;
-
     margin:auto;
-
     min-height:165px;
-
     padding:18px 34px;
-
     display:grid;
-
-    grid-template-columns:
-        145px
-        1fr
-        145px;
-
+    grid-template-columns:145px 1fr 145px;
     align-items:center;
-
     gap:18px;
-
     position:relative;
-
     z-index:2;
 }
-
-
-.logo-box{
-
+.logo-box
+{
     width:108px;
     height:108px;
-
     background:#fff;
-
     border-radius:10px;
-
     display:flex;
-
     align-items:center;
-
     justify-content:center;
-
     overflow:hidden;
-
     box-shadow:
         0 4px 15px rgba(0,0,0,.12);
 }
-
-
-.logo-box img{
-
+.logo-box img
+{
     max-width:100%;
     max-height:100%;
-
     object-fit:contain;
 }
-
-
-.logo-placeholder{
-
+.logo-placeholder
+{
     color:#c38a35;
-
     font-weight:800;
-
     text-align:center;
-
     line-height:1.15;
-
     font-size:13px;
 }
-
-
-.header-title{
-
+.header-title
+{
     text-align:center;
 }
-
-
-.header-title .hindi{
-
+.header-title .hindi
+{
     font-size:28px;
-
     font-weight:700;
-
     margin:0 0 4px;
 }
-
-
-.header-title .english{
-
+.header-title .english
+{
     font-size:28px;
-
     font-weight:800;
-
     margin:0 0 5px;
 }
-
-
-.header-title .sub{
-
+.header-title .sub
+{
     font-size:19px;
-
     font-weight:700;
-
     margin:0 0 4px;
 }
-
-
-.header-title .sub2{
-
+.header-title .sub2
+{
     font-size:20px;
-
     font-weight:800;
-
     color:#ffe300;
-
     margin:0;
 }
 
-
-/* =========================================================
-   NAVIGATION
-   ========================================================= */
-
-.nav{
-
+/* ============================================NAVIGATION======================================================= */
+.nav
+{
     height:52px;
-
     background:
-    linear-gradient(
-        90deg,
-        #071e50,
-        #10054f
-    );
-
+    linear-gradient(90deg,#071e50,#10054f);
     color:#fff;
 }
-
-
-.nav-inner{
-
+.nav-inner
+{
     max-width:1536px;
-
     margin:auto;
-
     height:100%;
-
     display:flex;
-
     align-items:center;
 }
-
-
-.nav button{
-
+.nav button
+{
     height:100%;
-
     border:0;
-
     background:transparent;
-
     color:#fff;
-
     padding:0 38px;
-
     font-size:16px;
-
     font-weight:700;
-
     cursor:pointer;
 }
+.nav button:hover
+{
+    background:rgba(255,255,255,.09);
+}
 
+/* =========================================interactive-video-container========================================= */
+.interactive-video-container 
+{
+    width: 100%;
+    height: 700px;
+    border-radius: 10px;
+    overflow: hidden;
+    background: white;
+    border: 1px solid #ddd;
+}
+.interactive-video-container iframe 
+{
+    width: 100%;
+    height: 100%;
+    border: none;
+}
 
-.nav button:hover{
-
-    background:
-    rgba(255,255,255,.09);
+/* ========================================= MATERIAL VIEWER ========================================= */
+.material-header 
+{
+    margin-bottom: 20px;
+}
+.material-header h2 
+{
+    margin-bottom: 10px;
 }
 
 
-/* =========================================================
-   THREE COLUMN LAYOUT
-   ========================================================= */
+/* ========================================== DOWNLOAD BUTTON ====================================================*/
+.download-btn 
+{
+    display: inline-block;
+    margin-top: 10px;
+    padding: 12px 20px;
+    background: #4f46e5;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+.download-btn:hover 
+{
+    background: #3730a3;
+    transform: translateY(-2px);
+}
 
-.layout{
 
+
+/* =============================================== PDF VIEWER ======================================================*/
+.pdf-container 
+{
+    width: 100%;
+    height: 700px;
+    border-radius: 10px;
+    overflow: hidden;
+    background: white;
+    border: 1px solid #ddd;
+}
+.pdf-container iframe 
+{
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+
+/* ================================================= THREE COLUMN LAYOUT ==================================================== */
+.layout
+{
     max-width:1536px;
-
     margin:auto;
-
     padding:18px 16px 22px;
-
     display:grid;
-
-    grid-template-columns:
-        318px
-        minmax(0,1fr)
-        280px;
-
+    grid-template-columns:318px minmax(0,1fr) 280px;
     gap:26px;
-
     align-items:start;
 }
 
 
-/* =========================================================
-   COMMON PANEL
-   ========================================================= */
-
-.panel{
-
+/* ================================================== COMMON PANEL ========================================================= */
+.panel
+{
     background:#fff;
-
     border:1px solid #e2e6ef;
-
     border-radius:15px;
-
-    box-shadow:
-        0 3px 13px rgba(34,43,76,.055);
+    box-shadow:0 3px 13px rgba(34,43,76,.055);
 }
 
 
-/* =========================================================
-   LEFT SIDEBAR
-   ========================================================= */
-
-.left{
-
+/* =================================================== LEFT SIDEBAR ========================================================= */
+.left
+{
     padding:16px 14px 20px;
-
     min-height:760px;
-
     overflow:hidden;
 }
-
-
-.panel-title{
-
+.panel-title
+{
     color:#5b2bd7;
-
     font-size:21px;
-
     font-weight:800;
-
     margin:0 0 17px;
 }
 
 
-/* UNIT */
-
-.unit{
-
+/* ================================================== UNIT ======================================================== */
+.unit
+{
     margin-bottom:10px;
-
     border-radius:9px;
-
     overflow:hidden;
 }
-
-
-.unit-head{
-
+.unit-head
+{
     width:100%;
-
     min-height:48px;
-
     border:0;
-
     color:#fff;
-
     padding:13px 14px;
-
     display:flex;
-
     align-items:center;
-
     justify-content:space-between;
-
     font-size:17px;
-
     font-weight:800;
-
     cursor:pointer;
-
     text-align:left;
-
     border-radius:9px;
-
     transition:.2s;
 }
-
-
-.unit-head:hover{
-
+.unit-head:hover
+{
     filter:brightness(.98);
-
     transform:translateY(-1px);
 }
-
-
-.unit-head.sql{
-
+.unit-head.sql
+{
     background:
-    linear-gradient(
-        90deg,
-        #5922e6,
-        #713ce9
-    );
+    linear-gradient(90deg, #5922e6, #713ce9);
 }
-
-
-.unit-head.python{
-
+.unit-head.python
+{
     background:
-    linear-gradient(
-        90deg,
-        #f7d9e8,
-        #ffd8e8
-    );
-
+    linear-gradient(90deg, #f7d9e8, #ffd8e8);
     color:#e91970;
 }
-
-
-.unit-head.network{
-
+.unit-head.network
+{
     background:
-    linear-gradient(
-        90deg,
-        #d7f0ef,
-        #c8e9e8
-    );
-
+    linear-gradient(90deg, #d7f0ef,#c8e9e8);
     color:#087c82;
 }
-
-
-.unit-arrow{
-
+.unit-arrow
+{
     font-size:18px;
 }
-
-
-.unit-content{
-
+.unit-content
+{
     display:block;
-
     padding:2px 6px 8px;
 }
 
 
-/* TOPIC */
-
-.topic-block{
-
+/* ============================================== TOPIC ========================================================= */
+.topic-block
+{
     margin:0;
 }
-
-
-.topic-head{
-
+.topic-head
+{
     width:100%;
-
     border:0;
-
     border-left:4px solid transparent;
-
     background:#fff;
-
     color:#171717;
-
     min-height:50px;
-
     padding:12px 13px;
-
     display:flex;
-
     justify-content:space-between;
-
     align-items:center;
-
     text-align:left;
-
     font-size:15.5px;
-
     font-weight:800;
-
     cursor:pointer;
-
     transition:.2s;
 }
-
-
-.topic-head:hover{
-
+.topic-head:hover
+{
     background:#f5f7fb;
 }
-
-
-.topic-head.open{
-
+.topic-head.open
+{
     background:#f4f6fa;
-
     border-left-color:#2c65ad;
 }
-
-
-.topic-arrow{
-
+.topic-arrow
+{
     color:#64748b;
-
     font-size:17px;
-
     font-weight:700;
 }
 
 
-/* SUBTOPICS */
-
-.subtopics{
-
+/* ============================================== SUBTOPICS ======================================================= */
+.subtopics
+{
     display:none;
-
     background:#fff;
-
     padding:3px 0 8px 28px;
-
     border-left:1px solid #eef0f5;
 }
-
-
-.subtopics button{
-
+.subtopics button
+{
     display:block;
-
     width:100%;
-
     border:0;
-
     background:transparent;
-
     color:#526078;
-
     text-align:left;
-
     padding:8px;
-
     font-size:15px;
-
     line-height:1.35;
-
     cursor:pointer;
-
     border-radius:5px;
-
     transition:.15s;
 }
-
-
-.subtopics button:hover{
-
+.subtopics button:hover
+{
     background:#f1f4f8;
-
     color:#173f72;
-
     padding-left:12px;
 }
-
-
-.subtopics button.selected{
-
+.subtopics button.selected
+{
     color:#5420dd;
-
     font-weight:700;
-
     background:#f4f0ff;
 }
 
 
-/* =========================================================
-   CENTRE
-   ========================================================= */
-
-.center{
-
+/* ============================================== CENTRE ========================================================= */
+.center
+{
     min-width:0;
 }
 
-
-/* =========================================================
-   WELCOME
-   ========================================================= */
-
-.welcome{
-
+/* =============================================== WELCOME ========================================================= */
+.welcome
+{
     min-height:305px;
-
     background:
-    linear-gradient(
-        135deg,
-        #fff 60%,
-        #f3efff
-    );
-
+    linear-gradient(135deg,#fff 60%,#f3efff);
     border-left:6px solid #6734df;
-
     border-radius:15px;
-
     padding:48px 34px 30px;
-
     position:relative;
-
     overflow:hidden;
-
-    box-shadow:
-        0 3px 13px rgba(34,43,76,.055);
+    box-shadow:0 3px 13px rgba(34,43,76,.055);
 }
-
-
-.welcome:after{
-
+.welcome:after
+{
     content:"";
-
     position:absolute;
-
     width:390px;
     height:390px;
-
     right:-160px;
     top:-190px;
-
     border-radius:50%;
-
     background:
     radial-gradient(
         circle,
@@ -613,3178 +431,1376 @@ body{
         transparent 70%
     );
 }
-
-
-.welcome h1{
-
+.welcome h1
+{
     position:relative;
-
     z-index:2;
-
     color:#101d63;
-
     font-size:35px;
-
     margin:0 0 30px;
 }
-
-
-.welcome p{
-
+.welcome p
+{
     position:relative;
-
     z-index:2;
-
     max-width:700px;
-
     font-size:17px;
-
     line-height:1.65;
-
     margin:0 0 15px;
 }
 
-
-/* =========================================================
-   LAPTOP ILLUSTRATION
-   ========================================================= */
-
-.laptop{
-
+/* =============================================== LAPTOP ILLUSTRATION ===================================================== */
+.laptop
+{
     position:absolute;
-
     right:28px;
-
     bottom:20px;
-
     width:300px;
-
     height:155px;
-
     z-index:2;
 }
-
-
-.screen{
-
+.screen
+{
     width:165px;
     height:108px;
-
     margin-left:45px;
-
     border:8px solid #17234d;
-
-    border-radius:
-        9px 9px 4px 4px;
-
+    border-radius:9px 9px 4px 4px;
     background:#111b42;
-
     transform:skew(-5deg);
-
     padding:12px;
-
-    box-shadow:
-        0 8px 10px rgba(0,0,0,.15);
+    box-shadow:0 8px 10px rgba(0,0,0,.15);
 }
-
-
-.code-line{
-
+.code-line
+{
     height:5px;
-
     margin:7px 0;
-
     border-radius:5px;
 }
-
-
-.c1{
+.c1
+{
     width:75%;
     background:#ff4e8b;
 }
-
-.c2{
+.c2
+{
     width:60%;
     background:#ffcc38;
 }
 
-.c3{
+.c3
+{
     width:80%;
     background:#4ac7ff;
 }
-
-.c4{
+.c4
+{
     width:48%;
     background:#62df8c;
 }
-
-.c5{
+.c5
+{
     width:68%;
     background:#b67cff;
 }
-
-
-.keyboard{
-
+.keyboard
+{
     width:260px;
-
     height:32px;
-
     margin-left:15px;
-
-    background:
-    linear-gradient(
-        #8993ae,
-        #d5d9e4
-    );
-
-    clip-path:
-    polygon(
-        9% 0,
-        100% 0,
-        92% 100%,
-        0 100%
-    );
-
+    background:linear-gradient(#8993ae,#d5d9e4);
+    clip-path:polygon(9% 0,100% 0,92% 100%,0 100%);
     border-radius:4px;
 }
-
-
-.books{
-
+.books
+{
     position:absolute;
-
     right:8px;
-
     bottom:0;
-
     width:105px;
 }
-
-
-.book{
-
+.book
+{
     height:13px;
-
     border-radius:3px;
-
     margin-top:3px;
 }
-
-
-.b1{
+.b1
+{
     background:#f1a328;
     width:95px;
 }
-
-.b2{
+.b2
+{
     background:#e43c4d;
     width:108px;
 }
-
-.b3{
+.b3
+{
     background:#2d7fd4;
     width:100px;
 }
-
-.b4{
+.b4
+{
     background:#ef7136;
     width:92px;
 }
-
-
-.plant{
-
+.plant
+{
     position:absolute;
-
     right:118px;
-
     bottom:31px;
-
     width:34px;
-
     height:75px;
 }
-
-
-.pot{
-
+.pot
+{
     position:absolute;
-
     bottom:0;
-
     left:4px;
-
     width:27px;
-
     height:28px;
-
     background:#7b4a38;
-
-    clip-path:
-    polygon(
-        8% 0,
-        92% 0,
-        78% 100%,
-        22% 100%
-    );
+    clip-path:polygon(8% 0,92% 0,78% 100%,22% 100%);
 }
-
-
-.leaf{
-
+.leaf
+{
     position:absolute;
-
     width:22px;
-
     height:35px;
-
     background:#29a866;
-
-    border-radius:
-        100% 0 100% 0;
-
+    border-radius:100% 0 100% 0;
     transform-origin:bottom left;
 }
-
-
-.l1{
+.l1
+{
     left:11px;
     bottom:24px;
     transform:rotate(-27deg);
 }
-
-.l2{
+.l2
+{
     left:19px;
     bottom:38px;
     transform:rotate(25deg);
 }
-
-.l3{
+.l3
+{
     left:5px;
     bottom:48px;
     transform:rotate(-48deg);
 }
 
-
-/* =========================================================
-   SECTION TITLE
-   ========================================================= */
-
-.section-title{
-
+/* ================================================ SECTION TITLE ======================================================== */
+.section-title
+{
     display:flex;
-
     align-items:center;
-
     gap:12px;
-
     color:#5b2bd7;
-
     font-size:27px;
-
     font-weight:800;
-
     margin:23px 8px 16px;
 }
-
-
-.section-title:after{
-
+.section-title:after
+{
     content:"";
-
     height:2px;
-
     flex:1;
-
-    background:
-    linear-gradient(
-        90deg,
-        #6734e8,
-        #d9c9fa
-    );
+    background:linear-gradient(90deg,#6734e8,#d9c9fa);
 }
-
-
-.section-title .dot{
-
+.section-title .dot
+{
     width:13px;
-
     height:13px;
-
     border-radius:50%;
-
     background:#bba8e9;
-
     margin-left:-25px;
 }
 
 
-/* =========================================================
-   CARDS
-   ========================================================= */
-
-.card{
-
+/* ===================================================== CARDS ===================================================== */
+.card
+{
     border:1px solid rgba(203,213,225,.8);
-
     border-radius:18px;
-
-    background:
-    rgba(255,255,255,.94);
-
-    box-shadow:
-        0 8px 24px rgba(30,41,59,.08);
-
-    transition:
-        transform .25s ease,
-        box-shadow .25s ease;
-
+    background:rgba(255,255,255,.94);
+    box-shadow:0 8px 24px rgba(30,41,59,.08);
+    transition:transform .25s ease,box-shadow .25s ease;
     position:relative;
-
     overflow:hidden;
 }
-
-
-.card::before{
-
+.card::before
+{
     content:"";
-
     position:absolute;
-
     left:0;
     top:0;
     right:0;
-
     height:5px;
-
     background:
-    linear-gradient(
-        90deg,
-        #38bdf8,
-        #6366f1,
-        #ec4899
-    );
+    linear-gradient(90deg,#38bdf8,#6366f1,#ec4899);
 }
-
-
-.card:hover{
-
+.card:hover
+{
     transform:translateY(-5px);
-
-    box-shadow:
-        0 15px 32px rgba(30,41,59,.13);
+    box-shadow:0 15px 32px rgba(30,41,59,.13);
 }
-
-
-.cards{
-
+.cards
+{
     display:grid;
-
-    grid-template-columns:
-        repeat(
-            3,
-            minmax(0,1fr)
-        );
-
+    grid-template-columns:repeat(3,minmax(0,1fr));
     gap:20px;
 }
 
-
-/* =========================================================
-   COURSE CARDS
-   ========================================================= */
-
-.course-card{
-
+/* ================================================== COURSE CARDS ====================================================== */
+.course-card
+{
     background:#fff;
-
     border:1px solid #e4e7ef;
-
     border-radius:15px;
-
     min-height:270px;
-
     padding:25px;
-
     position:relative;
-
     overflow:hidden;
-
-    box-shadow:
-        0 3px 13px rgba(34,43,76,.055);
+    box-shadow:0 3px 13px rgba(34,43,76,.055);
 }
-
-
-.course-card:after{
-
+.course-card:after
+{
     content:"";
-
     position:absolute;
-
     right:-45px;
-
     bottom:-60px;
-
     width:150px;
-
     height:150px;
-
-    border-radius:
-        60% 40% 0 50%;
-
+    border-radius:60% 40% 0 50%;
     opacity:.55;
 }
-
-
-.course-card.sql:after{
+.course-card.sql:after
+{
     background:#e6dcff;
 }
-
-.course-card.python:after{
+.course-card.python:after
+{
     background:#ffdbea;
 }
-
-.course-card.network:after{
+.course-card.network:after
+{
     background:#d6f3f1;
 }
-
-
-.card-icon{
-
+.card-icon
+{
     width:70px;
-
     height:70px;
-
     border-radius:50%;
-
     display:flex;
-
     align-items:center;
-
     justify-content:center;
-
     font-size:37px;
-
     margin-bottom:14px;
 }
-
-
-.sql .card-icon{
+.sql .card-icon
+{
     background:#eee8ff;
 }
-
-.python .card-icon{
+.python .card-icon
+{
     background:#ffe7f1;
 }
-
-.network .card-icon{
+.network .card-icon
+{
     background:#e0f6f4;
 }
-
-
-.course-card h2{
-
+.course-card h2
+{
     position:relative;
-
     z-index:2;
-
     margin:0 0 20px;
-
     font-size:22px;
 }
-
-
-.course-card.sql h2{
+.course-card.sql h2
+{
     color:#5420dd;
 }
-
-.course-card.python h2{
+.course-card.python h2
+{
     color:#ed1971;
 }
-
-.course-card.network h2{
+.course-card.network h2
+{
     color:#008b8d;
 }
-
-
-.course-card p{
-
+.course-card p
+{
     position:relative;
-
     z-index:2;
-
     font-size:16px;
-
     line-height:1.55;
-
     min-height:75px;
 }
-
-
-.explore{
-
+.explore
+{
     position:relative;
-
     z-index:3;
-
     border:0;
-
     border-radius:8px;
-
     padding:10px 18px;
-
     color:#fff;
-
     font-weight:800;
-
     cursor:pointer;
 }
-
-
-.sql .explore{
+.sql .explore
+{
     background:#6430df;
 }
-
-.python .explore{
+.python .explore
+{
     background:#ed1971;
 }
-
-.network .explore{
+.network .explore
+{
     background:#079e9b;
 }
 
 
-/* =========================================================
-   CONTENT PAGES
-   ========================================================= */
-
-.content-page{
-
+/* =================================================== CONTENT PAGES ======================================================== */
+.content-page
+{
     display:none;
 }
-
-
-.content-page.active{
-
+.content-page.active
+{
     display:block;
 }
-
-
-.content-box{
-
+.content-box
+{
     background:#fff;
-
     border:1px solid #e1e5ee;
-
     border-radius:15px;
-
     padding:25px;
-
     margin-bottom:20px;
-
-    box-shadow:
-        0 3px 13px rgba(34,43,76,.055);
-
+    box-shadow:0 3px 13px rgba(34,43,76,.055);
     line-height:1.7;
 }
-
-
-.content-box h2{
-
+.content-box h2
+{
     color:#5420dd;
-
     margin-top:0;
 }
-
-
-.content-box h3{
-
+.content-box h3
+{
     color:#243b70;
 }
-
-
-.content-box img{
-
+.content-box img
+{
     max-width:100%;
-
     height:auto;
-
     border-radius:10px;
 }
-
-
-.content-box a{
-
+.content-box a
+{
     color:#5420dd;
-
     font-weight:700;
 }
-
-
-.content-box pre{
-
+.content-box pre
+{
     background:#17234d;
-
     color:#fff;
-
     padding:18px;
-
     border-radius:10px;
-
     overflow:auto;
 }
+.content-page 
+{
+    display: none;
+}
+.content-page.active 
+{
+    display: block;
+}
 
-
-/* =========================================================
-   RIGHT SIDEBAR
-   ========================================================= */
-
-.right{
-
+/* ============================================== RIGHT SIDEBAR ================================================== */
+.right
+{
     padding:16px 13px 18px;
 }
-
-
-.right-title{
-
+.right-title
+{
     color:#f05c16;
-
     font-size:21px;
-
     font-weight:800;
-
     margin:0 0 17px;
 }
-
-
-.quick{
-
+.quick
+{
     display:flex;
-
     justify-content:space-between;
-
     align-items:center;
-
     text-decoration:none;
-
     padding:12px 13px;
-
     margin:8px 0;
-
     border-radius:9px;
-
     border:1px solid;
-
     font-weight:700;
-
     font-size:15px;
 }
-
-
-.q1{
+.q1
+{
     color:#ed5c1b;
     background:#fff8f1;
     border-color:#ffd9bf;
 }
-
-.q2{
+.q2
+{
     color:#2b8e1e;
     background:#f3fbef;
     border-color:#cdeac7;
 }
-
-.q3{
+.q3
+{
     color:#176dd5;
     background:#f0f8ff;
     border-color:#c8e1fa;
 }
-
-.q4{
+.q4
+{
     color:#ed1b71;
     background:#fff1f7;
     border-color:#f7cddd;
 }
-
-.q5{
+.q5
+{
     color:#5b2bd7;
     background:#f5f1ff;
     border-color:#ddd0fb;
 }
-
-.q6{
+.q6
+{
     color:#e99900;
     background:#fff9e8;
     border-color:#f5dfa4;
 }
-
-.q7{
+.q7
+{
     color:#1772d8;
     background:#f0f8ff;
     border-color:#c8e1fa;
 }
-
-
-.notice{
-
+.notice
+{
     margin-top:25px;
-
     background:#eaf8e9;
-
     border:1px solid #c7e8c2;
-
     border-radius:11px;
-
     padding:15px 14px 25px;
-
     color:#2f7628;
 }
-
-
-.notice h3{
-
+.notice h3
+{
     margin:0 0 15px;
-
     font-size:17px;
 }
-
-
-.notice p{
-
+.notice p
+{
     color:#28364d;
-
     line-height:1.65;
-
     font-size:14px;
 }
 
 
-/* =========================================================
-   FOOTER
-   ========================================================= */
-
-.footer{
-
+/* ================================================FOOTER========================================================= */
+.footer
+{
     text-align:center;
-
     padding:25px;
-
     background:#071e50;
-
     color:#fff;
-
     font-size:14px;
 }
 
-
-/* =========================================================
-   RESPONSIVE
-   ========================================================= */
-
-@media(max-width:1100px){
-
-    .layout{
-
-        grid-template-columns:
-            280px
-            minmax(0,1fr);
+/* =============================================== RESPONSIVE ========================================================= */
+@media(max-width:1100px)
+{
+    .layout
+    {
+         grid-template-columns:280px
+         minmax(0,1fr);
     }
-
-    .right{
+    .right
+    {
         display:none;
     }
-
-    .header-inner{
-
-        grid-template-columns:
-            100px
-            1fr
-            100px;
+    .header-inner
+    {
+        grid-template-columns:100px 1fr 100px;
     }
-
     .header-title .english,
-    .header-title .hindi{
-
+    .header-title .hindi
+    {
         font-size:22px;
     }
-
 }
-
-
-@media(max-width:800px){
-
-    .header-inner{
-
+@media(max-width:800px)
+{
+    .header-inner
+    {
         display:flex;
-
         flex-direction:column;
-
         padding:15px;
     }
-
-
-    .header-title .english{
+    .header-title .english
+    {
         font-size:19px;
     }
-
-
-    .header-title .hindi{
+    .header-title .hindi
+    {
         font-size:20px;
     }
-
-
     .header-title .sub,
-    .header-title .sub2{
+    .header-title .sub2
+    {
         font-size:14px;
     }
-
-
-    .nav-inner{
-
+    .nav-inner
+    {
         overflow-x:auto;
     }
-
-
-    .nav button{
-
+    .nav button
+    {
         padding:0 18px;
-
         white-space:nowrap;
     }
-
-
-    .layout{
-
+    .layout
+    {
         grid-template-columns:1fr;
-
         padding:12px;
     }
-
-
-    .left{
-
+    .left
+    {
         min-height:auto;
     }
-
-
-    .cards{
-
+    .cards
+    {
         grid-template-columns:1fr;
     }
-
-
-    .welcome{
-
+    .welcome
+    {
         padding:28px 22px;
-
         min-height:350px;
     }
-
-
-    .welcome h1{
-
+    .welcome h1
+    {
         font-size:27px;
     }
-
-
-    .laptop{
-
+    .laptop
+    {
         opacity:.65;
-
         right:-35px;
     }
-
 }
-
 </style>
-
 </head>
-
-
 <body>
 
 
-<!-- =========================================================
-     HEADER
-     ========================================================= -->
 
+
+
+<!-- ====================================== HTML CODE STARTS FROM HERE =============================================== -->
+
+<!-- ================================================ HEADER ========================================================= -->
 <header class="header">
-
     <div class="header-inner">
-
-
-        <!-- LEFT LOGO -->
-
+        <!-- ======================================= LEFT LOGO ======================================= -->
         <div class="logo-box">
-
-            <img
-                src="kv-logo.png"
-                alt="KVS Logo"
-                onerror="
-                this.style.display='none';
-                this.nextElementSibling.style.display='block';
-                "
-            >
-
-            <div
-                class="logo-placeholder"
-                style="display:none"
-            >
-                KENDRIYA<br>
-                VIDYALAYA<br>
-                SANGATHAN
-            </div>
-
+            <img src="kv-logo.png" alt="KVS Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"/>
+            <div class="logo-placeholder" style="display:none">KENDRIYA<br>VIDYALAYA<br>SANGATHAN</div>
         </div>
-
-
-        <!-- HEADER TEXT -->
-
+        <!-- ======================================= HEADER TEXT ======================================= -->
         <div class="header-title">
-
-            <p class="hindi">
-                केन्द्रीय विद्यालय संगठन क्षेत्रीय कार्यालय, एर्नाकुलम
-            </p>
-
-            <p class="english">
-                KENDRIYA VIDYALAYA SANGATHAN
-                REGIONAL OFFICE, ERNAKULAM
-            </p>
-
-            <p class="sub">
-                शिक्षा मंत्रालय, भारत सरकार के अधीन एक स्वायत्त निकाय
-            </p>
-
-            <p class="sub2">
-                An Autonomous Body Under Ministry Of Education,
-                Government Of India
-            </p>
-
+        	<p class="hindi">केन्द्रीय विद्यालय संगठन क्षेत्रीय कार्यालय, एर्नाकुलम</p>
+        	<p class="english">KENDRIYA VIDYALAYA SANGATHAN REGIONAL OFFICE, ERNAKULAM</p>
+        	<p class="sub">शिक्षा मंत्रालय, भारत सरकार के अधीन एक स्वायत्त निकाय</p>
+        	<p class="sub2">An Autonomous Body Under Ministry Of Education,Government Of India</p>
         </div>
-
-
-        <!-- RIGHT LOGO -->
-
+        <!--  ======================================= RIGHT LOGO =======================================  -->
         <div class="logo-box">
-
-            <img
-                src="school-logo.png"
-                alt="School Logo"
-                onerror="
-                this.style.display='none';
-                this.nextElementSibling.style.display='block';
-                "
-            >
-
+            <img src="school-logo.png" alt="School Logo" onerror=" this.style.display='none'; his.nextElementSibling.style.display='block';">
             <div
-                class="logo-placeholder"
-                style="display:none;color:#d32373"
-            >
-                Kendriya<br>
-                Vidyalaya<br>
-                Sangathan<br>
-                Logo
+                class="logo-placeholder" style="display:none;color:#d32373">Kendriya<br>Vidyalaya<br>Sangathan<br>Logo
             </div>
-
         </div>
-
-
     </div>
-
 </header>
 
 
-
-<!-- =========================================================
-     TOP NAVIGATION
-     ========================================================= -->
-
+<!-- ================================================ TOP NAVIGATION ====================================================== -->
 <nav class="nav">
-
     <div class="nav-inner">
-
-        <button onclick="showContent('home')">
-            ⌂ &nbsp; Home
-        </button>
-
-        <button onclick="showContent('team')">
-            👥 &nbsp; Patron &amp; Content Team
-        </button>
-
-        <button onclick="showContent('assessment')">
-            ▣ &nbsp; Assessment Centre
-        </button>
-
+        <button onclick="showContent('home')">⌂ &nbsp; Home</button>
+        <button onclick="showContent('team')">&nbsp; Patron &amp; Content Team</button>
+        <button onclick="showContent('assessment')">&nbsp; Assessment Centre</button>
     </div>
-
 </nav>
 
 
-
-<!-- =========================================================
-     MAIN LAYOUT
-     ========================================================= -->
-
+<!-- ================================================= MAIN LAYOUT ===================================================== -->
 <div class="layout">
-
-
-
-<!-- =========================================================
-     LEFT SIDEBAR
-     ========================================================= -->
-
-<aside class="panel left">
-
-    <h2 class="panel-title">
-        ▣ &nbsp;Course Contents
-    </h2>
-
-
-
-    <!-- =====================================================
-         UNIT I - SQL
-         ===================================================== -->
-
-    <div class="unit">
-
-        <button
-            class="unit-head sql"
-            type="button"
-            onclick="toggleUnit('unitSQL')"
-        >
-
-            <span>
-                ▶ Unit I – SQL
-            </span>
-
-            <span class="unit-arrow">
-                ⌄
-            </span>
-
-        </button>
-
-
-        <div
-            class="unit-content nested-content"
-            id="unitSQL"
-        >
-
-
-            <!-- INTRODUCTION TO SQL -->
-
-            <div class="topic-block">
-
-                <button
-                    class="topic-head"
-                    type="button"
-                    onclick="toggleTopic('sqlIntro')"
-                >
-
-                    <span>
-                        📌 &nbsp;Introduction to SQL
-                    </span>
-
-                    <span class="topic-arrow">
-                        ⌄
-                    </span>
-
-                </button>
-
-
-                <div
-                    class="subtopics"
-                    id="sqlIntro"
-                >
-
-                    <button onclick="showContent('sql-introduction')">
-                        Introduction
-                    </button>
-
-                    <button onclick="showContent('sql-objectives')">
-                        Learning Objectives
-                    </button>
-
-                    <button onclick="showContent('sql-concepts')">
-                        Concepts
-                    </button>
-
-                    <button onclick="showContent('sql-examples')">
-                        Examples
-                    </button>
-
-                    <button onclick="showContent('sql-practice')">
-                        Practice
-                    </button>
-
-                    <button onclick="showContent('sql-assessment')">
-                        Assessment
-                    </button>
-
-                    <button onclick="showContent('sql-mindmap')">
-                        Mind Map
-                    </button>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- SQL COMMANDS -->
-
-            <div class="topic-block">
-
-                <button
-                    class="topic-head"
-                    type="button"
-                    onclick="toggleTopic('sqlCommands')"
-                >
-
-                    <span>
-                        📌 &nbsp;SQL Commands
-                    </span>
-
-                    <span class="topic-arrow">
-                        ⌄
-                    </span>
-
-                </button>
-
-
-                <div
-                    class="subtopics"
-                    id="sqlCommands"
-                >
-
-                    <button onclick="showContent('sql-ddl')">
-                        DDL Commands
-                    </button>
-
-                    <button onclick="showContent('sql-dml')">
-                        DML Commands
-                    </button>
-
-                    <button onclick="showContent('sql-dcl')">
-                        DCL Commands
-                    </button>
-
-                    <button onclick="showContent('sql-tcl')">
-                        TCL Commands
-                    </button>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- SQL FUNCTIONS -->
-
-            <div class="topic-block">
-
-                <button
-                    class="topic-head"
-                    type="button"
-                    onclick="toggleTopic('sqlFunctions')"
-                >
-
-                    <span>
-                        📌 &nbsp;SQL Functions
-                    </span>
-
-                    <span class="topic-arrow">
-                        ⌄
-                    </span>
-
-                </button>
-
-
-                <div
-                    class="subtopics"
-                    id="sqlFunctions"
-                >
-
-                    <button onclick="showContent('sql-string-functions')">
-                        String Functions
-                    </button>
-
-                    <button onclick="showContent('sql-numeric-functions')">
-                        Numeric Functions
-                    </button>
-
-                    <button onclick="showContent('sql-date-functions')">
-                        Date Functions
-                    </button>
-
-                    <button onclick="showContent('sql-aggregate-functions')">
-                        Aggregate Functions
-                    </button>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- SQL QUERIES -->
-
-            <div class="topic-block">
-
-                <button
-                    class="topic-head"
-                    type="button"
-                    onclick="toggleTopic('sqlQueries')"
-                >
-
-                    <span>
-                        📌 &nbsp;SQL Queries
-                    </span>
-
-                    <span class="topic-arrow">
-                        ⌄
-                    </span>
-
-                </button>
-
-
-                <div
-                    class="subtopics"
-                    id="sqlQueries"
-                >
-
-                    <button onclick="showContent('sql-select')">
-                        SELECT Queries
-                    </button>
-
-                    <button onclick="showContent('sql-where')">
-                        WHERE Clause
-                    </button>
-
-                    <button onclick="showContent('sql-groupby')">
-                        GROUP BY
-                    </button>
-
-                    <button onclick="showContent('sql-orderby')">
-                        ORDER BY
-                    </button>
-
-                </div>
-
-            </div>
-
+	<!-- ================================================ LEFT SIDEBAR ====================================================== -->
+	<aside class="panel left">
+	    <h2 class="panel-title">&nbsp;Course Contents</h2>
+            <!-- ============================================== UNIT I - SQL ===================================================== -->      	
+    	    <div class="unit">
+                  <button class="unit-head sql" type="button" onclick="toggleUnit('unitSQL')">
+                       <span>▶ Unit I – SQL </span>
+	               <span class="unit-arrow">⌄</span>
+	          </button>
+            	  <div class="unit-content nested-content" id="unitSQL">
+
+                  	<!-- ======================================== INTRODUCTION TO SQL========================================  -->
+            		<div class="topic-block">
+                		<button class="topic-head" type="button" onclick="toggleTopic('sqlIntro')">
+                     			<span>📌 &nbsp;Introduction to SQL</span>
+                     			<span class="topic-arrow">⌄</span>
+                		</button>
+            			<div class="subtopics" id="sqlIntro">
+                 			<button onclick="showContent('sql-introduction')">Introduction</button>
+                 			<button onclick="showContent('sql-objectives')">Learning Objectives</button>
+                 			<button onclick="showContent('sql-concepts')">Concepts</button>
+                 			<button onclick="showContent('sql-examples')">Examples </button>
+                 			<button onclick="showContent('sql-practice')">Practice </button>
+                 			<button onclick="showContent('sql-assessment')">Assessment</button>
+                 			<button onclick="showContent('sql-mindmap')"> Mind Map</button>
+            			</div>
+            		</div>
+            		<!-- ======================================== SQL COMMANDS ========================================  -->
+            		<div class="topic-block">
+                		<button class="topic-head" type="button" onclick="toggleTopic('sqlCommands')">
+                    			<span>📌 &nbsp;SQL Commands </span>
+                    			<span class="topic-arrow">⌄</span>
+                		</button>
+                		<div class="subtopics" id="sqlCommands">
+                    			<button onclick="showContent('sql-ddl')">DDL Commands</button>
+                    			<button onclick="showContent('sql-dml')">DML Commands</button>
+                    			<button onclick="showContent('sql-dcl')">DCL Commands</button>
+                    			<button onclick="showContent('sql-tcl')">TCL Commands</button>
+                		</div>
+            		</div>
+		        <!--  ======================================== SQL FUNCTIONS ========================================  -->
+            		<div class="topic-block">
+                		<button class="topic-head" type="button" onclick="toggleTopic('sqlFunctions')">
+                    			<span>📌 &nbsp;SQL Functions</span>
+                    			<span class="topic-arrow">⌄</span>
+                		</button>
+                		<div class="subtopics" id="sqlFunctions">
+                    			<button onclick="showContent('sql-string-functions')">String Functions</button>
+                    			<button onclick="showContent('sql-numeric-functions')">Numeric Functions</button>
+                    			<button onclick="showContent('sql-date-functions')">Date Functions</button>
+                    			<button onclick="showContent('sql-aggregate-functions')">Aggregate Functions</button>
+                		</div>
+            		</div>
+	                <!-- ========================================  SQL QUERIES ========================================  -->
+            		<div class="topic-block">
+                		<button class="topic-head" type="button" onclick="toggleTopic('sqlQueries')">
+                    			<span>📌 &nbsp;SQL Queries</span>
+                    			<span class="topic-arrow">⌄</span>
+                		</button>
+                		<div class="subtopics" id="sqlQueries">
+                    			<button onclick="showContent('sql-select')">SELECT Queries</button>
+                    			<button onclick="showContent('sql-where')">WHERE Clause</button>
+                    			<button onclick="showContent('sql-groupby')">GROUP BY</button>
+                    			<button onclick="showContent('sql-orderby')">ORDER BY</button>
+                		</div>
+            		</div>
+              </div>
 
         </div>
 
-    </div>
-
-
-
-    <!-- =====================================================
-         UNIT II - PYTHON
-         ===================================================== -->
-
-    <div class="unit">
-
-        <button
-            class="unit-head python"
-            type="button"
-            onclick="toggleUnit('unitPython')"
-        >
-
-            <span>
-                ▶ Unit II – Python
-            </span>
-
-            <span class="unit-arrow">
-                ⌄
-            </span>
-
-        </button>
-
-
-        <div
-            class="unit-content nested-content"
-            id="unitPython"
-        >
-
-
-            <!-- PYTHON BASICS -->
-
-            <div class="topic-block">
-
-                <button
-                    class="topic-head"
-                    type="button"
-                    onclick="toggleTopic('pyBasics')"
-                >
-
-                    <span>
-                        📌 &nbsp;Python Basics
-                    </span>
-
-                    <span class="topic-arrow">
-                        ⌄
-                    </span>
-
-                </button>
-
-
-                <div
-                    class="subtopics"
-                    id="pyBasics"
-                >
-
-                    <button onclick="showContent('python-introduction')">
-                        Introduction to Python
-                    </button>
-
-                    <button onclick="showContent('python-data-types')">
-                        Variables &amp; Data Types
-                    </button>
-
-                    <button onclick="showContent('python-operators')">
-                        Operators
-                    </button>
-
-                    <button onclick="showContent('python-input-output')">
-                        Input &amp; Output
-                    </button>
-
-                    <button onclick="showContent('python-practice')">
-                        Practice
-                    </button>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- CONTROL STATEMENTS -->
-
-            <div class="topic-block">
-
-                <button
-                    class="topic-head"
-                    type="button"
-                    onclick="toggleTopic('pyControl')"
-                >
-
-                    <span>
-                        📌 &nbsp;Control Statements
-                    </span>
-
-                    <span class="topic-arrow">
-                        ⌄
-                    </span>
-
-                </button>
-
-
-                <div
-                    class="subtopics"
-                    id="pyControl"
-                >
-
-                    <button onclick="showContent('python-if')">
-                        Conditional Statements
-                    </button>
-
-                    <button onclick="showContent('python-loops')">
-                        Loops
-                    </button>
-
-                    <button onclick="showContent('python-nested-loops')">
-                        Nested Loops
-                    </button>
-
-                    <button onclick="showContent('python-control-practice')">
-                        Practice
-                    </button>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- FUNCTIONS -->
-
-            <div class="topic-block">
-
-                <button
-                    class="topic-head"
-                    type="button"
-                    onclick="toggleTopic('pyFunctions')"
-                >
-
-                    <span>
-                        📌 &nbsp;Functions
-                    </span>
-
-                    <span class="topic-arrow">
-                        ⌄
-                    </span>
-
-                </button>
-
-
-                <div
-                    class="subtopics"
-                    id="pyFunctions"
-                >
-
-                    <button onclick="showContent('python-defining-functions')">
-                        Defining Functions
-                    </button>
-
-                    <button onclick="showContent('python-parameters')">
-                        Parameters &amp; Arguments
-                    </button>
-
-                    <button onclick="showContent('python-return')">
-                        Return Values
-                    </button>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- DATA STRUCTURES -->
-
-            <div class="topic-block">
-
-                <button
-                    class="topic-head"
-                    type="button"
-                    onclick="toggleTopic('pyData')"
-                >
-
-                    <span>
-                        📌 &nbsp;Data Structures
-                    </span>
-
-                    <span class="topic-arrow">
-                        ⌄
-                    </span>
-
-                </button>
-
-
-                <div
-                    class="subtopics"
-                    id="pyData"
-                >
-
-                    <button onclick="showContent('python-lists')">
-                        Lists
-                    </button>
-
-                    <button onclick="showContent('python-tuples')">
-                        Tuples
-                    </button>
-
-                    <button onclick="showContent('python-dictionaries')">
-                        Dictionaries
-                    </button>
-
-                    <button onclick="showContent('python-sets')">
-                        Sets
-                    </button>
-
-                </div>
-
-            </div>
-
-
-        </div>
-
-    </div>
-
-
-
-    <!-- =====================================================
-         UNIT III - NETWORKS
-         ===================================================== -->
-
-    <div class="unit">
-
-        <button
-            class="unit-head network"
-            type="button"
-            onclick="toggleUnit('unitNetwork')"
-        >
-
-            <span>
-                ▶ Unit III – Computer Networks
-            </span>
-
-            <span class="unit-arrow">
-                ⌄
-            </span>
-
-        </button>
-
-
-        <div
-            class="unit-content nested-content"
-            id="unitNetwork"
-        >
-
-
-            <!-- NETWORK INTRODUCTION -->
-
-            <div class="topic-block">
-
-                <button
-                    class="topic-head"
-                    type="button"
-                    onclick="toggleTopic('netIntro')"
-                >
-
-                    <span>
-                        📌 &nbsp;Introduction to Networks
-                    </span>
-
-                    <span class="topic-arrow">
-                        ⌄
-                    </span>
-
-                </button>
-
-
-                <div
-                    class="subtopics"
-                    id="netIntro"
-                >
-
-                    <button onclick="showContent('network-basics')">
-                        Network Basics
-                    </button>
-
-                    <button onclick="showContent('network-types')">
-                        Types of Networks
-                    </button>
-
-                    <button onclick="showContent('network-topologies')">
-                        Network Topologies
-                    </button>
-
-                    <button onclick="showContent('network-models')">
-                        Network Models
-                    </button>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- NETWORK DEVICES -->
-
-            <div class="topic-block">
-
-                <button
-                    class="topic-head"
-                    type="button"
-                    onclick="toggleTopic('netDevices')"
-                >
-
-                    <span>
-                        📌 &nbsp;Network Devices
-                    </span>
-
-                    <span class="topic-arrow">
-                        ⌄
-                    </span>
-
-                </button>
-
-
-                <div
-                    class="subtopics"
-                    id="netDevices"
-                >
-
-                    <button onclick="showContent('network-hub')">
-                        Hub
-                    </button>
-
-                    <button onclick="showContent('network-switch')">
-                        Switch
-                    </button>
-
-                    <button onclick="showContent('network-router')">
-                        Router
-                    </button>
-
-                    <button onclick="showContent('network-gateway')">
-                        Gateway
-                    </button>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- TRANSMISSION MEDIA -->
-
-            <div class="topic-block">
-
-                <button
-                    class="topic-head"
-                    type="button"
-                    onclick="toggleTopic('netMedia')"
-                >
-
-                    <span>
-                        📌 &nbsp;Transmission Media
-                    </span>
-
-                    <span class="topic-arrow">
-                        ⌄
-                    </span>
-
-                </button>
-
-
-                <div
-                    class="subtopics"
-                    id="netMedia"
-                >
-
-                    <button onclick="showContent('guided-media')">
-                        Guided Media
-                    </button>
-
-                    <button onclick="showContent('unguided-media')">
-                        Unguided Media
-                    </button>
-
-                    <button onclick="showContent('wireless-communication')">
-                        Wireless Communication
-                    </button>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- NETWORK PROTOCOLS -->
-
-            <div class="topic-block">
-
-                <button
-                    class="topic-head"
-                    type="button"
-                    onclick="toggleTopic('netProtocols')"
-                >
-
-                    <span>
-                        📌 &nbsp;Network Protocols
-                    </span>
-
-                    <span class="topic-arrow">
-                        ⌄
-                    </span>
-
-                </button>
-
-
-                <div
-                    class="subtopics"
-                    id="netProtocols"
-                >
-
-                    <button onclick="showContent('http-https')">
-                        HTTP / HTTPS
-                    </button>
-
-                    <button onclick="showContent('ftp')">
-                        FTP
-                    </button>
-
-                    <button onclick="showContent('tcp-ip')">
-                        TCP / IP
-                    </button>
-
-                    <button onclick="showContent('dns')">
-                        DNS
-                    </button>
-
-                </div>
-
-            </div>
-
-
-        </div>
-
-    </div>
-
-</aside>
-
-
-
-<!-- =========================================================
-     CENTRE CONTENT
-     ========================================================= -->
-
-<main class="center">
-
-
-
-<!-- =========================================================
-     HOME
-     ========================================================= -->
-
-<section
-    class="content-page active"
-    id="home"
->
-
-
-    <div class="welcome">
-
-        <h1>
-            Welcome to Class XII Computer Science
-        </h1>
-
-        <p>
-            Welcome to the Interactive E-Content Portal
-            for Class XII Computer Science.
-        </p>
-
-        <p>
-            This resource brings together learning materials
-            developed by PGT Computer Science teachers
-            from Kendriya Vidyalayas.
-        </p>
-
-
-        <!-- LAPTOP -->
-
-        <div class="laptop">
-
-            <div class="screen">
-
-                <div class="code-line c1"></div>
-                <div class="code-line c2"></div>
-                <div class="code-line c3"></div>
-                <div class="code-line c4"></div>
-                <div class="code-line c5"></div>
-
-            </div>
-
-
-            <div class="keyboard"></div>
-
-
-            <div class="books">
-
-                <div class="book b1"></div>
-                <div class="book b2"></div>
-                <div class="book b3"></div>
-                <div class="book b4"></div>
-
-            </div>
-
-
-            <div class="plant">
-
-                <div class="leaf l1"></div>
-                <div class="leaf l2"></div>
-                <div class="leaf l3"></div>
-
-                <div class="pot"></div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-
-    <div class="section-title">
-
-        📚
-
-        <span>
-            Course Overview
-        </span>
-
-        <i class="dot"></i>
-
-    </div>
-
-
-
-    <div class="cards">
-
-
-        <!-- SQL CARD -->
-
-        <div class="course-card sql">
-
-            <div class="card-icon">
-                🗄️
-            </div>
-
-            <h2>
-                Unit I –<br>
-                SQL
-            </h2>
-
-            <p>
-                Structured Query Language and
-                Database concepts.
-            </p>
-
-            <button
-                class="explore"
-                onclick="showContent('sql-page')"
-            >
-                Explore &nbsp; →
-            </button>
-
-        </div>
-
-
-        <!-- PYTHON CARD -->
-
-        <div class="course-card python">
-
-            <div class="card-icon">
-                🐍
-            </div>
-
-            <h2>
-                Unit II –<br>
-                Python
-            </h2>
-
-            <p>
-                Python programming concepts
-                and problem solving.
-            </p>
-
-            <button
-                class="explore"
-                onclick="showContent('python-page')"
-            >
-                Explore &nbsp; →
-            </button>
-
-        </div>
-
-
-        <!-- NETWORK CARD -->
-
-        <div class="course-card network">
-
-            <div class="card-icon">
-                ♧
-            </div>
-
-            <h2>
-                Unit III –<br>
-                Computer Networks
-            </h2>
-
-            <p>
-                Computer networking concepts,
-                devices and protocols.
-            </p>
-
-            <button
-                class="explore"
-                onclick="showContent('network-page')"
-            >
-                Explore &nbsp; →
-            </button>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     TEAM
-     ========================================================= -->
-
-<section
-    class="content-page"
-    id="team"
->
-
-
-    <!-- ================= PATRON & CONTENT DEVELOPMENT TEAM ================= -->
-
-<div style="
-    background:linear-gradient(135deg,#ffffff 65%,#f1eaff);
-    border-left:6px solid #6734df;
-    border-radius:18px;
-    padding:35px 35px 40px;
-    box-shadow:0 5px 18px rgba(34,43,76,.08);
-    margin:20px 0;
-">
-
-    <!-- TITLE -->
-
-    <h1 style="
-        color:#101d63;
-        font-size:36px;
-        margin:0 0 15px;
-        font-weight:800;
-    ">
-        Patron  </h1>
-   
-    <!-- ================= THREE CARDS ================= -->
-
-    <div style="
-        display:flex;
-        gap:22px;
-        width:100%;
-        flex-wrap:wrap;
-    ">
-     <!-- ================= CARD 1 ================= -->
-     <div style="
-            flex:1;
-            min-width:200px;
-            background:#ffffff;
-            border:1px solid #e0e4ee;
-            border-radius:15px;
-            padding:25px;
-            text-align:center;
-            box-shadow:0 4px 14px rgba(30,41,59,.08);
-        ">
-         <!-- IMAGE -->
-         <img src="ac1.jpg" alt="AC Photo" style="
-                    width:120px;
-                    height:120px;
-                    object-fit:cover;
-                    border-radius:50%;
-                    border:5px solid #eee8ff;
-                    margin-bottom:15px;
-                 ">
-          <!-- NAME -->
-          <h2 style="
-                color:#5420dd;
-                font-size:21px;
-                margin:5px 0 7px;
-            ">
-           Name of Assistant Commissioner
-           </h2>
-
-            <!-- DESIGNATION -->
-
-            <h3 style="
-                color:#475569;
-                font-size:16px;
-                margin:0 0 18px;
-            ">
-                Assistant Commissioner
-            </h3>
-
-            <!-- DESCRIPTION -->
-
-            <div style="
-                background:#f7f5ff;
-                border-radius:10px;
-                padding:14px;
-                text-align:left;
-                min-height:100px;
-                color:#334155;
-                font-size:14px;
-                line-height:1.6;
-            ">
-                Brief description about the patron, responsibilities,
-                guidance and contribution towards the development of
-                the e-content portal.
-            </div>
-
-        </div>
-
-
-        <!-- ================= CARD 2 ================= -->
-
-        <div style="
-            flex:1;
-            min-width:200px;
-            background:#ffffff;
-            border:1px solid #e0e4ee;
-            border-radius:15px;
-            padding:25px;
-            text-align:center;
-            box-shadow:0 4px 14px rgba(30,41,59,.08);
-        ">
-
-            <!-- IMAGE -->
-
-            <img src="ac2.jpg"
-                 alt="AC Photo"
-                 style="
-                    width:120px;
-                    height:120px;
-                    object-fit:cover;
-                    border-radius:50%;
-                    border:5px solid #ffe7f1;
-                    margin-bottom:15px;
-                 ">
-
-            <!-- NAME -->
-
-            <h2 style="
-                color:#ed1971;
-                font-size:21px;
-                margin:5px 0 7px;
-            ">
-                Name of Assistant Commissioner
-            </h2>
-
-            <!-- DESIGNATION -->
-
-            <h3 style="
-                color:#475569;
-                font-size:16px;
-                margin:0 0 18px;
-            ">
-                Assistant Commissioner
-            </h3>
-
-            <!-- DESCRIPTION -->
-
-            <div style="
-                background:#fff4f8;
-                border-radius:10px;
-                padding:14px;
-                text-align:left;
-                min-height:100px;
-                color:#334155;
-                font-size:14px;
-                line-height:1.6;
-            ">
-                Brief description about the role, academic guidance,
-                supervision and contribution towards the development
-                of quality learning resources.
-            </div>
-
-        </div>
-
-
-        <!-- ================= CARD 3 ================= -->
-
-        <div style="
-            flex:1;
-            min-width:200px;
-            background:#ffffff;
-            border:1px solid #e0e4ee;
-            border-radius:15px;
-            padding:25px;
-            text-align:center;
-            box-shadow:0 4px 14px rgba(30,41,59,.08);
-        ">
-
-            <!-- IMAGE -->
-
-            <img src="ac3.jpg"
-                 alt="AC Photo"
-                 style="
-                    width:120px;
-                    height:120px;
-                    object-fit:cover;
-                    border-radius:50%;
-                    border:5px solid #dff5f3;
-                    margin-bottom:15px;
-                 ">
-
-            <!-- NAME -->
-
-            <h2 style="
-                color:#008b8d;
-                font-size:21px;
-                margin:5px 0 7px;
-            ">
-                Name of Assistant Commissioner
-            </h2>
-
-            <!-- DESIGNATION -->
-
-            <h3 style="
-                color:#475569;
-                font-size:16px;
-                margin:0 0 18px;
-            ">
-                Assistant Commissioner
-            </h3>
-
-            <!-- DESCRIPTION -->
-
-            <div style="
-                background:#f0faf9;
-                border-radius:10px;
-                padding:14px;
-                text-align:left;
-                min-height:100px;
-                color:#334155;
-                font-size:14px;
-                line-height:1.6;
-            ">
-                Brief description about the leadership, coordination
-                and support provided for the successful development
-                of the e-content resources.
-            </div>
-
-        </div>
-
-
-    </div>
-
-</div>
-
-    <div class="section-title">
-        <span>SUPERVISION</span>
-        <i class="dot"></i>
+        <!-- ============================================== UNIT II - PYTHON ===================================================== -->
+        <div class="unit">
+        	<button class="unit-head python" type="button" onclick="toggleUnit('unitPython')">
+            		<span>▶ Unit II – Python</span>
+            		<span class="unit-arrow">⌄</span>
+        	</button>
+        	<div class="unit-content nested-content" id="unitPython">
+        		<!--  ======================================== PYTHON BASICS  ======================================== -->
+        		<div class="topic-block">
+                		<button class="topic-head" type="button" onclick="toggleTopic('pyBasics')">
+                    			<span>📌 &nbsp;Python Basics</span>
+                    			<span class="topic-arrow">⌄</span>
+                		</button>
+                		<div class="subtopics" id="pyBasics">
+                    			<button onclick="showContent('python-introduction')">Introduction to Python</button>
+                    			<button onclick="showContent('python-data-types')">Variables &amp; Data Types</button>
+                    			<button onclick="showContent('python-operators')">Operators</button>
+                    			<button onclick="showContent('python-input-output')">Input &amp; Output</button>
+                    			<button onclick="showContent('python-practice')">Practice</button>
+                		</div>
+            		</div>
+            		<!-- ======================================== CONTROL STATEMENTS  ======================================== -->
+            		<div class="topic-block">
+                		<button class="topic-head" type="button" onclick="toggleTopic('pyControl')">
+                    			<span>📌 &nbsp;Control Statements</span>
+                    			<span class="topic-arrow">⌄</span>
+                		</button>
+                		<div class="subtopics" id="pyControl">
+                    			<button onclick="showContent('python-if')">Conditional Statements</button>
+                    			<button onclick="showContent('python-loops')">Loops</button>
+                    			<button onclick="showContent('python-nested-loops')">Nested Loops</button>
+                    			<button onclick="showContent('python-control-practice')">Practice</button>
+                		</div>
+            		</div>
+            		<!--  ======================================== FUNCTIONS ========================================  -->
+            		<div class="topic-block">
+                		<button class="topic-head" type="button" onclick="toggleTopic('pyFunctions')">
+                    			<span>📌 &nbsp;Functions</span>
+                    			<span class="topic-arrow">⌄</span>
+                		</button>
+                		<div class="subtopics" id="pyFunctions" >
+                    			<button onclick="showContent('python-defining-functions')">Defining Functions</button>
+                    			<button onclick="showContent('python-parameters')">Parameters &amp; Arguments</button>
+                    			<button onclick="showContent('python-return')">Return Values</button>
+                		</div>
+            		</div>
+            		<!--  ======================================== DATA STRUCTURES ========================================  -->
+            		<div class="topic-block">
+                		<button class="topic-head" type="button" onclick="toggleTopic('pyData')">
+                    			<span>📌 &nbsp;Data Structures</span>
+                    			<span class="topic-arrow">⌄</span>
+                		</button>
+                		<div class="subtopics" id="pyData">
+                    			<button onclick="showContent('python-lists')">Lists</button>
+                    			<button onclick="showContent('python-tuples')">Tuples</button>
+                    			<button onclick="showContent('python-dictionaries')">Dictionaries</button>
+                    			<button onclick="showContent('python-sets')">Sets</button>
+                		</div>
+            		</div>
+        	</div>
+    	 </div>
+    	 <!-- ===================================================UNIT III - NETWORKS================================================ -->
+    	 <div class="unit">
+        	<button class="unit-head network" type="button" onclick="toggleUnit('unitNetwork')">
+            		<span>▶ Unit III – Computer Networks</span>
+            		<span class="unit-arrow">⌄</span>
+        	</button>
+    		<div class="unit-content nested-content" id="unitNetwork">
+    			<!--  ======================================== NETWORK INTRODUCTION ========================================  -->
+    			<div class="topic-block">
+                		<button class="topic-head" type="button" onclick="toggleTopic('netIntro')">
+                    			<span>📌 &nbsp;Introduction to Networks</span>
+                    			<span class="topic-arrow">⌄</span>
+                		</button>
+				<div class="subtopics" id="netIntro">
+		    			<button onclick="showContent('network-pre-reading')">📖 Pre-reading Material</button>
+		    			<button onclick="showContent('network-interactive-video')">🎬 Interactive Video</button>
+		    			<button onclick="showContent('network-quiz')">📝 Quiz</button>
+		    			<button onclick="showContent('network-topologies')">🗺️ Concept Map</button>
+		    			<button onclick="showContent('network-self-assessment')">✅ Self Assessment</button>
+		    			<button onclick="showContent('network-econtent')">📚 e-Content</button>
+		    			<button onclick="showContent('network-assessment')">📝 Assessment</button>
+		    			<button onclick="showContent('network-unit-assessment')">📝 Unit Assessment – 25 Questions</button>
+				</div>
+    			</div>
+        		<!-- ========================================  NETWORK DEVICES  ======================================== -->
+            		<div class="topic-block">
+                		<button class="topic-head" type="button" onclick="toggleTopic('netDevices')">
+                   			<span>📌 &nbsp;Network Devices</span>
+                   			<span class="topic-arrow">⌄</span>
+                		</button>
+                		<div class="subtopics" id="netDevices">
+                    			<button onclick="showContent('network-hub')">Hub</button>
+                    			<button onclick="showContent('network-switch')">Switch</button>
+                    			<button onclick="showContent('network-router')">Router</button>
+                    			<button onclick="showContent('network-gateway')">Gateway</button>
+                		</div>
+            		</div>
+        		<!-- ======================================== TRANSMISSION MEDIA  ======================================== -->
+            		<div class="topic-block">
+                		<button class="topic-head" type="button" onclick="toggleTopic('netMedia')">
+                    			<span>📌 &nbsp;Transmission Media</span>
+                    			<span class="topic-arrow">⌄</span>
+                		</button>
+                		<div class="subtopics" id="netMedia">
+                    			<button onclick="showContent('guided-media')">Guided Media</button>
+                    			<button onclick="showContent('unguided-media')">Unguided Media</button>
+                    			<button onclick="showContent('wireless-communication')">Wireless Communication</button>
+                		</div>
+            		</div>
+            		<!--  ======================================== NETWORK PROTOCOLS  ======================================== -->
+            		<div class="topic-block">
+                		<button class="topic-head" type="button" onclick="toggleTopic('netProtocols')">
+                    			<span>📌 &nbsp;Network Protocols</span>
+                    			<span class="topic-arrow">⌄</span>
+                		</button>
+                		<div class="subtopics" id="netProtocols">
+                    			<button onclick="showContent('http-https')">HTTP / HTTPS</button>
+                    			<button onclick="showContent('ftp')">FTP</button>
+                    			<button onclick="showContent('tcp-ip')">TCP / IP</button>
+                    			<button onclick="showContent('dns')">DNS</button>
+                		</div>
+            		</div>
+        	 </div>
+    	   </div>
+    </aside>
+
+    <!-- ==================================== CENTRE CONTENT ========================================================= -->
+    <main class="center">
+          <!-- ===================================== HOME ========================================================= -->
+	  <section class="content-page active" id="home">
+    		<div class="welcome">
+        		<h1>Welcome to Class XII Computer Science</h1>
+        		<p> Welcome to the Interactive E-Content Portal for Class XII Computer Science.</p>
+        		<p> This resource brings together by PGT Computer Science teachers from Kendriya Vidyalayas.</p>
+		</div>
+		<!-- ===================================== Course Overview ============================================ -->
+    		<div class="section-title">📚
+			<span>Course Overview</span>
+    			<i class="dot"></i>
+    		</div>
+        	<div class="cards">
+        		<!--  ======================================== SQL CARD ========================================  -->
+        		<div class="course-card sql">
+            			<div class="card-icon">🗄️</div>
+            			<h2>Unit I –<br>SQL</h2>
+            			<p>Structured Query Language and Database concepts.</p>
+            			<button class="explore" onclick="showContent('sql-page')">Explore &nbsp; →</button>
+        		</div>
+        		<!--  ======================================== PYTHON CARD ========================================  -->
+        		<div class="course-card python">
+            			<div class="card-icon">🐍</div>
+            			<h2>Unit II –<br>ython </h2>
+            			<p>Python programming concepts and problem solving.</p>
+            			<button class="explore" onclick="showContent('python-page')">Explore &nbsp; →</button>
+        		</div>
+        		<!-- ========================================  NETWORK CARD  ======================================== -->
+        		<div class="course-card network">
+            			<div class="card-icon">♧</div>
+            			<h2>Unit III –<br>Computer Networks</h2>
+            			<p>Computer networking concepts,devices and protocols.</p>
+            			<button class="explore" onclick="showContent('network-page')">Explore &nbsp; →</button>
+        		</div>
+    		</div>
+	</section>
+	<!-- ============================================== TEAM ========================================================= -->
+	<section class="content-page" id="team">
+		<!-- ================= PATRON & CONTENT DEVELOPMENT TEAM ================= -->
+		<div style="
+    			background:linear-gradient(135deg,#ffffff 65%,#f1eaff);
+    			border-left:6px solid #6734df;
+    			border-radius:18px;
+    			padding:35px 35px 40px;
+    			box-shadow:0 5px 18px rgba(34,43,76,.08);
+    			margin:20px 0;">
+    			<!--  ======================================== TITLE  ======================================== -->
+    			<h1 style=" color:#101d63;font-size:36px;margin:0 0 15px;font-weight:800;">Patron </h1>
+
+
+      			<!-- ================= THREE CARDS ================= -->
+			<div style="display:flex;gap:22px;width:100%;flex-wrap:wrap; ">
+
+
+     				<!-- ================= CARD 1 ================= -->
+     				<div style="
+            				flex:1;
+            				min-width:300px;
+            				background:#ffffff;
+            				border:1px solid #e0e4ee;
+           				border-radius:15px;
+            				padding:25px;
+            				text-align:center;
+            				box-shadow:0 4px 14px rgba(30,41,59,.08);">
+         				<!-- ========================================  IMAGE  ======================================== -->
+         				<img src="file:///C:/Users/dhanu/OneDrive/Desktop/KVS_Class12_CS_EContent/patron-photo.jpg" 
+						alt="AC Photo" style="
+                    				width:120px;
+                    				height:120px;
+                    				object-fit:cover;
+                    				border-radius:50%;
+                    				border:5px solid #eee8ff;
+                    				margin-bottom:15px;">
+          				<!-- ========================================  NAME ========================================  -->
+          				<h2 style=" color:#5420dd;font-size:21px;margin:5px 0 7px;">डॉ डी मंजूनाथ<BR>Dr D Manjunath	</h2>
+            				<!-- ======================================= DESIGNATION ==================================== -->
+            				<h3 style=" color:#475569;font-size:16px;margin:0 0 18px;">
+						उपायुक्त,के वि सं क्षे का,एर्नाकुलम <br>Deputy Commissioner, KVS RO Ernakulam
+            				</h3>
+      				</div>
+
+
+
+        			<!-- ================= CARD 2 ================= -->
+        			<div style="
+            				flex:1;
+            				min-width:200px;
+            				background:#ffffff;
+            				border:1px solid #e0e4ee;
+            				border-radius:15px;
+            				padding:25px;
+            				text-align:center;
+            				box-shadow:0 4px 14px rgba(30,41,59,.08);">
+	            			<!-- ================= IMAGE ================= -->
+            				<img src="file:///C:/Users/dhanu/OneDrive/Desktop/KVS_Class12_CS_EContent/ac-1.png" alt="AC Photo"
+                 			style="
+                    				width:120px;
+                    				height:120px;
+                    				object-fit:cover;
+                    				border-radius:50%;
+                    				border:5px solid #ffe7f1;
+                    				margin-bottom:15px;">
+            				<!--=================  NAME=================  -->
+            				<h2 style=" color:#ed1971;font-size:21px;margin:5px 0 7px;">श्री अनिल मोहन<br>Mr. Anil Mohan</h2>
+            				<!-- ================= DESIGNATION=================  -->
+            				<h3 style=" color:#475569;font-size:16px;margin:0 0 18px;">
+						सहायक आयुक्त<BR>के वि सं क्षे का, एर्नाकुलम <br>Assistant Commissioner<BR>KVS RO Ernakulam
+            				</h3>
+         			</div>
+
+
+
+        			<!-- ================= CARD 3 ================= -->
+        			<div style="
+            				flex:1;
+            				min-width:200px;
+            				background:#ffffff;
+            				border:1px solid #e0e4ee;
+            				border-radius:15px;
+            				padding:25px;
+            				text-align:center;
+            				box-shadow:0 4px 14px rgba(30,41,59,.08);">
+		            		<!--=================  IMAGE ================= -->
+                            		<img src="file:///C:/Users/dhanu/OneDrive/Desktop/KVS_Class12_CS_EContent/ac-2.png" alt="AC Photo"
+                 	    		style="
+                    				width:120px;
+                    				height:120px;
+                    				object-fit:cover;
+                    				border-radius:50%;
+                    				border:5px solid #dff5f3;
+                    				margin-bottom:15px; ">
+	                  			<!--=================  NAME=================  -->
+            		  			<h2 style=" color:#008b8d;font-size:21px;margin:5px 0 7px;"> श्रीमती हेमा के<br>Mrs. Hema K </h2>
+            		  			<!--=================  DESIGNATION=================  -->
+            		  			<h3 style="color:#475569;font-size:16px;margin:0 0 18px;">
+                					सहायक आयुक्त<BR>के वि सं क्षे का, एर्नाकुलम <br>Assistant Commissioner<BR>KVS RO Ernakulam
+            		  			</h3>
+        			</div>
+    			</div>
+		</div>
+
+		<!--=================  SUPERVISION =================  -->
+       		<div class="section-title">
+       			<span>SUPERVISION</span>        		
+    		</div>
+    		<div class="content-box">
+        		<h2>श्री एन. राकेश<br>SHRI N RAKHESH</h2>
+        		<p>प्रधानाचार्य<br>Principal<br>प्रधानमंत्री श्री केन्द्रीय विद्यालय अडूर<br>PM SHRI KENDRIYA VIDYALAYA ADOOR</p>
+    		</div>
+
+
+
+		<!--=================  Content Development Team =================  -->
+    		<div class="section-title">
+        		<span>Content Development Team</span>
+        	</div>
+       		<div class="cards">
+        		<div class="card" style="padding:25px;">
+            			<h3><center>हेमा आर<br>Hema R</center></h3>
+            			<p><center>पीएम श्री के वि अडूर <br>PM SHRI KV Adoor </center></p>
+        		</div>
+        		<div class="card" style="padding:25px;">
+   	    			<h3>हरिप्रिया नायर<br>Haripriya Nair</h3>
+            			<p>पीएम श्री के वि अडूर <br>PM SHRI KV Adoor </p>
+        		</div>
+        		<div class="card" style="padding:25px;">
+            			<h3><center>प्रजुन पी पी<br>PRAJUN P P</center></h3>
+            			<p><center>केवी नंबर 1 सीपीसीआरआई कासरगोड <br>KV NO.1 CPCRI KASARAGOD </center></p>
+        		</div>
+        		<div class="card" style="padding:25px;">
+   	    			<h3>श्रीजीत टी<br>SREEJITH T</h3>
+            			<p>पीएम श्री केवी नंबर 2 कासरगोड<br>PM SHRI KV NO.2 KASARAGOD </p>
+        		</div> 
+       			<div class="card" style="padding:25px;">
+            			<h3><center>प्रजुन पी पी<br>PRAJUN P P</center></h3>
+            			<p><center>पीएम श्री केवी कान्हांगड <br>PM SHRI KV KANHANGAD </center></p>
+        		</div>
+        		<div class="card" style="padding:25px;">
+   	    			<h3>सौम्यमोल डी<br>SOUMYAMOL D</h3>
+            			<p>पीएम श्री केवी कान्हांगड<br>PM SHRI KV KANHANGAD </p>
+        		</div> 
+          		<div class="card" style="padding:25px;">
+            			<h3><center>रीना पी वी<br>REENA P V</center></h3>
+            			<p><center> पीएम श्री केवी नीलेश्वर<br>PM SHRI KV NILESHWAR </center></p>
+        		</div>
+           		<div class="card" style="padding:25px;">
+            			<h3><center>शाजी एम<br>SHAJI M</center></h3>
+            			<p><center>पीएम श्री केवी आईएनएस ज़मोरिन, एझिमाला <br>PM SHRI KV INS ZAMORIN,EZHIMALA </center></p>
+        		</div>
+       			<div class="card" style="padding:25px;">
+            			<h3><center>अभिलाष वी. जोस<br>ABHILASH V JOSE</center></h3>
+            			<p><center> केवी सीआरपीएफ पेरिंगोम<br>KV CRPF PERINGOME </center></p>
+        		</div>
+        		<div class="card" style="padding:25px;">
+            			<h3><center>सुनील कुमार टी<br>SUNIL KUMAR T</center></h3>
+            			<p><center>पीएम श्री केवी केल्ट्रॉन नगर <br>PM SHRI KV KELTRON NAGAR </center></p>
+        		</div>
+       			<div class="card" style="padding:25px;">
+            			<h3><center>अजित एन.के.<br>AJITH N.K</center></h3>
+            			<p><center>पीएम श्री केवी कल्पेट्टा <br>PM SHRI KV KALPETTA </center></p>
+        		</div>
+        		<div class="card" style="padding:25px;">
+            			<h3><center>पी सी साजेश<br>P C SAJESH</center></h3>
+            			<p><center>पीएम श्री केवी मलप्पुरम <br>PM SHRI KV MALAPPURAM </center></p>
+        		</div>
+     			<div class="card" style="padding:25px;">
+            			<h3><center>जिमी जॉन<br>JIMMY JOHN</center></h3>
+            			<p><center>पीएम श्री केवी ओट्टापालम <br>PM SHRI KV OTTAPALAM </center></p>
+        		</div>
+        		<div class="card" style="padding:25px;">
+            			<h3><center>लता रामकृष्णन<br>LATHA RAMAKRISHNAN</center></h3>
+            			<p><center>पीएम श्री केवी केपीए रामावर्मापुरम <br>PM SHRI KV KPA RAMAVARMAPURAM </center></p>
+        		</div>
+       			<div class="card" style="padding:25px;">
+            			<h3><center>जेएएस सी पी<br>JAS C P</center></h3>
+            			<p><center>पीएम श्री केवी एनएडी अलुवा <br>PM SHRI KV NAD ALUVA</center></p>
+        		</div>
+         		<div class="card" style="padding:25px;">
+            			<h3><center>प्रजुन पी पी<br>PRAJUN P P</center></h3>
+            			<p><center>केवी नंबर 1 सीपीसीआरआई कासरगोड <br>KV NO.1 CPCRI KASARAGOD </center></p>
+        		</div>
+       			<div class="card" style="padding:25px;">
+            			<h3><center>सुजा पी नायर<br>SUJA P NAIR</center></h3>
+            			<p><center>पीएम श्री केवी एर्नाकुलम <br>PM SHRI KV ERNAKULAM </center></p>
+        		</div>
+        		<div class="card" style="padding:25px;">
+            			<h3><center>हेमा सी एन<br>HEMA C N</center></h3>
+            			<p><center>पीएम श्री केवी नंबर 1 नेवल बेस कोच्चि <br>PM SHRI KV No.1 NAVAL BASE KOCHI </center></p>
+        		</div>
+       			<div class="card" style="padding:25px;">
+            			<h3><center>सबले कालिदास अनंत<br>SABALE KALIDAS ANANTHA</center></h3>
+            			<p><center>पीएम श्री केवी इडुक्की <br>PM SHRI KV IDUKKI </center></p>
+        		</div>
+         		<div class="card" style="padding:25px;">
+            			<h3><center>अंजू मैथ्यू<br>ANJU MATHEW</center></h3>
+            			<p><center>पीएम श्री केवी आरबी कोट्टायम <br>PM SHRI KV RB KOTTAYAM </center></p>
+        		</div>
+       			<div class="card" style="padding:25px;">
+            			<h3><center>सोजू एस<br>SOJU S</center></h3>
+            			<p><center> केवी एनटीपीसी कायमकुलम<br>KV NTPC KAYAMKULAM </center></p>
+        		</div>
+         		<div class="card" style="padding:25px;">
+            			<h3><center>सुनी अब्राहम<br>SUNI ABRAHAM</center></h3>
+            			<p><center>पीएम श्री केवी कोन्नी <br>PM SHRI KV KONNI </center></p>
+        		</div>
+         		<div class="card" style="padding:25px;">
+            			<h3><center>सिनी एलेक्स<br>SINI ALEX</center></h3>
+            			<p><center>पीएम श्री केवी कोल्लम <br>PM SHRI KV KOLLAM </center></p>
+        		</div>
+         		<div class="card" style="padding:25px;">
+            			<h3><center>अरुण प्रशांत पी वी<br>ARUN PRASANTH P V</center></h3>
+            			<p><center> पीएम श्री केवी पट्टम (SI)<br>PM SHRI KV PATTOM(SI)</center></p>
+        		</div>
+        		<div class="card" style="padding:25px;">
+            			<h3><center>सुनीता कृष्णन के एस<br>SUNITHA KRISHNAN K S</center></h3>
+            			<p><center>पीएम श्री केवी पट्टम (SII) <br>PM SHRI KV PATTOM (SII)</center></p>
+        		</div>
+         		<div class="card" style="padding:25px;">
+            			<h3><center>आशा<br>ASHA</center></h3>
+            			<p><center>पीएम श्री केवी पंगोडे <br>PM SHRI KV PANGODE</center></p>
+        		</div>
+         		<div class="card" style="padding:25px;">
+            			<h3><center>दीपा पी आर<br>DEEPA P R</center></h3>
+            			<p><center>पीएम श्री केवी नंबर 2,नेवल बेस कोच्चि <br>PM SHRI KV NO2,NAVAL BASE KOCHI</center></p>
+        		</div>
+    		</div>
+	</section>
+
+
+	<!-- ======================================== ASSESSMENT CENTRE ========================================================= -->
+	<section class="content-page" id="assessment">
+    		<div class="welcome">
+        		<h1>Assessment Centre</h1>
+        		<p>Assessment resources for Class XII Computer Science.</p>
+    		</div>
+    		<div class="cards">
+        		<div class="card" style="padding:25px;">
+            			<h3>uestion Papers</h3>
+            			<p>Add your question papers here.</p>
+            			<a href="#" onclick="return false;">Open →</a>
+        		</div>
+			<div class="card" style="padding:25px;">
+	    			<h3>Competency-Based Questions</h3>
+            			<p>Add competency-based questions here.</p>
+	        	</div>
+        		<div class="card" style="padding:25px;">
+            			<h3>Practice Tests</h3>
+            			<p>Add practice tests here.</p>
+        		</div>
+    		</div>
+	 </section>
+
+	<!-- ============================================= SQL MAIN PAGE ========================================================= -->
+	<section class="content-page" id="sql-page">
+    		<div class="welcome">
+        		<h1>Unit I – SQL</h1>
+        		<p>Introduction to SQL, SQL Commands,Functions and Queries.</p>
+    		</div>
+    		<div class="section-title">🗄️
+        		<span> SQL Topics</span>
+        		<i class="dot"></i>
+    		</div>
+    		<div class="cards">
+        		<div class="card" style="padding:25px;">
+            			<h3>Introduction to SQL</h3>
+            			<p>Basic concepts of SQL and relational databases.</p>
+            			<button class="explore" onclick="showContent('sql-introduction')" style="background:#6430df;">
+                			Open Topic →
+            			</button>
+		        </div>
+        		<div class="card" style="padding:25px;">
+            			<h3>SQL Commands </h3>
+            			<p>DDL, DML, DCL and TCL commands.</p>
+            			<button class="explore" onclick="showContent('sql-ddl')" style="background:#6430df;">
+                			Open Topic →
+            			</button>
+		        </div>
+		        <div class="card" style="padding:25px;">
+		            	<h3>SQL Functions</h3>
+            			<p>String, numeric, date and aggregate functions.</p>
+        		</div>
+    		</div>
+	</section>
+
+	<!-- ============================================== SQL INTRODUCTION ================================================ -->
+	<section class="content-page" id="sql-introduction">
+    		<div class="welcome">
+        		<h1>Introduction to SQL</h1>
+        		<p>Basic concepts of SQL and relational databases.</p>
+    		</div>
+    		<div class="section-title">📘
+        		<span>Introduction</span>
+        		<i class="dot"></i>
+    		</div>
+    		<div class="content-box">
+        		<h2>What is SQL?</h2>
+        		<p>Write your textbook-based content here.</p>
+        		<p>You can add definitions, explanations,examples, images, tables and videos.</p>
+    		</div>
+	</section>
+	<!-- ======================================= SQL OBJECTIVES ========================================================= -->
+	<section class="content-page" id="sql-objectives">
+    		<div class="welcome">
+        		<h1>Learning Objectives</h1>
+        		<p>Introduction to SQL learning objectives.</p>
+    		</div>
+    		<div class="content-box">
+        		<h2>At the end of this topic, students will be able to:</h2>
+        		<ul>
+            		    <li>Understand the basic concepts of SQL.</li>
+            		    <li>Identify database-related terminology.</li>
+            		    <li>Write basic SQL commands.</li>
+        		</ul>
+    		</div>
+	</section>
+	<!-- ============================================ SQL CONCEPTS ========================================================= -->
+	<section class="content-page" id="sql-concepts">
+    		<div class="welcome">
+        		<h1>SQL Concepts</h1>
+        		<p>Add the complete teaching material here.</p>
+    		</div>
+    		<div class="content-box">
+        		<h2>Important Concepts</h2>
+        		<ul>
+            			<li>Database</li>
+            			<li>Table</li>
+            			<li>Record</li>
+            			<li>Field</li>
+            			<li>Primary Key</li>
+        		</ul>
+    		</div>
+	</section>
+	<!-- ============================================= SQL EXAMPLES ========================================================= -->
+	<section class="content-page" id="sql-examples">
+    		<div class="welcome">
+        		<h1>SQL Examples</h1>
+        		<p>Add SQL examples and demonstrations here.</p>
+    		</div>
+    		<div class="content-box">
+        		<h2>Example Query</h2>
+        		<pre>SELECT *FROM STUDENT;</pre>
+	   	</div>
+	</section>
+	<!-- =========================================== SQL PRACTICE ========================================================= -->
+	<section class="content-page" id="sql-practice">
+    		<div class="welcome">
+        		<h1>SQL Practice</h1>
+       			<p>Add practice questions here.</p>
+    		</div>
+    		<div class="content-box">
+        		<h2>Practice Questions</h2>
+        		<ol>
+            			<li>Define a database.</li>
+            			<li>What is SQL?</li>
+            			<li>Write an SQL command to display all records.</li>
+        		</ol>
+    		</div>
+	</section>
+	<!-- ======================================== SQL ASSESSMENT========================================================= -->
+	<section class="content-page" id="sql-assessment">
+    		<div class="welcome">
+        		<h1>SQL Assessment</h1>
+        		<p>Add assessment questions here.</p>
+    		</div>
+    		<div class="content-box">
+        		<h2> Assessment</h2>
+        		<p>Add MCQs, competency-based questions,case-based questions and other assessment material here.</p>
+    		</div>
+	</section>
+	<!-- ============================================= SQL MIND MAP ========================================================= -->
+	<section class="content-page" id="sql-mindmap">
+    		<div class="welcome">
+        		<h1>SQL Mind Map</h1>
+        		<p>Add your mind map image here.</p>
+    		</div>
+    		<div class="content-box">
+        		<!-- =========================== Replace sql-mindmap.jpg with your actual image.=========================== -->
+        		<img src="sql-mindmap.jpg" alt="SQL Mind Map">
+    		</div>
+	</section>
+	<!-- ================================================= SQL DDL ========================================================= -->
+	<section class="content-page" id="sql-ddl">
+    		<div class="welcome">
+        		<h1>Data Definition Language</h1>
+        		<p>DDL commands and their applications.</p>
+    		</div>
+    		<div class="content-box">
+        		<h2>DDL Commands</h2>
+        		<p>CREATE, ALTER, DROP and TRUNCATE.</p>
+        		<h3>Example</h3>
+        		<pre>
+				CREATE TABLE STUDENT
+				(
+					RollNo INT,Name VARCHAR(30)
+				);
+        		</pre>
+    		</div>
+	</section>
+	<!-- ============================================ SQL DML ========================================================= -->
+	<section class="content-page" id="sql-dml">
+    		<div class="welcome">
+        		<h1>Data Manipulation Language</h1>
+        		<p>DML commands used to manipulate data.</p>
+    		</div>
+    		<div class="content-box">
+        		<h2>DML Commands</h2>
+        		<p>INSERT, UPDATE and DELETE.</p>
+    		</div>
+	</section>
+	<!-- ============================================= SQL DCL ========================================================= -->
+	<section class="content-page" id="sql-dcl">
+    		<div class="welcome">
+        		<h1>Data Control Language </h1>
+        		<p>Add DCL content here.</p>
+    		</div>
+    		<div class="content-box">
+        		<h2>DCL Commands</h2>
+        		<p>GRANT and REVOKE.</p>
+    		</div>
+	</section>
+	<!-- ================================================== SQL TCL========================================================= -->
+	<section class="content-page" id="sql-tcl">
+    		<div class="welcome">
+        		<h1>Transaction Control Language</h1>
+        		<p>Add TCL content here.</p>
+    		</div>
+    		<div class="content-box">
+        		<h2>TCL Commands</h2>
+        		<p>COMMIT, ROLLBACK and SAVEPOINT.</p>
+    		</div>
+	</section>
+	<!-- =============================================== PYTHON MAIN PAGE ================================================ -->
+	<section class="content-page" id="python-page">
+    		<div class="welcome">
+        	     <h1>Unit II – Python</h1>
+        	     <p>Python programming concepts and problem solving. </p>
+    		</div>
+    		<div class="cards">
+        	     <div class="card" style="padding:25px;">
+            		  <h3> Python Basics</h3>
+            		  <p>Python syntax, variables,data types and operators.</p>
+            		  <button class="explore" onclick="showContent('python-introduction')" style="background:#ed1971;">Open Topic →</button>
+                    </div>
+        		<div class="card" style="padding:25px;">
+            			<h3>Control Statements</h3>
+            			<p>Conditional statements and loops.</p>
+            			<button class="explore" onclick="showContent('python-if')" style="background:#ed1971;">Open Topic →</button>
+        		</div>
+        		<div class="card" style="padding:25px;">
+            			<h3> Functions</h3>
+            			<p>Defining and using functions. </p>
+        		</div>
+    		</div>
+	</section>
+	<!-- ====================================================== PYTHON INTRODUCTION================================================ -->
+	<section class="content-page" id="python-introduction">
+    		<div class="welcome">
+			<h1>Introduction to Python</h1>
+       			<p>Add your Python introduction material here.</p>
+    		</div>
+    		<div class="content-box">
+        		<h2>Python</h2>
+        		<p>Add your textbook-based content here.</p>
+    		</div>
+	</section>
+	<!-- =============================================== PYTHON DATA TYPES ===================================================== -->
+	<section class="content-page" id="python-data-types">
+    		<div class="welcome">
+        		<h1> Variables &amp; Data Types</h1>
+        		<p> Add your teaching material here.</p>
+    		</div>
+    		<div class="content-box">
+        		<h2> Data Types</h2>
+        		<ul>
+            			<li>Integer</li>
+            			<li>Float</li>
+            			<li>String</li>
+            			<li>Boolean</li>
+        		</ul>
+    		</div>
+	</section>
+	<!-- =============================================== PYTHON OPERATORS ==================================================== -->
+	<section class="content-page" id="python-operators">
+    		<div class="welcome">
+        <h1>Python Operators</h1>
+        <p>Add operators and examples here.</p>
     </div>
     <div class="content-box">
-        <h2>SHRI N RAKHESH</h2>
-        <p>Principal<br>PM SHRI KENDRIYA VIDYALAYA ADOOR</p>
+        <h2> Operators</h2>
+        <p> Arithmetic, relational, logical,assignment and other operators.</p>
     </div>
-    <div class="section-title">
-        <span>Content Development Team</span>
-        <i class="dot"></i>
-    </div>
-
-
-    <div class="cards">
-
-
-        <div class="card" style="padding:25px;">
-            <h3>Prajun P P</h3>
-            <p>PGT Computer Science</p>
-        </div>
-
-
-        <div class="card" style="padding:25px;">
-            <h3>हेमा सी एन</h3>
-	    <h3>Hema C N</h3>
-            <p>PGT Computer Science</p>
-        </div>
-
-
-        <div class="card" style="padding:25px;">
-            <h3>Sunilkumar T</h3>
-            <p>PGT Computer Science</p>
-        </div>
-
-
-        <div class="card" style="padding:25px;">
-            <h3>Latha Ramakrishnan</h3>
-            <p>PGT Computer Science</p>
-        </div>
-
-
-        <div class="card" style="padding:25px;">
-            <h3>Abhilash V Jose</h3>
-            <p>PGT Computer Science</p>
-        </div>
-
-
-        <div class="card" style="padding:25px;">
-            <h3>Suja P Nair</h3>
-            <p>PGT Computer Science</p>
-        </div>
-
-
-        <div class="card" style="padding:25px;">
-            <h3>Suni Abraham</h3>
-            <p>PGT Computer Science</p>
-        </div>
-
-
-        <div class="card" style="padding:25px;">
-            <h3><center>हेमा आर<br>Hema R</center></h3>
-            <p><center>पीएम श्री के वि अडूर <br>PM SHRI KV Adoor </center></p>
-        </div>
-
-
-        <div class="card" style="padding:25px;">
-            <h3>हरिप्रिया नायर<br>Haripriya Nair</h3>
-            <p>पीएम श्री के वि अडूर <br>PM SHRI KV Adoor </p>
-
-        </div>
-
-
-    </div>
-
 </section>
 
-
-
-<!-- =========================================================
-     ASSESSMENT CENTRE
-     ========================================================= -->
-
-<section
-    class="content-page"
-    id="assessment"
->
-
-
+<!-- ===============================================PYTHON INPUT OUTPUT ========================================================= -->
+<section class="content-page" id="python-input-output">
     <div class="welcome">
-
-        <h1>
-            Assessment Centre
-        </h1>
-
-        <p>
-            Assessment resources for Class XII
-            Computer Science.
-        </p>
-
+        <h1>Input &amp; Output</h1>
+        <p>Add input and output concepts here.</p>
     </div>
-
-
-    <div class="cards">
-
-
-        <div class="card" style="padding:25px;">
-
-            <h3>
-                Question Papers
-            </h3>
-
-            <p>
-                Add your question papers here.
-            </p>
-
-            <a
-                href="#"
-                onclick="return false;"
-            >
-                Open →
-            </a>
-
-        </div>
-
-
-        <div class="card" style="padding:25px;">
-
-            <h3>
-                Competency-Based Questions
-            </h3>
-
-            <p>
-                Add competency-based questions here.
-            </p>
-
-        </div>
-
-
-        <div class="card" style="padding:25px;">
-
-            <h3>
-                Practice Tests
-            </h3>
-
-            <p>
-                Add practice tests here.
-            </p>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     SQL MAIN PAGE
-     ========================================================= -->
-
-<section
-    class="content-page"
-    id="sql-page"
->
-
-
-    <div class="welcome">
-
-        <h1>
-            Unit I – SQL
-        </h1>
-
-        <p>
-            Introduction to SQL, SQL Commands,
-            Functions and Queries.
-        </p>
-
-    </div>
-
-
-    <div class="section-title">
-
-        🗄️
-
-        <span>
-            SQL Topics
-        </span>
-
-        <i class="dot"></i>
-
-    </div>
-
-
-    <div class="cards">
-
-
-        <div class="card" style="padding:25px;">
-
-            <h3>
-                Introduction to SQL
-            </h3>
-
-            <p>
-                Basic concepts of SQL and
-                relational databases.
-            </p>
-
-            <button
-                class="explore"
-                onclick="showContent('sql-introduction')"
-                style="background:#6430df;"
-            >
-                Open Topic →
-            </button>
-
-        </div>
-
-
-        <div class="card" style="padding:25px;">
-
-            <h3>
-                SQL Commands
-            </h3>
-
-            <p>
-                DDL, DML, DCL and TCL commands.
-            </p>
-
-            <button
-                class="explore"
-                onclick="showContent('sql-ddl')"
-                style="background:#6430df;"
-            >
-                Open Topic →
-            </button>
-
-        </div>
-
-
-        <div class="card" style="padding:25px;">
-
-            <h3>
-                SQL Functions
-            </h3>
-
-            <p>
-                String, numeric, date and
-                aggregate functions.
-            </p>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     SQL INTRODUCTION
-     ========================================================= -->
-
-<section
-    class="content-page"
-    id="sql-introduction"
->
-
-
-    <div class="welcome">
-
-        <h1>
-            Introduction to SQL
-        </h1>
-
-        <p>
-            Basic concepts of SQL and
-            relational databases.
-        </p>
-
-    </div>
-
-
-    <div class="section-title">
-
-        📘
-
-        <span>
-            Introduction
-        </span>
-
-        <i class="dot"></i>
-
-    </div>
-
-
     <div class="content-box">
-
-        <h2>
-            What is SQL?
-        </h2>
-
-        <p>
-            Write your textbook-based content here.
-        </p>
-
-        <p>
-            You can add definitions, explanations,
-            examples, images, tables and videos.
-        </p>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     SQL OBJECTIVES
-     ========================================================= -->
-
-<section
-    class="content-page"
-    id="sql-objectives"
->
-
-
-    <div class="welcome">
-
-        <h1>
-            Learning Objectives
-        </h1>
-
-        <p>
-            Introduction to SQL learning objectives.
-        </p>
-
-    </div>
-
-
-    <div class="content-box">
-
-        <h2>
-            At the end of this topic, students will be able to:
-        </h2>
-
-        <ul>
-
-            <li>
-                Understand the basic concepts of SQL.
-            </li>
-
-            <li>
-                Identify database-related terminology.
-            </li>
-
-            <li>
-                Write basic SQL commands.
-            </li>
-
-        </ul>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     SQL CONCEPTS
-     ========================================================= -->
-
-<section
-    class="content-page"
-    id="sql-concepts"
->
-
-
-    <div class="welcome">
-
-        <h1>
-            SQL Concepts
-        </h1>
-
-        <p>
-            Add the complete teaching material here.
-        </p>
-
-    </div>
-
-
-    <div class="content-box">
-
-        <h2>
-            Important Concepts
-        </h2>
-
-        <ul>
-
-            <li>Database</li>
-            <li>Table</li>
-            <li>Record</li>
-            <li>Field</li>
-            <li>Primary Key</li>
-
-        </ul>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     SQL EXAMPLES
-     ========================================================= -->
-
-<section
-    class="content-page"
-    id="sql-examples"
->
-
-
-    <div class="welcome">
-
-        <h1>
-            SQL Examples
-        </h1>
-
-        <p>
-            Add SQL examples and demonstrations here.
-        </p>
-
-    </div>
-
-
-    <div class="content-box">
-
-        <h2>
-            Example Query
-        </h2>
-
         <pre>
-SELECT *
-FROM STUDENT;
-        </pre>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     SQL PRACTICE
-     ========================================================= -->
-
-<section
-    class="content-page"
-    id="sql-practice"
->
-
-
-    <div class="welcome">
-
-        <h1>
-            SQL Practice
-        </h1>
-
-        <p>
-            Add practice questions here.
-        </p>
-
-    </div>
-
-
-    <div class="content-box">
-
-        <h2>
-            Practice Questions
-        </h2>
-
-        <ol>
-
-            <li>
-                Define a database.
-            </li>
-
-            <li>
-                What is SQL?
-            </li>
-
-            <li>
-                Write an SQL command to display all records.
-            </li>
-
-        </ol>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     SQL ASSESSMENT
-     ========================================================= -->
-
-<section
-    class="content-page"
-    id="sql-assessment"
->
-
-
-    <div class="welcome">
-
-        <h1>
-            SQL Assessment
-        </h1>
-
-        <p>
-            Add assessment questions here.
-        </p>
-
-    </div>
-
-
-    <div class="content-box">
-
-        <h2>
-            Assessment
-        </h2>
-
-        <p>
-            Add MCQs, competency-based questions,
-            case-based questions and other assessment
-            material here.
-        </p>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     SQL MIND MAP
-     ========================================================= -->
-
-<section
-    class="content-page"
-    id="sql-mindmap"
->
-
-
-    <div class="welcome">
-
-        <h1>
-            SQL Mind Map
-        </h1>
-
-        <p>
-            Add your mind map image here.
-        </p>
-
-    </div>
-
-
-    <div class="content-box">
-
-        <!--
-        Replace sql-mindmap.jpg with your actual image.
-        -->
-
-        <img
-            src="sql-mindmap.jpg"
-            alt="SQL Mind Map"
-        >
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     SQL DDL
-     ========================================================= -->
-
-<section
-    class="content-page"
-    id="sql-ddl"
->
-
-
-    <div class="welcome">
-
-        <h1>
-            Data Definition Language
-        </h1>
-
-        <p>
-            DDL commands and their applications.
-        </p>
-
-    </div>
-
-
-    <div class="content-box">
-
-        <h2>
-            DDL Commands
-        </h2>
-
-        <p>
-            CREATE, ALTER, DROP and TRUNCATE.
-        </p>
-
-        <h3>
-            Example
-        </h3>
-
-        <pre>
-CREATE TABLE STUDENT
-(
-    RollNo INT,
-    Name VARCHAR(30)
-);
-        </pre>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     SQL DML
-     ========================================================= -->
-
-<section
-    class="content-page"
-    id="sql-dml"
->
-
-
-    <div class="welcome">
-
-        <h1>
-            Data Manipulation Language
-        </h1>
-
-        <p>
-            DML commands used to manipulate data.
-        </p>
-
-    </div>
-
-
-    <div class="content-box">
-
-        <h2>
-            DML Commands
-        </h2>
-
-        <p>
-            INSERT, UPDATE and DELETE.
-        </p>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     SQL DCL
-     ========================================================= -->
-
-<section
-    class="content-page"
-    id="sql-dcl"
->
-
-
-    <div class="welcome">
-
-        <h1>
-            Data Control Language
-        </h1>
-
-        <p>
-            Add DCL content here.
-        </p>
-
-    </div>
-
-
-    <div class="content-box">
-
-        <h2>
-            DCL Commands
-        </h2>
-
-        <p>
-            GRANT and REVOKE.
-        </p>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     SQL TCL
-     ========================================================= -->
-
-<section
-    class="content-page"
-    id="sql-tcl"
->
-
-
-    <div class="welcome">
-
-        <h1>
-            Transaction Control Language
-        </h1>
-
-        <p>
-            Add TCL content here.
-        </p>
-
-    </div>
-
-
-    <div class="content-box">
-
-        <h2>
-            TCL Commands
-        </h2>
-
-        <p>
-            COMMIT, ROLLBACK and SAVEPOINT.
-        </p>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     PYTHON MAIN PAGE
-     ========================================================= -->
-
-<section
-    class="content-page"
-    id="python-page"
->
-
-
-    <div class="welcome">
-
-        <h1>
-            Unit II – Python
-        </h1>
-
-        <p>
-            Python programming concepts and
-            problem solving.
-        </p>
-
-    </div>
-
-
-    <div class="cards">
-
-
-        <div class="card" style="padding:25px;">
-
-            <h3>
-                Python Basics
-            </h3>
-
-            <p>
-                Python syntax, variables,
-                data types and operators.
-            </p>
-
-            <button
-                class="explore"
-                onclick="showContent('python-introduction')"
-                style="background:#ed1971;"
-            >
-                Open Topic →
-            </button>
-
-        </div>
-
-
-        <div class="card" style="padding:25px;">
-
-            <h3>
-                Control Statements
-            </h3>
-
-            <p>
-                Conditional statements
-                and loops.
-            </p>
-
-            <button
-                class="explore"
-                onclick="showContent('python-if')"
-                style="background:#ed1971;"
-            >
-                Open Topic →
-            </button>
-
-        </div>
-
-
-        <div class="card" style="padding:25px;">
-
-            <h3>
-                Functions
-            </h3>
-
-            <p>
-                Defining and using functions.
-            </p>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     PYTHON INTRODUCTION
-     ========================================================= -->
-
-<section
-    class="content-page"
-    id="python-introduction"
->
-
-
-    <div class="welcome">
-
-        <h1>
-            Introduction to Python
-        </h1>
-
-        <p>
-            Add your Python introduction
-            material here.
-        </p>
-
-    </div>
-
-
-    <div class="content-box">
-
-        <h2>
-            Python
-        </h2>
-
-        <p>
-            Add your textbook-based content here.
-        </p>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     PYTHON DATA TYPES
-     ========================================================= -->
-
-<section
-    class="content-page"
-    id="python-data-types"
->
-
-
-    <div class="welcome">
-
-        <h1>
-            Variables &amp; Data Types
-        </h1>
-
-        <p>
-            Add your teaching material here.
-        </p>
-
-    </div>
-
-
-    <div class="content-box">
-
-        <h2>
-            Data Types
-        </h2>
-
-        <ul>
-
-            <li>Integer</li>
-            <li>Float</li>
-            <li>String</li>
-            <li>Boolean</li>
-
-        </ul>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     PYTHON OPERATORS
-     ========================================================= -->
-
-<section
-    class="content-page"
-    id="python-operators"
->
-
-
-    <div class="welcome">
-
-        <h1>
-            Python Operators
-        </h1>
-
-        <p>
-            Add operators and examples here.
-        </p>
-
-    </div>
-
-
-    <div class="content-box">
-
-        <h2>
-            Operators
-        </h2>
-
-        <p>
-            Arithmetic, relational, logical,
-            assignment and other operators.
-        </p>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     PYTHON INPUT OUTPUT
-     ========================================================= -->
-
-<section
-    class="content-page"
-    id="python-input-output"
->
-
-
-    <div class="welcome">
-
-        <h1>
-            Input &amp; Output
-        </h1>
-
-        <p>
-            Add input and output concepts here.
-        </p>
-
-    </div>
-
-
-    <div class="content-box">
-
-        <pre>
-name = input("Enter your name: ")
-
+            name = input("Enter your name: ")
 print("Hello", name)
         </pre>
 
     </div>
 
 </section>
-
-
-
-<!-- =========================================================
-     PYTHON IF
-     ========================================================= -->
-
-<section
-    class="content-page"
-    id="python-if"
->
-
-
+<!-- ================================================ PYTHON IF ========================================================= -->
+<section  class="content-page" id="python-if">
     <div class="welcome">
-
-        <h1>
-            Conditional Statements
-        </h1>
-
-        <p>
-            Add if, if-else and elif concepts here.
-        </p>
-
+        <h1>Conditional Statements</h1>
+        <p>Add if, if-else and elif concepts here.</p>
     </div>
-
-
     <div class="content-box">
-
-        <h2>
-            Example
-        </h2>
-
+        <h2>Example</h2>
         <pre>
 marks = 75
 
@@ -3793,161 +1809,58 @@ if marks >= 40:
 else:
     print("Fail")
         </pre>
-
     </div>
-
 </section>
-
-
-
-<!-- =========================================================
-     PYTHON LOOPS
-     ========================================================= -->
-
-<section
-    class="content-page"
-    id="python-loops"
->
-
-
+<!-- =====================================================PYTHON LOOPS====================================================== -->
+<section  class="content-page" id="python-loops">
     <div class="welcome">
-
-        <h1>
-            Loops
-        </h1>
-
-        <p>
-            Add for loop and while loop content here.
-        </p>
-
+        <h1> Loops </h1>
+        <p>Add for loop and while loop content here.</p>
     </div>
-
-
     <div class="content-box">
-
-        <h2>
-            Example
-        </h2>
-
+        <h2>Example</h2>
         <pre>
 for i in range(1,6):
     print(i)
         </pre>
-
     </div>
-
 </section>
-
-
-
-<!-- =========================================================
-     PYTHON LISTS
-     ========================================================= -->
-
-<section
-    class="content-page"
-    id="python-lists"
->
-
-
+<!-- =======================================================PYTHON LISTS====================================================== -->
+<section class="content-page" id="python-lists">
     <div class="welcome">
-
-        <h1>
-            Python – Lists
-        </h1>
-
-        <p>
-            Add your complete lesson material
-            on Lists here.
-        </p>
-
+        <h1>Python – Lists</h1>
+        <p> Add your complete lesson material on Lists here.</p>
     </div>
-
-
     <div class="content-box">
-
-        <h2>
-            Example
-        </h2>
-
+        <h2>Example</h2>
         <pre>
 numbers = [10, 20, 30, 40]
-
 print(numbers)
         </pre>
-
     </div>
-
 </section>
 
-
-
-<!-- =========================================================
-     PYTHON TUPLES
-     ========================================================= -->
-
-<section
-    class="content-page"
-    id="python-tuples"
->
-
-
+<!-- ======================================= PYTHON TUPLES======================================================= -->
+<section  class="content-page" id="python-tuples">
     <div class="welcome">
-
-        <h1>
-            Python – Tuples
-        </h1>
-
-        <p>
-            Add your tuple lesson material here.
-        </p>
-
+        <h1>Python – Tuples</h1>
+        <p>Add your tuple lesson material here. </p>
     </div>
-
-
-    <div class="content-box">
-
-        <h2>
-            Example
-        </h2>
-
+   <div class="content-box">
+        <h2> Example</h2>
         <pre>
 numbers = (10, 20, 30, 40)
-
 print(numbers)
         </pre>
-
     </div>
-
 </section>
-
-
-
-<!-- =========================================================
-     PYTHON DICTIONARIES
-     ========================================================= -->
-
-<section
-    class="content-page"
-    id="python-dictionaries"
->
-
-
+<!-- =================================================PYTHON DICTIONARIES=================================================== -->
+<section class="content-page" id="python-dictionaries">
     <div class="welcome">
-
-        <h1>
-            Python – Dictionaries
-        </h1>
-
-        <p>
-            Add dictionary lesson material here.
-        </p>
-
+        <h1>Python – Dictionaries</h1>
+        <p>Add dictionary lesson material here</p>
     </div>
-
-
     <div class="content-box">
-
         <pre>
 student = {
     "name":"Rahul",
@@ -3956,38 +1869,17 @@ student = {
 
 print(student)
         </pre>
-
     </div>
-
 </section>
 
-
-
-<!-- =========================================================
-     PYTHON SETS
-     ========================================================= -->
-
-<section
-    class="content-page"
-    id="python-sets"
->
-
-
-    <div class="welcome">
-
-        <h1>
-            Python – Sets
-        </h1>
-
-        <p>
-            Add set lesson material here.
-        </p>
-
+<!-- =================================================  PYTHON SETS===================================================== -->
+<section   class="content-page" id="python-sets">
+   <div class="welcome">
+        <h1> Python – Sets</h1>
+       <p> Add set lesson material here.</p>
     </div>
 
-
     <div class="content-box">
-
         <pre>
 numbers = {10,20,30,40}
 
@@ -3995,108 +1887,35 @@ print(numbers)
         </pre>
 
     </div>
-
 </section>
 
-
-
-<!-- =========================================================
-     NETWORK MAIN PAGE
-     ========================================================= -->
-
-<section
-    class="content-page"
-    id="network-page"
->
-
-
+<!-- =============================================== NETWORK MAIN PAGE========================================================= -->
+<section class="content-page" id="network-page">
     <div class="welcome">
-
-        <h1>
-            Unit III – Computer Networks
-        </h1>
-
-        <p>
-            Computer networking concepts,
-            devices, transmission media
-            and protocols.
-        </p>
-
+        <h1> Unit III – Computer Networks</h1>
+        <p> Computer networking concepts,devices, transmission media and protocols.</p>
     </div>
-
 
     <div class="cards">
-
-
         <div class="card" style="padding:25px;">
-
-            <h3>
-                Introduction to Networks
-            </h3>
-
-            <p>
-                Basic networking concepts.
-            </p>
-
-            <button
-                class="explore"
-                onclick="showContent('network-basics')"
-                style="background:#079e9b;"
-            >
-                Open Topic →
-            </button>
-
+            <h3>Introduction to Networks</h3>
+            <p>Basic networking concepts.</p>
+            <button class="explore" onclick="showContent('network-basics')" style="background:#079e9b;">Open Topic →</button>
         </div>
-
-
         <div class="card" style="padding:25px;">
-
-            <h3>
-                Network Devices
-            </h3>
-
-            <p>
-                Hub, Switch, Router and Gateway.
-            </p>
-
-            <button
-                class="explore"
-                onclick="showContent('network-hub')"
-                style="background:#079e9b;"
-            >
-                Open Topic →
-            </button>
-
+            <h3>Network Devices</h3>
+            <p>Hub, Switch, Router and Gateway.</p>
+            <button class="explore" onclick="showContent('network-hub')" style="background:#079e9b;">Open Topic →</button>
         </div>
-
-
         <div class="card" style="padding:25px;">
-
-            <h3>
-                Network Protocols
-            </h3>
-
-            <p>
-                HTTP, HTTPS, FTP, TCP/IP and DNS.
-            </p>
-
+            <h3>Network Protocols</h3>
+            <p>HTTP, HTTPS, FTP, TCP/IP and DNS.</p>
         </div>
-
-
     </div>
-
 </section>
 
-
-
-<!-- =========================================================
-     NETWORK BASICS
-     ========================================================= -->
-
-<section
-    class="content-page"
-    id="network-basics"
->
+<!-- ===================================== NETWORK BASICS===================================================== -->
+<section  class="content-page" id="network-basics">
 
 
     <div class="welcome">
@@ -4455,322 +2274,363 @@ print(numbers)
 
 </section>
 
+<section class="content-page" id="network-pre-reading">
+    <div class="material-header">
+      	<h2>📖 Pre-reading Material</h2>
+      	<p> Read the material below before starting the Computer Networks unit.</p>
+      	<a href="https://drive.google.com/file/d/1UVq2OnA8J-yImZEl9FWHh2OG42mpuZmt/view" target="_blank" 
+		class="download-btn">📖 
+		Open Material
+	</a>
+      	<a href="https://drive.google.com/uc?export=download&id=1UVq2OnA8J-yImZEl9FWHh2OG42mpuZmt" download 
+		class="download-btn">
+		⬇ Download Material
+	</a>
+   </div>
+   <div class="pdf-container">
+      	<iframe src="https://drive.google.com/file/d/1UVq2OnA8J-yImZEl9FWHh2OG42mpuZmt/preview" 
+		width="100%" height="600" style="border: none;">    
+      	</iframe>
+    </div>
+</section>
 
-</main>
+<section class="content-page" id="network-interactive-video">
+    <h2>🎬 Interactive Video</h2>
+    <p> Watch the interactive video and complete the activities.</p>
+    <div class="interactive-video-container">
+        <iframe src="file:///C:/Users/dhanu/OneDrive/Desktop/KVS_Class12_CS_EContent/dbmssql-sunil.html" title="Interactive Computer Networks Video" allowfullscreen>
+        </iframe>
+    </div>
+</section>
+
+<section class="content-page" id="network-quiz">
+    <h2>📝 Computer Networks – Quiz</h2>
+
+    <iframe
+        src="materials/network-quiz.html"
+        class="activity-frame">
+    </iframe>
+
+</section>
 
 
+<section class="content-page" id="network-self-assessment">
+
+    <h2>✅ Self Assessment</h2>
+
+    <a href="materials/network-self-assessment.html"
+       target="_blank"
+       class="resource-btn">
+        ▶ Start Self Assessment
+    </a>
+
+</section>
 
 <!-- =========================================================
-     RIGHT SIDEBAR
+     Newly added
      ========================================================= -->
 
-<aside class="panel right">
+<section class="content-page" id="network-econtent">
 
+    <h2>📚 e-Content</h2>
 
-    <h2 class="right-title">
-        🔗 &nbsp;Quick Links
-    </h2>
-
-
-    <!--
-        CHANGE href="#" TO YOUR ACTUAL FILE/LINK.
-    -->
-
-
-    <a
-        class="quick q1"
-        href="syllabus.html"
-    >
-        📖 &nbsp; Syllabus
-        <span>›</span>
+    <a href="materials/network-econtent.pdf"
+       target="_blank"
+       class="resource-btn">
+        📖 Open e-Content
     </a>
 
-
-    <a
-        class="quick q2"
-        href="practical-list.html"
-    >
-        🧪 &nbsp; Practical List
-        <span>›</span>
+    <a href="materials/network-econtent.pdf"
+       download
+       class="resource-btn">
+        ⬇ Download
     </a>
 
+</section>
 
-    <a
-        class="quick q3"
-        href="question-bank.html"
-    >
-        ❓ &nbsp; Question Bank
-        <span>›</span>
+
+<section class="content-page" id="network-assessment">
+
+    <h2>📝 Assessment</h2>
+
+    <a href="materials/network-assessment.html"
+       target="_blank"
+       class="resource-btn">
+        ▶ Open Assessment
     </a>
 
+</section>
 
-    <a
-        class="quick q4"
-        href="study-material.html"
-    >
-        📄 &nbsp; Study Material
-        <span>›</span>
+
+<section class="content-page" id="network-unit-assessment">
+
+    <h2>📝 Unit Assessment – 25 Questions</h2>
+
+    <a href="materials/network-unit-assessment.html"
+       target="_blank"
+       class="resource-btn">
+        ▶ Start Assessment
     </a>
 
+</section>
 
-    <a
-        class="quick q5"
-        href="previous-papers.html"
-    >
-        📚 &nbsp; Previous Papers
-        <span>›</span>
-    </a>
+		<!-- ======================================= SYLLABUS QUICK LINK ======================================================== -->
+		<section class="content-page" id="syllabus">
+    			<div class="material-header">
+        			<h2>📖 Syllabus</h2>
+        			<p>View the complete Computer Science syllabus.</p>
+        			<a href="https://drive.google.com/file/d/1gE4lEX2qsMwaeb-MFTYyItrDIrrt-I_Q/view"
+           				target="_blank" class="download-btn">
+            				📖 Open Syllabus
+        			</a>
+        			<a href="https://drive.google.com/uc?export=download&id=1gE4lEX2qsMwaeb-MFTYyItrDIrrt-I_Q"
+          				 download class="download-btn">
+            				 ⬇ Download Syllabus
+        			</a>
+    			</div>
+    			<div class="pdf-container">
+        			<iframe src="https://drive.google.com/file/d/1gE4lEX2qsMwaeb-MFTYyItrDIrrt-I_Q/preview"
+            				width="100%" height="600" style="border:none;">
+                        	</iframe>
+    			</div>
+		</section>
+		<!-- =======================================  PRACTICAL LIST ======================================================== -->
+		<section class="content-page" id="practical-list">
+    			<div class="material-header">
+        			<h2>🧪 Practical List</h2>
+        			<p>View the complete Computer Science Practical list.</p>
+        			<a href="https://drive.google.com/file/d/1iVc3JERzpd9xZx_ClkI2wzOtHqvk1K5b/view"
+           				target="_blank" class="download-btn">
+            				🧪 Open Practical List
+        			</a>
+        			<a href="https://drive.google.com/uc?export=download&id=1iVc3JERzpd9xZx_ClkI2wzOtHqvk1K5b"
+          				 download class="download-btn">
+            				 ⬇ Download Practical List
+        			</a>
+    			</div>
+    			<div class="pdf-container">
+        			<iframe src="https://drive.google.com/file/d/1iVc3JERzpd9xZx_ClkI2wzOtHqvk1K5b/preview"
+            				width="100%" height="600" style="border:none;">
+                        	</iframe>
+    			</div>
+		</section>
+		<!-- ======================================= QUESTION BANK ======================================================== -->
+		<section class="content-page" id="syllabus">
+    			<div class="material-header">
+        			<h2>📖 Syllabus</h2>
+        			<p>View the complete Computer Science syllabus.</p>
+        			<a href="https://drive.google.com/file/d/1gE4lEX2qsMwaeb-MFTYyItrDIrrt-I_Q/view"
+           				target="_blank" class="download-btn">
+            				📖 Open Syllabus
+        			</a>
+        			<a href="https://drive.google.com/uc?export=download&id=1gE4lEX2qsMwaeb-MFTYyItrDIrrt-I_Q"
+          				 download class="download-btn">
+            				 ⬇ Download Syllabus
+        			</a>
+    			</div>
+    			<div class="pdf-container">
+        			<iframe src="https://drive.google.com/file/d/1gE4lEX2qsMwaeb-MFTYyItrDIrrt-I_Q/preview"
+            				width="100%" height="600" style="border:none;">
+                        	</iframe>
+    			</div>
+		</section>
+		<!-- ======================================= STUDY MATERIAL ======================================================== -->
+		<section class="content-page" id="syllabus">
+    			<div class="material-header">
+        			<h2>📖 Syllabus</h2>
+        			<p>View the complete Computer Science syllabus.</p>
+        			<a href="https://drive.google.com/file/d/1gE4lEX2qsMwaeb-MFTYyItrDIrrt-I_Q/view"
+           				target="_blank" class="download-btn">
+            				📖 Open Syllabus
+        			</a>
+        			<a href="https://drive.google.com/uc?export=download&id=1gE4lEX2qsMwaeb-MFTYyItrDIrrt-I_Q"
+          				 download class="download-btn">
+            				 ⬇ Download Syllabus
+        			</a>
+    			</div>
+    			<div class="pdf-container">
+        			<iframe src="https://drive.google.com/file/d/1gE4lEX2qsMwaeb-MFTYyItrDIrrt-I_Q/preview"
+            				width="100%" height="600" style="border:none;">
+                        	</iframe>
+    			</div>
+		</section>
+		<!-- ======================================= PREVIOUS PAPERS ======================================================== -->
+		<section class="content-page" id="syllabus">
+    			<div class="material-header">
+        			<h2>📖 Syllabus</h2>
+        			<p>View the complete Computer Science syllabus.</p>
+        			<a href="https://drive.google.com/file/d/1gE4lEX2qsMwaeb-MFTYyItrDIrrt-I_Q/view"
+           				target="_blank" class="download-btn">
+            				📖 Open Syllabus
+        			</a>
+        			<a href="https://drive.google.com/uc?export=download&id=1gE4lEX2qsMwaeb-MFTYyItrDIrrt-I_Q"
+          				 download class="download-btn">
+            				 ⬇ Download Syllabus
+        			</a>
+    			</div>
+    			<div class="pdf-container">
+        			<iframe src="https://drive.google.com/file/d/1gE4lEX2qsMwaeb-MFTYyItrDIrrt-I_Q/preview"
+            				width="100%" height="600" style="border:none;">
+                        	</iframe>
+    			</div>
+		</section>
+		<!-- ======================================= KVS SPLIT UP ======================================================== -->
+		<section class="content-page" id="KVS-Split-Up">
+    			<div class="material-header">
+        			<h2>🔔 &nbsp; KVS Split Up</h2>
+        			<p>View the complete Computer Science KVS Split Up.</p>
+        			<a href="https://drive.google.com/file/d/1V-Gt18Qtl9KzlrSbS7RwTFNpd5ThL976/view"
+           				target="_blank" class="download-btn">
+            				📖 Open KVS Split Up
+        			</a>
+        			<a href="https://drive.google.com/uc?export=download&id=1V-Gt18Qtl9KzlrSbS7RwTFNpd5ThL976"
+          				 download class="download-btn">
+            				 ⬇ Download KVS Split Up
+        			</a>
+    			</div>
+    			<div class="pdf-container">
+        			<iframe src="https://drive.google.com/file/d/1V-Gt18Qtl9KzlrSbS7RwTFNpd5ThL976/preview"
+            				width="100%" height="600" style="border:none;">
+                        	</iframe>
+    			</div>
+		</section>
+	</main>
 
 
-    <a
-        class="quick q6"
-        href="notices.html"
-    >
-        🔔 &nbsp; Notices
-        <span>›</span>
-    </a>
 
+       <!-- ======================================= RIGHT SIDEBAR ======================================================== -->
 
-    <a
-        class="quick q7"
-        href="downloads.html"
-    >
-        ⬇ &nbsp; Downloads
-        <span>›</span>
-    </a>
-
-
-    <div class="notice">
-
-        <h3>
-            📢 &nbsp;Important Notice
-        </h3>
-
-        <p>
-            All students are advised to regularly
-            check the updates and notifications.
-        </p>
-
-    </div>
-
-
-</aside>
-
-
-
+	<aside class="panel right">
+	    	<h2 class="right-title">🔗 &nbsp;Quick Links</h2>
+  		<a class="quick q1" href="#" onclick="showContent('syllabus'); return false;">📖 &nbsp; Syllabus <span>›</span></a> 
+		<a class="quick q2" href="#" onclick="showContent('practical-list'); return false;">🧪 &nbsp; Practical List <span>›</span></a>
+    		<a class="quick q3" href="question-bank.html">❓ &nbsp; Question Bank <span>›</span></a>
+   		<a class="quick q4" href="study-material.html">📄 &nbsp; Study Material<span>›</span></a>
+    		<a class="quick q5" href="previous-papers.html">📚 &nbsp; Previous Papers<span>›</span></a>
+   		<a class="quick q6" href="#" onclick="showContent('KVS-Split-Up'); return false;">🔔 &nbsp; KVS Split Up<span>›</span></a>
+    		<a class="quick q7" href="downloads.html">⬇ &nbsp; Downloads <span>›</span></a>
+    		<div class="notice">
+        		<h3>📢 &nbsp;Important Notice</h3>
+        		<p> All students are advised to regularly check the updates and notifications.</p>
+    		</div>
+	</aside>
 </div>
 
-
-
-<!-- =========================================================
-     FOOTER
-     ========================================================= -->
-
+<!-- ====================================================FOOTER ========================================================= -->
 <footer class="footer">
-
-    © 2026 Class XII Computer Science
-    E-Content Portal
-
+    © 2026-27 Class XII Computer Science E-Content Portal by PM SHRI KV Adoor
 </footer>
 
 
-
-<!-- =========================================================
-     VERY SMALL JAVASCRIPT
-     ========================================================= -->
-
+<!-- =================================== JAVASCRIPT ========================================================= -->
 <script>
-
-
-/* =========================================================
-   SHOW A CONTENT PAGE
-   ========================================================= */
-
-function showContent(id){
-
-    /*
-       Hide all pages
-    */
-
-    document
-        .querySelectorAll(".content-page")
-        .forEach(function(page){
-
-            page.classList.remove("active");
-
-        });
-
-
-    /*
-       Show selected page
-    */
-
-    const selectedPage =
-        document.getElementById(id);
-
-
-    if(selectedPage){
-
-        selectedPage.classList.add("active");
-
-    }
-
-
-    /*
-       Remove selected colour
-       from all subtopic buttons
-    */
-
-    document
-        .querySelectorAll(".subtopics button")
-        .forEach(function(button){
-
-            button.classList.remove("selected");
-
-        });
-
-
-    /*
-       Highlight clicked subtopic
-    */
-
-    if(
-        typeof event !== "undefined" &&
-        event &&
-        event.currentTarget &&
-        event.currentTarget.tagName === "BUTTON"
-    ){
-
-        event.currentTarget.classList.add("selected");
-
-    }
-
-
-    /*
-       Scroll to top
-    */
-
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
-
-}
-
-
-
-/* =========================================================
-   OPEN / CLOSE UNIT
-   ========================================================= */
-
-function toggleUnit(id){
-
-    const unit =
-        document.getElementById(id);
-
-
-    if(!unit) return;
-
-
-    const button =
-        unit.previousElementSibling;
-
-
-    const arrow =
-        button.querySelector(".unit-arrow");
-
-
-    if(
-        unit.style.display === "none" ||
-        unit.style.display === ""
-    ){
-
-        unit.style.display = "block";
-
-        if(arrow){
-            arrow.textContent = "⌄";
-        }
-
-    }
-
-    else{
-
-        unit.style.display = "none";
-
-        if(arrow){
-            arrow.textContent = "›";
-        }
-
-    }
-
-}
-
-
-
-/* =========================================================
-   OPEN / CLOSE TOPIC
-   ========================================================= */
-
-function toggleTopic(id){
-
-    const subtopics =
-        document.getElementById(id);
-
-
-    if(!subtopics) return;
-
-
-    const button =
-        subtopics.previousElementSibling;
-
-
-    const arrow =
-        button.querySelector(".topic-arrow");
-
-
-    if(
-        subtopics.style.display === "block"
-    ){
-
-        subtopics.style.display = "none";
-
-        button.classList.remove("open");
-
-        if(arrow){
-            arrow.textContent = "⌄";
-        }
-
-    }
-
-    else{
-
-        subtopics.style.display = "block";
-
-        button.classList.add("open");
-
-        if(arrow){
-            arrow.textContent = "⌃";
-        }
-
-    }
-
-}
-
-
-/* =========================================================
-   OPEN HOME WHEN WEBSITE LOADS
-   ========================================================= */
-
-document.addEventListener(
-    "DOMContentLoaded",
-    function(){
-
-        showContent("home");
-
-    }
-);
-
-
+	/* =====================================SHOW A CONTENT PAGE========================================================= */
+	function showContent(id)
+	{
+    		/*Hide all pages*/
+    		document.querySelectorAll(".content-page").forEach(function(page)
+    		{
+            		page.classList.remove("active");
+    		});
+
+    		/* Show selected page*/
+   		const selectedPage = document.getElementById(id);
+    		if(selectedPage)
+    		{
+        		selectedPage.classList.add("active");
+    		}
+    		/*Remove selected colour from all subtopic buttons*/
+    		document.querySelectorAll(".subtopics button").forEach(function(button)
+    		{
+            		button.classList.remove("selected");
+     		});
+    		/*Highlight clicked subtopic*/
+    		if(typeof event !== "undefined" &&event &&event.currentTarget &&event.currentTarget.tagName === "BUTTON")
+    		{
+        		event.currentTarget.classList.add("selected");
+    		}
+    		/*Scroll to top*/
+    		window.scrollTo({top:0,behavior:"smooth"});
+	}
+	/* ============================================== OPEN / CLOSE UNIT ========================================================= */
+	function toggleUnit(id)
+	{
+    		const unit = document.getElementById(id);
+    		if(!unit) return;
+    		const button =unit.previousElementSibling;
+    		const arrow = button.querySelector(".unit-arrow");
+    		if(unit.style.display === "none" ||unit.style.display === "")
+    		{
+        		unit.style.display = "block";
+        		if(arrow)
+        		{
+            			arrow.textContent = "⌄";
+        		}
+    		}
+    		else
+    		{
+        		unit.style.display = "none";
+        		if(arrow)
+        		{
+            			arrow.textContent = "›";
+        		}
+    		}
+	}
+	/* ============================================ OPEN / CLOSE TOPIC ===================================================== */
+	function toggleTopic(id)
+	{
+    		const subtopics =document.getElementById(id);
+    		if(!subtopics) return;
+   	 	const button =subtopics.previousElementSibling;
+    		const arrow = button.querySelector(".topic-arrow");
+    		if(subtopics.style.display === "block")
+    		{
+        		subtopics.style.display = "none";
+        		button.classList.remove("open");
+        		if(arrow)
+        		{
+            			arrow.textContent = "⌄";
+        		}
+    		}
+    		else
+    		{
+        		subtopics.style.display = "block";
+        		button.classList.add("open");
+        		if(arrow)
+        		{
+            			arrow.textContent = "⌃";
+        		}
+    		}
+	}
+
+	/* ============================= OPEN HOME WHEN WEBSITE LOADS ========================================================= */
+	document.addEventListener(
+    	"DOMContentLoaded",
+    	function()
+    	{
+        	showContent("home");
+    	});
+	/*========================================= SHOW RESOURCE CONTENT================================================= */
+	function showContent(id) 
+	{
+
+    		/* Hide all content pages */
+    		document.querySelectorAll(".content-page").forEach(function(page) 
+    		{
+        		page.classList.remove("active");
+    		});
+
+    		/* Find the selected page */
+    		const selectedPage = document.getElementById(id);
+
+    		/* Show the selected page */
+    		if (selectedPage) 
+		{
+        		selectedPage.classList.add("active");
+    		}
+    		/* Scroll to the top */
+    		window.scrollTo({top: 0,behavior: "smooth"});
+	}
 </script>
 </body>
 </html>
