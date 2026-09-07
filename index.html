@@ -274,7 +274,7 @@ body
     min-height:48px;
     border:0;
     color:#fff;
-    padding:13px 14px;
+    padding:4px 4px;
     display:flex;
     align-items:center;
     justify-content:space-between;
@@ -311,12 +311,16 @@ body
 {
     font-size:18px;
 }
-.unit-content
-{
-    display:block;
-    padding:2px 6px 8px;
+/* ===================== UNIT CONTENT - HIDDEN BY DEFAULT ========================================= */
+
+.unit-content {
+    display: none;
 }
 
+/* Show only when the Unit is opened */
+.unit-content.open {
+    display: block;
+}
 
 /* ============================================== TOPIC ========================================================= */
 .topic-block
@@ -336,7 +340,7 @@ body
     justify-content:space-between;
     align-items:center;
     text-align:left;
-    font-size:15.5px;
+    font-size:15px;
     font-weight:800;
     cursor:pointer;
     transition:.2s;
@@ -353,7 +357,7 @@ body
 .topic-arrow
 {
     color:#64748b;
-    font-size:17px;
+    font-size:18px;
     font-weight:700;
 }
 
@@ -999,6 +1003,7 @@ body
         right:-35px;
     }
 }
+
 </style>
 </head>
 <body>
@@ -1044,291 +1049,255 @@ body
     </div>
 </nav>
 
-
 <!-- ================================================= MAIN LAYOUT ===================================================== -->
 <div class="layout">
 	<!-- ================================================ LEFT SIDEBAR ====================================================== -->
 	<aside class="panel left">
-	    <h2 class="panel-title">&nbsp;Course Contents</h2>
-            <!-- ============================================== UNIT I - SQL ===================================================== -->      	
-    	    <div class="unit">
-                  <button class="unit-head sql" type="button" onclick="toggleUnit('unitSQL')">
-                       <span>▶ Unit I – SQL </span>
-	               <span class="unit-arrow">⌄</span>
-	          </button>
-            	  <div class="unit-content nested-content" id="unitSQL">
+	    	<h2 class="panel-title">&nbsp;Course Contents</h2>
+     	 	<!-- =========================================UNIT II - COMPUTER NETWORKS=================================== -->
+    	 	<div class="unit">
+        		<button class="unit-head network" type="button" onclick="toggleUnit('unitNetwork')">
+            			<span>▶ Unit II – Computer Networks</span>
+            			<span class="unit-arrow">⌄</span>
+        		</button>
+    			<div class="unit-content nested-content" id="unitNetwork">
+				<!-- ===================== TEACHER - 1 ===================== -->
+				<!-- ===================== 1 -INTRODUCTION TO COMPUTER NETWORK ===================== -->
+    				<div class="topic-block">
+                			<button class="topic-head" type="button" onclick="toggleTopic('teacher1Network')">
+                    				<span>📌Fundamentals of Computer Networks</span>
+                    				<span class="topic-arrow">⌄</span>
+                			</button>
+    					<div class="subtopics" id="teacher1Network">
+ 						<!-- =================== TOPIC 1 -Introduction to Computer============================= -->
+						<div class="topic-block">
+                					<button class="topic-head" type="button" onclick="toggleTopic('netIntroduction')">
+                    						<span>1. Introduction to Computer Networks</span>
+                    						<span class="topic-arrow">⌄</span>
+                					</button>
+							<!-- ===========================TOPIC 1 RESOURCES================================= -->
+    							<div class="subtopics" id="netIntroduction">
+		    						<button onclick="showContent('network-pre-reading')">
+									📖 Pre-reading Material
+								</button>
+		    						<button onclick="showContent('network-quiz')">
+									📝 Quiz
+								</button>
+		    						<button onclick="showContent('network-topologies')">
+									🧠 Concept Map
+								</button>
+ 								<button onclick="showContent('network-interactive-video')">
+									🎥 Interactive Video/e-Content
+								</button>
+		    						<button onclick="showContent('network-self-assessment')">
+									✅ Self Assessment
+								</button>
+		    					</div>
+    						</div>
+						<!-- ================== TOPIC 2 - Evolution of Computer ================================ -->
+						<div class="topic-block">
+                					<button class="topic-head" type="button" onclick="toggleTopic('netEvolution')">
+                    						<span>2. Evolution of Computer Networks</span>
+                    						<span class="topic-arrow">⌄</span>
+                					</button>
+							<!-- ===========================TOPIC 2 RESOURCES ================================= -->
+    							<div class="subtopics" id="netEvolution">
+								<p>ARPANET</p>
+								<p>NSFNET</p>
+								<p>INTERNET</p>
+		    						<button onclick="showContent('network-pre-reading')">
+									📖 Pre-reading Material
+								</button>
+		    						<button onclick="showContent('network-quiz')">
+									📝 Quiz
+								</button>
+		    						<button onclick="showContent('network-topologies')">
+									🧠 Concept Map
+								</button>
+ 								<button onclick="showContent('network-interactive-video')">
+									🎥 Interactive Video/e-Content
+								</button>
+		    						<button onclick="showContent('network-self-assessment')">
+									✅ Self Assessment
+								</button>
+		    					</div>
+    						</div>
+						<!-- ============== TOPIC 3 - Data Communication Terminologies ================== -->
+						<div class="topic-block">
+                					<button class="topic-head" type="button" onclick="toggleTopic('netTerminologies')">
+                    						<span>3. Data Communication Terminologies</span>
+                    						<span class="topic-arrow">⌄</span>
+                					</button>
+							<!-- ===========================TOPIC 3 RESOURCES ================================= -->
+    							<div class="subtopics" id="netTerminologies">
+								<p>Concept of Communication</p>
+								<p>Components of Data Communication</p>
+								<p>Bandwidth</p>
+								<p>Data Transfer Rate</p>
+								<p>IP Address</p>
+								<p>Switching Techniques</p>
+		    						<button onclick="showContent('network-pre-reading')">
+									📖 Pre-reading Material
+								</button>
+		    						<button onclick="showContent('network-quiz')">
+									📝 Quiz
+								</button>
+		    						<button onclick="showContent('network-topologies')">
+									🧠 Concept Map
+								</button>
+ 								<button onclick="showContent('network-interactive-video')">
+									🎥 Interactive Video/e-Content
+								</button>
+		    						<button onclick="showContent('network-self-assessment')">
+									✅ Self Assessment
+								</button>
+		    					</div>
+    						</div>
 
-                  	<!-- ======================================== INTRODUCTION TO SQL========================================  -->
-            		<div class="topic-block">
-                		<button class="topic-head" type="button" onclick="toggleTopic('sqlIntro')">
-                     			<span>📌 &nbsp;Introduction to SQL</span>
-                     			<span class="topic-arrow">⌄</span>
-                		</button>
-            			<div class="subtopics" id="sqlIntro">
-                 			<button onclick="showContent('sql-introduction')">Introduction</button>
-                 			<button onclick="showContent('sql-objectives')">Learning Objectives</button>
-                 			<button onclick="showContent('sql-concepts')">Concepts</button>
-                 			<button onclick="showContent('sql-examples')">Examples </button>
-                 			<button onclick="showContent('sql-practice')">Practice </button>
-                 			<button onclick="showContent('sql-assessment')">Assessment</button>
-                 			<button onclick="showContent('sql-mindmap')"> Mind Map</button>
-            			</div>
-            		</div>
-            		<!-- ======================================== SQL COMMANDS ========================================  -->
-            		<div class="topic-block">
-                		<button class="topic-head" type="button" onclick="toggleTopic('sqlCommands')">
-                    			<span>📌 &nbsp;SQL Commands </span>
-                    			<span class="topic-arrow">⌄</span>
-                		</button>
-                		<div class="subtopics" id="sqlCommands">
-                    			<button onclick="showContent('sql-ddl')">DDL Commands</button>
-                    			<button onclick="showContent('sql-dml')">DML Commands</button>
-                    			<button onclick="showContent('sql-dcl')">DCL Commands</button>
-                    			<button onclick="showContent('sql-tcl')">TCL Commands</button>
-                		</div>
-            		</div>
-		        <!--  ======================================== SQL FUNCTIONS ========================================  -->
-            		<div class="topic-block">
-                		<button class="topic-head" type="button" onclick="toggleTopic('sqlFunctions')">
-                    			<span>📌 &nbsp;SQL Functions</span>
-                    			<span class="topic-arrow">⌄</span>
-                		</button>
-                		<div class="subtopics" id="sqlFunctions">
-                    			<button onclick="showContent('sql-string-functions')">String Functions</button>
-                    			<button onclick="showContent('sql-numeric-functions')">Numeric Functions</button>
-                    			<button onclick="showContent('sql-date-functions')">Date Functions</button>
-                    			<button onclick="showContent('sql-aggregate-functions')">Aggregate Functions</button>
-                		</div>
-            		</div>
-	                <!-- ========================================  SQL QUERIES ========================================  -->
-            		<div class="topic-block">
-                		<button class="topic-head" type="button" onclick="toggleTopic('sqlQueries')">
-                    			<span>📌 &nbsp;SQL Queries</span>
-                    			<span class="topic-arrow">⌄</span>
-                		</button>
-                		<div class="subtopics" id="sqlQueries">
-                    			<button onclick="showContent('sql-select')">SELECT Queries</button>
-                    			<button onclick="showContent('sql-where')">WHERE Clause</button>
-                    			<button onclick="showContent('sql-groupby')">GROUP BY</button>
-                    			<button onclick="showContent('sql-orderby')">ORDER BY</button>
-                		</div>
-            		</div>
-              </div>
-
-        </div>
-
-        <!-- ============================================== UNIT II - PYTHON ===================================================== -->
-        <div class="unit">
-        	<button class="unit-head python" type="button" onclick="toggleUnit('unitPython')">
-            		<span>▶ Unit II – Python</span>
-            		<span class="unit-arrow">⌄</span>
-        	</button>
-        	<div class="unit-content nested-content" id="unitPython">
-        		<!--  ======================================== PYTHON BASICS  ======================================== -->
-        		<div class="topic-block">
-                		<button class="topic-head" type="button" onclick="toggleTopic('pyBasics')">
-                    			<span>📌 &nbsp;Python Basics</span>
-                    			<span class="topic-arrow">⌄</span>
-                		</button>
-                		<div class="subtopics" id="pyBasics">
-                    			<button onclick="showContent('python-introduction')">Introduction to Python</button>
-                    			<button onclick="showContent('python-data-types')">Variables &amp; Data Types</button>
-                    			<button onclick="showContent('python-operators')">Operators</button>
-                    			<button onclick="showContent('python-input-output')">Input &amp; Output</button>
-                    			<button onclick="showContent('python-practice')">Practice</button>
-                		</div>
-            		</div>
-            		<!-- ======================================== CONTROL STATEMENTS  ======================================== -->
-            		<div class="topic-block">
-                		<button class="topic-head" type="button" onclick="toggleTopic('pyControl')">
-                    			<span>📌 &nbsp;Control Statements</span>
-                    			<span class="topic-arrow">⌄</span>
-                		</button>
-                		<div class="subtopics" id="pyControl">
-                    			<button onclick="showContent('python-if')">Conditional Statements</button>
-                    			<button onclick="showContent('python-loops')">Loops</button>
-                    			<button onclick="showContent('python-nested-loops')">Nested Loops</button>
-                    			<button onclick="showContent('python-control-practice')">Practice</button>
-                		</div>
-            		</div>
-            		<!--  ======================================== FUNCTIONS ========================================  -->
-            		<div class="topic-block">
-                		<button class="topic-head" type="button" onclick="toggleTopic('pyFunctions')">
-                    			<span>📌 &nbsp;Functions</span>
-                    			<span class="topic-arrow">⌄</span>
-                		</button>
-                		<div class="subtopics" id="pyFunctions" >
-                    			<button onclick="showContent('python-defining-functions')">Defining Functions</button>
-                    			<button onclick="showContent('python-parameters')">Parameters &amp; Arguments</button>
-                    			<button onclick="showContent('python-return')">Return Values</button>
-                		</div>
-            		</div>
-            		<!--  ======================================== DATA STRUCTURES ========================================  -->
-            		<div class="topic-block">
-                		<button class="topic-head" type="button" onclick="toggleTopic('pyData')">
-                    			<span>📌 &nbsp;Data Structures</span>
-                    			<span class="topic-arrow">⌄</span>
-                		</button>
-                		<div class="subtopics" id="pyData">
-                    			<button onclick="showContent('python-lists')">Lists</button>
-                    			<button onclick="showContent('python-tuples')">Tuples</button>
-                    			<button onclick="showContent('python-dictionaries')">Dictionaries</button>
-                    			<button onclick="showContent('python-sets')">Sets</button>
-                		</div>
-            		</div>
-        	</div>
-    	 </div>
-
-
-    	 <!-- =========================================UNIT III - COMPUTER NETWORKS=================================== -->
-    	 <div class="unit">
-        	<button class="unit-head network" type="button" onclick="toggleUnit('unitNetwork')">
-            		<span>▶ Unit III – Computer Networks</span>
-            		<span class="unit-arrow">⌄</span>
-        	</button>
-
-    		<div class="unit-content nested-content" id="unitNetwork">
-    			<!--  ================================ INTRODUCTION TO COMPUTER NETWORK========================================  -->
-    			<div class="topic-block">
-                		<button class="topic-head" type="button" onclick="toggleTopic('netIntro')">
-                    			<span>📌 &nbsp;INTRODUCTION</span>
-                    			<span class="topic-arrow">⌄</span>
-                		</button>
-				<div class="subtopics" id="netIntro">
-		    			<button onclick="showContent('network-pre-reading')">📖 Pre-reading Material</button>
-		    			<button onclick="showContent('network-quiz')">📝 Quiz</button>
-		    			<button onclick="showContent('network-topologies')">🗺️ Concept Map</button>
-		    			<button onclick="showContent('network-self-assessment')">✅ Self Assessment</button>
-					<button onclick="showContent('network-interactive-video')">🎬 Interactive Video& e-Content</button>
-		    			<button onclick="showContent('network-assessment')">📝 Assessment</button>
-		    			<button onclick="showContent('network-unit-assessment')">📝 Unit Assessment – 25 Questions</button>
+					</div>
 				</div>
-    			</div>
-        		<!-- ======================================== EVOLUTION OF NETWORKING======================================== -->
-            		<div class="topic-block">
-                		<button class="topic-head" type="button" onclick="toggleTopic('netDevices')">
-                   			<span>📌 &nbsp;NETWORK DEVICES</span>
-                   			<span class="topic-arrow">⌄</span>
-                		</button>
-                		<div class="subtopics" id="netEvalution">
- 		    			<button onclick="showContent('network-pre-reading')">📖 Pre-reading Material</button>
-		    			<button onclick="showContent('network-quiz')">📝 Quiz</button>
-		    			<button onclick="showContent('network-topologies')">🗺️ Concept Map</button>
-		    			<button onclick="showContent('network-self-assessment')">✅ Self Assessment</button>
-					<button onclick="showContent('network-interactive-video')">🎬 Interactive Video& e-Content</button>
-		    			<button onclick="showContent('network-assessment')">📝 Assessment</button>
-		    			<button onclick="showContent('network-unit-assessment')">📝 Unit Assessment – 25 Questions</button>
-                		</div>
-            		</div>
-        		<!-- ======================= Data communication terminologies:switching techniques ========================= -->            			<div class="topic-block">
-                		<button class="topic-head" type="button" onclick="toggleTopic('netMedia')">
-                    			<span>📌 &nbsp;DATA COMMUNICATION TERMINOLOGIES</span>
+			</div>
+		
+			<!-- ===================== TEACHER - 2 Transmission Media & Networking ===================== -->
+			<!-- =====================  Transmission Media ===================== -->
+    			<div class="topic-block">
+                		<button class="topic-head" type="button" onclick="toggleTopic('teacher1Transmission')">
+                    			<span>📌 Transmission Media & Networking</span>
                     			<span class="topic-arrow">⌄</span>
-                		</button>
-                		<div class="subtopics" id="netCommn">
-		    			<button onclick="showContent('network-pre-reading')">📖 Pre-reading Material</button>
-		    			<button onclick="showContent('network-quiz')">📝 Quiz</button>
-		    			<button onclick="showContent('network-topologies')">🗺️ Concept Map</button>
-		    			<button onclick="showContent('network-self-assessment')">✅ Self Assessment</button>
-					<button onclick="showContent('network-interactive-video')">🎬 Interactive Video& e-Content</button>
-		    			<button onclick="showContent('network-assessment')">📝 Assessment</button>
-		    			<button onclick="showContent('network-unit-assessment')">📝 Unit Assessment – 25 Questions</button>                				</div>
-            		</div>
-            		<!--  ======================================== TRANSMISSION MEDIA  ======================================== -->
-            		<div class="topic-block">
-                		<button class="topic-head" type="button" onclick="toggleTopic('netProtocols')">
-                    			<span>📌 &nbsp;TRANSMISSION MEDIA</span>
+           			</button>
+    				<div class="subtopics" id="teacher1Transmission">
+ 					<!-- =================== TOPIC 1 -Wired Communication Media============================= -->
+   					<div class="topic-block">                  		
+                				<button class="topic-head" type="button" onclick="toggleTopic('netCommunication')">
+							<span>Transmission Media</span>
+                    					<span class="topic-arrow">⌄</span>
+                				</button>
+						<!-- ===========================TOPIC 1 RESOURCES================================= -->
+    						<div class="subtopics" id="netCommunication">
+							<p>1. Wired Communication Media</p>
+							<p>2. Wireless Communication Media</p>
+		    					<button onclick="showContent('network-pre-reading')">
+								📖 Pre-reading Material
+							</button>
+		    					<button onclick="showContent('network-quiz')">
+								📝 Quiz
+							</button>
+		    					<button onclick="showContent('network-topologies')">
+								🧠 Concept Map
+							</button>
+ 							<button onclick="showContent('network-interactive-video')">
+								🎥 Interactive Video/e-Content
+							</button>
+		    					<button onclick="showContent('network-self-assessment')">
+								✅ Self Assessment
+							</button>
+		    				</div>
+    					</div>
+					<!-- ================== TOPIC 2 - Network Devices ================================ -->
+					<div class="topic-block">
+                				<button class="topic-head" type="button" onclick="toggleTopic('netDevices')">
+                    					<span>2. Network Devices</span>
+                    					<span class="topic-arrow">⌄</span>
+                				</button>
+						<!-- ===========================TOPIC 2 RESOURCES ================================= -->
+    						<div class="subtopics" id="netDevices">
+							<p>Ethernet Card</p>
+							<p>RJ45</p>
+							<p>Repeater</p>
+							<p>Hub</p>
+							<p>Switch</p>
+							<p>Router</p>
+							<p>Gateway</p>
+							<p>Wi-Fi Card</p>
+		    					<button onclick="showContent('network-pre-reading')">
+								📖 Pre-reading Material
+							</button>
+		    					<button onclick="showContent('network-quiz')">
+								📝 Quiz
+							</button>
+		    					<button onclick="showContent('network-topologies')">
+								🧠 Concept Map
+							</button>
+ 							<button onclick="showContent('network-interactive-video')">
+								🎥 Interactive Video/e-Content
+							</button>
+		    					<button onclick="showContent('network-self-assessment')">
+								✅ Self Assessment
+							</button>
+		    				</div>
+    					</div>
+					<!-- ============== TOPIC 3 - Network Topologies & Network Types ================== -->
+					<div class="topic-block">
+                				<button class="topic-head" type="button" onclick="toggleTopic('netTopologies')">
+                    					<span>3. Network Topologies & Network Types</span>
+                    					<span class="topic-arrow">⌄</span>
+                				</button>
+						<!-- ===========================TOPIC 3 RESOURCES ================================= -->
+    						<div class="subtopics" id="netTopologies">
+							<p>Types of Networks</p>
+							<p>Components of Data Communication</p>
+							<p>Network Topologies</p>
+							<button onclick="showContent('network-pre-reading')">
+								📖 Pre-reading Material
+							</button>
+		    					<button onclick="showContent('network-quiz')">
+								📝 Quiz
+							</button>
+		    					<button onclick="showContent('network-topologies')">
+								🧠 Concept Map
+							</button>
+ 							<button onclick="showContent('network-interactive-video')">
+								🎥 Interactive Video/e-Content
+							</button>
+		    					<button onclick="showContent('network-self-assessment')">
+								✅ Self Assessment
+							</button>
+		    				</div>
+  					</div>
+				</div>
+			</div>
+		
+			<!-- ===================== TEACHER - 3 Network Protocols & Web Services ===================== -->
+			<!-- =====================  Network Protocols & Web Services ===================== -->
+    			<div class="topic-block">
+                		<button class="topic-head" type="button" onclick="toggleTopic('teacher1Services')">
+                    			<span>📌 Network Protocols & Web Services</span>
                     			<span class="topic-arrow">⌄</span>
-                		</button>
-                		<div class="subtopics" id="netMedia">
-		    			<button onclick="showContent('network-pre-reading')">📖 Pre-reading Material</button>
-		    			<button onclick="showContent('network-quiz')">📝 Quiz</button>
-		    			<button onclick="showContent('network-topologies')">🗺️ Concept Map</button>
-		    			<button onclick="showContent('network-self-assessment')">✅ Self Assessment</button>
-					<button onclick="showContent('network-interactive-video')">🎬 Interactive Video& e-Content</button>
-		    			<button onclick="showContent('network-assessment')">📝 Assessment</button>
-		    			<button onclick="showContent('network-unit-assessment')">📝 Unit Assessment – 25 Questions</button>                  				</div>
-            		</div>
-            		<!--  ======================================== TYPES OF NETWORKS ======================================== -->
-            		<div class="topic-block">
-                		<button class="topic-head" type="button" onclick="toggleTopic('netProtocols')">
-                    			<span>📌 &nbsp;TYPES OF NETWORKS</span>
-                    			<span class="topic-arrow">⌄</span>
-                		</button>
-                		<div class="subtopics" id="netType">
-		    			<button onclick="showContent('network-pre-reading')">📖 Pre-reading Material</button>
-		    			<button onclick="showContent('network-quiz')">📝 Quiz</button>
-		    			<button onclick="showContent('network-topologies')">🗺️ Concept Map</button>
-		    			<button onclick="showContent('network-self-assessment')">✅ Self Assessment</button>
-					<button onclick="showContent('network-interactive-video')">🎬 Interactive Video& e-Content</button>
-		    			<button onclick="showContent('network-assessment')">📝 Assessment</button>
-		    			<button onclick="showContent('network-unit-assessment')">📝 Unit Assessment – 25 Questions</button>                  				</div>
-            		</div>
-            		<!--  ======================================== NETWORK DEVICES ======================================== -->
-            		<div class="topic-block">
-                		<button class="topic-head" type="button" onclick="toggleTopic('netProtocols')">
-                    			<span>📌 &nbsp;NETWORK DEVICES</span>
-                    			<span class="topic-arrow">⌄</span>
-                		</button>
-                		<div class="subtopics" id="netDevices">
-		    			<button onclick="showContent('network-pre-reading')">📖 Pre-reading Material</button>
-		    			<button onclick="showContent('network-quiz')">📝 Quiz</button>
-		    			<button onclick="showContent('network-topologies')">🗺️ Concept Map</button>
-		    			<button onclick="showContent('network-self-assessment')">✅ Self Assessment</button>
-					<button onclick="showContent('network-interactive-video')">🎬 Interactive Video& e-Content</button>
-		    			<button onclick="showContent('network-assessment')">📝 Assessment</button>
-		    			<button onclick="showContent('network-unit-assessment')">📝 Unit Assessment – 25 Questions</button>                  				</div>
-            		</div>
-           		<!--  ======================================== TOPOLOGIES ======================================== -->
-            		<div class="topic-block">
-                		<button class="topic-head" type="button" onclick="toggleTopic('netProtocols')">
-                    			<span>📌 &nbsp;NETWORK TOPOLOGIES</span>
-                    			<span class="topic-arrow">⌄</span>
-                		</button>
-                		<div class="subtopics" id="netTopology">
-		    			<button onclick="showContent('network-pre-reading')">📖 Pre-reading Material</button>
-		    			<button onclick="showContent('network-quiz')">📝 Quiz</button>
-		    			<button onclick="showContent('network-topologies')">🗺️ Concept Map</button>
-		    			<button onclick="showContent('network-self-assessment')">✅ Self Assessment</button>
-					<button onclick="showContent('network-interactive-video')">🎬 Interactive Video& e-Content</button>
-		    			<button onclick="showContent('network-assessment')">📝 Assessment</button>
-		    			<button onclick="showContent('network-unit-assessment')">📝 Unit Assessment – 25 Questions</button>                  				</div>
-            		</div>
-           		<!--  ======================================== NETWORK PROTOCOLS ======================================== -->
-            		<div class="topic-block">
-                		<button class="topic-head" type="button" onclick="toggleTopic('netProtocols')">
-                    			<span>📌 &nbsp;NETWORK PROTOCOLS</span>
-                    			<span class="topic-arrow">⌄</span>
-                		</button>
-                		<div class="subtopics" id="netProtocols">
-		    			<button onclick="showContent('network-pre-reading')">📖 Pre-reading Material</button>
-		    			<button onclick="showContent('network-quiz')">📝 Quiz</button>
-		    			<button onclick="showContent('network-topologies')">🗺️ Concept Map</button>
-		    			<button onclick="showContent('network-self-assessment')">✅ Self Assessment</button>
-					<button onclick="showContent('network-interactive-video')">🎬 Interactive Video& e-Content</button>
-		    			<button onclick="showContent('network-assessment')">📝 Assessment</button>
-		    			<button onclick="showContent('network-unit-assessment')">📝 Unit Assessment – 25 Questions</button>                  				</div>
-            		</div>
-           		<!--  ======================================== WEB CONCEPTS ======================================== -->
-            		<div class="topic-block">
-                		<button class="topic-head" type="button" onclick="toggleTopic('netProtocols')">
-                    			<span>📌 &nbsp;WEB CONCEPTS</span>
-                    			<span class="topic-arrow">⌄</span>
-                		</button>
-                		<div class="subtopics" id="webConcept">
-		    			<button onclick="showContent('network-pre-reading')">📖 Pre-reading Material</button>
-		    			<button onclick="showContent('network-quiz')">📝 Quiz</button>
-		    			<button onclick="showContent('network-topologies')">🗺️ Concept Map</button>
-		    			<button onclick="showContent('network-self-assessment')">✅ Self Assessment</button>
-					<button onclick="showContent('network-interactive-video')">🎬 Interactive Video& e-Content</button>
-		    			<button onclick="showContent('network-assessment')">📝 Assessment</button>
-		    			<button onclick="showContent('network-unit-assessment')">📝 Unit Assessment – 25 Questions</button>                  				</div>
-            		</div>
-        	 </div>
-    	   </div>
-    </aside>
-    <!-- ====================================== CENTRE CONTENT ========================================================= -->
-    <main class="center">
+           			</button>
+    				<div class="subtopics" id="teacher1Services">
+ 					<!-- =================== TOPIC 1 - Network Protocols ============================= -->
+   					<div class="topic-block">                  		
+                				<button class="topic-head" type="button" onclick="toggleTopic('netProtocols')">
+							<span>1. Network Protocols & Web Services </span>
+                    					<span class="topic-arrow">⌄</span>
+                				</button>
+						<!-- ===========================TOPIC 1 RESOURCES================================= -->
+    						<div class="subtopics" id="netProtocols">
+		    					<button onclick="showContent('netProtocols-pre-reading')">📖 Pre-reading Material</button>
+		    					<button onclick="showContent('netProtocols-network-quiz')">📝 Quiz</button>
+		    					<button onclick="showContent('netProtocols-network-map')">🧠 Concept Map</button>
+ 							<button onclick="showContent('netProtocols-network-interactive-video')">🎥 Interactive Video/e-Content	</button>
+		    					<button onclick="showContent('netProtocols-self-assessment')">✅ Self Assessment</button>
+		    				</div>
+    					</div>
+				</div>
+				<!-- ============== TOPIC 3 - CBSE Case-Based Questions ================== -->
+				<div class="topic-block">
+                			<button class="topic-head" type="button" onclick="toggleTopic('netQuestions')">
+                    				<span>📌CBSE Case-Based Questions</span>
+                    				<span class="topic-arrow">⌄</span>
+                			</button>
+					<!-- ===========================TOPIC 3 RESOURCES ================================= -->
+    					<div class="subtopics" id="netQuestions">
+						<button onclick="showContent('network-Questions')">📋 Case-Based Assessment</button>
+	   				</div>
+ 				</div>
+			</div>
+		</div>		
+	</aside>
+
+    	<!-- ====================================== CENTRE CONTENT ========================================================= -->
+    	<main class="center">
           <!-- ======================================== HOME ========================================================= -->
 	  <section class="content-page active" id="home">
     		<div class="welcome">
@@ -1352,7 +1321,7 @@ body
         		<!--  ======================================== PYTHON CARD ========================================  -->
         		<div class="course-card python">
             			<div class="card-icon">🐍</div>
-            			<h2>Unit II –<br>ython </h2>
+            			<h2>Unit II –<br>COMPUTER NETWORK </h2>
             			<p>Python programming concepts and problem solving.</p>
             			<button class="explore" onclick="showContent('python-page')">Explore &nbsp; →</button>
         		</div>
@@ -1621,383 +1590,30 @@ body
     		</div>
 	 </section>
 
-	<!-- ============================================= SQL MAIN PAGE ========================================================= -->
-	<section class="content-page" id="sql-page">
+	<!-- ============================================= SQL MAIN PAGE ========================================================== -->
+	<!-- =============================== Unit II – Computer Networks - left panel ============================================ -->
+	<section class="content-page" id="network-page">
     		<div class="welcome">
-        		<h1>Unit I – SQL</h1>
-        		<p>Introduction to SQL, SQL Commands,Functions and Queries.</p>
-    		</div>
-    		<div class="section-title">🗄️
-        		<span> SQL Topics</span>
-        		<i class="dot"></i>
+        		<h1> Unit II – Computer Networks</h1>
+        		<p> Computer networking concepts,devices, transmission media and protocols.</p>
     		</div>
     		<div class="cards">
         		<div class="card" style="padding:25px;">
-            			<h3>Introduction to SQL</h3>
-            			<p>Basic concepts of SQL and relational databases.</p>
-            			<button class="explore" onclick="showContent('sql-introduction')" style="background:#6430df;">
-                			Open Topic →
-            			</button>
-		        </div>
+            			<h3>Introduction to Networks</h3>
+            			<p>Basic networking concepts.</p>
+            			<button class="explore" onclick="showContent('network-basics')" style="background:#079e9b;">Open Topic →</button>
+        		</div>
         		<div class="card" style="padding:25px;">
-            			<h3>SQL Commands </h3>
-            			<p>DDL, DML, DCL and TCL commands.</p>
-            			<button class="explore" onclick="showContent('sql-ddl')" style="background:#6430df;">
-                			Open Topic →
-            			</button>
-		        </div>
-		        <div class="card" style="padding:25px;">
-		            	<h3>SQL Functions</h3>
-            			<p>String, numeric, date and aggregate functions.</p>
+            			<h3>Network Devices</h3>
+            			<p>Hub, Switch, Router and Gateway.</p>
+            			<button class="explore" onclick="showContent('network-hub')" style="background:#079e9b;">Open Topic →</button>
+        		</div>
+        		<div class="card" style="padding:25px;">
+            			<h3>Network Protocols</h3>
+            			<p>HTTP, HTTPS, FTP, TCP/IP and DNS.</p>
         		</div>
     		</div>
 	</section>
-
-	<!-- ============================================== SQL INTRODUCTION ================================================ -->
-	<section class="content-page" id="sql-introduction">
-    		<div class="welcome">
-        		<h1>Introduction to SQL</h1>
-        		<p>Basic concepts of SQL and relational databases.</p>
-    		</div>
-    		<div class="section-title">📘
-        		<span>Introduction</span>
-        		<i class="dot"></i>
-    		</div>
-    		<div class="content-box">
-        		<h2>What is SQL?</h2>
-        		<p>Write your textbook-based content here.</p>
-        		<p>You can add definitions, explanations,examples, images, tables and videos.</p>
-    		</div>
-	</section>
-	<!-- ======================================= SQL OBJECTIVES ========================================================= -->
-	<section class="content-page" id="sql-objectives">
-    		<div class="welcome">
-        		<h1>Learning Objectives</h1>
-        		<p>Introduction to SQL learning objectives.</p>
-    		</div>
-    		<div class="content-box">
-        		<h2>At the end of this topic, students will be able to:</h2>
-        		<ul>
-            		    <li>Understand the basic concepts of SQL.</li>
-            		    <li>Identify database-related terminology.</li>
-            		    <li>Write basic SQL commands.</li>
-        		</ul>
-    		</div>
-	</section>
-	<!-- ============================================ SQL CONCEPTS ========================================================= -->
-	<section class="content-page" id="sql-concepts">
-    		<div class="welcome">
-        		<h1>SQL Concepts</h1>
-        		<p>Add the complete teaching material here.</p>
-    		</div>
-    		<div class="content-box">
-        		<h2>Important Concepts</h2>
-        		<ul>
-            			<li>Database</li>
-            			<li>Table</li>
-            			<li>Record</li>
-            			<li>Field</li>
-            			<li>Primary Key</li>
-        		</ul>
-    		</div>
-	</section>
-	<!-- ============================================= SQL EXAMPLES ========================================================= -->
-	<section class="content-page" id="sql-examples">
-    		<div class="welcome">
-        		<h1>SQL Examples</h1>
-        		<p>Add SQL examples and demonstrations here.</p>
-    		</div>
-    		<div class="content-box">
-        		<h2>Example Query</h2>
-        		<pre>SELECT *FROM STUDENT;</pre>
-	   	</div>
-	</section>
-	<!-- =========================================== SQL PRACTICE ========================================================= -->
-	<section class="content-page" id="sql-practice">
-    		<div class="welcome">
-        		<h1>SQL Practice</h1>
-       			<p>Add practice questions here.</p>
-    		</div>
-    		<div class="content-box">
-        		<h2>Practice Questions</h2>
-        		<ol>
-            			<li>Define a database.</li>
-            			<li>What is SQL?</li>
-            			<li>Write an SQL command to display all records.</li>
-        		</ol>
-    		</div>
-	</section>
-	<!-- ======================================== SQL ASSESSMENT========================================================= -->
-	<section class="content-page" id="sql-assessment">
-    		<div class="welcome">
-        		<h1>SQL Assessment</h1>
-        		<p>Add assessment questions here.</p>
-    		</div>
-    		<div class="content-box">
-        		<h2> Assessment</h2>
-        		<p>Add MCQs, competency-based questions,case-based questions and other assessment material here.</p>
-    		</div>
-	</section>
-	<!-- ============================================= SQL MIND MAP ========================================================= -->
-	<section class="content-page" id="sql-mindmap">
-    		<div class="welcome">
-        		<h1>SQL Mind Map</h1>
-        		<p>Add your mind map image here.</p>
-    		</div>
-    		<div class="content-box">
-        		<!-- =========================== Replace sql-mindmap.jpg with your actual image.=========================== -->
-        		<img src="sql-mindmap.jpg" alt="SQL Mind Map">
-    		</div>
-	</section>
-	<!-- ================================================= SQL DDL ========================================================= -->
-	<section class="content-page" id="sql-ddl">
-    		<div class="welcome">
-        		<h1>Data Definition Language</h1>
-        		<p>DDL commands and their applications.</p>
-    		</div>
-    		<div class="content-box">
-        		<h2>DDL Commands</h2>
-        		<p>CREATE, ALTER, DROP and TRUNCATE.</p>
-        		<h3>Example</h3>
-        		<pre>
-				CREATE TABLE STUDENT
-				(
-					RollNo INT,Name VARCHAR(30)
-				);
-        		</pre>
-    		</div>
-	</section>
-	<!-- ============================================ SQL DML ========================================================= -->
-	<section class="content-page" id="sql-dml">
-    		<div class="welcome">
-        		<h1>Data Manipulation Language</h1>
-        		<p>DML commands used to manipulate data.</p>
-    		</div>
-    		<div class="content-box">
-        		<h2>DML Commands</h2>
-        		<p>INSERT, UPDATE and DELETE.</p>
-    		</div>
-	</section>
-	<!-- ============================================= SQL DCL ========================================================= -->
-	<section class="content-page" id="sql-dcl">
-    		<div class="welcome">
-        		<h1>Data Control Language </h1>
-        		<p>Add DCL content here.</p>
-    		</div>
-    		<div class="content-box">
-        		<h2>DCL Commands</h2>
-        		<p>GRANT and REVOKE.</p>
-    		</div>
-	</section>
-	<!-- ================================================== SQL TCL========================================================= -->
-	<section class="content-page" id="sql-tcl">
-    		<div class="welcome">
-        		<h1>Transaction Control Language</h1>
-        		<p>Add TCL content here.</p>
-    		</div>
-    		<div class="content-box">
-        		<h2>TCL Commands</h2>
-        		<p>COMMIT, ROLLBACK and SAVEPOINT.</p>
-    		</div>
-	</section>
-	<!-- =============================================== PYTHON MAIN PAGE ================================================ -->
-	<section class="content-page" id="python-page">
-    		<div class="welcome">
-        	     <h1>Unit II – Python</h1>
-        	     <p>Python programming concepts and problem solving. </p>
-    		</div>
-    		<div class="cards">
-        	     <div class="card" style="padding:25px;">
-            		  <h3> Python Basics</h3>
-            		  <p>Python syntax, variables,data types and operators.</p>
-            		  <button class="explore" onclick="showContent('python-introduction')" style="background:#ed1971;">Open Topic →</button>
-                    </div>
-        		<div class="card" style="padding:25px;">
-            			<h3>Control Statements</h3>
-            			<p>Conditional statements and loops.</p>
-            			<button class="explore" onclick="showContent('python-if')" style="background:#ed1971;">Open Topic →</button>
-        		</div>
-        		<div class="card" style="padding:25px;">
-            			<h3> Functions</h3>
-            			<p>Defining and using functions. </p>
-        		</div>
-    		</div>
-	</section>
-	<!-- ====================================================== PYTHON INTRODUCTION================================================ -->
-	<section class="content-page" id="python-introduction">
-    		<div class="welcome">
-			<h1>Introduction to Python</h1>
-       			<p>Add your Python introduction material here.</p>
-    		</div>
-    		<div class="content-box">
-        		<h2>Python</h2>
-        		<p>Add your textbook-based content here.</p>
-    		</div>
-	</section>
-	<!-- =============================================== PYTHON DATA TYPES ===================================================== -->
-	<section class="content-page" id="python-data-types">
-    		<div class="welcome">
-        		<h1> Variables &amp; Data Types</h1>
-        		<p> Add your teaching material here.</p>
-    		</div>
-    		<div class="content-box">
-        		<h2> Data Types</h2>
-        		<ul>
-            			<li>Integer</li>
-            			<li>Float</li>
-            			<li>String</li>
-            			<li>Boolean</li>
-        		</ul>
-    		</div>
-	</section>
-	<!-- =============================================== PYTHON OPERATORS ==================================================== -->
-	<section class="content-page" id="python-operators">
-    		<div class="welcome">
-        <h1>Python Operators</h1>
-        <p>Add operators and examples here.</p>
-    </div>
-    <div class="content-box">
-        <h2> Operators</h2>
-        <p> Arithmetic, relational, logical,assignment and other operators.</p>
-    </div>
-</section>
-
-<!-- ===============================================PYTHON INPUT OUTPUT ========================================================= -->
-<section class="content-page" id="python-input-output">
-    <div class="welcome">
-        <h1>Input &amp; Output</h1>
-        <p>Add input and output concepts here.</p>
-    </div>
-    <div class="content-box">
-        <pre>
-            name = input("Enter your name: ")
-print("Hello", name)
-        </pre>
-
-    </div>
-
-</section>
-<!-- ================================================ PYTHON IF ========================================================= -->
-<section  class="content-page" id="python-if">
-    <div class="welcome">
-        <h1>Conditional Statements</h1>
-        <p>Add if, if-else and elif concepts here.</p>
-    </div>
-    <div class="content-box">
-        <h2>Example</h2>
-        <pre>
-marks = 75
-
-if marks >= 40:
-    print("Pass")
-else:
-    print("Fail")
-        </pre>
-    </div>
-</section>
-<!-- =====================================================PYTHON LOOPS====================================================== -->
-<section  class="content-page" id="python-loops">
-    <div class="welcome">
-        <h1> Loops </h1>
-        <p>Add for loop and while loop content here.</p>
-    </div>
-    <div class="content-box">
-        <h2>Example</h2>
-        <pre>
-for i in range(1,6):
-    print(i)
-        </pre>
-    </div>
-</section>
-<!-- =======================================================PYTHON LISTS====================================================== -->
-<section class="content-page" id="python-lists">
-    <div class="welcome">
-        <h1>Python – Lists</h1>
-        <p> Add your complete lesson material on Lists here.</p>
-    </div>
-    <div class="content-box">
-        <h2>Example</h2>
-        <pre>
-numbers = [10, 20, 30, 40]
-print(numbers)
-        </pre>
-    </div>
-</section>
-
-<!-- ======================================= PYTHON TUPLES======================================================= -->
-<section  class="content-page" id="python-tuples">
-    <div class="welcome">
-        <h1>Python – Tuples</h1>
-        <p>Add your tuple lesson material here. </p>
-    </div>
-   <div class="content-box">
-        <h2> Example</h2>
-        <pre>
-numbers = (10, 20, 30, 40)
-print(numbers)
-        </pre>
-    </div>
-</section>
-<!-- =================================================PYTHON DICTIONARIES=================================================== -->
-<section class="content-page" id="python-dictionaries">
-    <div class="welcome">
-        <h1>Python – Dictionaries</h1>
-        <p>Add dictionary lesson material here</p>
-    </div>
-    <div class="content-box">
-        <pre>
-student = {
-    "name":"Rahul",
-    "marks":85
-}
-
-print(student)
-        </pre>
-    </div>
-</section>
-
-<!-- =================================================  PYTHON SETS===================================================== -->
-<section   class="content-page" id="python-sets">
-   <div class="welcome">
-        <h1> Python – Sets</h1>
-       <p> Add set lesson material here.</p>
-    </div>
-
-    <div class="content-box">
-        <pre>
-numbers = {10,20,30,40}
-
-print(numbers)
-        </pre>
-
-    </div>
-</section>
-
-<!-- =============================================== NETWORK MAIN PAGE========================================================= -->
-<section class="content-page" id="network-page">
-    <div class="welcome">
-        <h1> Unit III – Computer Networks</h1>
-        <p> Computer networking concepts,devices, transmission media and protocols.</p>
-    </div>
-
-    <div class="cards">
-        <div class="card" style="padding:25px;">
-            <h3>Introduction to Networks</h3>
-            <p>Basic networking concepts.</p>
-            <button class="explore" onclick="showContent('network-basics')" style="background:#079e9b;">Open Topic →</button>
-        </div>
-        <div class="card" style="padding:25px;">
-            <h3>Network Devices</h3>
-            <p>Hub, Switch, Router and Gateway.</p>
-            <button class="explore" onclick="showContent('network-hub')" style="background:#079e9b;">Open Topic →</button>
-        </div>
-        <div class="card" style="padding:25px;">
-            <h3>Network Protocols</h3>
-            <p>HTTP, HTTPS, FTP, TCP/IP and DNS.</p>
-        </div>
-    </div>
-</section>
-
 	<!-- ===================================== Introduction to Computer Networks===================================================== -->
 	<section  class="content-page" id="network-basics">
     		<div class="welcome">
@@ -2098,6 +1714,112 @@ print(numbers)
     		</div>
 	</section>
 
+
+
+	<!-- =================================== Unit II – Computer Networks - center panel ========================= -->
+
+
+
+
+
+	<!-- =================================== 2.1 Transmission Media & Networking ========================= -->
+	<!-- =================================== 2.1.1 Transmission Media ============================ -->
+
+
+
+	<!-- =================================== pre-reading ============================ -->
+	<section class="content-page" id="netProtocols-pre-reading">
+    		<div class="material-header">
+      			<h2>📖 Pre-reading Material</h2>
+      			<p> Read the material below before starting the Computer Networks unit.</p>
+      			<a href="https://drive.google.com/file/d/1UVq2OnA8J-yImZEl9FWHh2OG42mpuZmt/view" target="_blank" 
+				class="download-btn">📖 
+				Open Material
+			</a>
+      			<a href="https://drive.google.com/uc?export=download&id=1UVq2OnA8J-yImZEl9FWHh2OG42mpuZmt" download 
+				class="download-btn">
+				⬇ Download Material
+			</a>
+   		</div>
+   		<div class="pdf-container">
+      			<iframe src="https://drive.google.com/file/d/1UVq2OnA8J-yImZEl9FWHh2OG42mpuZmt/preview" 
+				width="100%" height="600" style="border: none;">    
+      			</iframe>
+    		</div>
+	</section>
+
+
+	<!-- =================================== Concept Map ============================ -->
+	<section class="content-page" id="netProtocols-network-map">
+    		<div class="material-header">
+      			<h2>📖 Concept Map</h2>
+      			<p> Read the material below before starting the Computer Networks unit.</p>
+      			<a href="https://drive.google.com/file/d/1NXZswDymp2e2uIsPfp3c5pBDpTY_LJZW/view" target="_blank" 
+				class="download-btn">📖 
+				Open Material
+			</a>
+      			<a href="https://drive.google.com/uc?export=download&id=1NXZswDymp2e2uIsPfp3c5pBDpTY_LJZW" download 
+				class="download-btn">
+				⬇ Download Material
+			</a>
+   		</div>
+   		<div class="pdf-container">
+      			<iframe src="https://drive.google.com/file/d/1NXZswDymp2e2uIsPfp3c5pBDpTY_LJZW/preview" 
+				width="100%" height="600" style="border: none;">    
+      			</iframe>
+    		</div>
+	</section>
+
+	<!-- =================================== Quiz ============================ -->
+	<section class="content-page" id="netProtocols-network-quiz">
+    		<div class="material-header">
+      			<h2>📖 Quiz</h2>
+      			<p> Read the material below before starting the Computer Networks unit.</p>
+      			<a href="https://drive.google.com/file/d/1UVq2OnA8J-yImZEl9FWHh2OG42mpuZmt/view" target="_blank" 
+				class="download-btn">📖 
+				Open Material
+			</a>
+      			<a href="https://drive.google.com/uc?export=download&id=1UVq2OnA8J-yImZEl9FWHh2OG42mpuZmt" download 
+				class="download-btn">
+				⬇ Download Material
+			</a>
+   		</div>
+   		<div class="pdf-container">
+      			<iframe src="https://drive.google.com/file/d/1UVq2OnA8J-yImZEl9FWHh2OG42mpuZmt/preview" 
+				width="100%" height="600" style="border: none;">    
+      			</iframe>
+    		</div>
+	</section>
+
+
+	<!-- =================================== Interactive Video ============================ -->
+	<section class="content-page" id="netProtocols-network-interactive-video">
+    		<div class="material-header">
+      			<h2>🎬 Interactive Video</h2>
+      			<p> Read the material below before starting the Computer Networks unit.</p>
+      			<a href="https://drive.google.com/file/d/1UVq2OnA8J-yImZEl9FWHh2OG42mpuZmt/view" target="_blank" 
+				class="download-btn">📖 
+				Open Material
+			</a>
+      			<a href="https://drive.google.com/uc?export=download&id=1UVq2OnA8J-yImZEl9FWHh2OG42mpuZmt" download 
+				class="download-btn">
+				⬇ Download Material
+			</a>
+   		</div>
+   		<div class="pdf-container">
+      			<iframe src="https://drive.google.com/file/d/1UVq2OnA8J-yImZEl9FWHh2OG42mpuZmt/preview" 
+				width="100%" height="600" style="border: none;">    
+      			</iframe>
+    		</div>
+	</section>
+
+
+
+
+
+	<!-- ===================================3. Network Protocols & Web Services =========================-->
+	<!-- =================================== 3.1 1. Network Protocols & Web Services ========================= -->
+
 	<section class="content-page" id="network-pre-reading">
     		<div class="material-header">
       			<h2>📖 Pre-reading Material</h2>
@@ -2137,10 +1859,33 @@ print(numbers)
 
 
 
+	<!-- ===================================📌CBSE Case-Based Questions =========================-->
+	<!-- =================================== CBSE BASED QUESTION PAPER ========================= -->
+
+	<section class="content-page" id="network-Questions">
+    		<div class="material-header">
+      			<h2>📋 Case-Based Assessment</h2>
+      			<p> Read the material below before starting the Computer Networks unit.</p>
+      			<a href="U1-1-2(interative content)netwrok protocol and webservices worksheet.html" target="_blank" 
+				class="download-btn">📖 
+				Open Material
+			</a>
+      			<a href="U1-1-2(interative content)netwrok protocol and webservices worksheet.html" download 
+				class="download-btn">
+				⬇ Download Material
+			</a>
+   		</div>
+   		<div class="pdf-container">
+      			<iframe src="U1-1-2(interative content)netwrok protocol and webservices worksheet.html" 
+				width="100%" height="600" style="border: none;">    
+      			</iframe>
+    		</div>
+	</section>
+
+
+
 <section class="content-page" id="network-self-assessment">
-
     <h2>✅ Self Assessment</h2>
-
     <a href="materials/network-self-assessment.html"
        target="_blank"
        class="resource-btn">
