@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CBSE Class 12 Computer Networks - Interactive Practice</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f3f6fb;color:#172033;line-height:1.5}
+header{background:linear-gradient(135deg,#173b7a,#2563eb);color:white;padding:28px 20px;text-align:center}
+header h1{margin:0 0 6px;font-size:clamp(25px,4vw,38px)}header p{margin:5px 0}
+nav{position:sticky;top:0;z-index:5;background:#102a56;padding:8px;display:flex;gap:7px;flex-wrap:wrap;justify-content:center}
+nav button{border:0;border-radius:18px;padding:9px 13px;background:#fff;color:#102a56;font-weight:bold;cursor:pointer}
+main{max-width:1100px;margin:auto;padding:20px}.section{display:none}.section.active{display:block}
+.card{background:white;border-radius:15px;padding:20px;margin:14px 0;box-shadow:0 3px 12px #00000012}
+h2{color:#174b9b;margin-top:0}h3{color:#1e40af}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.term{border-left:5px solid #2563eb;background:#eff6ff;padding:12px;border-radius:8px;margin:8px 0}
+.timeline{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}.timeline div{padding:15px;border-radius:10px;background:#f8fafc;border:1px solid #dbe4f0}
+button.action,.submit{background:#2563eb;color:#fff;border:0;border-radius:8px;padding:10px 15px;font-weight:bold;cursor:pointer}
+input[type=text],select,textarea{width:100%;padding:10px;border:1px solid #cbd5e1;border-radius:8px;margin:5px 0 10px}
+.question{border:1px solid #dbe4f0;border-radius:10px;padding:14px;margin:12px 0}.feedback{font-weight:bold;margin-top:8px}
+.correct{color:#15803d}.wrong{color:#b91c1c}.score{font-size:22px;font-weight:bold;color:#174b9b}
+table{width:100%;border-collapse:collapse;background:white}th,td{padding:10px;border:1px solid #dbe4f0;text-align:left}th{background:#eaf2ff}
+.word{display:inline-block;min-width:100px;border-bottom:2px solid #174b9b;text-align:center;margin:0 5px}.puzzle{font-size:18px;font-weight:bold;letter-spacing:1px}
+footer{text-align:center;padding:25px;color:#64748b}.badge{display:inline-block;background:#dbeafe;color:#1e40af;padding:5px 9px;border-radius:15px;margin:3px}
+
+.diagram{background:#f8fbff;border:1px solid #cbdcf5;border-radius:12px;padding:15px;margin:14px 0;overflow:auto}
+.diagram-title{font-weight:bold;color:#174b9b;text-align:center;margin-bottom:10px}
+.flow{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap}
+.node{background:#eaf2ff;border:2px solid #2563eb;border-radius:10px;padding:12px 15px;text-align:center;font-weight:bold;min-width:120px}
+.arrow{font-size:25px;color:#174b9b;font-weight:bold}
+.network-diagram{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;align-items:center;min-width:650px}
+.network-diagram .center{grid-column:2;text-align:center}.network-diagram .left{text-align:center}.network-diagram .right{text-align:center}
+.ip-box{display:flex;justify-content:center;gap:4px;flex-wrap:wrap}
+.ip-part{padding:10px 14px;background:#eaf2ff;border:2px solid #2563eb;border-radius:7px;font-weight:bold}
+.switch-diagram{display:grid;grid-template-columns:1fr 1fr;gap:18px;min-width:650px}
+.path{display:flex;align-items:center;gap:7px;justify-content:center;flex-wrap:wrap}
+.path .node{min-width:80px;padding:9px}
+.packet{background:#dcfce7;border:2px solid #16a34a;border-radius:6px;padding:7px;font-weight:bold}
+.small-note{font-size:13px;color:#475569;text-align:center}
+</style>
+</head>
+<body>
+<header>
+<h1>Computer Networks – Interactive Learning Lab</h1>
+<p>CBSE Class 12 | Unit II | NCERT-aligned practice</p>
+<p><span class="badge">Offline HTML</span><span class="badge">Study + Practice</span><span class="badge">Auto-scoring</span></p>
+</header>
+
+<nav>
+<button onclick="show('learn')">📘 Learn</button>
+<button onclick="show('quiz')">🧠 Quiz</button>
+<button onclick="show('one')">✍️ One-Liners</button>
+<button onclick="show('fill')">🔤 Fill Blanks</button>
+<button onclick="show('puzzle')">🧩 Puzzles</button>
+<button onclick="show('cloze')">📄 Cloze Test</button>
+<button onclick="show('competency')">🎯 Competency</button>
+<button onclick="show('assign')">📝 Assignment</button>
+<button onclick="show('progress')">🏆 Progress</button>
+</nav>
+
+<main>
+<section id="learn" class="section active">
+<div class="card">
+<h2>📘 Unit II: Computer Networks – Complete Study Material</h2>
+<p><b>Learning goal:</b> Read this section first. It covers the topics specified in the CBSE Class 12 Computer Science syllabus in this application. After studying, attempt the quizzes, one-liners, fill-in-the-blanks, puzzles, cloze test and competency-based questions.</p>
+<div class="term"><b>Topics in this unit:</b> Introduction to Computer Networks • Evolution of Networking: ARPANET, NSFNET, Internet • Data Communication • Sender, Receiver, Message, Communication Media, Protocols • Bandwidth • Data Transfer Rate • IP Address • Circuit Switching • Packet Switching</div>
+</div>
+
+<div class="card">
+<h2>1. Introduction to Computer Networks</h2>
+<div class="diagram"><div class="diagram-title">Basic Computer Network</div>
+<div class="network-diagram"><div class="left"><div class="node">💻 Computer A<br><small>Sender</small></div></div>
+<div class="center"><div class="node">🔀 Network<br>Devices</div></div>
+<div class="right"><div class="node">💻 Computer B<br><small>Receiver</small></div></div></div>
+<p class="small-note">Data travels from one device to another through network devices and communication media.</p></div>
+
+<p>A <b>computer network</b> is a collection of two or more interconnected computing devices that can communicate with one another and share data and resources.</p>
+<h3>Why do we need computer networks?</h3>
+<ul>
+<li><b>Resource sharing:</b> Printers, storage devices, applications and Internet connections can be shared.</li>
+<li><b>Data sharing:</b> Users can exchange files and information.</li>
+<li><b>Communication:</b> Email, messaging, video conferencing and other services are possible.</li>
+<li><b>Centralised services:</b> Servers can provide common services to many clients.</li>
+<li><b>Reliability:</b> Data and services can sometimes be made available through alternative devices or paths.</li>
+</ul>
+<h3>Basic idea</h3>
+<p>When one computer sends information to another, the information travels through a communication medium according to agreed rules called <b>protocols</b>.</p>
+<div class="term"><b>Example:</b> When a student accesses a file stored on a school server, the student's computer acts as a sender/receiver depending on the direction of communication, the server participates in the communication, the file is the message/data, the network medium carries the data, and protocols control the exchange.</div>
+</div>
+
+<div class="card">
+<h2>2. Evolution of Networking</h2>
+<div class="diagram"><div class="diagram-title">Networking Evolution</div>
+<div class="flow"><div class="node">ARPANET<br><small>Early packet switching</small></div><div class="arrow">→</div>
+<div class="node">NSFNET<br><small>Academic/research backbone</small></div><div class="arrow">→</div>
+<div class="node">Internet<br><small>Global network of networks</small></div></div></div>
+
+<p>The modern Internet developed gradually from earlier research and academic networks. The syllabus specifically highlights <b>ARPANET, NSFNET and the Internet</b>.</p>
+<div class="timeline">
+<div><h3>ARPANET</h3>
+<p><b>ARPANET</b> stands for <b>Advanced Research Projects Agency Network</b>. It was developed under the U.S. Department of Defense's Advanced Research Projects Agency (ARPA) and became one of the earliest important packet-switching computer networks.</p>
+<p>ARPANET demonstrated that computers at geographically separated locations could communicate over a network. Packet switching was an important concept associated with its development.</p>
+</div>
+<div><h3>NSFNET</h3>
+<p><b>NSFNET</b> stands for <b>National Science Foundation Network</b>. It was established by the U.S. National Science Foundation to support communication among academic and research institutions.</p>
+<p>NSFNET became an important backbone for the growing network of networks and helped expand Internet connectivity beyond the original research environment.</p>
+</div>
+<div><h3>Internet</h3>
+<p>The <b>Internet</b> is a worldwide system of interconnected computer networks. It allows devices and networks around the world to communicate using common protocols, particularly the <b>TCP/IP protocol suite</b>.</p>
+<p>Services such as the World Wide Web, email, file transfer and online communication operate over the Internet.</p>
+</div>
+</div>
+<h3>Easy timeline to remember</h3>
+<p class="term"><b>ARPANET → NSFNET → Growth and interconnection of networks → Internet</b></p>
+</div>
+
+<div class="card">
+<h2>3. Data Communication</h2>
+<div class="diagram"><div class="diagram-title">Five Components of Data Communication</div>
+<div class="flow"><div class="node">Sender</div><div class="arrow">→</div><div class="node">Message</div><div class="arrow">→</div>
+<div class="node">Communication<br>Medium</div><div class="arrow">→</div><div class="node">Receiver</div></div>
+<p class="small-note"><b>Protocol</b> provides the rules followed during the whole exchange.</p></div>
+
+<p><b>Data communication</b> means the exchange of data between two or more devices through some form of communication medium.</p>
+<h3>Characteristics of effective communication</h3>
+<ul>
+<li>The sender and receiver should be correctly identified.</li>
+<li>The data should reach the intended destination.</li>
+<li>The communication should follow agreed protocols.</li>
+<li>The medium should be suitable for the required communication.</li>
+</ul>
+<h3>Five components of data communication</h3>
+<table><tr><th>Component</th><th>Meaning</th><th>Example</th></tr>
+<tr><td><b>Sender</b></td><td>The device that sends the data/message.</td><td>A student's computer sending a file.</td></tr>
+<tr><td><b>Receiver</b></td><td>The device that receives the data/message.</td><td>A school server receiving the file.</td></tr>
+<tr><td><b>Message</b></td><td>The information being communicated.</td><td>Text, image, audio, video or file.</td></tr>
+<tr><td><b>Communication Media</b></td><td>The path through which data travels.</td><td>Ethernet cable, optical fibre or wireless medium.</td></tr>
+<tr><td><b>Protocol</b></td><td>A set of rules that governs communication.</td><td>TCP/IP and other networking protocols.</td></tr>
+</table>
+</div>
+
+<div class="card">
+<h2>4. Communication Media</h2>
+<p>A <b>communication medium</b> is the physical or wireless path used to carry data from sender to receiver.</p>
+<h3>Broad categories</h3>
+<div class="grid">
+<div class="term"><b>Guided / Wired Media</b><br>Signals travel through a physical path such as twisted-pair cable, coaxial cable or optical fibre.</div>
+<div class="term"><b>Unguided / Wireless Media</b><br>Signals travel through the air or space using electromagnetic waves, such as radio or microwave communication.</div>
+</div>
+<p><b>Exam point:</b> The choice of medium depends on factors such as required speed, distance, cost, reliability and environment.</p>
+</div>
+
+<div class="card">
+<h2>5. Protocols</h2>
+<p>A <b>protocol</b> is a set of rules that controls how data is formatted, transmitted and received between communicating devices.</p>
+<h3>Why are protocols needed?</h3>
+<ul>
+<li>They provide a common set of communication rules.</li>
+<li>They help devices understand the structure and meaning of exchanged data.</li>
+<li>They support reliable and organised communication.</li>
+</ul>
+<div class="term"><b>Simple analogy:</b> Two people need a common language and rules of conversation to communicate effectively. Similarly, network devices need protocols.</div>
+</div>
+
+<div class="card">
+<h2>6. Measuring Capacity of Communication Media</h2>
+<div class="diagram"><div class="diagram-title">Data Transfer Rate</div>
+<div class="flow"><div class="node">Sender</div><div class="arrow">→</div><div class="node">Channel<br><small>Capacity / Bandwidth</small></div><div class="arrow">→</div><div class="node">Receiver</div></div>
+<p class="small-note">Data transfer rate tells how much data is transferred per unit time.</p></div>
+
+<h3>Bandwidth</h3>
+<p><b>Bandwidth</b> describes the capacity of a communication channel. In networking contexts, higher bandwidth generally means that more data can be transmitted per unit time.</p>
+<p>Bandwidth may be expressed in units such as <b>bits per second (bps)</b> when referring to digital transmission capacity, or in Hz for the frequency range of an analogue communication channel. Always read the context of the question.</p>
+<h3>Data Transfer Rate</h3>
+<p><b>Data transfer rate</b> is the amount of data transferred from one point to another per unit time. It is commonly measured in <b>bps, Kbps, Mbps or Gbps</b>.</p>
+<table><tr><th>Unit</th><th>Meaning</th></tr>
+<tr><td>1 Kbps</td><td>10³ bits per second (using decimal networking convention)</td></tr>
+<tr><td>1 Mbps</td><td>10⁶ bits per second</td></tr>
+<tr><td>1 Gbps</td><td>10⁹ bits per second</td></tr>
+</table>
+<h3>Important numerical relationship</h3>
+<p><b>1 Byte = 8 bits.</b></p>
+<p>Therefore, if a connection transfers data at 80 Mbps, its theoretical rate in MB/s is:</p>
+<p class="term"><b>80 ÷ 8 = 10 MB/s</b></p>
+<p>Actual file-transfer speed can be lower because of protocol overhead, congestion and other factors.</p>
+</div>
+
+<div class="card">
+<h2>7. IP Address</h2>
+<div class="diagram"><div class="diagram-title">IPv4 = 32 Bits</div><div class="ip-box">
+<div class="ip-part">192<br><small>8 bits</small></div><div class="arrow">.</div>
+<div class="ip-part">168<br><small>8 bits</small></div><div class="arrow">.</div>
+<div class="ip-part">1<br><small>8 bits</small></div><div class="arrow">.</div>
+<div class="ip-part">10<br><small>8 bits</small></div></div>
+<p class="small-note">Four octets × 8 bits = <b>32 bits</b>.</p></div>
+
+<p>An <b>IP address (Internet Protocol address)</b> is a logical address used to identify a device or network interface for communication on an IP network.</p>
+<h3>IPv4</h3>
+<p>IPv4 uses a <b>32-bit</b> address. It is normally written in <b>dotted-decimal notation</b> as four decimal numbers separated by dots.</p>
+<div class="term"><b>Example:</b> 192.168.1.10</div>
+<p>Each of the four parts represents 8 bits, so:</p>
+<p><b>8 + 8 + 8 + 8 = 32 bits</b></p>
+<h3>Why is an IP address important?</h3>
+<p>It helps identify the source and destination of IP packets so that data can be delivered between devices/networks.</p>
+</div>
+
+<div class="card">
+<h2>8. Switching Techniques</h2>
+<div class="diagram"><div class="diagram-title">Circuit vs Packet Switching</div><div class="switch-diagram">
+<div><h3 style="text-align:center">Circuit Switching</h3><div class="path"><div class="node">Source</div><div class="arrow">→</div><div class="node">Dedicated Path</div><div class="arrow">→</div><div class="node">Destination</div></div><p class="small-note">Dedicated path and reserved resources.</p></div>
+<div><h3 style="text-align:center">Packet Switching</h3><div class="path"><div class="node">Source</div><div class="arrow">→</div><div class="packet">P1</div><div class="packet">P2</div><div class="packet">P3</div><div class="arrow">→</div><div class="node">Destination</div></div><p class="small-note">Data is divided into packets and resources are shared.</p></div>
+</div></div>
+
+<p><b>Switching</b> is the technique used to move data from a source to a destination through a communication network.</p>
+<h3>A. Circuit Switching</h3>
+<p>In <b>circuit switching</b>, a dedicated communication path is established between the communicating parties before data transfer begins. Network resources are reserved for that connection for its duration.</p>
+<p><b>Advantages:</b> predictable/dedicated path and consistent connection once established.</p>
+<p><b>Limitation:</b> reserved capacity can remain unused during periods when no data is being sent.</p>
+<p><b>Traditional telephone communication</b> is a classic example.</p>
+<h3>B. Packet Switching</h3>
+<p>In <b>packet switching</b>, a message is divided into smaller units called <b>packets</b>. Packets are transmitted over a shared network and are handled by network devices as they travel toward the destination.</p>
+<p><b>Advantages:</b> efficient use of shared network resources and well suited to bursty computer communication.</p>
+<p><b>Example:</b> Internet data communication.</p>
+<table><tr><th>Point</th><th>Circuit Switching</th><th>Packet Switching</th></tr>
+<tr><td>Connection</td><td>Dedicated path established</td><td>No dedicated end-to-end path required for the entire communication</td></tr>
+<tr><td>Data handling</td><td>Continuous stream over reserved connection</td><td>Message is divided into packets</td></tr>
+<tr><td>Resource use</td><td>Reserved</td><td>Shared dynamically</td></tr>
+<tr><td>Typical example</td><td>Traditional telephone network</td><td>Internet</td></tr>
+</table>
+</div>
+
+<div class="card">
+<h2>9. Circuit Switching vs Packet Switching – Quick Concept Check</h2>
+<div class="grid">
+<div class="term"><b>Think Circuit:</b> First establish a dedicated road, then use it for the communication.</div>
+<div class="term"><b>Think Packet:</b> Break the message into packets and send them through a shared network.</div>
+</div>
+<p><b>Competency hint:</b> If a question describes continuous dedicated resource reservation, think <b>circuit switching</b>. If it describes data divided into packets and shared network resources, think <b>packet switching</b>.</p>
+</div>
+
+<div class="card">
+<h2>10. CBSE Exam-Oriented Key Points</h2>
+<ul>
+<li>ARPANET is an important ancestor of today's Internet and is associated with early packet-switching networking.</li>
+<li>NSFNET helped connect academic and research institutions and supported Internet growth.</li>
+<li>The Internet is a global network of interconnected networks.</li>
+<li>The five data communication components are <b>sender, receiver, message, communication medium and protocol</b>.</li>
+<li>Bandwidth represents communication-channel capacity; data transfer rate expresses how much data is transferred per unit time.</li>
+<li>IPv4 uses <b>32 bits</b> and dotted-decimal notation.</li>
+<li>Circuit switching establishes a dedicated path.</li>
+<li>Packet switching divides data into packets and uses shared network resources.</li>
+<li>1 Byte = 8 bits.</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>📚 Study Strategy</h2>
+<ol>
+<li>Read all topic cards carefully.</li>
+<li>Use the comparison table to revise switching techniques.</li>
+<li>Memorise the five components of data communication.</li>
+<li>Practise the bandwidth/data-rate conversion.</li>
+<li>Then attempt the <b>MCQ Quiz</b>.</li>
+<li>After the quiz, solve the <b>One-Liners, Fill in the Blanks, Puzzles and Cloze Test</b>.</li>
+<li>Finally attempt the <b>Competency-Based Questions</b> and Assignment.</li>
+</ol>
+</div>
+</section>
+
+<section id="competency" class="section">
+<div class="card"><h2>🎯 Competency-Based Questions</h2>
+<p>These questions test application, analysis and reasoning rather than simple memorisation. Read each situation and choose the best answer.</p>
+<div id="competencyBox"></div>
+<button class="submit" onclick="gradeCompetency()">Submit Competency Test</button>
+<p id="competencyScore"></p>
+</div>
+</section>
+
+<section id="quiz" class="section">
+<div class="card"><h2>MCQ Quiz</h2><div id="quizBox"></div><button class="submit" onclick="gradeQuiz()">Submit Quiz</button><p id="quizScore"></p></div>
+</section>
+
+<section id="one" class="section">
+<div class="card"><h2>One-Liner Questions</h2><p>Type a short answer. Then click <b>Show Answer</b> to self-check.</p>
+<div id="oneBox"></div></div>
+</section>
+
+<section id="fill" class="section">
+<div class="card"><h2>Fill in the Blanks</h2><div id="fillBox"></div><button class="submit" onclick="gradeFill()">Check Answers</button><p id="fillScore"></p></div>
+</section>
+
+<section id="puzzle" class="section">
+<div class="card"><h2>Networking Word Puzzles</h2><p>Unscramble the letters to form a networking term.</p><div id="puzzleBox"></div></div>
+</section>
+
+<section id="cloze" class="section">
+<div class="card"><h2>Cloze Test</h2><p>Choose the correct words from the dropdowns.</p><div id="clozeBox"></div><button class="submit" onclick="gradeCloze()">Check Cloze Test</button><p id="clozeScore"></p></div>
+</section>
+
+<section id="assign" class="section">
+<div class="card"><h2>Practice Assignments – 50 Tasks</h2><p>Complete these after studying the Learn section.</p><ol><li>Define a computer network.</li><li>List four advantages of networking.</li><li>Explain why protocols are needed.</li><li>Explain ARPANET.</li><li>Expand ARPANET.</li><li>Explain NSFNET.</li><li>Expand NSFNET.</li><li>Write a short note on the Internet.</li><li>Draw an ARPANET → NSFNET → Internet timeline.</li><li>Define data communication.</li><li>Draw the five components of data communication.</li><li>Explain sender with an example.</li><li>Explain receiver with an example.</li><li>Explain message with an example.</li><li>Explain communication media.</li><li>Explain protocol using a real-life analogy.</li><li>Differentiate guided and unguided media.</li><li>Give three guided-media examples.</li><li>Give three unguided-media examples.</li><li>Define bandwidth.</li><li>Define data transfer rate.</li><li>List four data-rate units.</li><li>Explain bit versus byte.</li><li>Convert 40 Mbps into MB/s.</li><li>Convert 120 Mbps into MB/s.</li><li>Convert 2 Gbps into Mbps.</li><li>A 20 MB file is transferred at 10 MB/s. Calculate time.</li><li>A 20 MB file is transferred at 10 Mbps. Calculate theoretical time.</li><li>Define IP address.</li><li>Explain IPv4.</li><li>Draw the structure of an IPv4 address.</li><li>Explain dotted-decimal notation.</li><li>Define switching.</li><li>Explain circuit switching.</li><li>Explain packet switching.</li><li>Draw a circuit-switching diagram.</li><li>Draw a packet-switching diagram.</li><li>Write four differences between circuit and packet switching.</li><li>Give a circuit-switching example.</li><li>Give a packet-switching example.</li><li>Explain why packet switching suits bursty computer data.</li><li>Explain why circuit switching can underutilise resources.</li><li>Create a circuit-vs-packet comparison table.</li><li>Case study: choose switching for a telephone call and justify.</li><li>Case study: choose switching for Internet file transfer and justify.</li><li>Design a school lab network and identify sender, receiver, message, medium and protocol.</li><li>Create a poster titled “From ARPANET to Internet”.</li><li>Create an IPv4 concept poster.</li><li>Prepare a one-page revision sheet for the complete unit.</li><li>Write five competency-based questions of your own and provide answers.</li></ol></div><div class="card"><h2>Challenge Assignment</h2>
+<p>Design a small school network for a computer lab. Identify sender, receiver, message, communication medium and protocols in one realistic example.</p>
+<textarea id="assignmentText" rows="7" placeholder="Write your answer here..."></textarea>
+<button class="action" onclick="saveAssignment()">Save Locally</button>
+<span id="saveMsg"></span>
+</div>
+</section>
+
+<section id="progress" class="section">
+<div class="card"><h2>Your Progress</h2><p id="progressText">Complete activities to see your progress.</p>
+<button class="action" onclick="resetProgress()">Reset Saved Progress</button></div>
+</section>
+</main>
+<footer>CBSE Class 12 Computer Science – Unit II: Computer Networks | Works without Internet</footer>
+
+<script>
+const quiz=[["What is a computer network?", "A collection of interconnected computing devices", ["A collection of interconnected computing devices", "Academic and research connectivity", "8 bits", "Reserved capacity may be underutilised"]], ["Which is an important ancestor of the Internet?", "ARPANET", ["ARPANET", "Protocol", "Packet switching", "Gigabits per second"]], ["What does ARPANET stand for?", "Advanced Research Projects Agency Network", ["Advanced Research Projects Agency Network", "192.168.1.10", "A wireless path using electromagnetic waves", "A computer sending a file"]], ["Which organisation established NSFNET?", "National Science Foundation", ["National Science Foundation", "It shares network resources dynamically", "Four", "The four decimal octets"]], ["NSFNET mainly supported what?", "Academic and research connectivity", ["Academic and research connectivity", "Megabits per second", "Bursty computer communication", "National Science Foundation"]], ["The Internet is best described as what?", "A global network of interconnected networks", ["A global network of interconnected networks", "A file, image, text, audio or video", "Circuit = dedicated path; Packet = packets/shared resources", "Protocol"]], ["What is data communication?", "Exchange of data between devices through a communication medium", ["Exchange of data between devices through a communication medium", "32-bit address", "Sender", "192.168.1.10"]], ["Which component sends data?", "Sender", ["Sender", "Advanced Research Projects Agency Network", "Mbps", "It shares network resources dynamically"]], ["Which component receives data?", "Receiver", ["Receiver", "Communication medium", "Circuit switching", "Megabits per second"]], ["What is the information being communicated called?", "Message", ["Message", "Dotted-decimal notation", "A physical path such as cable or optical fibre", "A file, image, text, audio or video"]], ["What carries data between devices?", "Communication medium", ["Communication medium", "Packet switching", "1000 Mbps", "32-bit address"]], ["What governs communication rules?", "Protocol", ["Protocol", "Radio waves", "Ethernet cable", "Advanced Research Projects Agency Network"]], ["What does bandwidth describe?", "Capacity of a communication channel", ["Capacity of a communication channel", "They provide common communication rules", "Wide Area Network", "Message"]], ["What does data transfer rate describe?", "Amount of data transferred per unit time", ["Amount of data transferred per unit time", "Data is divided into packets", "A global network of interconnected networks", "Dotted-decimal notation"]], ["Which is a common data-rate unit?", "Mbps", ["Mbps", "ARPANET", "Capacity of a communication channel", "Packet switching"]], ["1 byte equals how many bits?", "8 bits", ["8 bits", "Receiver", "Moving data through a network from source to destination", "Radio waves"]], ["IPv4 uses how many bits?", "32", ["32", "8 bits", "TCP/IP", "They provide common communication rules"]], ["IPv4 is commonly written using what notation?", "Dotted-decimal notation", ["Dotted-decimal notation", "Circuit switching", "10 MB/s", "Data is divided into packets"]], ["Which is a valid IPv4-style address?", "192.168.1.10", ["192.168.1.10", "Optical fibre", "A computer receiving a file", "ARPANET"]], ["What is an IP address?", "A logical address used to identify a device/interface on an IP network", ["A logical address used to identify a device/interface on an IP network", "8", "Local Area Network", "Receiver"]], ["What is switching?", "Moving data through a network from source to destination", ["Moving data through a network from source to destination", "Dedicated communication path", "Academic and research connectivity", "8 bits"]], ["Which switching method establishes a dedicated path?", "Circuit switching", ["Circuit switching", "A collection of interconnected computing devices", "Protocol", "10 MB/s"]], ["Which switching method divides data into packets?", "Packet switching", ["Packet switching", "Sender", "192.168.1.10", "Optical fibre"]], ["Traditional telephone networks are a classic example of which switching?", "Circuit switching", ["Circuit switching", "Mbps", "Reserved capacity may be underutilised", "8"]], ["Internet data communication commonly uses which switching concept?", "Packet switching", ["Packet switching", "Circuit switching", "Gigabits per second", "Dedicated communication path"]], ["Why is packet switching efficient?", "It shares network resources dynamically", ["It shares network resources dynamically", "A wireless path using electromagnetic waves", "A computer sending a file", "A collection of interconnected computing devices"]], ["What is a limitation of circuit switching?", "Reserved capacity may be underutilised", ["Reserved capacity may be underutilised", "Four", "The four decimal octets", "Sender"]], ["Which protocol suite is fundamental to Internet communication?", "TCP/IP", ["TCP/IP", "Bursty computer communication", "National Science Foundation", "Mbps"]], ["What is a guided medium?", "A physical path such as cable or optical fibre", ["A physical path such as cable or optical fibre", "Circuit = dedicated path; Packet = packets/shared resources", "Communication medium", "Circuit switching"]], ["What is an unguided medium?", "A wireless path using electromagnetic waves", ["A wireless path using electromagnetic waves", "Exchange of data between devices through a communication medium", "Dotted-decimal notation", "A physical path such as cable or optical fibre"]], ["Give one guided medium.", "Optical fibre", ["Optical fibre", "Amount of data transferred per unit time", "Packet switching", "Four"]], ["Give one unguided medium.", "Radio waves", ["Radio waves", "Moving data through a network from source to destination", "Megabits per second", "Bursty computer communication"]], ["What does Mbps mean?", "Megabits per second", ["Megabits per second", "TCP/IP", "A file, image, text, audio or video", "Circuit = dedicated path; Packet = packets/shared resources"]], ["What does Gbps mean?", "Gigabits per second", ["Gigabits per second", "1000 Mbps", "32-bit address", "Exchange of data between devices through a communication medium"]], ["80 Mbps is how many MB/s?", "10 MB/s", ["10 MB/s", "Ethernet cable", "Advanced Research Projects Agency Network", "Amount of data transferred per unit time"]], ["1 Gbps is how many Mbps?", "1000 Mbps", ["1000 Mbps", "Wide Area Network", "Message", "Moving data through a network from source to destination"]], ["How many octets are in an IPv4 address?", "Four", ["Four", "A global network of interconnected networks", "32", "TCP/IP"]], ["How many bits are in each IPv4 octet?", "8", ["8", "Capacity of a communication channel", "Circuit switching", "10 MB/s"]], ["Why are protocols needed?", "They provide common communication rules", ["They provide common communication rules", "A logical address used to identify a device/interface on an IP network", "Optical fibre", "Ethernet cable"]], ["What is a message example?", "A file, image, text, audio or video", ["A file, image, text, audio or video", "Reserved capacity may be underutilised", "8", "Wide Area Network"]], ["What is a sender example?", "A computer sending a file", ["A computer sending a file", "Gigabits per second", "Data is divided into packets", "A global network of interconnected networks"]], ["What is a receiver example?", "A computer receiving a file", ["A computer receiving a file", "A computer sending a file", "ARPANET", "Capacity of a communication channel"]], ["What is a communication medium example?", "Ethernet cable", ["Ethernet cable", "Local Area Network", "Receiver", "A logical address used to identify a device/interface on an IP network"]], ["What is packet switching especially suitable for?", "Bursty computer communication", ["Bursty computer communication", "Academic and research connectivity", "8 bits", "Reserved capacity may be underutilised"]], ["What is characteristic of circuit switching?", "Dedicated communication path", ["Dedicated communication path", "Protocol", "Packet switching", "Gigabits per second"]], ["What is characteristic of packet switching?", "Data is divided into packets", ["Data is divided into packets", "192.168.1.10", "A wireless path using electromagnetic waves", "A computer sending a file"]], ["What is characteristic of IPv4?", "32-bit address", ["32-bit address", "It shares network resources dynamically", "Four", "Local Area Network"]], ["What does an IPv4 dot separate?", "The four decimal octets", ["The four decimal octets", "Megabits per second", "Bursty computer communication", "Academic and research connectivity"]], ["What does LAN stand for?", "Local Area Network", ["Local Area Network", "A file, image, text, audio or video", "A collection of interconnected computing devices", "Protocol"]], ["What does WAN stand for?", "Wide Area Network", ["Wide Area Network", "32-bit address", "Sender", "192.168.1.10"]], ["What is the useful memory aid for switching?", "Circuit = dedicated path; Packet = packets/shared resources", ["Circuit = dedicated path; Packet = packets/shared resources", "National Science Foundation", "Mbps", "It shares network resources dynamically"]]];
+function makeQuiz(){let h="";quiz.forEach((q,i)=>{h+=`<div class="question"><b>${i+1}. ${q[0]}</b><br>`+q[2].map(x=>`<label><input type="radio" name="q${i}" value="${x}"> ${x}</label><br>`).join("")+`<div id="qf${i}"></div></div>`});document.getElementById("quizBox").innerHTML=h}
+function gradeQuiz(){let s=0;quiz.forEach((q,i)=>{let a=document.querySelector(`input[name=q${i}]:checked`),f=document.getElementById("qf"+i);if(a&&a.value===q[1]){s++;f.innerHTML='<span class="correct">✓ Correct</span>'}else f.innerHTML='<span class="wrong">✗ Correct answer: '+q[1]+'</span>'});document.getElementById("quizScore").innerHTML=`<span class="score">Score: ${s}/${quiz.length}</span>`;saveScore("quiz",s,quiz.length);updateProgress()}
+const one=[["Define a computer network.", "A collection of interconnected computing devices that communicate and share data/resources."], ["Expand ARPANET.", "Advanced Research Projects Agency Network."], ["What is ARPANET?", "An early packet-switching network and an important ancestor of the Internet."], ["Expand NSFNET.", "National Science Foundation Network."], ["What was NSFNET used for?", "Supporting connectivity among academic and research institutions."], ["What is the Internet?", "A global network of interconnected networks."], ["Define data communication.", "Exchange of data between two or more devices through a communication medium."], ["Name the five components of data communication.", "Sender, receiver, message, communication medium and protocol."], ["What is a sender?", "The device that sends data."], ["What is a receiver?", "The device that receives data."], ["What is a message?", "The information being communicated."], ["What is a communication medium?", "The path through which data travels."], ["What is a protocol?", "A set of rules governing communication."], ["Why are protocols needed?", "They allow devices to communicate using common rules."], ["Define bandwidth.", "The capacity of a communication channel."], ["Define data transfer rate.", "The amount of data transferred per unit time."], ["What does bps mean?", "Bits per second."], ["What does Mbps mean?", "Megabits per second."], ["What does Gbps mean?", "Gigabits per second."], ["How many bits are in one byte?", "8 bits."], ["Define IP address.", "A logical address identifying a device/interface on an IP network."], ["How many bits are in IPv4?", "32 bits."], ["How is IPv4 normally written?", "Dotted-decimal notation."], ["Give an IPv4 example.", "192.168.1.10."], ["What is switching?", "The technique of moving data through a network."], ["Define circuit switching.", "Establishing a dedicated communication path for a connection."], ["Define packet switching.", "Dividing data into packets and transmitting them over a shared network."], ["Give a circuit-switching example.", "Traditional telephone network."], ["Give a packet-switching example.", "Internet data communication."], ["What is a packet?", "A smaller unit into which data is divided."], ["Why can circuit switching underutilise resources?", "Reserved capacity may be unused during idle periods."], ["Why is packet switching efficient?", "Network resources are shared dynamically."], ["What is TCP/IP?", "A protocol suite fundamental to Internet communication."], ["What is guided media?", "A physical communication path."], ["What is unguided media?", "A wireless communication path."], ["Name one guided medium.", "Optical fibre."], ["Name one unguided medium.", "Radio waves."], ["What is LAN?", "Local Area Network."], ["What is WAN?", "Wide Area Network."], ["What is an IPv4 octet?", "One of four 8-bit parts of an IPv4 address."], ["How many octets are in IPv4?", "Four."], ["How many bits are in each octet?", "8 bits."], ["What does a dedicated path mean?", "A path reserved for a particular connection."], ["What is bursty traffic?", "Data traffic sent in bursts with gaps or varying activity."], ["Which switching is suited to bursty computer data?", "Packet switching."], ["What is a logical address?", "An address used by the network layer to identify a device/interface."], ["What does 80 Mbps equal in MB/s?", "10 MB/s."], ["What does 1 Gbps equal in Mbps?", "1000 Mbps."], ["What is the main difference between circuit and packet switching?", "Circuit uses a dedicated path; packet switching divides data into packets and shares resources."], ["Write the simplified evolution sequence.", "ARPANET → NSFNET → Internet."]];
+function makeOne(){document.getElementById("oneBox").innerHTML=one.map((x,i)=>`<div class="question"><b>${i+1}. ${x[0]}</b><input type="text" placeholder="Type your answer"><button class="action" onclick="this.nextElementSibling.style.display='block'">Show Answer</button><div style="display:none;margin-top:8px" class="term"><b>Answer:</b> ${x[1]}</div></div>`).join("")}
+const fill=[["A collection of interconnected devices is a ________.", "network"], ["ARPANET was an early ________-switching network.", "packet"], ["ARPANET was an important ancestor of the ________.", "internet"], ["NSFNET was established by the National ________ Foundation.", "science"], ["The Internet is a global network of interconnected ________.", "networks"], ["Exchange of data is called data ________.", "communication"], ["The device that sends data is the ________.", "sender"], ["The device that receives data is the ________.", "receiver"], ["The information being sent is the ________.", "message"], ["The path used for data is the communication ________.", "medium"], ["Communication rules are called ________.", "protocols"], ["Bandwidth describes channel ________.", "capacity"], ["Data transfer rate is measured per ________.", "second"], ["Mbps means megabits per ________.", "second"], ["Gbps means gigabits per ________.", "second"], ["One byte contains ________ bits.", "8"], ["IPv4 uses ________ bits.", "32"], ["IPv4 uses ________-decimal notation.", "dotted"], ["An IPv4 address has four ________.", "octets"], ["Each octet has ________ bits.", "8"], ["Switching moves data from source to ________.", "destination"], ["Circuit switching establishes a ________ path.", "dedicated"], ["Packet switching divides data into ________.", "packets"], ["Traditional telephone communication is associated with ________ switching.", "circuit"], ["Internet data communication commonly uses ________ switching.", "packet"], ["TCP/IP is a protocol ________.", "suite"], ["Optical fibre is a ________ medium.", "guided"], ["Radio waves are an ________ medium.", "unguided"], ["1 byte = ________ bits.", "8"], ["80 Mbps = ________ MB/s.", "10"], ["1 Gbps = ________ Mbps.", "1000"], ["An IP address is a ________ address.", "logical"], ["The source of a message is the ________.", "sender"], ["The destination of a message is the ________.", "receiver"], ["A file can be a communication ________.", "message"], ["A cable can be a communication ________.", "medium"], ["A common set of rules is a ________.", "protocol"], ["Packet switching shares network ________.", "resources"], ["Circuit switching generally ________ resources.", "reserves"], ["Reserved capacity can be ________ during idle periods.", "underutilised"], ["LAN stands for Local Area ________.", "Network"], ["WAN stands for Wide Area ________.", "Network"], ["IPv4 is a ________-bit addressing system.", "32"], ["A dot separates IPv4 ________.", "octets"], ["Data transfer rate tells how much data is transferred per unit of ________.", "time"], ["High bandwidth generally means higher communication ________.", "capacity"], ["Packet switching is suitable for ________ computer traffic.", "bursty"], ["Circuit switching uses a ________ communication path.", "dedicated"], ["The Internet is a network of ________.", "networks"], ["A protocol provides communication ________.", "rules"]];
+function makeFill(){document.getElementById("fillBox").innerHTML=fill.map((x,i)=>`<div class="question">${i+1}. ${x[0]}<input id="f${i}" type="text"><span id="ff${i}"></span></div>`).join("")}
+function gradeFill(){let s=0;fill.forEach((x,i)=>{let v=document.getElementById("f"+i).value.trim().toLowerCase();let ok=v===x[1];if(ok)s++;document.getElementById("ff"+i).innerHTML=ok?' <span class="correct">✓</span>':` <span class="wrong">✗ (${x[1]})</span>`});document.getElementById("fillScore").innerHTML=`<span class="score">Score: ${s}/${fill.length}</span>`;saveScore("fill",s,fill.length);updateProgress()}
+const puzzles=[["TENRINET","INTERNET"],["TOCLOROP","PROTOCOL"],["TCEKAP","PACKET"],["SENDER","SENDER"],["SSREEDDAIP","IP ADDRESS"],["WTHDABAIN","BANDWIDTH"]];
+function makePuzzle(){document.getElementById("puzzleBox").innerHTML=puzzles.map((x,i)=>`<div class="question"><span class="puzzle">${i+1}. ${x[0]}</span><br><input id="p${i}" type="text" placeholder="Your answer"><button class="action" onclick="checkPuzzle(${i})">Check</button><span id="pf${i}"></span></div>`).join("")}
+function checkPuzzle(i){let v=document.getElementById("p"+i).value.trim().replace(/\s/g,"").toLowerCase(),a=puzzles[i][1].replace(/\s/g,"").toLowerCase();document.getElementById("pf"+i).innerHTML=v===a?' <span class="correct">✓ Correct!</span>':` <span class="wrong">✗ Answer: ${puzzles[i][1]}</span>`}
+const cloze=[["A ________ connects computing devices.", "network", ["network", "message", "protocol"]], ["ARPANET used early ________ switching.", "packet", ["packet", "circuit", "IP"]], ["NSFNET supported ________ and research institutions.", "academic", ["academic", "personal", "domestic"]], ["The Internet is a network of interconnected ________.", "networks", ["networks", "files", "screens"]], ["A device that sends data is a ________.", "sender", ["sender", "receiver", "medium"]], ["A device that receives data is a ________.", "receiver", ["receiver", "sender", "message"]], ["Information being communicated is the ________.", "message", ["message", "protocol", "bandwidth"]], ["The communication path is the ________.", "medium", ["medium", "sender", "packet"]], ["Communication rules are called ________.", "protocols", ["protocols", "packets", "octets"]], ["Bandwidth describes channel ________.", "capacity", ["capacity", "colour", "address"]], ["Data transfer rate is measured in bits per ________.", "second", ["second", "byte", "hour"]], ["One byte contains ________ bits.", "8", ["4", "8", "16"]], ["IPv4 has a ________-bit address.", "32", ["16", "32", "64"]], ["IPv4 uses ________ notation.", "dotted-decimal", ["dotted-decimal", "Roman", "text"]], ["192.168.1.10 is an ________ address.", "IPv4", ["IPv4", "IPv6", "MAC"]], ["Circuit switching uses a ________ path.", "dedicated", ["dedicated", "random", "packet"]], ["Packet switching divides data into ________.", "packets", ["packets", "circuits", "cables"]], ["Traditional telephone systems are associated with ________ switching.", "circuit", ["circuit", "packet", "LAN"]], ["Internet communication commonly uses ________ switching.", "packet", ["packet", "circuit", "manual"]], ["TCP/IP is a protocol ________.", "suite", ["suite", "cable", "address"]], ["Optical fibre is a ________ medium.", "guided", ["guided", "unguided", "wireless"]], ["Radio waves are ________ media.", "unguided", ["unguided", "guided", "wired"]], ["Mbps means megabits per ________.", "second", ["second", "minute", "byte"]], ["Gbps means gigabits per ________.", "second", ["second", "minute", "hour"]], ["80 Mbps equals ________ MB/s.", "10", ["5", "10", "80"]], ["1 Gbps equals ________ Mbps.", "1000", ["100", "1000", "10000"]], ["An IP address is a ________ address.", "logical", ["logical", "physical", "visual"]], ["IPv4 has four ________.", "octets", ["octets", "packets", "protocols"]], ["Each octet has ________ bits.", "8", ["4", "8", "16"]], ["Packet switching shares network ________.", "resources", ["resources", "screens", "files"]], ["Circuit switching ________ resources.", "reserves", ["reserves", "deletes", "compresses"]], ["Idle reserved capacity may be ________.", "underutilised", ["underutilised", "encrypted", "duplicated"]], ["A sender and receiver need common communication ________.", "protocols", ["protocols", "monitors", "files"]], ["A text file can be a communication ________.", "message", ["message", "medium", "router"]], ["A cable is a communication ________.", "medium", ["medium", "message", "protocol"]], ["The Internet connects many independent ________.", "networks", ["networks", "keyboards", "monitors"]], ["A local area network is a ________.", "LAN", ["LAN", "WAN", "PAN"]], ["A wide area network is a ________.", "WAN", ["WAN", "LAN", "PAN"]], ["Packet switching is suitable for ________ traffic.", "bursty", ["bursty", "constant-only", "offline"]], ["Circuit switching provides a ________ path.", "dedicated", ["dedicated", "random", "packet"]], ["A protocol defines communication ________.", "rules", ["rules", "screens", "cables"]], ["Bandwidth relates to channel ________.", "capacity", ["capacity", "colour", "security"]], ["The source device is the ________.", "sender", ["sender", "receiver", "packet"]], ["The destination device is the ________.", "receiver", ["receiver", "sender", "medium"]], ["ARPANET was developed under ________.", "ARPA", ["ARPA", "NASA", "WHO"]], ["NSFNET was established by the U.S. National ________ Foundation.", "Science", ["Science", "Space", "Security"]], ["The Internet uses the ________/IP protocol suite.", "TCP", ["TCP", "HTML", "USB"]], ["Data in packet switching is divided before ________.", "transmission", ["transmission", "printing", "deletion"]], ["A dedicated path is characteristic of ________ switching.", "circuit", ["circuit", "packet", "broadcast"]], ["A packet is a smaller ________ of transmitted data.", "unit", ["unit", "cable", "protocol"]]];
+function makeCloze(){document.getElementById("clozeBox").innerHTML=cloze.map((x,i)=>`<div class="question">${i+1}. ${x[0].replace("________",`<select id="c${i}"><option value="">--select--</option>${x[2].map(o=>`<option>${o}</option>`).join("")}</select>`)}</div>`).join("")}
+function gradeCloze(){let s=0;cloze.forEach((x,i)=>{let ok=document.getElementById("c"+i).value===x[1];if(ok)s++;document.getElementById("c"+i).style.borderColor=ok?"#16a34a":"#dc2626"});document.getElementById("clozeScore").innerHTML=`<span class="score">Score: ${s}/${cloze.length}</span>`;saveScore("cloze",s,cloze.length);updateProgress()}
+const competency=[["A school connects computers across two cities. Which network type is suitable?", "WAN", ["LAN", "WAN", "PAN", "Single computer"]], ["A PDF sent from a teacher to a student represents which component?", "Message", ["Sender", "Message", "Protocol", "Medium"]], ["The teacher's computer sending the PDF is the:", "Sender", ["Sender", "Receiver", "Message", "Bandwidth"]], ["The student's computer receiving the PDF is the:", "Receiver", ["Sender", "Receiver", "Message", "Protocol"]], ["Rules followed during communication are:", "Protocols", ["Packets", "Protocols", "Cables", "Files"]], ["Optical fibre is a:", "Guided medium", ["Guided medium", "Unguided medium", "Protocol", "Message"]], ["Radio waves are an:", "Unguided medium", ["Guided medium", "Unguided medium", "Message", "IP address"]], ["A telephone path is reserved before conversation. This is:", "Circuit switching", ["Packet switching", "Circuit switching", "Broadcasting", "None"]], ["A file is divided into packets and sent through shared resources. This is:", "Packet switching", ["Circuit switching", "Packet switching", "Dedicated switching", "None"]], ["Unused reserved capacity during silence illustrates:", "Underutilisation of reserved resources", ["Underutilisation of reserved resources", "Packet loss", "Protocol failure", "IP failure"]], ["An 80 Mbps connection has a theoretical rate of:", "10 MB/s", ["5 MB/s", "10 MB/s", "20 MB/s", "80 MB/s"]], ["Which has greater capacity: 100 Mbps or 10 Mbps?", "100 Mbps", ["10 Mbps", "100 Mbps", "Both", "Neither"]], ["192.168.1.25 most likely represents:", "IPv4", ["IPv4", "IPv6", "MAC", "Port"]], ["How many bits are in 192.168.1.25?", "32", ["16", "32", "64", "128"]], ["Why are dots used in IPv4 notation?", "They separate the four decimal octets", ["They separate the four decimal octets", "They indicate protocols", "They indicate packets", "They indicate bandwidth"]], ["Bursty computer data is generally well suited to:", "Packet switching", ["Circuit switching", "Packet switching", "No switching", "Manual switching"]], ["A dedicated path is characteristic of:", "Circuit switching", ["Packet switching", "Circuit switching", "Broadcasting", "Routing only"]], ["An image being transmitted is a:", "Message", ["Message", "Protocol", "Medium", "Sender"]], ["Devices use incompatible communication rules. The likely issue is:", "Protocol mismatch", ["Protocol mismatch", "Extra bandwidth", "More storage", "No IP"]], ["Why are protocols essential?", "They provide common rules for communication", ["They provide common rules for communication", "They are physical cables", "They are monitors", "They are files"]], ["1 Gbps is approximately:", "1000 Mbps", ["100 Mbps", "500 Mbps", "1000 Mbps", "10000 Mbps"]], ["40 Mbps equals:", "5 MB/s", ["4 MB/s", "5 MB/s", "8 MB/s", "40 MB/s"]], ["A logical address on an IP network is a:", "IP address", ["File name", "Screen resolution", "Keyboard code", "Cable colour"]], ["A school-building network is generally a:", "LAN", ["WAN", "LAN", "Global Internet", "Satellite-only network"]], ["A company network spanning cities is a:", "WAN", ["LAN", "WAN", "Single-user network", "Keyboard network"]], ["Does packet switching require one permanently reserved path?", "No", ["Yes", "No", "Always", "Only wireless"]], ["Does circuit switching normally divide a message into independently shared packets?", "No", ["Yes", "No", "Always", "Only radio"]], ["Best memory aid for switching:", "Circuit = dedicated path; Packet = packets/shared resources", ["Circuit = packets; Packet = dedicated path", "Circuit = dedicated path; Packet = packets/shared resources", "Both identical", "Neither uses networks"]], ["Shared-network delay can be explained by:", "Packet switching and shared resources", ["Packet switching and shared resources", "Only telephone circuits", "No communication", "Monitor bandwidth only"]], ["A telephone connection keeps resources reserved while the user pauses. This illustrates:", "Reserved circuit capacity", ["Reserved circuit capacity", "Packet reassembly", "IP address", "Protocol deletion"]], ["A channel's capacity is described by:", "Bandwidth", ["Sender", "Receiver", "Message", "Protocol only"]], ["50 million bits per second is approximately:", "50 Mbps", ["50 Kbps", "50 Mbps", "50 Gbps", "50 bytes"]], ["What should a student remember when converting Mbps to MB/s?", "1 byte = 8 bits", ["1 byte = 1 bit", "1 byte = 8 bits", "1 byte = 16 bits", "1 byte = 1024 bits always"]], ["A diagram has sender, receiver, message and medium but no rules. Missing component:", "Protocol", ["Protocol", "Sender", "Receiver", "Message"]], ["A physical cable in the communication system is the:", "Communication medium", ["Message", "Sender", "Communication medium", "Protocol"]], ["A student receives a message from a server. The student computer is the:", "Receiver", ["Sender", "Receiver", "Protocol", "Medium"]], ["A server sends a message to a client. The server is the:", "Sender", ["Sender", "Receiver", "Message", "Bandwidth"]], ["A file is split into P1, P2 and P3. This indicates:", "Packet switching", ["Circuit switching", "Packet switching", "No switching", "Protocol failure"]], ["Predictable dedicated resources are required. Choose:", "Circuit switching", ["Packet switching", "Circuit switching", "Random switching", "No switching"]], ["Intermittent computer communication should generally use:", "Packet switching", ["Circuit switching", "Packet switching", "No switching", "Manual routing"]], ["Correct simplified evolution sequence:", "ARPANET → NSFNET → Internet", ["Internet → ARPANET → NSFNET", "ARPANET → NSFNET → Internet", "NSFNET → Internet → ARPANET", "Internet → NSFNET → ARPANET"]], ["NSFNET primarily illustrates:", "Academic and research connectivity", ["Only home gaming", "Academic and research connectivity", "Printer repair", "Image compression"]], ["A website on another continent is accessed through the:", "Internet", ["Only LAN", "Internet", "USB cable", "Local printer"]], ["Is an IP address a message?", "No; it is a logical network address", ["Yes", "No; it is a logical network address", "It is a cable", "It is always a protocol"]], ["Is a protocol a physical medium?", "No; it is a set of communication rules", ["Yes", "No; it is a set of communication rules", "Only wireless", "Only LAN"]], ["Gbps means:", "Gigabits per second", ["Gigabytes per second", "Gigabits per second", "Packets per second", "Gigapixels"]], ["20 MB at 10 MB/s takes:", "2 seconds", ["1 second", "2 seconds", "10 seconds", "20 seconds"]], ["20 MB at 10 Mbps theoretically takes about:", "16 seconds", ["2 seconds", "8 seconds", "16 seconds", "20 seconds"]], ["Why is packet switching useful for intermittent traffic?", "Shared resources can be used efficiently", ["Resources must always be dedicated", "No protocol is needed", "IP addresses become unnecessary", "Packets remove all delays"]], ["The set sender, receiver, message, medium, protocol identifies:", "Components of data communication", ["Switching techniques", "IPv4 notation", "Bandwidth units", "Network evolution"]], ["A dedicated telephone path indicates:", "Circuit switching", ["Packet switching", "Circuit switching", "IP addressing", "Bandwidth"]]];
+function makeCompetency(){document.getElementById("competencyBox").innerHTML=competency.map((q,i)=>`<div class="question"><b>${i+1}. ${q[0]}</b><br>`+q[2].map(x=>`<label><input type="radio" name="cpt${i}" value="${x}"> ${x}</label><br>`).join("")+`<div id="cpf${i}"></div></div>`).join("")}
+function gradeCompetency(){let s=0;competency.forEach((q,i)=>{let a=document.querySelector(`input[name=cpt${i}]:checked`),f=document.getElementById("cpf"+i);if(a&&a.value===q[1]){s++;f.innerHTML='<span class="correct">✓ Correct</span>'}else f.innerHTML='<span class="wrong">✗ Correct answer: '+q[1]+'</span>'});document.getElementById("competencyScore").innerHTML=`<span class="score">Score: ${s}/${competency.length}</span>`;saveScore("competency",s,competency.length);updateProgress()}
+function show(id){document.querySelectorAll(".section").forEach(x=>x.classList.remove("active"));document.getElementById(id).classList.add("active");window.scrollTo({top:0,behavior:"smooth"})}
+function saveScore(type,s,total){localStorage.setItem("cn_"+type,JSON.stringify({s,total}))}
+function updateProgress(){let arr=["quiz","fill","cloze","competency"].map(k=>JSON.parse(localStorage.getItem("cn_"+k)||"null")).filter(Boolean);let earned=arr.reduce((a,x)=>a+x.s,0),total=arr.reduce((a,x)=>a+x.total,0);document.getElementById("progressText").innerHTML=total?`You have completed scored activities: <b>${earned}/${total}</b> (${Math.round(earned/total*100)}%).`: "Complete quizzes and tests to see your progress."}
+function saveAssignment(){localStorage.setItem("cn_assignment",document.getElementById("assignmentText").value);document.getElementById("saveMsg").innerHTML=" ✓ Saved on this device."}
+function resetProgress(){if(confirm("Reset quiz/test scores and saved assignment?")){["quiz","fill","cloze","assignment"].forEach(k=>localStorage.removeItem("cn_"+k));location.reload()}}
+makeQuiz();makeOne();makeFill();makePuzzle();makeCloze();makeCompetency();
+document.getElementById("assignmentText").value=localStorage.getItem("cn_assignment")||"";
+updateProgress();
+</script>
+</body>
+</html>
