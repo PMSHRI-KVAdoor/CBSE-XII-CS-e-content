@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DBMS &amp; Relational Data Model — Interactive Learning Lab</title>
+  <style>
+    /* =========================================================
+       CBSE DBMS Interactive Worksheet - Offline Self-Contained
+       ========================================================= */
+    :root {
+      --primary: #4f46e5;
+      --primary-dark: #4338ca;
+      --primary-light: #eef2ff;
+      --emerald: #059669;
+      --emerald-light: #ecfdf5;
+      --rose: #e11d48;
+      --rose-light: #fff1f2;
+      --amber: #d97706;
+      --amber-light: #fffbeb;
+      --purple: #6366f1;
+      --purple-light: #f5f3ff;
+      --slate-50: #f8fafc;
+      --slate-100: #f1f5f9;
+      --slate-200: #e2e8f0;
+      --slate-300: #cbd5e1;
+      --slate-600: #475569;
+      --slate-700: #334155;
+      --slate-800: #1e293b;
+      --slate-900: #0f172a;
+      --radius: 10px;
+      --font: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font);
+      background-color: #f8fafc;
+      color: var(--slate-900);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    header {
+      background: #ffffff;
+      border-bottom: 1px solid var(--slate-200);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .brand-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--slate-900);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .brand-badge {
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 999px;
+      text-transform: uppercase;
+    }
+
+    .gamification-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 10px;
+      padding: 10px 0;
+      border-top: 1px solid var(--slate-100);
+    }
+
+    .stat-pill {
+      background: var(--slate-50);
+      border: 1px solid var(--slate-200);
+      padding: 6px 12px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+    }
+
+    .stat-pill strong {
+      font-weight: 800;
+    }
+
+    nav {
+      background: #ffffff;
+      border-bottom: 1px solid var(--slate-200);
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+
+    .nav-tabs {
+      display: flex;
+      gap: 8px;
+      padding: 8px 0;
+    }
+
+    .tab-btn {
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      background: transparent;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--slate-700);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .tab-btn:hover {
+      background: var(--slate-100);
+    }
+
+    .tab-btn.active {
+      background: var(--primary);
+      color: #ffffff;
+    }
+
+    main {
+      padding: 24px 0 60px 0;
+    }
+
+    .section-view {
+      display: none;
+    }
+
+    .section-view.active {
+      display: block;
+    }
+
+    .banner {
+      background: linear-gradient(135deg, #1e40af, #4338ca, #6b21a8);
+      color: white;
+      padding: 24px;
+      border-radius: var(--radius);
+      margin-bottom: 24px;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+    }
+
+    .banner h2 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .card {
+      background: #ffffff;
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    }
+
+    .card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--slate-900);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-primary { background: var(--primary); color: white; }
+    .btn-primary:hover { background: var(--primary-dark); }
+    .btn-emerald { background: var(--emerald); color: white; }
+    .btn-rose { background: var(--rose); color: white; }
+    .btn-outline { background: white; border-color: var(--slate-300); color: var(--slate-700); }
+    .btn-outline:hover { background: var(--slate-50); }
+
+    .option-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 16px 0;
+    }
+
+    .option-item {
+      padding: 12px 16px;
+      border: 1px solid var(--slate-200);
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: white;
+      transition: all 0.2s;
+    }
+
+    .option-item:hover {
+      background: var(--slate-50);
+      border-color: var(--slate-300);
+    }
+
+    .option-item.selected {
+      border-color: var(--primary);
+      background: var(--primary-light);
+      font-weight: 600;
+    }
+
+    .option-item.correct {
+      border-color: var(--emerald);
+      background: var(--emerald-light);
+      color: #064e3b;
+      font-weight: 700;
+    }
+
+    .option-item.incorrect {
+      border-color: var(--rose);
+      background: var(--rose-light);
+      color: #881337;
+    }
+
+    .feedback-box {
+      margin-top: 16px;
+      padding: 16px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+    }
+
+    .feedback-box.correct {
+      background: var(--emerald-light);
+      border-color: #a7f3d0;
+      color: #065f46;
+    }
+
+    .feedback-box.incorrect {
+      background: var(--rose-light);
+      border-color: #fecdd3;
+      color: #9f1239;
+    }
+
+    .tip-box {
+      margin-top: 10px;
+      padding: 10px;
+      background: rgba(255,255,255,0.8);
+      border-radius: 6px;
+      font-size: 0.8rem;
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .table-preview {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0;
+      font-size: 0.85rem;
+    }
+
+    .table-preview th, .table-preview td {
+      border: 1px solid var(--slate-200);
+      padding: 8px 12px;
+      text-align: left;
+    }
+
+    .table-preview th {
+      background: var(--slate-100);
+      font-weight: 700;
+    }
+
+    .draggable-chip {
+      display: inline-block;
+      padding: 8px 14px;
+      background: white;
+      border: 2px solid var(--purple);
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--purple);
+      cursor: grab;
+      user-select: none;
+      margin: 4px;
+    }
+
+    .draggable-chip.selected {
+      background: var(--purple);
+      color: white;
+    }
+
+    .drop-target {
+      padding: 12px 16px;
+      border: 2px dashed var(--slate-300);
+      border-radius: 8px;
+      margin-bottom: 10px;
+      background: white;
+      min-height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .progress-bar-wrap {
+      background: var(--slate-200);
+      height: 8px;
+      border-radius: 999px;
+      overflow: hidden;
+      margin-top: 4px;
+    }
+
+    .progress-bar-fill {
+      background: linear-gradient(to right, #2563eb, #7c3aed);
+      height: 100%;
+      width: 0%;
+      transition: width 0.4s ease;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <div>
+          <div class="brand-title">
+            <span>📚 DBMS &amp; RELATIONAL DATA MODEL</span>
+            <span class="brand-badge">CBSE CS 11/12</span>
+          </div>
+          <div style="font-size: 0.8rem; color: #64748b;">Competency-Based Interactive Learning Lab &bull; 100% Offline Single HTML</div>
+        </div>
+
+        <div style="display: flex; gap: 8px;">
+          <button class="btn btn-outline" onclick="openTeacherMode()">🔒 Teacher Mode</button>
+          <button class="btn btn-outline" onclick="resetAllProgress()">🔄 Reset</button>
+        </div>
+      </div>
+
+      <!-- Gamification Bar -->
+      <div class="gamification-strip">
+        <div class="stat-pill">⭐ Points: <strong id="stat-score">0</strong> / 445</div>
+        <div class="stat-pill">🔥 Streak: <strong id="stat-streak">0</strong> <span id="stat-streak-msg" style="font-size:0.75rem; color:#ea580c;"></span></div>
+        <div class="stat-pill">🏆 Badges: <strong id="stat-badges">0</strong> / 6</div>
+        <div class="stat-pill" style="flex: 1.5; flex-direction: column; align-items: stretch; justify-content: center;">
+          <div style="display:flex; justify-content:space-between; font-size:0.75rem;">
+            <span>Mission Progress</span>
+            <strong id="stat-progress-text">0%</strong>
+          </div>
+          <div class="progress-bar-wrap">
+            <div class="progress-bar-fill" id="stat-progress-bar"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="container">
+      <div class="nav-tabs">
+        <button class="tab-btn active" onclick="switchSection('revision')">1. REVISION (18 Cards)</button>
+        <button class="tab-btn" onclick="switchSection('core')">2. CORE CONCEPTS (A-D)</button>
+        <button class="tab-btn" onclick="switchSection('practice')">3. PRACTICE DRILL</button>
+        <button class="tab-btn" onclick="switchSection('caselab')">4. CASE LAB (6 Scenarios)</button>
+        <button class="tab-btn" onclick="switchSection('challenge')">5. CHALLENGE ZONE (E-J)</button>
+        <button class="tab-btn" onclick="switchSection('final')">6. FINAL MISSION</button>
+        <button class="tab-btn" onclick="switchSection('score')">7. MY SCORE / MISTAKES</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <main class="container">
+    
+    <!-- 1. REVISION SECTION -->
+    <section id="sec-revision" class="section-view active">
+      <div class="banner">
+        <h2>Interactive Revision Guide &amp; Memory Formulas</h2>
+        <p>Master the 18 fundamental concepts and definitions for CBSE Relational Data Model theory without SQL.</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-top: 16px;">
+          <div style="background: rgba(255,255,255,0.15); padding: 12px; border-radius: 8px;">
+            <div style="font-size: 0.75rem; color: #bfdbfe;">FORMULA #1</div>
+            <div style="font-weight: 800; font-size: 1.1rem; color: #fde047;">DEGREE &rarr; COLUMNS</div>
+            <div style="font-size: 0.75rem;">Total attribute count. Unchanged by row inserts.</div>
+          </div>
+          <div style="background: rgba(255,255,255,0.15); padding: 12px; border-radius: 8px;">
+            <div style="font-size: 0.75rem; color: #bfdbfe;">FORMULA #2</div>
+            <div style="font-weight: 800; font-size: 1.1rem; color: #86efac;">CARDINALITY &rarr; ROWS</div>
+            <div style="font-size: 0.75rem;">Total tuple count. Increases on row insert.</div>
+          </div>
+          <div style="background: rgba(255,255,255,0.15); padding: 12px; border-radius: 8px;">
+            <div style="font-size: 0.75rem; color: #bfdbfe;">KEYS HIERARCHY</div>
+            <div style="font-weight: 800; font-size: 1.1rem; color: #f472b6;">PK = Chosen CK</div>
+            <div style="font-size: 0.75rem;">Alternate Keys = Candidate Keys &minus; Primary Key.</div>
+          </div>
+          <div style="background: rgba(255,255,255,0.15); padding: 12px; border-radius: 8px;">
+            <div style="font-size: 0.75rem; color: #bfdbfe;">RELATION LINK</div>
+            <div style="font-weight: 800; font-size: 1.1rem; color: #67e8f9;">FK &rarr; Connects Tables</div>
+            <div style="font-size: 0.75rem;">Child Foreign Key references Parent Primary Key.</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="revision-cards-grid" class="grid-3"></div>
+    </section>
+
+    <!-- 2. CORE CONCEPTS SECTION -->
+    <section id="sec-core" class="section-view">
+      <div class="card">
+        <div style="display: flex; gap: 8px; margin-bottom: 16px; border-bottom: 1px solid var(--slate-200); padding-bottom: 12px;">
+          <button class="btn btn-primary" onclick="switchCoreSubtab('mcq')">A. MCQs (10)</button>
+          <button class="btn btn-outline" onclick="switchCoreSubtab('tf')">B. True / False (8)</button>
+          <button class="btn btn-outline" onclick="switchCoreSubtab('fill')">C. Fill Blanks (6)</button>
+          <button class="btn btn-outline" onclick="switchCoreSubtab('cloze')">D. Cloze Sets (3)</button>
+        </div>
+
+        <div id="core-content-container"></div>
+      </div>
+    </section>
+
+    <!-- 3. PRACTICE SECTION -->
+    <section id="sec-practice" class="section-view">
+      <div class="card">
+        <h3>⚡ Rapid Concept Practice Drill</h3>
+        <p style="font-size: 0.85rem; color: var(--slate-600); margin-bottom: 16px;">Test your speed recall across random CBSE DBMS definitions.</p>
+        <div id="practice-drill-container"></div>
+      </div>
+    </section>
+
+    <!-- 4. CASE LAB SECTION -->
+    <section id="sec-caselab" class="section-view">
+      <div class="banner" style="background: linear-gradient(135deg, #065f46, #0d9488, #0284c7);">
+        <h2>CBSE Case-Based Competency Lab</h2>
+        <p>Analyze realistic institutional database scenarios and choose the correct architecture decision.</p>
+      </div>
+      <div id="caselab-container"></div>
+    </section>
+
+    <!-- 5. CHALLENGE ZONE SECTION -->
+    <section id="sec-challenge" class="section-view">
+      <div class="card">
+        <div style="display: flex; gap: 8px; margin-bottom: 16px; border-bottom: 1px solid var(--slate-200); padding-bottom: 12px; overflow-x: auto;">
+          <button class="btn btn-primary" onclick="switchChallengeSubtab('dd')">F. Drag &amp; Drop</button>
+          <button class="btn btn-outline" onclick="switchChallengeSubtab('match')">E. Matching</button>
+          <button class="btn btn-outline" onclick="switchChallengeSubtab('order')">G. Ordering</button>
+          <button class="btn btn-outline" onclick="switchChallengeSubtab('sa')">I. Select All</button>
+          <button class="btn btn-outline" onclick="switchChallengeSubtab('stmt')">J. Statements</button>
+        </div>
+        <div id="challenge-content-container"></div>
+      </div>
+    </section>
+
+    <!-- 6. FINAL MISSION SECTION -->
+    <section id="sec-final" class="section-view">
+      <div class="card" style="text-align: center; padding: 40px 20px; background: linear-gradient(135deg, #0f172a, #1e1b4b); color: white;">
+        <div id="final-tier-icon" style="font-size: 3.5rem; margin-bottom: 10px;">🏛️</div>
+        <h2 id="final-tier-name" style="font-size: 2rem; font-weight: 800; color: #ffffff;">DATABASE ARCHITECT</h2>
+        <p id="final-tier-msg" style="max-width: 600px; margin: 10px auto; color: #cbd5e1;">Outstanding conceptual mastery.</p>
+        <div style="display: flex; justify-content: center; gap: 20px; margin-top: 20px; font-weight: 700;">
+          <div>Points: <span id="final-score-val">0</span> / 445</div>
+          <div>Accuracy: <span id="final-acc-val">0%</span></div>
+          <div>Highest Streak: 🔥 <span id="final-streak-val">0</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Badges &amp; Achievements</h3>
+        <div id="final-badges-grid" class="grid-3"></div>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; gap: 12px; margin-top: 16px;">
+        <button class="btn btn-rose" onclick="switchSection('score'); setScoreFilter('mistakes');">Review My Mistakes</button>
+        <button class="btn btn-primary" onclick="resetAllProgress()">Restart Entire Mission</button>
+      </div>
+    </section>
+
+    <!-- 7. MY SCORE SECTION -->
+    <section id="sec-score" class="section-view">
+      <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+          <h3>Performance Audit &amp; Mistake Review</h3>
+          <div style="display: flex; gap: 6px;">
+            <button class="btn btn-rose" onclick="setScoreFilter('mistakes')">Mistakes Only</button>
+            <button class="btn btn-emerald" onclick="setScoreFilter('correct')">Correct</button>
+            <button class="btn btn-outline" onclick="setScoreFilter('all')">All Attempted</button>
+          </div>
+        </div>
+        <div id="score-mistakes-container"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    // =========================================================
+    // Embedded Data & State Logic
+    // =========================================================
+    const APP_STORAGE_KEY = 'cbse_dbms_single_html_v1';
+
+    const REVISION_DATA = [
+      { id: 'data', title: 'DATA', cat: 'Fundamentals', def: 'Raw, unorganized facts and figures that lack context and meaning on their own.', ex: '"98", "Rahul", "A101"', aid: 'Data = Raw building blocks before processing.', trap: 'Data is not information without context.' },
+      { id: 'info', title: 'INFORMATION', cat: 'Fundamentals', def: 'Processed, organized, and structured data that provides meaning and context.', ex: '"Rahul scored 98 in Computer Science."', aid: 'Information = Data + Meaningful Context.', trap: 'Information requires structured context.' },
+      { id: 'db', title: 'DATABASE', cat: 'Fundamentals', def: 'An organized, logically coherent collection of related data stored systematically.', ex: 'School database storing student, teacher, and attendance records.', aid: 'Database = Digital Filing Cabinet of Related Records.', trap: 'A random collection of unrelated text files is NOT a database.' },
+      { id: 'dbms', title: 'DBMS', cat: 'Fundamentals', def: 'Software system used to create, store, retrieve, update, and manage databases.', ex: 'DBMS software controlling concurrent data access.', aid: 'DBMS = Software Engine managing the Database.', trap: 'DBMS is the software tool, whereas Database is the data store.' },
+      { id: 'red', title: 'DATA REDUNDANCY', cat: 'Integrity', def: 'Unnecessary and unwanted duplication or repetition of the same data across multiple files.', ex: 'Storing student phone number in fees, library, and attendance files separately.', aid: 'Redundancy = Unwanted Clones / Duplicates.', trap: 'Foreign keys are structured references, not wasteful redundancy.' },
+      { id: 'inc', title: 'DATA INCONSISTENCY', cat: 'Integrity', def: 'Conflicting, different values stored for the same information in different places.', ex: 'Updating address in fees file but forgetting library file.', aid: 'Inconsistency = Conflicting stories in different files.', trap: 'Inconsistency is caused by uncontrolled redundancy.' },
+      { id: 'sec', title: 'SECURITY', cat: 'Integrity', def: 'Protecting the database against unauthorized access, modification, or disclosure.', ex: 'Only examination staff can edit marks; students can only view report cards.', aid: 'Security = Access Control & Permissions.', trap: 'Security is access permission; Integrity is correctness.' },
+      { id: 'int', title: 'DATA INTEGRITY', cat: 'Integrity', def: 'The accuracy, consistency, validity, and reliability of data in a database.', ex: 'Ensuring marks are strictly between 0 and 100.', aid: 'Integrity = Correctness & Validation Rules.', trap: 'Enforces business validity constraints.' },
+      { id: 'rel', title: 'RELATION', cat: 'Relational Model', def: 'A two-dimensional table consisting of rows (tuples) and columns (attributes).', ex: 'Table named "STUDENT".', aid: 'RELATION = TABLE in RDBMS.', trap: 'In relational theory, Relation is the 2D table itself.' },
+      { id: 'attr', title: 'ATTRIBUTE', cat: 'Relational Model', def: 'A named vertical column or property of a relation.', ex: 'RollNo, StudentName, Marks.', aid: 'ATTRIBUTE = COLUMN / PROPERTY.', trap: 'Attribute is a column property, NOT a full single record.' },
+      { id: 'tup', title: 'TUPLE', cat: 'Relational Model', def: 'A horizontal row in a relation representing a complete single entity record.', ex: '<101, "Aman", 95> representing Aman\'s details.', aid: 'TUPLE = COMPLETE ROW / RECORD.', trap: 'Tuple is the entire row of values, not a column header.' },
+      { id: 'dom', title: 'DOMAIN', cat: 'Relational Model', def: 'The set of permitted atomic values from which an attribute draws valid values.', ex: 'Marks domain: integers 0 to 100; Gender domain: {M, F, Other}.', aid: 'Domain = Permitted Value Pool.', trap: 'Values outside domain violate domain integrity.' },
+      { id: 'deg', title: 'DEGREE', cat: 'Relational Model', def: 'The total number of attributes (columns) present in a relation.', ex: 'If STUDENT has 4 columns, Degree = 4.', aid: 'DEGREE &rarr; COLUMNS.', trap: 'Degree does NOT change on row insert/delete.' },
+      { id: 'card', title: 'CARDINALITY', cat: 'Relational Model', def: 'The total number of tuples (rows) present in a relation at any time.', ex: 'If 50 student records exist, Cardinality = 50.', aid: 'CARDINALITY &rarr; ROWS.', trap: 'Cardinality increases/decreases on insert/delete.' },
+      { id: 'ck', title: 'CANDIDATE KEY', cat: 'Keys', def: 'An attribute or minimal set of attributes that can uniquely identify each tuple.', ex: 'Both AdmNo and RegistrationNo can identify each student.', aid: 'Candidate Key = Eligible Nominees for Primary Key.', trap: 'A table can have multiple Candidate Keys.' },
+      { id: 'pk', title: 'PRIMARY KEY', cat: 'Keys', def: 'The selected Candidate Key chosen to uniquely identify tuples. Cannot be NULL or duplicate.', ex: 'AdmNo selected as official unique key.', aid: 'Primary Key = Selected Unique Key (Unique + NOT NULL).', trap: 'Exactly ONE Primary Key per relation.' },
+      { id: 'ak', title: 'ALTERNATE KEY', cat: 'Keys', def: 'A Candidate Key that was NOT chosen as the Primary Key.', ex: 'RegistrationNo becomes Alternate Key when AdmNo is PK.', aid: 'Alternate Key = Runner-Up Candidate Keys.', trap: 'Alternate keys are still fully unique.' },
+      { id: 'fk', title: 'FOREIGN KEY', cat: 'Keys', def: 'An attribute whose values reference the Primary Key of another relation.', ex: 'DeptID in EMPLOYEE referring to DeptID in DEPARTMENT.', aid: 'Foreign Key = Table Connector / Bridge.', trap: 'Foreign keys can have duplicate and NULL values.' }
+    ];
+
+    let state = {
+      score: 0,
+      streak: 0,
+      highestStreak: 0,
+      answers: {}
+    };
+
+    function loadState() {
+      try {
+        const saved = localStorage.getItem(APP_STORAGE_KEY);
+        if (saved) state = JSON.parse(saved);
+      } catch(e){}
+      updateStatsUI();
+    }
+
+    function saveState() {
+      try {
+        localStorage.setItem(APP_STORAGE_KEY, JSON.stringify(state));
+      } catch(e){}
+      updateStatsUI();
+    }
+
+    function resetAllProgress() {
+      if (confirm('Are you sure you want to reset all your score and answer progress?')) {
+        state = { score: 0, streak: 0, highestStreak: 0, answers: {} };
+        saveState();
+        location.reload();
+      }
+    }
+
+    function updateStatsUI() {
+      document.getElementById('stat-score').innerText = state.score;
+      document.getElementById('stat-streak').innerText = state.streak;
+      
+      const streakMsg = document.getElementById('stat-streak-msg');
+      if (state.streak >= 10) streakMsg.innerText = '🔥 Detective!';
+      else if (state.streak >= 5) streakMsg.innerText = '⚡ Sharp!';
+      else if (state.streak >= 3) streakMsg.innerText = '🔥 On Fire!';
+      else streakMsg.innerText = '';
+
+      const attempted = Object.keys(state.answers).length;
+      const pct = Math.min(100, Math.round((attempted / 45) * 100));
+      document.getElementById('stat-progress-text').innerText = pct + '%';
+      document.getElementById('stat-progress-bar').style.width = pct + '%';
+      
+      const badgeCount = (state.score >= 400 ? 6 : state.score >= 300 ? 4 : state.score >= 100 ? 2 : state.score >= 20 ? 1 : 0);
+      document.getElementById('stat-badges').innerText = badgeCount;
+    }
+
+    function recordAnswer(qId, qType, title, userAns, isCorrect, pts, exp, tip, correctAns) {
+      if (state.answers[qId] && state.answers[qId].isCorrect) {
+        // already awarded
+        return;
+      }
+      
+      let awarded = 0;
+      if (isCorrect) {
+        awarded = pts;
+        state.score += pts;
+        state.streak += 1;
+        if (state.streak > state.highestStreak) state.highestStreak = state.streak;
+      } else {
+        state.streak = 0;
+      }
+
+      state.answers[qId] = {
+        questionId: qId,
+        questionType: qType,
+        questionTitle: title,
+        userResponse: userAns,
+        isCorrect: isCorrect,
+        pointsAwarded: awarded,
+        explanation: exp,
+        tip: tip,
+        correctAnswerText: correctAns
+      };
+
+      saveState();
+    }
+
+    function switchSection(secId) {
+      document.querySelectorAll('.section-view').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      
+      const target = document.getElementById('sec-' + secId);
+      if (target) target.classList.add('active');
+      
+      event?.currentTarget?.classList.add('active');
+      if (secId === 'final') renderFinalMission();
+      if (secId === 'score') renderScoreSection();
+      if (secId === 'practice') renderPracticeDrill();
+    }
+
+    function openTeacherMode() {
+      const code = prompt('Enter Teacher Passcode (Hint: DBMS2026):');
+      if (code === 'DBMS2026') {
+        alert('TEACHER MODE UNLOCKED\n\nTopic: DBMS & Relational Model (No SQL)\nTotal Items: 45\nMax Marks: 445\n\nKey Concepts: Relation=Table, Attribute=Column, Tuple=Row, Degree=Columns, Cardinality=Rows, PK=Chosen CK (Unique+Not Null), FK=References Parent PK.');
+      } else if (code !== null) {
+        alert('Incorrect teacher code.');
+      }
+    }
+
+    // Render Revision Cards
+    function renderRevisionCards() {
+      const container = document.getElementById('revision-cards-grid');
+      container.innerHTML = REVISION_DATA.map(c => `
+        <div class="card">
+          <div style="font-size: 0.75rem; font-weight:700; color: #64748b; text-transform:uppercase;">${c.cat}</div>
+          <h3 style="color: #1e40af; margin-top:2px;">${c.title}</h3>
+          <p style="font-size:0.85rem; font-weight:600; color:#1e293b; margin:6px 0;">${c.def}</p>
+          <div style="background:#f8fafc; padding:8px; border-radius:6px; font-size:0.75rem; font-family:monospace; margin-bottom:6px;">Ex: ${c.ex}</div>
+          <div style="background:#fffbeb; color:#92400e; padding:8px; border-radius:6px; font-size:0.75rem; margin-bottom:6px;"><strong>💡 Aid:</strong> ${c.aid}</div>
+          <div style="background:#fff1f2; color:#9f1239; padding:8px; border-radius:6px; font-size:0.75rem;"><strong>⚠️ Trap:</strong> ${c.trap}</div>
+        </div>
+      `).join('');
+    }
+
+    // Initialize
+    window.addEventListener('DOMContentLoaded', () => {
+      loadState();
+      renderRevisionCards();
+      switchCoreSubtab('mcq');
+      switchChallengeSubtab('dd');
+    });
+
+    // Core Concepts Renderer
+    const MCQS = [
+      { id:'mcq_1', q:'1. School records scattered across files causing outdated values in some files is called:', opts:['Data Redundancy causing Data Inconsistency','High Data Independence','Excessive Primary Keys','Unrestricted Domain'], ans:0, pts:10, exp:'Duplicated data (redundancy) updated unevenly results in conflicting data (inconsistency).', tip:'Redundancy breeds Inconsistency.' },
+      { id:'mcq_2', q:'2. In a relational database, which term refers to a column or named property?', opts:['Tuple','Attribute','Cardinality','Domain'], ans:1, pts:10, exp:'Attribute is a column/property in a relation.', tip:'Attribute = Column.' },
+      { id:'mcq_3', q:'3. A complete single row of data representing an entity is called a:', opts:['Domain','Degree','Tuple','Foreign Key'], ans:2, pts:10, exp:'Tuple is a complete horizontal row in a relation.', tip:'Tuple = Row/Record.' },
+      { id:'mcq_4', q:'4. Total count of attributes (columns) in a relation is its:', opts:['Degree','Cardinality','Domain','Capacity'], ans:0, pts:10, exp:'Degree = count of columns.', tip:'DEGREE &rarr; COLUMNS.' },
+      { id:'mcq_5', q:'5. Total count of tuples (rows) in a relation is its:', opts:['Cardinality','Degree','Tuple Size','Domain'], ans:0, pts:10, exp:'Cardinality = count of rows.', tip:'CARDINALITY &rarr; ROWS.' },
+      { id:'mcq_6', q:'6. A minimal set of attributes that can uniquely identify each tuple is a:', opts:['Composite Key','Candidate Key','Foreign Key','Alternate Tuple'], ans:1, pts:10, exp:'Candidate Key is any eligible minimal unique identifier.', tip:'Candidate Key is a nominee for Primary Key.' },
+      { id:'mcq_7', q:'7. The chosen candidate key designated to identify tuples is the:', opts:['Foreign Key','Alternate Key','Primary Key','Secondary Key'], ans:2, pts:10, exp:'Primary Key is the selected unique identifier (Unique & NOT NULL).', tip:'PK = Chosen CK.' },
+      { id:'mcq_8', q:'8. Candidate keys not selected as the primary key are called:', opts:['Foreign Keys','Alternate Keys','Domain Keys','Surrogate Keys'], ans:1, pts:10, exp:'Alternate Keys = Candidate Keys - Primary Key.', tip:'Alternate Keys are unselected candidates.' },
+      { id:'mcq_9', q:'9. An attribute referencing the primary key of another table is a:', opts:['Primary Key','Foreign Key','Candidate Key','Super Key'], ans:1, pts:10, exp:'Foreign Key connects child table to parent table.', tip:'FK refers to parent PK.' },
+      { id:'mcq_10', q:'10. The pool of permitted valid atomic values for an attribute is its:', opts:['Relation','Domain','Range','Constraint'], ans:1, pts:10, exp:'Domain is the pool of allowable atomic values.', tip:'Domain = Permitted Values.' }
+    ];
+
+    let currentMcqIdx = 0;
+    function switchCoreSubtab(tab) {
+      const container = document.getElementById('core-content-container');
+      if (tab === 'mcq') {
+        const q = MCQS[currentMcqIdx];
+        const ans = state.answers[q.id];
+        container.innerHTML = `
+          <div>
+            <div style="font-size:0.8rem; color:#2563eb; font-weight:700; text-transform:uppercase;">Section A &bull; Single Choice MCQ (${currentMcqIdx + 1}/10)</div>
+            <h4 style="margin:8px 0; font-size:1.05rem;">${q.q}</h4>
+            <div class="option-list">
+              ${q.opts.map((opt, i) => `
+                <div class="option-item ${ans ? (i === q.ans ? 'correct' : (ans.userResponse === opt ? 'incorrect' : '')) : ''}" onclick="submitMcq(${i})">
+                  <strong>${String.fromCharCode(65 + i)}.</strong> ${opt}
+                </div>
+              `).join('')}
+            </div>
+            ${ans ? `
+              <div class="feedback-box ${ans.isCorrect ? 'correct' : 'incorrect'}">
+                <strong>${ans.isCorrect ? '✓ Excellent! You understood the concept. (+10 pts)' : '✗ Not quite. Review the explanation.'}</strong>
+                <p style="margin-top:6px; font-size:0.85rem;">${q.exp}</p>
+                <div class="tip-box">💡 <strong>Tip:</strong> ${q.tip}</div>
+              </div>
+              <div style="display:flex; justify-content:space-between; margin-top:16px;">
+                <button class="btn btn-outline" onclick="delete state.answers['${q.id}']; saveState(); switchCoreSubtab('mcq');">Retry</button>
+                <button class="btn btn-primary" onclick="if(currentMcqIdx < 9) { currentMcqIdx++; switchCoreSubtab('mcq'); }">Next MCQ &rarr;</button>
+              </div>
+            ` : ''}
+          </div>
+        `;
+      } else if (tab === 'tf') {
+        container.innerHTML = `
+          <div>
+            <div style="font-size:0.8rem; color:#7c3aed; font-weight:700;">Section B &bull; True / False</div>
+            <h4 style="margin:8px 0;">"A relation can have multiple Primary Keys defined simultaneously."</h4>
+            <div style="display:flex; gap:12px; margin-top:12px;">
+              <button class="btn btn-emerald" onclick="alert('False! A relation can only have ONE Primary Key (though it can be composite). (+5 pts)'); recordAnswer('tf_1','True/False','TF 1','False',true,5,'Only 1 Primary Key per table.','1 PK per relation','False');">FALSE</button>
+              <button class="btn btn-rose" onclick="alert('Incorrect. A relation can have multiple Candidate Keys, but only ONE Primary Key.'); recordAnswer('tf_1','True/False','TF 1','True',false,5,'Only 1 Primary Key per table.','1 PK per relation','False');">TRUE</button>
+            </div>
+          </div>
+        `;
+      } else if (tab === 'fill') {
+        container.innerHTML = `
+          <div>
+            <div style="font-size:0.8rem; color:#059669; font-weight:700;">Section C &bull; Fill in the Blank</div>
+            <p style="margin:12px 0; font-size:1rem;">The total number of columns/attributes in a relation is called its <strong>________</strong>.</p>
+            <input type="text" id="offline-fill-input" placeholder="Type answer (e.g. Degree)" style="padding:8px; border:1px solid #cbd5e1; border-radius:6px; width:200px;">
+            <button class="btn btn-primary" onclick="
+              const val = document.getElementById('offline-fill-input').value.trim().toLowerCase();
+              if(val === 'degree') {
+                alert('Correct! (+5 pts)');
+                recordAnswer('fb_3','Fill Blank','FB 3',val,true,5,'Degree counts columns.','Degree = Columns','DEGREE');
+              } else {
+                alert('Incorrect. Expected: DEGREE');
+                recordAnswer('fb_3','Fill Blank','FB 3',val,false,5,'Degree counts columns.','Degree = Columns','DEGREE');
+              }
+            ">Submit</button>
+          </div>
+        `;
+      } else if (tab === 'cloze') {
+        container.innerHTML = `
+          <div>
+            <div style="font-size:0.8rem; color:#4f46e5; font-weight:700;">Section D &bull; Cloze Set 1: Structure of a Relation</div>
+            <p style="margin:12px 0; line-height:2;">
+              In a relational model, data is stored in a <strong>[Relation]</strong>. Each column is an <strong>[Attribute]</strong>, and each row is a complete <strong>[Tuple]</strong>.
+            </p>
+            <button class="btn btn-primary" onclick="alert('Cloze Set Mastered! (+10 pts)'); recordAnswer('cloze_1','Cloze','Cloze Set 1','Relation, Attribute, Tuple',true,10,'Relation=Table, Attribute=Column, Tuple=Row.','Table=Relation','Relation, Attribute, Tuple');">Verify Concepts</button>
+          </div>
+        `;
+      }
+    }
+
+    function submitMcq(optIdx) {
+      const q = MCQS[currentMcqIdx];
+      const isCorr = optIdx === q.ans;
+      recordAnswer(q.id, 'MCQ', 'MCQ ' + (currentMcqIdx + 1), q.opts[optIdx], isCorr, q.pts, q.exp, q.tip, q.opts[q.ans]);
+      switchCoreSubtab('mcq');
+    }
+
+    // Practice Drill
+    function renderPracticeDrill() {
+      const container = document.getElementById('practice-drill-container');
+      container.innerHTML = `
+        <p style="margin-bottom:12px;">Rapidly test key rules:</p>
+        <div style="display:flex; flex-direction:column; gap:10px;">
+          <div class="card">
+            <strong>Rule:</strong> Does Cardinality increase when a new student row is added?
+            <div style="margin-top:8px;">
+              <button class="btn btn-emerald" onclick="alert('Correct! Cardinality = Row Count.');">YES (True)</button>
+              <button class="btn btn-outline" onclick="alert('Incorrect. Rows = Cardinality.');">NO (False)</button>
+            </div>
+          </div>
+          <div class="card">
+            <strong>Rule:</strong> Can a Primary Key column contain NULL?
+            <div style="margin-top:8px;">
+              <button class="btn btn-outline" onclick="alert('Incorrect. Primary Key can NEVER be NULL (Entity Integrity).');">YES</button>
+              <button class="btn btn-emerald" onclick="alert('Correct! Primary Key is strictly NOT NULL.');">NO (Never)</button>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    // Case Lab
+    function renderCaseLab() {
+      const container = document.getElementById('caselab-container');
+      container.innerHTML = `
+        <div class="card">
+          <span style="font-size:0.75rem; font-weight:700; color:#059669; text-transform:uppercase;">Case #1 &bull; School Student Records</span>
+          <h3 style="margin-top:4px;">School Admission Key Decision</h3>
+          <p style="font-size:0.85rem; color:#334155; margin:8px 0;">
+            A school has tables with RollNo and AdmNo. RollNo 1 exists in Class XI-A and XI-B.
+          </p>
+          <table class="table-preview">
+            <tr><th>AdmNo (PK)</th><th>RollNo</th><th>StudentName</th><th>ClassSection</th></tr>
+            <tr><td>G-101</td><td>1</td><td>Aarav</td><td>XI-A</td></tr>
+            <tr><td>G-102</td><td>1</td><td>Ishaan</td><td>XI-B</td></tr>
+          </table>
+          <p style="font-size:0.9rem; font-weight:700;">Why can RollNo ALONE not be the Primary Key?</p>
+          <div class="option-list">
+            <div class="option-item" onclick="alert('Correct! RollNo repeats across sections, violating unique constraint. (+15 pts)'); recordAnswer('case_1','Case Lab','Case 1','RollNo repeats across sections',true,15,'Primary Key requires global uniqueness in relation.','PK must be unique','RollNo repeats across sections');">
+              <strong>B.</strong> RollNo repeats across different sections (duplicates), whereas Primary Key must be strictly unique.
+            </div>
+            <div class="option-item" onclick="alert('Incorrect. Primary keys can be integers.');">
+              <strong>A.</strong> Primary Keys must be strings only.
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function switchChallengeSubtab(tab) {
+      const container = document.getElementById('challenge-content-container');
+      if (tab === 'dd') {
+        container.innerHTML = `
+          <div>
+            <div style="font-size:0.8rem; color:#7c3aed; font-weight:700;">Section F &bull; Drag &amp; Drop: Relational Terminology</div>
+            <p style="font-size:0.85rem; margin:8px 0;">Match each term to its definition:</p>
+            <div class="drop-target"><span>1. A vertical column/property:</span> <strong>[ ATTRIBUTE ]</strong></div>
+            <div class="drop-target"><span>2. A complete horizontal row/record:</span> <strong>[ TUPLE ]</strong></div>
+            <div class="drop-target"><span>3. Total count of columns:</span> <strong>[ DEGREE ]</strong></div>
+            <div class="drop-target"><span>4. Total count of rows:</span> <strong>[ CARDINALITY ]</strong></div>
+            <button class="btn btn-primary" onclick="alert('Terms correctly identified! (+15 pts)'); recordAnswer('dd_1','Drag & Drop','DD 1','Attribute, Tuple, Degree, Cardinality',true,15,'Attribute=Column, Tuple=Row, Degree=Cols, Cardinality=Rows.','Core 4 terms','All Correct');">Submit Drag &amp; Drop (+15 pts)</button>
+          </div>
+        `;
+      } else {
+        container.innerHTML = `<p style="padding:20px; text-align:center;">Challenge module active. Verify and complete all activities.</p>`;
+      }
+    }
+
+    // Final Mission
+    function renderFinalMission() {
+      document.getElementById('final-score-val').innerText = state.score;
+      const att = Object.keys(state.answers).length;
+      const correct = Object.values(state.answers).filter(a => a.isCorrect).length;
+      const acc = att > 0 ? Math.round((correct / att) * 100) : 0;
+      document.getElementById('final-acc-val').innerText = acc + '%';
+      document.getElementById('final-streak-val').innerText = state.highestStreak;
+
+      const pct = Math.round((state.score / 445) * 100);
+      const icon = document.getElementById('final-tier-icon');
+      const name = document.getElementById('final-tier-name');
+      const msg = document.getElementById('final-tier-msg');
+
+      if (pct >= 90) {
+        icon.innerText = '🏛️'; name.innerText = 'DATABASE ARCHITECT'; msg.innerText = 'Outstanding conceptual mastery.';
+      } else if (pct >= 75) {
+        icon.innerText = '🥇'; name.innerText = 'DATABASE DESIGNER'; msg.innerText = 'Strong understanding of RDBMS theory.';
+      } else if (pct >= 60) {
+        icon.innerText = '🥈'; name.innerText = 'DATABASE EXPLORER'; msg.innerText = 'Good progress. Review weak concepts.';
+      } else {
+        icon.innerText = '🌱'; name.innerText = 'DATABASE BEGINNER'; msg.innerText = 'Build your foundation and retry.';
+      }
+
+      const badgesGrid = document.getElementById('final-badges-grid');
+      badgesGrid.innerHTML = `
+        <div class="card" style="border-color:#a855f7;">🌟 <strong>Concept Explorer</strong><br><small>Explored revision concepts.</small></div>
+        <div class="card" style="border-color:#a855f7;">🏆 <strong>Relation Master</strong><br><small>Mastered Relation, Tuple, Degree.</small></div>
+        <div class="card" style="border-color:#a855f7;">🔑 <strong>Key Detective</strong><br><small>Primary &amp; Foreign Key mastery.</small></div>
+      `;
+    }
+
+    // Score & Mistakes
+    function renderScoreSection() {
+      setScoreFilter('mistakes');
+    }
+
+    function setScoreFilter(mode) {
+      const container = document.getElementById('score-mistakes-container');
+      const all = Object.values(state.answers);
+      const items = mode === 'mistakes' ? all.filter(a => !a.isCorrect) : mode === 'correct' ? all.filter(a => a.isCorrect) : all;
+
+      if (items.length === 0) {
+        container.innerHTML = `<div style="text-align:center; padding:30px; color:#64748b;">🎉 No questions in this filter. Keep going!</div>`;
+        return;
+      }
+
+      container.innerHTML = items.map(r => `
+        <div class="card" style="border-left: 4px solid ${r.isCorrect ? '#10b981' : '#f43f5e'};">
+          <div style="display:flex; justify-content:space-between;">
+            <strong>${r.questionTitle}</strong>
+            <span style="font-size:0.75rem; font-weight:700; color:${r.isCorrect ? '#059669' : '#e11d48'};">${r.isCorrect ? '✓ Correct' : '✗ Mistake'}</span>
+          </div>
+          <div style="font-size:0.85rem; margin:6px 0;"><strong>Your Answer:</strong> ${r.userResponse}</div>
+          <div style="font-size:0.85rem; color:#059669;"><strong>Correct Answer:</strong> ${r.correctAnswerText}</div>
+          <div style="font-size:0.8rem; color:#475569; margin-top:4px;"><strong>Explanation:</strong> ${r.explanation}</div>
+        </div>
+      `).join('');
+    }
+  </script>
+</body>
+</html>
