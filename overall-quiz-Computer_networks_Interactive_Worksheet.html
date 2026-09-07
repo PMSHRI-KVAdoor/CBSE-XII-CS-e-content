@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Class XII CBSE Computer Networks - Interactive Worksheet</title>
+<style>
+body{font-family:Arial,sans-serif;background:#eef3f8;margin:0;color:#172033}
+header{background:#173b67;color:#fff;text-align:center;padding:22px}
+header h2{color:#fff;border:0}
+.wrap{max-width:1050px;margin:auto;padding:15px}
+.card{background:#fff;border-radius:12px;padding:18px;margin:14px 0;box-shadow:0 3px 12px #0002}
+h2{color:#173b67;border-bottom:2px solid #d9e6f2;padding-bottom:7px}
+.q{font-weight:bold;margin-bottom:12px}
+.option{display:block;background:#f3f7fb;padding:10px;margin:7px 0;border-radius:7px}
+.option:hover{background:#e4effa}
+input[type=text],textarea,select{padding:9px;border:1px solid #b7c5d5;border-radius:7px;max-width:95%}
+textarea{width:95%}
+button{background:#1769aa;color:white;border:0;padding:10px 16px;border-radius:7px;margin:5px;cursor:pointer}
+.feedback{display:none;padding:11px;margin-top:12px;border-radius:7px}
+.correct{background:#eaf7ee;border-left:5px solid #218c54}.wrong{background:#fff0f0;border-left:5px solid #c0392b}
+.diagram{font-family:monospace;white-space:pre;background:#111827;color:#dff2ff;padding:14px;border-radius:8px;overflow:auto}
+.score{position:sticky;top:0;z-index:5;background:#fff;text-align:center;padding:10px;border-bottom:1px solid #ddd}
+.small{color:#68778a}
+.matchrow{margin:8px 0}
+
+.feedback hr{border:0;border-top:1px solid #ccd6e0;margin:9px 0}
+.feedback div{margin:4px 0}
+.finalscore{font-size:42px;font-weight:bold}
+</style>
+</head>
+<body>
+<header>
+<h1>Class XII CBSE Computer Science</h1>
+<h2>Interactive Worksheet – Computer Networks</h2>
+<p>Transmission Media • Network Devices • Network Types • Network Topologies</p><p><b>39-question revised version</b> • Questions 40–43 removed</p>
+</header>
+<div class="score">Answered: <span id="answered">0</span>/39 &nbsp; | &nbsp; Score: <span id="score">0</span>/39</div>
+<div class="wrap" id="worksheet"></div>
+<div class="wrap card"><h2>Finish Worksheet</h2>
+<button onclick="checkAll()">Check All Answers</button>
+<button onclick="location.reload()">Reset</button>
+<div id="result"></div></div>
+
+<script>
+const Q=[];
+function q(sec,type,text,opts,ans,exp){Q.push({sec,type,text,opts,ans,exp})}
+
+q('A','mcq','Which transmission medium uses light signals to transmit data?',['Twisted Pair','Co-axial Cable','Fiber-optic Cable','Radio Waves'],2,'Fiber-optic cable transmits data using light signals.');
+q('A','mcq','Which cable consists of pairs of insulated copper wires twisted together?',['Fiber-optic Cable','Twisted Pair Cable','Co-axial Cable','Infrared'],1,'Twisted-pair cable consists of insulated copper wires twisted together.');
+q('A','mcq','Which wireless medium generally requires line-of-sight communication?',['Radio Waves','Microwaves','Infrared','Twisted Pair'],1,'Terrestrial microwave communication generally uses line of sight.');
+q('A','mcq','Which device regenerates a weakened signal?',['Router','Switch','Repeater','Gateway'],2,'A repeater regenerates or reshapes a signal to extend its range.');
+q('A','mcq','Which device connects different networks and forwards packets?',['Hub','Router','RJ45','Ethernet Card'],1,'A router connects different networks and forwards packets between them.');
+q('A','mcq','RJ45 is primarily associated with:',['Fiber-optic connection','Ethernet connection','Wireless connection','Satellite communication'],1,'RJ45 is commonly used as an Ethernet connector.');
+q('A','mcq','Which network connects an individual’s personal devices in a small area?',['LAN','MAN','WAN','PAN'],3,'PAN means Personal Area Network.');
+q('A','mcq','A network covering a city is generally classified as:',['PAN','LAN','MAN','WAN'],2,'MAN means Metropolitan Area Network.');
+q('A','mcq','Which topology uses a central hub or switch?',['Bus','Star','Tree','WAN'],1,'Star topology uses a central hub or switch.');
+q('A','mcq','Which topology has a hierarchical branch structure?',['Bus','Star','Tree','PAN'],2,'Tree topology has a hierarchical root-and-branch structure.');
+
+q('B','image','Identify the medium: several pairs of coloured copper wires twisted together.',['Twisted Pair','Co-axial','Fiber-optic','Infrared'],0,'The description identifies twisted-pair cable.');
+q('B','image','Identify the cable: central conductor surrounded by insulation and metallic shielding.',['Twisted Pair','Co-axial','Fiber-optic','Ethernet Card'],1,'This structure identifies co-axial cable.');
+q('B','image','Identify the device: multiple Ethernet ports and selective frame forwarding.',['Router','Switch','Repeater','Modem'],1,'A switch forwards frames to the appropriate port.');
+q('B','image','Identify the connector: 8-contact modular connector commonly used for Ethernet.',['RJ45','Wi-Fi Card','Ethernet Card','Modem'],0,'RJ45 is commonly used with Ethernet twisted-pair cables.');
+q('B','image','Identify the device: wireless network adapter used to connect a computer to Wi-Fi.',['Ethernet Card','Wi-Fi Card','Gateway','Repeater'],1,'A Wi-Fi card provides a wireless network interface.');
+
+q('C','match','Match the transmission medium with its characteristic.',[['Twisted Pair','Copper wires twisted together'],['Co-axial','Central conductor with shielding'],['Fiber-optic','Uses light signals']],null,'These pairings describe the main features of the three wired media.');
+q('C','match','Match each network device with its function.',[['Repeater','Regenerates signals'],['Switch','Forwards frames to an appropriate port'],['Router','Connects different networks']],null,'Repeaters regenerate signals, switches forward frames, and routers connect networks.');
+q('C','match','Match each network type with its coverage.',[['PAN','Personal area'],['LAN','Building/local area'],['MAN','City/metropolitan area'],['WAN','Large geographical area']],null,'Coverage increases from PAN to LAN to MAN to WAN.');
+
+q('D','drag2','Classify each transmission medium as Wired or Wireless.',
+ [['Twisted Pair','Wired'],['Radio Waves','Wireless'],['Co-axial Cable','Wired'],['Microwaves','Wireless'],['Fiber-optic Cable','Wired'],['Infrared Waves','Wireless']],
+ ['Wired','Wireless','Wired','Wireless','Wired','Wireless'],
+ 'Twisted Pair, Co-axial and Fiber-optic are wired/guided media. Radio waves, Microwaves and Infrared are wireless/unguided media.');
+
+q('D','drag2','Match each network device with its correct function.',
+ [['Modem','Modulation and demodulation'],['Repeater','Regenerates weak signals'],['Router','Connects different networks'],['Switch','Forwards frames to the appropriate port'],['RJ45','Ethernet connector']],
+ ['Modulation and demodulation','Regenerates weak signals','Connects different networks','Forwards frames to the appropriate port','Ethernet connector'],
+ 'A modem performs modulation/demodulation; a repeater regenerates signals; a router connects networks; a switch forwards frames; RJ45 is an Ethernet connector.');
+
+q('D','order','Arrange the following network types from smallest to largest geographical coverage.',
+ ['PAN','LAN','MAN','WAN'],
+ ['PAN','LAN','MAN','WAN'],
+ 'The correct order is PAN → LAN → MAN → WAN.');
+
+q('D','drag2','Match each networking topology with its identifying feature.',
+ [['Bus','Single common backbone cable'],['Star','Central hub or switch'],['Tree','Hierarchical branch structure']],
+ ['Single common backbone cable','Central hub or switch','Hierarchical branch structure'],
+ 'Bus uses a common backbone; Star uses a central hub/switch; Tree has a hierarchical branch structure.');
+
+q('E','fill','__________ cable uses light signals for data transmission.',['fiber-optic'],'Fiber-optic cable uses light signals.');
+q('E','fill','A __________ regenerates weakened signals.',['repeater'],'A repeater regenerates or reshapes a signal.');
+q('E','fill','A __________ is commonly used as an Ethernet connector.',['RJ45'],'RJ45 is commonly used for Ethernet connections.');
+q('E','fill','A network connecting personal devices is called a __________.',['PAN'],'PAN stands for Personal Area Network.');
+q('E','fill','In __________ topology, devices share a common backbone cable.',['Bus'],'Bus topology uses a common backbone.');
+
+q('F','assert','Assertion: Fiber-optic cable is suitable for high-speed communication.<br>Reason: Fiber-optic cable transmits data using light signals.',['Both A and R are true, and R correctly explains A.','Both A and R are true, but R does not explain A.','A is true but R is false.','A is false but R is true.'],0,'Both statements are true and the reason supports the use of optical signalling for high-speed transmission.');
+q('F','assert','Assertion: A switch can forward data selectively to an appropriate port.<br>Reason: A switch can use MAC address information for forwarding decisions.',['Both A and R are true, and R correctly explains A.','Both A and R are true, but R does not explain A.','A is true but R is false.','A is false but R is true.'],0,'A switch uses learned MAC address information to make forwarding decisions.');
+q('F','assert','Assertion: Failure of the central device in a star topology can affect the network.<br>Reason: All nodes depend on the central device for their connections.',['Both A and R are true, and R correctly explains A.','Both A and R are true, but R does not explain A.','A is true but R is false.','A is false but R is true.'],0,'The central hub/switch is a critical point in star topology.');
+
+q('G','diagram','Identify the topology:<div class="diagram">════●════●════●════●════<br>    │    │    │    │<br>   PC1  PC2  PC3  PC4</div>',['Bus','Star','Tree','PAN'],0,'The devices share a common backbone, so this is Bus topology.');
+q('G','diagram','Identify the topology:<div class="diagram">       PC1<br>        │<br>PC2 ─ SWITCH ─ PC3<br>        │<br>       PC4</div>',['Bus','Star','Tree','WAN'],1,'All devices connect to one central switch, so this is Star topology.');
+q('G','diagram','Identify the topology:<div class="diagram">          ROOT<br>            │<br>       ┌────┴────┐<br>      SW1      SW2<br>     /  \\      /  \\<br>   PC1  PC2  PC3  PC4</div>',['Bus','Star','Tree','PAN'],2,'A root with branches and levels represents Tree topology.');
+q('G','diagram','Identify the wireless medium: <div class="diagram">📡 ───────────────► 📡<br>       directional<br>       line-of-sight</div>',['Radio Waves','Microwaves','Infrared','Fiber-optic'],1,'Directional line-of-sight communication between antennas is characteristic of microwaves.');
+
+q('H','scenario','A school wants to connect 40 computers in a laboratory through a central networking device. Which topology is most suitable?',['Bus','Star','Tree','PAN'],1,'Star topology connects each computer to a central switch.');
+q('H','scenario','A company needs a long-distance, high-bandwidth link resistant to electromagnetic interference. Which medium is best?',['Twisted Pair','Co-axial','Fiber-optic','Infrared'],2,'Fiber-optic provides high bandwidth and is resistant to electromagnetic interference.');
+q('H','scenario','A network signal becomes weak because the cable run is too long. Which device should regenerate the signal?',['Router','Repeater','Hub','Gateway'],1,'A repeater regenerates/reshapes a signal to extend its range.');
+q('H','scenario','A student connects a smartphone, smartwatch and earbuds over a small personal area. Identify the network type.',['PAN','LAN','MAN','WAN'],0,'These personal devices form a PAN.');
+q('H','scenario','A municipal organization connects several offices throughout one city. Which network type is appropriate?',['PAN','LAN','MAN','WAN'],2,'MAN is designed for a metropolitan/city-wide area.');
+
+
+const titles={A:'A. MCQ – Quick Assessment',B:'B. Image / Device Identification',C:'C. Match the Following',D:'D. Interactive Classification & Ordering',E:'E. Fill in the Blanks',F:'F. Assertion–Reason',G:'G. Diagram Identification',H:'H. Scenario-Based Questions',I:'I. Case Studies',J:'J. Troubleshooting / HOTS'};
+const letters=['A','B','C','D']; let answered=new Set();
+
+function render(){
+ let root=document.getElementById('worksheet'), last='';
+ Q.forEach((x,i)=>{
+  if(last!==x.sec){last=x.sec;root.innerHTML+=`<div class="card"><h2>${titles[last]}</h2></div>`}
+  let s=`<div class="card" id="q${i}"><div class="q">Q${i+1}. ${x.text}</div>`;
+  if(['mcq','image','assert','diagram','scenario'].includes(x.type))
+   x.opts.forEach((o,j)=>s+=`<label class="option"><input type="radio" name="q${i}" value="${j}" onchange="answered.add(${i});update()"> <b>${letters[j]}.</b> ${o}</label>`);
+  else if(x.type==='fill') s+=`<input type="text" id="in${i}" placeholder="Type answer" oninput="answered.add(${i});update()">`;
+  else if(x.type==='text') s+=`<textarea id="in${i}" rows="4" placeholder="Type your answer" oninput="answered.add(${i});update()"></textarea>`;
+  else if(x.type==='match') x.opts.forEach((p,k)=>s+=`<div class="matchrow"><b>${p[0]}</b> → <select id="m${i}_${k}" onchange="answered.add(${i});update()"><option value="">Select</option>${x.opts.map((z,n)=>`<option value="${n}">${z[1]}</option>`).join('')}</select></div>`);
+  else if(x.type==='drag2') s+=x.opts.map((p,k)=>`<div class="matchrow"><b>${p[0]}</b> → <select id="d${i}_${k}" onchange="answered.add(${i});update()"><option value="">Choose</option>${[...new Set(x.opts.map(z=>z[1]))].map(v=>`<option value="${v}">${v}</option>`).join('')}</select></div>`).join('');
+else if(x.type==='order') s+=`<p><b>Choose the position (1 = smallest coverage, 4 = largest coverage):</b></p>`+x.opts.map((p,k)=>`<div class="matchrow"><b>${p}</b> → <select id="d${i}_${k}" onchange="answered.add(${i});update()"><option value="">Position</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></div>`).join('');
+  s+=`<div class="feedback" id="fb${i}"></div></div>`;root.innerHTML+=s;
+ })
+}
+function update(){document.getElementById('answered').textContent=answered.size}
+function check(i){
+ let x=Q[i],ok=false,ans='',user='';
+ if(['mcq','image','assert','diagram','scenario'].includes(x.type)){
+   let e=document.querySelector(`input[name="q${i}"]:checked`);
+   if(!e)return null;
+   let chosen=+e.value;
+   ok=chosen===x.ans;
+   user=x.opts[chosen];
+   ans=x.opts[x.ans];
+ }else if(x.type==='fill'){
+   let v=document.getElementById('in'+i).value.trim();
+   if(!v)return null;
+   user=v;
+   ok=x.ans.some(a=>v.toLowerCase()===a.toLowerCase() || v.toLowerCase().includes(a.toLowerCase()));
+   ans=x.ans[0];
+ }else if(x.type==='match'){
+   ok=true;
+   let userPairs=[];
+   x.opts.forEach((p,k)=>{
+     let v=document.getElementById(`m${i}_${k}`).value;
+     if(!v)ok=false;
+     userPairs.push(v || 'Not answered');
+     if(v!==String(k))ok=false;
+   });
+   if(userPairs.some(v=>v==='Not answered')) return null;
+   user=x.opts.map((p,k)=>p[0]+' → '+userPairs[k]).join('<br>');
+   ans=x.opts.map(p=>p[0]+' → '+p[1]).join('<br>');
+ }else if(x.type==='drag2'){
+   ok=true; let vals=[];
+   x.opts.forEach((p,k)=>{
+     let v=document.getElementById(`d${i}_${k}`).value;
+     if(!v)ok=false;
+     vals.push(v || 'Not answered');
+   });
+   if(vals.some(v=>v==='Not answered')) return null;
+   ok=vals.every((v,k)=>v===x.ans[k]);
+   user=x.opts.map((p,k)=>p[0]+' → '+vals[k]).join('<br>');
+   ans=x.opts.map((p,k)=>p[0]+' → '+x.ans[k]).join('<br>');
+ }else if(x.type==='order'){
+   let vals=[];
+   x.opts.forEach((p,k)=>{
+     let v=document.getElementById(`d${i}_${k}`).value;
+     if(!v)vals.push('');
+     else vals.push(v);
+   });
+   if(vals.some(v=>!v))return null;
+   ok=vals.every((v,k)=>+v===k+1);
+   user=x.opts.map((p,k)=>p+' → position '+vals[k]).join('<br>');
+   ans='PAN → position 1<br>LAN → position 2<br>MAN → position 3<br>WAN → position 4';
+ }else if(x.type==='text'){
+   let v=document.getElementById('in'+i).value.trim();
+   if(!v)return null;
+   user=v;
+   ok=true;
+   ans=x.ans[0];
+ }
+
+ let f=document.getElementById('fb'+i);
+ f.style.display='block';
+ f.className='feedback '+(ok?'correct':'wrong');
+ f.innerHTML=
+   (ok
+     ? '✅ <b>CORRECT ANSWER</b>'
+     : '❌ <b>WRONG ANSWER</b>')+
+   `<hr>
+    <div><b>Your Answer:</b><br>${user}</div>
+    <div style="margin-top:8px"><b>Correct Answer:</b><br>${ans}</div>
+    <div style="margin-top:8px"><b>Explanation:</b> ${x.exp}</div>`;
+ return ok;
+}
+function checkAll(){
+ let sc=0,done=0;
+ Q.forEach((_,i)=>{
+   let r=check(i);
+   if(r!==null){done++;if(r)sc++}
+ });
+ document.getElementById('score').textContent=sc+'/39';
+ document.getElementById('answered').textContent=done;
+
+ let pct=Math.round((sc/39)*100);
+ let grade = pct>=90 ? 'Excellent' : pct>=75 ? 'Very Good' : pct>=60 ? 'Good' : pct>=40 ? 'Needs Improvement' : 'Keep Practising';
+
+ document.getElementById('result').innerHTML=
+   `<div style="background:#173b67;color:white;padding:20px;border-radius:12px;text-align:center;margin-top:15px">
+      <div style="font-size:18px">FINAL SCORE</div>
+      <div style="font-size:42px;font-weight:bold">${sc} / 39</div>
+      <div style="font-size:20px">${pct}% — ${grade}</div>
+    </div>
+    <p><b>Answer review:</b> Correct answers are highlighted in green. Wrong answers are highlighted in red with your answer, the correct answer and an explanation.</p>`;
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+
+render();
+</script>
+</body>
+</html>
