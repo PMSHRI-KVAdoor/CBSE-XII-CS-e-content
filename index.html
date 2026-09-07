@@ -1166,94 +1166,47 @@ body
                     			<span class="topic-arrow">⌄</span>
            			</button>
     				<div class="subtopics" id="teacher1Transmission">
- 					<!-- =================== TOPIC 1 -Wired Communication Media============================= -->
+		    			<button onclick="showContent('transmission-media')">
+						🧠 Concept Map & Learning objective
+					</button>
+ 					<!-- =================== TOPIC 1 -Transmission Media============================= -->
    					<div class="topic-block">                  		
                 				<button class="topic-head" type="button" onclick="toggleTopic('netCommunication')">
 							<span>Transmission Media</span>
                     					<span class="topic-arrow">⌄</span>
                 				</button>
+
 						<!-- ===========================TOPIC 1 RESOURCES================================= -->
     						<div class="subtopics" id="netCommunication">
-							<p>1. Wired Communication Media</p>
-							<p>2. Wireless Communication Media</p>
-		    					<button onclick="showContent('network-pre-reading')">
+		    					<button onclick="showContent('transmission-pre-reading')">
 								📖 Pre-reading Material
 							</button>
-		    					<button onclick="showContent('network-quiz')">
-								📝 Quiz
-							</button>
-		    					<button onclick="showContent('network-topologies')">
-								🧠 Concept Map
-							</button>
- 							<button onclick="showContent('network-interactive-video')">
-								🎥 Interactive Video/e-Content
-							</button>
-		    					<button onclick="showContent('network-self-assessment')">
-								✅ Self Assessment
+ 							<button onclick="showContent('transmission-interactive-video')">
+								🎥 Interactive Video/e-Content&Quiz
 							</button>
 		    				</div>
     					</div>
-					<!-- ================== TOPIC 2 - Network Devices ================================ -->
+					<!-- ============== TOPIC 2 - Network Devices, Topologies & Network Types ==================== -->
 					<div class="topic-block">
-                				<button class="topic-head" type="button" onclick="toggleTopic('netDevices')">
-                    					<span>2. Network Devices</span>
+                				<button class="topic-head" type="button" onclick="toggleTopic('netTopologies')">
+                    					<span>3. Network Devices, Topologies & Network Types</span>
                     					<span class="topic-arrow">⌄</span>
                 				</button>
 						<!-- ===========================TOPIC 2 RESOURCES ================================= -->
-    						<div class="subtopics" id="netDevices">
-							<p>Ethernet Card</p>
-							<p>RJ45</p>
-							<p>Repeater</p>
-							<p>Hub</p>
-							<p>Switch</p>
-							<p>Router</p>
-							<p>Gateway</p>
-							<p>Wi-Fi Card</p>
-		    					<button onclick="showContent('network-pre-reading')">
-								📖 Pre-reading Material
-							</button>
-		    					<button onclick="showContent('network-quiz')">
-								📝 Quiz
-							</button>
-		    					<button onclick="showContent('network-topologies')">
-								🧠 Concept Map
-							</button>
- 							<button onclick="showContent('network-interactive-video')">
-								🎥 Interactive Video/e-Content
-							</button>
-		    					<button onclick="showContent('network-self-assessment')">
-								✅ Self Assessment
-							</button>
-		    				</div>
-    					</div>
-					<!-- ============== TOPIC 3 - Network Topologies & Network Types ================== -->
-					<div class="topic-block">
-                				<button class="topic-head" type="button" onclick="toggleTopic('netTopologies')">
-                    					<span>3. Network Topologies & Network Types</span>
-                    					<span class="topic-arrow">⌄</span>
-                				</button>
-						<!-- ===========================TOPIC 3 RESOURCES ================================= -->
     						<div class="subtopics" id="netTopologies">
-							<p>Types of Networks</p>
-							<p>Components of Data Communication</p>
-							<p>Network Topologies</p>
-							<button onclick="showContent('network-pre-reading')">
+							<button onclick="showContent('Top-pre-reading')">
 								📖 Pre-reading Material
 							</button>
-		    					<button onclick="showContent('network-quiz')">
-								📝 Quiz
-							</button>
-		    					<button onclick="showContent('network-topologies')">
-								🧠 Concept Map
-							</button>
- 							<button onclick="showContent('network-interactive-video')">
+ 							<button onclick="showContent('Top-interactive-video')">
 								🎥 Interactive Video/e-Content
-							</button>
-		    					<button onclick="showContent('network-self-assessment')">
-								✅ Self Assessment
 							</button>
 		    				</div>
   					</div>
+					<div class="topic-block">                  		
+                				<button onclick="showContent('network-media')">
+							🧠 Concept Map & Learning objective
+						</button>
+					</div>
 				</div>
 			</div>
 		
@@ -1716,99 +1669,155 @@ body
 	</section>
 
 
-	<!-- =================================== Unit II – Computer Networks - center panel - links ======================================== -->
 
 
+	<!-- ============================================================================================================ 
+					Unit II – Computer Networks - center panel - links
+ 	============================================================================================================= -->
+
+	
 	<!-- ==================================================================================================================== 
 							📌 2.1 Transmission Media & Networking 
-============================================================================================================================== -->
+	============================================================================================================================== -->
 	
 	<!-- =================================== 2.1.1 Transmission Media ============================ -->
-	<!-- =================================== pre-reading ============================ -->
-	<section class="content-page" id="netProtocols-pre-reading">
+
+	<!-- ===================================== Concept Map ================================ -->
+	<section class="content-page" id="Transmission-network-map">
+    		<div class="material-header">
+      			<h2>🧠 Concept Map & Learning objective</h2>
+      			<p> Read the material below before starting the Computer Networks unit.</p>
+      			<a href="overall-mind-map.pdf" target="_blank" 
+				class="download-btn">📖 
+				Open Material
+			</a>
+      			<a href="overall-mind-map.pdf" download 
+				class="download-btn">
+				⬇ Download Material
+			</a>
+   		</div>
+   		<div class="pdf-container">
+      			<iframe src="overall-mind-map.pdf/preview" 
+				width="100%" height="600" style="border: none;">    
+      			</iframe>
+    		</div>
+	</section>
+
+	<!-- ================================================ pre-reading ============================================== -->
+	<section class="content-page" id="transmission-pre-reading">
     		<div class="material-header">
       			<h2>📖 Pre-reading Material</h2>
       			<p> Read the material below before starting the Computer Networks unit.</p>
-      			<a href="https://drive.google.com/file/d/1UVq2OnA8J-yImZEl9FWHh2OG42mpuZmt/view" target="_blank" 
+      			<a href="pre-reading-transmission media.pdf" target="_blank" 
 				class="download-btn">📖 
 				Open Material
 			</a>
-      			<a href="https://drive.google.com/uc?export=download&id=1UVq2OnA8J-yImZEl9FWHh2OG42mpuZmt" download 
+      			<a href="pre-reading-transmission media.pdf" download 
 				class="download-btn">
 				⬇ Download Material
 			</a>
    		</div>
    		<div class="pdf-container">
-      			<iframe src="https://drive.google.com/file/d/1UVq2OnA8J-yImZEl9FWHh2OG42mpuZmt/preview" 
+      			<iframe src="pre-reading-transmission media.pdf" 
 				width="100%" height="600" style="border: none;">    
       			</iframe>
     		</div>
 	</section>
 
-
-	<!-- ===================================== Concept Map ================================ -->
-	<section class="content-page" id="netProtocols-network-map">
-    		<div class="material-header">
-      			<h2>📖 Concept Map</h2>
-      			<p> Read the material below before starting the Computer Networks unit.</p>
-      			<a href="https://drive.google.com/file/d/1NXZswDymp2e2uIsPfp3c5pBDpTY_LJZW/view" target="_blank" 
-				class="download-btn">📖 
-				Open Material
-			</a>
-      			<a href="https://drive.google.com/uc?export=download&id=1NXZswDymp2e2uIsPfp3c5pBDpTY_LJZW" download 
-				class="download-btn">
-				⬇ Download Material
-			</a>
-   		</div>
-   		<div class="pdf-container">
-      			<iframe src="https://drive.google.com/file/d/1NXZswDymp2e2uIsPfp3c5pBDpTY_LJZW/preview" 
-				width="100%" height="600" style="border: none;">    
-      			</iframe>
-    		</div>
-	</section>
-
-	<!-- =================================== Quiz ================================ -->
-	<section class="content-page" id="netProtocols-network-quiz">
-    		<div class="material-header">
-      			<h2>📖 Quiz</h2>
-      			<p> Read the material below before starting the Computer Networks unit.</p>
-      			<a href="https://drive.google.com/file/d/1UVq2OnA8J-yImZEl9FWHh2OG42mpuZmt/view" target="_blank" 
-				class="download-btn">📖 
-				Open Material
-			</a>
-      			<a href="https://drive.google.com/uc?export=download&id=1UVq2OnA8J-yImZEl9FWHh2OG42mpuZmt" download 
-				class="download-btn">
-				⬇ Download Material
-			</a>
-   		</div>
-   		<div class="pdf-container">
-      			<iframe src="https://drive.google.com/file/d/1UVq2OnA8J-yImZEl9FWHh2OG42mpuZmt/preview" 
-				width="100%" height="600" style="border: none;">    
-      			</iframe>
-    		</div>
-	</section>
-
-
-	<!-- ==================================== Interactive Video ============================ -->
-	<section class="content-page" id="network-interactive-video">
+	<!-- ================================================= Interactive Video ==================================================== -->
+	<section class="content-page" id="transmission-interactive-video">
     		<div class="material-header">
       			<h2>🎬 Interactive Video</h2>
       			<p> Read the material below before starting the Computer Networks unit.</p>
-      			<a href="https://drive.google.com/file/d/1UVq2OnA8J-yImZEl9FWHh2OG42mpuZmt/view" target="_blank" 
+      			<a href="U2-T2-video-lesson-Transmission_Media.html" target="_blank" 
 				class="download-btn">📖 
 				Open Material
 			</a>
-      			<a href="https://drive.google.com/uc?export=download&id=1UVq2OnA8J-yImZEl9FWHh2OG42mpuZmt" download 
+      			<a href="U2-T2-video-lesson-Transmission_Media.html" download 
 				class="download-btn">
 				⬇ Download Material
 			</a>
    		</div>
    		<div class="pdf-container">
-      			<iframe src="https://drive.google.com/file/d/1UVq2OnA8J-yImZEl9FWHh2OG42mpuZmt/preview" 
+      			<iframe src="U2-T2-video-lesson-Transmission_Media.html" 
 				width="100%" height="600" style="border: none;">    
       			</iframe>
     		</div>
 	</section>
+
+
+<!-- ==================================================================================================================================
+					📌2.2. Network Devices, Topologies & Network Types
+===================================================================================================================================-->
+
+	<!-- ================================================ pre-reading ============================================== -->
+	<section class="content-page" id="Top-pre-reading">
+    		<div class="material-header">
+      			<h2>📖 Pre-reading Material</h2>
+      			<p> Read the material below before starting the Computer Networks unit.</p>
+      			<a href="pre-reading-device-topology-type.pdf" target="_blank" 
+				class="download-btn">📖 
+				Open Material
+			</a>
+      			<a href="pre-reading-device-topology-type.pdf" download 
+				class="download-btn">
+				⬇ Download Material
+			</a>
+   		</div>
+   		<div class="pdf-container">
+      			<iframe src="pre-reading-device-topology-type.pdf" 
+				width="100%" height="600" style="border: none;">    
+      			</iframe>
+    		</div>
+	</section>
+
+	<!-- ======================================= 2.1.2. 🎥 e-Content & Quiz  ======================================== -->
+	<section class="content-page" id="Top-interactive-video">
+    		<div class="material-header">
+      			<h2>e-Content & Quiz</h2>
+      			<p> Read the material below before starting the Computer Networks unit.</p>
+      			<a href="U2-T2-video-lesson-Network-Devices-Topology-types.html" target="_blank" 
+				class="download-btn">📖 
+				Open Material
+			</a>
+      			<a href="U2-T2-video-lesson-Network-Devices-Topology-types.html" download 
+				class="download-btn">
+				⬇ Download Material
+			</a>
+   		</div>
+   		<div class="pdf-container">
+      			<iframe src="U2-T2-video-lesson-Network-Devices-Topology-types.html" 
+				width="100%" height="600" style="border: none;">    
+      			</iframe>
+    		</div>
+	</section>
+
+
+	<!-- ============================================= 📌All Case-Based Questions ==================================== -->
+	<section class="content-page" id="network-Questions">
+    		<div class="material-header">
+      			<h2>📋 Case-Based Assessment</h2>
+      			<p> Read the material below before starting the Computer Networks unit.</p>
+      			<a href="#" target="_blank" 
+				class="download-btn">📖 
+				Open Material
+			</a>
+      			<a href="#" download 
+				class="download-btn">
+				⬇ Download Material
+			</a>
+   		</div>
+   		<div class="pdf-container">
+      			<iframe src="#" 
+				width="100%" height="600" style="border: none;">    
+      			</iframe>
+    		</div>
+	</section>
+
+
+<!-- ===================================================================================================================================== -->
+<!-- ===================================================================================================================================== -->
+
 
 
 <!-- ==================================================================================================================================
