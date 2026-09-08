@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interactive Worksheet – Structured Query Language</title>
+<style>
+body{font-family:Arial,sans-serif;margin:0;background:#f4f7fb;color:#1f2937}
+header{background:#1e3a8a;color:white;padding:28px 20px;text-align:center}
+.container{max-width:1000px;margin:25px auto;padding:0 18px}
+.card{background:white;border-radius:14px;padding:22px;margin:18px 0;box-shadow:0 3px 12px #0001}
+h2{color:#1e3a8a}
+button{background:#2563eb;color:white;border:0;border-radius:8px;padding:10px 16px;cursor:pointer;margin:5px}
+button:hover{background:#1d4ed8}
+.option{display:block;padding:10px;margin:7px 0;background:#eef2ff;border-radius:8px;cursor:pointer}
+input,select,textarea{padding:9px;border:1px solid #cbd5e1;border-radius:7px;margin:5px 0;max-width:100%}
+pre{background:#111827;color:#e5e7eb;padding:15px;border-radius:8px;overflow:auto}
+.answer{display:none;margin-top:10px;padding:10px;background:#ecfdf5;border-left:4px solid #10b981}
+.feedback{font-weight:bold;margin-top:10px}
+.score{font-size:20px;font-weight:bold;color:#1e3a8a}
+.progress{height:12px;background:#e5e7eb;border-radius:10px;overflow:hidden}
+.bar{height:100%;width:0;background:#22c55e}
+.small{color:#64748b}
+</style>
+</head>
+<body>
+<header>
+<h1>📘 Structured Query Language (SQL)</h1>
+<p>Interactive Worksheet – Class XII</p>
+</header>
+
+<div class="container">
+
+<div class="card">
+<h2>🎯 Learning Objectives</h2>
+<ul>
+<li>Understand the meaning and purpose of SQL.</li>
+<li>Differentiate DDL and DML.</li>
+<li>Identify common SQL data types.</li>
+<li>Understand NOT NULL, UNIQUE and PRIMARY KEY constraints.</li>
+<li>Use CREATE, USE, SHOW and DROP DATABASE commands.</li>
+</ul>
+<div class="progress"><div class="bar" id="bar"></div></div>
+<p class="small">Complete the activities to track your progress.</p>
+</div>
+
+<div class="card">
+<h2>1. 🧠 Quick Concept Check</h2>
+<p><b>SQL</b> stands for <b>Structured Query Language</b>. It is used to create, manage and manipulate data in relational databases.</p>
+<p><b>DDL</b> – Data Definition Language: defines/changes database structures.</p>
+<p><b>DML</b> – Data Manipulation Language: works with the data stored in tables.</p>
+<p>Examples: DDL – CREATE, ALTER, DROP | DML – INSERT, UPDATE, DELETE</p>
+</div>
+
+<div class="card">
+<h2>2. ❓ Multiple Choice Questions</h2>
+<div class="q">
+<p><b>1.</b> What does SQL stand for?</p>
+<label class="option"><input type="radio" name="q1" value="a"> Simple Query Language</label>
+<label class="option"><input type="radio" name="q1" value="b"> Structured Query Language</label>
+<label class="option"><input type="radio" name="q1" value="c"> Sequential Query Language</label>
+<button onclick="check('q1','b','f1')">Check</button><div id="f1" class="feedback"></div>
+</div>
+
+<div class="q">
+<p><b>2.</b> Which is a DDL command?</p>
+<label class="option"><input type="radio" name="q2" value="a"> INSERT</label>
+<label class="option"><input type="radio" name="q2" value="b"> UPDATE</label>
+<label class="option"><input type="radio" name="q2" value="c"> CREATE</label>
+<button onclick="check('q2','c','f2')">Check</button><div id="f2" class="feedback"></div>
+</div>
+
+<div class="q">
+<p><b>3.</b> Which is a DML command?</p>
+<label class="option"><input type="radio" name="q3" value="a"> INSERT</label>
+<label class="option"><input type="radio" name="q3" value="b"> CREATE</label>
+<label class="option"><input type="radio" name="q3" value="c"> DROP</label>
+<button onclick="check('q3','a','f3')">Check</button><div id="f3" class="feedback"></div>
+</div>
+
+<div class="q">
+<p><b>4.</b> Which data type is normally used for whole numbers?</p>
+<label class="option"><input type="radio" name="q4" value="a"> DATE</label>
+<label class="option"><input type="radio" name="q4" value="b"> INT</label>
+<label class="option"><input type="radio" name="q4" value="c"> CHAR</label>
+<button onclick="check('q4','b','f4')">Check</button><div id="f4" class="feedback"></div>
+</div>
+</div>
+
+<div class="card">
+<h2>3. 🔢 Match the Data Type</h2>
+<p>Choose the most suitable data type.</p>
+<label>Student name:
+<select id="dt1"><option value="">Select</option><option>INT</option><option>VARCHAR(n)</option><option>DATE</option><option>FLOAT</option></select></label><br>
+<label>Roll number:
+<select id="dt2"><option value="">Select</option><option>INT</option><option>VARCHAR(n)</option><option>DATE</option><option>FLOAT</option></select></label><br>
+<label>Date of birth:
+<select id="dt3"><option value="">Select</option><option>INT</option><option>VARCHAR(n)</option><option>DATE</option><option>FLOAT</option></select></label><br>
+<label>Percentage:
+<select id="dt4"><option value="">Select</option><option>INT</option><option>VARCHAR(n)</option><option>DATE</option><option>FLOAT</option></select></label><br>
+<button onclick="checkTypes()">Check Answers</button>
+<div id="typeFeedback" class="feedback"></div>
+</div>
+
+<div class="card">
+<h2>4. 🔐 Constraints</h2>
+<p><b>NOT NULL:</b> A column cannot contain a NULL value.</p>
+<p><b>UNIQUE:</b> Values in the column must be different.</p>
+<p><b>PRIMARY KEY:</b> Uniquely identifies each record; it cannot contain NULL values.</p>
+
+<p><b>Activity:</b> Choose the correct constraint.</p>
+<select id="constraint">
+<option value="">Select a constraint</option>
+<option>NOT NULL</option>
+<option>UNIQUE</option>
+<option>PRIMARY KEY</option>
+</select>
+<p>Which constraint is best for a StudentID that uniquely identifies every student?</p>
+<button onclick="checkConstraint()">Check</button>
+<div id="constraintFeedback" class="feedback"></div>
+</div>
+
+<div class="card">
+<h2>5. 💻 SQL Command Practice</h2>
+<p>Complete the commands by typing the missing part.</p>
+
+<p><b>A.</b> Create a database named <i>SchoolDB</i>.</p>
+<input id="cmd1" size="40" placeholder="Type SQL command">
+<button onclick="commandCheck('cmd1','create database schooldb','cmdf1')">Check</button>
+<div id="cmdf1" class="feedback"></div>
+
+<p><b>B.</b> Select/use the database <i>SchoolDB</i>.</p>
+<input id="cmd2" size="40" placeholder="Type SQL command">
+<button onclick="commandCheck('cmd2','use schooldb','cmdf2')">Check</button>
+<div id="cmdf2" class="feedback"></div>
+
+<p><b>C.</b> Display all databases.</p>
+<input id="cmd3" size="40" placeholder="Type SQL command">
+<button onclick="commandCheck('cmd3','show databases','cmdf3')">Check</button>
+<div id="cmdf3" class="feedback"></div>
+
+<p><b>D.</b> Delete the database <i>SchoolDB</i>.</p>
+<input id="cmd4" size="40" placeholder="Type SQL command">
+<button onclick="commandCheck('cmd4','drop database schooldb','cmdf4')">Check</button>
+<div id="cmdf4" class="feedback"></div>
+</div>
+
+<div class="card">
+<h2>6. 🧩 Fill in the Blanks</h2>
+<p>1. SQL stands for <input id="fill1">.</p>
+<p>2. DDL stands for <input id="fill2">.</p>
+<p>3. The command used to display all databases is <input id="fill3">.</p>
+<p>4. The data type used for decimal values is commonly <input id="fill4">.</p>
+<button onclick="fillCheck()">Check Answers</button>
+<div id="fillFeedback" class="feedback"></div>
+</div>
+
+<div class="card">
+<h2>7. 📝 Short Answer</h2>
+<p>Explain the difference between DDL and DML in your own words.</p>
+<textarea id="short" rows="5" cols="70" placeholder="Type your answer here..."></textarea>
+<button onclick="document.getElementById('model').style.display='block'">Show Model Answer</button>
+<div id="model" class="answer">
+<b>Model Answer:</b> DDL is used to define or modify the structure of database objects, while DML is used to insert, update or delete data stored in tables.
+</div>
+</div>
+
+<div class="card">
+<h2>🏆 Final Quiz</h2>
+<p>Try these without looking at the answers.</p>
+<p>1. Which command selects a database for use?</p>
+<select id="final1"><option value="">Select</option><option>SHOW DATABASES</option><option>USE database_name</option><option>DROP DATABASE</option></select>
+<p>2. Which constraint ensures that a value is not repeated?</p>
+<select id="final2"><option value="">Select</option><option>NOT NULL</option><option>UNIQUE</option><option>DATE</option></select>
+<p>3. Which data type stores a date?</p>
+<select id="final3"><option value="">Select</option><option>FLOAT</option><option>INT</option><option>DATE</option></select>
+<button onclick="finalQuiz()">Submit Quiz</button>
+<div id="finalFeedback" class="score"></div>
+</div>
+
+<div class="card">
+<h2>📌 SQL Quick Reference</h2>
+<pre>
+CREATE DATABASE SchoolDB;
+USE SchoolDB;
+SHOW DATABASES;
+DROP DATABASE SchoolDB;
+
+-- Example data types
+CHAR(n)
+VARCHAR(n)
+INT
+FLOAT
+DATE
+
+-- Example constraints
+NOT NULL
+UNIQUE
+PRIMARY KEY
+</pre>
+</div>
+
+</div>
+
+<script>
+let completed=0;
+function progress(){completed=Math.min(completed+1,10);document.getElementById('bar').style.width=(completed*10)+'%';}
+function check(name,ans,id){
+let x=document.querySelector('input[name="'+name+'"]:checked');
+let el=document.getElementById(id);
+if(!x){el.textContent='Please select an answer.';el.style.color='#b45309';return}
+if(x.value===ans){el.textContent='✅ Correct!';el.style.color='#15803d';progress()}
+else{el.textContent='❌ Try again.';el.style.color='#dc2626'}
+}
+function checkTypes(){
+let a=['VARCHAR(n)','INT','DATE','FLOAT'],ok=0;
+a.forEach((v,i)=>{if(document.getElementById('dt'+(i+1)).value===v)ok++});
+document.getElementById('typeFeedback').textContent=ok===4?'✅ Excellent! All answers are correct.':'You got '+ok+' out of 4 correct. Try again.';
+if(ok===4)progress();
+}
+function checkConstraint(){
+let v=document.getElementById('constraint').value;
+document.getElementById('constraintFeedback').textContent=v==='PRIMARY KEY'?'✅ Correct!':'❌ Try again.';
+if(v==='PRIMARY KEY')progress();
+}
+function commandCheck(id,ans,fid){
+let v=document.getElementById(id).value.trim().toLowerCase().replace(/\s+/g,' ').replace(/;$/,'');
+let el=document.getElementById(fid);
+if(v===ans){el.textContent='✅ Correct!';el.style.color='#15803d';progress()}
+else{el.textContent='❌ Check the syntax and try again.';el.style.color='#dc2626'}
+}
+function fillCheck(){
+let a=[
+document.getElementById('fill1').value.trim().toLowerCase(),
+document.getElementById('fill2').value.trim().toLowerCase(),
+document.getElementById('fill3').value.trim().toLowerCase().replace(/;$/,''),
+document.getElementById('fill4').value.trim().toLowerCase()
+];
+let ok=(a[0]==='structured query language')+(a[1]==='data definition language')+(a[2]==='show databases')+(a[3]==='float');
+document.getElementById('fillFeedback').textContent='You got '+ok+' out of 4 correct.';
+if(ok===4)progress();
+}
+function finalQuiz(){
+let s=0;
+if(document.getElementById('final1').value==='USE database_name')s++;
+if(document.getElementById('final2').value==='UNIQUE')s++;
+if(document.getElementById('final3').value==='DATE')s++;
+document.getElementById('finalFeedback').textContent='Your score: '+s+'/3 '+(s===3?'🎉 Excellent!':'Keep practising!');
+if(s===3)progress();
+}
+</script>
+</body>
+</html>
