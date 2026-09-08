@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CBSE Class 12 SQL - GROUP BY & HAVING Quiz</title>
+<style>
+body{font-family:Arial,sans-serif;background:#f3f6fa;color:#172033;margin:0}
+.wrap{max-width:900px;margin:30px auto;background:#fff;padding:30px;border-radius:18px;box-shadow:0 5px 25px #0002}
+h1{text-align:center;color:#183b5d} .subtitle{text-align:center;color:#5c6b7a}
+.q{border:1px solid #d9e1ea;border-radius:12px;padding:18px;margin:18px 0}
+.option{display:block;padding:9px;margin:6px 0;border-radius:7px;background:#f7f9fb;cursor:pointer}
+.option:hover{background:#edf3f8}
+button{background:#214f78;color:white;border:0;padding:12px 20px;border-radius:8px;font-size:16px;cursor:pointer;margin:6px}
+button:hover{opacity:.9}
+.correct{background:#dff3e5!important}.wrong{background:#ffe1e1!important}
+.feedback{font-weight:bold;margin-top:8px}
+#result{display:none;padding:18px;border-radius:12px;background:#eaf2fb;font-size:22px;font-weight:bold;text-align:center;margin-top:20px}
+.code{background:#202833;color:white;padding:12px;border-radius:8px;font-family:Consolas,monospace;white-space:pre-wrap}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>SQL GROUP BY & HAVING Quiz</h1>
+<p class="subtitle">Class XII CBSE Computer Science • 10 Questions • Instant Score</p>
+<p><b>Name:</b> <input id="name" style="padding:8px;width:250px"></p>
+
+<div class="q"><b>1. Which clause forms groups of rows?</b>
+<label class="option"><input type="radio" name="q1" value="A"> A. WHERE</label>
+<label class="option"><input type="radio" name="q1" value="B"> B. GROUP BY</label>
+<label class="option"><input type="radio" name="q1" value="C"> C. HAVING</label>
+<label class="option"><input type="radio" name="q1" value="D"> D. ORDER BY</label></div>
+
+<div class="q"><b>2. Which clause filters groups after GROUP BY?</b>
+<label class="option"><input type="radio" name="q2" value="A"> A. WHERE</label>
+<label class="option"><input type="radio" name="q2" value="B"> B. SELECT</label>
+<label class="option"><input type="radio" name="q2" value="C"> C. HAVING</label>
+<label class="option"><input type="radio" name="q2" value="D"> D. ORDER BY</label></div>
+
+<div class="q"><b>3. Which query displays number of employees in each department?</b>
+<div class="code">A) SELECT Department, COUNT(*) FROM EMPLOYEE;<br>
+B) SELECT Department, COUNT(*) FROM EMPLOYEE GROUP BY Department;<br>
+C) SELECT COUNT(*) FROM EMPLOYEE ORDER BY Department;<br>
+D) SELECT Department FROM EMPLOYEE HAVING COUNT(*) &gt; 1;</div>
+<label class="option"><input type="radio" name="q3" value="A"> A</label>
+<label class="option"><input type="radio" name="q3" value="B"> B</label>
+<label class="option"><input type="radio" name="q3" value="C"> C</label>
+<label class="option"><input type="radio" name="q3" value="D"> D</label></div>
+
+<div class="q"><b>4. Which clause is appropriate for: departments having more than 3 employees?</b>
+<label class="option"><input type="radio" name="q4" value="A"> A. WHERE COUNT(*) &gt; 3</label>
+<label class="option"><input type="radio" name="q4" value="B"> B. HAVING COUNT(*) &gt; 3</label>
+<label class="option"><input type="radio" name="q4" value="C"> C. ORDER BY COUNT(*) &gt; 3</label>
+<label class="option"><input type="radio" name="q4" value="D"> D. GROUP BY COUNT(*) &gt; 3</label></div>
+
+<div class="q"><b>5. What is the highest IT salary?</b>
+<p>IT salaries: ₹50,000, ₹60,000 and ₹55,000.</p>
+<label class="option"><input type="radio" name="q5" value="A"> A. ₹50,000</label>
+<label class="option"><input type="radio" name="q5" value="B"> B. ₹55,000</label>
+<label class="option"><input type="radio" name="q5" value="C"> C. ₹60,000</label>
+<label class="option"><input type="radio" name="q5" value="D"> D. ₹65,000</label></div>
+
+<div class="q"><b>6. Which query finds departments whose average salary is greater than ₹50,000?</b>
+<div class="code">A) SELECT Department, AVG(Salary) FROM EMPLOYEE WHERE AVG(Salary) &gt; 50000 GROUP BY Department;<br>
+B) SELECT Department, AVG(Salary) FROM EMPLOYEE GROUP BY Department HAVING AVG(Salary) &gt; 50000;<br>
+C) SELECT Department, AVG(Salary) FROM EMPLOYEE HAVING AVG(Salary) &gt; 50000;<br>
+D) SELECT Department FROM EMPLOYEE WHERE Salary &gt; 50000;</div>
+<label class="option"><input type="radio" name="q6" value="A"> A</label>
+<label class="option"><input type="radio" name="q6" value="B"> B</label>
+<label class="option"><input type="radio" name="q6" value="C"> C</label>
+<label class="option"><input type="radio" name="q6" value="D"> D</label></div>
+
+<div class="q"><b>7. What does WHERE primarily filter?</b>
+<label class="option"><input type="radio" name="q7" value="A"> A. Groups</label>
+<label class="option"><input type="radio" name="q7" value="B"> B. Individual rows</label>
+<label class="option"><input type="radio" name="q7" value="C"> C. Sorted results</label>
+<label class="option"><input type="radio" name="q7" value="D"> D. Aggregate functions</label></div>
+
+<div class="q"><b>8. Which query displays department-wise total salary from highest to lowest?</b>
+<div class="code">A) SELECT Department, SUM(Salary) FROM EMPLOYEE GROUP BY Department ORDER BY SUM(Salary) DESC;<br>
+B) SELECT Department, SUM(Salary) FROM EMPLOYEE ORDER BY Department;<br>
+C) SELECT Department, SUM(Salary) FROM EMPLOYEE GROUP BY SUM(Salary);<br>
+D) SELECT Department, SUM(Salary) FROM EMPLOYEE HAVING SUM(Salary) DESC;</div>
+<label class="option"><input type="radio" name="q8" value="A"> A</label>
+<label class="option"><input type="radio" name="q8" value="B"> B</label>
+<label class="option"><input type="radio" name="q8" value="C"> C</label>
+<label class="option"><input type="radio" name="q8" value="D"> D</label></div>
+
+<div class="q"><b>9. Complete the rule:</b> WHERE → ______ ; HAVING → ______
+<label class="option"><input type="radio" name="q9" value="A"> A. groups ; rows</label>
+<label class="option"><input type="radio" name="q9" value="B"> B. rows ; groups</label>
+<label class="option"><input type="radio" name="q9" value="C"> C. sorting ; grouping</label>
+<label class="option"><input type="radio" name="q9" value="D"> D. columns ; tables</label></div>
+
+<div class="q"><b>10. Which statement about GROUP BY is correct?</b>
+<label class="option"><input type="radio" name="q10" value="A"> A. It only sorts records.</label>
+<label class="option"><input type="radio" name="q10" value="B"> B. It allows aggregate calculations separately for each group.</label>
+<label class="option"><input type="radio" name="q10" value="C"> C. It replaces HAVING in every query.</label>
+<label class="option"><input type="radio" name="q10" value="D"> D. It can only be used with COUNT().</label></div>
+
+<button onclick="grade()">Submit Quiz</button>
+<button onclick="location.reload()">Reset</button>
+<div id="result"></div>
+</div>
+<script>
+const ans={q1:"B",q2:"C",q3:"B",q4:"B",q5:"C",q6:"B",q7:"B",q8:"A",q9:"B",q10:"B"};
+function grade(){
+ let score=0;
+ for(let i=1;i<=10;i++){
+  const chosen=document.querySelector('input[name="q'+i+'"]:checked');
+  if(chosen && chosen.value===ans['q'+i]) score++;
+ }
+ let level=score>=9?"🏆 SQL Master":score>=7?"🌟 Board Exam Ready":score>=5?"👍 Good — practise more":"📚 Revise GROUP BY and HAVING";
+ const r=document.getElementById("result");
+ r.style.display="block";
+ r.innerHTML="Score: "+score+" / 10<br>"+level+"<br><small>Review: WHERE filters rows; GROUP BY creates groups; HAVING filters groups; ORDER BY sorts results.</small>";
+ window.scrollTo({top:document.body.scrollHeight,behavior:"smooth"});
+}
+</script>
+</body>
+</html>
