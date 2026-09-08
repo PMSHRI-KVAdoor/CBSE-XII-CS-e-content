@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CBSE Class XII - GROUP BY & HAVING Interactive Worksheet</title>
+<style>
+body{font-family:Arial,sans-serif;background:#f4f7fb;color:#172033;line-height:1.5;margin:0}
+.container{max-width:1000px;margin:25px auto;background:white;padding:32px;border-radius:18px;box-shadow:0 4px 20px #0001}
+h1{margin-bottom:4px} h2{border-bottom:2px solid #dfe6ef;padding-bottom:6px;margin-top:30px}
+.card{background:#f8fafc;border:1px solid #dce4ee;border-radius:12px;padding:18px;margin:15px 0}
+input[type=text]{padding:8px;border:1px solid #bbc7d5;border-radius:6px}
+textarea{width:100%;min-height:80px;border:1px solid #bbc7d5;border-radius:8px;padding:10px;font-family:monospace}
+.option{display:block;padding:7px;margin:5px 0;border-radius:7px}
+button{background:#244c78;color:#fff;border:0;padding:11px 18px;border-radius:8px;cursor:pointer;margin:6px 4px 6px 0}
+button:hover{opacity:.9}
+.correct{background:#dff5e4!important}.wrong{background:#ffe1e1!important}
+.feedback{font-weight:bold;margin-top:7px}.answer{display:none;background:#eef6ff;padding:12px;border-left:4px solid #3978b8;margin-top:8px}
+.score{font-size:22px;font-weight:bold;padding:15px;background:#eaf2fb;border-radius:10px;margin-top:15px}
+table{border-collapse:collapse;width:100%;margin:10px 0}th,td{border:1px solid #cfd8e3;padding:8px;text-align:left}th{background:#edf2f7}
+small{color:#5d6b7d}.gold{background:#fff6d8;border-left:4px solid #d8a600;padding:12px}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Interactive Worksheet: GROUP BY & HAVING in SQL</h1>
+<p><b>Class XII CBSE Computer Science</b> • Suggested time: 35–45 minutes</p>
+<p>Name: <input id="name" type="text" style="width:260px"> &nbsp; Date: <input id="date" type="text" style="width:150px"></p>
+
+<div class="gold"><b>Golden rule:</b> WHERE → filters rows | GROUP BY → creates groups | HAVING → filters groups | ORDER BY → sorts the result.</div>
+
+<h2>1. Quick Concept Check</h2>
+<div class="card">
+<p><b>Q1.</b> Which clause is used to create groups?</p>
+<label class="option"><input type="radio" name="q1" value="A"> A. WHERE</label>
+<label class="option"><input type="radio" name="q1" value="B"> B. GROUP BY</label>
+<label class="option"><input type="radio" name="q1" value="C"> C. HAVING</label>
+<label class="option"><input type="radio" name="q1" value="D"> D. ORDER BY</label>
+<p id="f1" class="feedback"></p>
+</div>
+<div class="card">
+<p><b>Q2.</b> Which clause filters groups?</p>
+<label class="option"><input type="radio" name="q2" value="A"> A. WHERE</label>
+<label class="option"><input type="radio" name="q2" value="B"> B. GROUP BY</label>
+<label class="option"><input type="radio" name="q2" value="C"> C. HAVING</label>
+<label class="option"><input type="radio" name="q2" value="D"> D. SELECT</label>
+<p id="f2" class="feedback"></p>
+</div>
+
+<h2>2. Explore the Data</h2>
+<table>
+<tr><th>EmpID</th><th>Name</th><th>Department</th><th>Salary</th></tr>
+<tr><td>101</td><td>Anu</td><td>HR</td><td>30000</td></tr>
+<tr><td>102</td><td>Ravi</td><td>IT</td><td>50000</td></tr>
+<tr><td>103</td><td>Meera</td><td>HR</td><td>35000</td></tr>
+<tr><td>104</td><td>Arjun</td><td>IT</td><td>60000</td></tr>
+<tr><td>105</td><td>Diya</td><td>Sales</td><td>40000</td></tr>
+<tr><td>106</td><td>Kiran</td><td>IT</td><td>55000</td></tr>
+<tr><td>107</td><td>Neha</td><td>Sales</td><td>45000</td></tr>
+</table>
+<div class="card">
+<p><b>Q3.</b> How many employees are in IT?</p>
+<input id="q3" type="text" placeholder="Your answer">
+<p><b>Q4.</b> What is the highest salary in IT?</p>
+<input id="q4" type="text" placeholder="Your answer">
+</div>
+
+<h2>3. Output Prediction</h2>
+<div class="card">
+<pre>SELECT Department, COUNT(*)
+FROM EMPLOYEE
+GROUP BY Department;</pre>
+<p>Predict the counts:</p>
+<table>
+<tr><th>Department</th><th>Your COUNT</th></tr>
+<tr><td>HR</td><td><input id="hr" type="text"></td></tr>
+<tr><td>IT</td><td><input id="it" type="text"></td></tr>
+<tr><td>Sales</td><td><input id="sales" type="text"></td></tr>
+</table>
+</div>
+
+<h2>4. WHERE or HAVING?</h2>
+<div class="card">
+<p>Choose the correct clause for each requirement.</p>
+<p>Salary &gt; 50000:
+<select id="w1"><option></option><option>WHERE</option><option>HAVING</option></select></p>
+<p>Departments having more than 2 employees:
+<select id="w2"><option></option><option>WHERE</option><option>HAVING</option></select></p>
+<p>Employees working in IT:
+<select id="w3"><option></option><option>WHERE</option><option>HAVING</option></select></p>
+<p>Departments whose average salary &gt; 40000:
+<select id="w4"><option></option><option>WHERE</option><option>HAVING</option></select></p>
+</div>
+
+<h2>5. Query Builder</h2>
+<div class="card">
+<p><b>Q5.</b> Write a query to display department-wise average salary.</p>
+<textarea id="code1" placeholder="Write your SQL query here..."></textarea>
+<div id="ans1" class="answer"><pre>SELECT Department, AVG(Salary)
+FROM EMPLOYEE
+GROUP BY Department;</pre></div>
+<button onclick="document.getElementById('ans1').style.display='block'">Reveal model answer</button>
+</div>
+<div class="card">
+<p><b>Q6.</b> Write a query to display departments having more than 2 employees.</p>
+<textarea id="code2" placeholder="Write your SQL query here..."></textarea>
+<div id="ans2" class="answer"><pre>SELECT Department, COUNT(*)
+FROM EMPLOYEE
+GROUP BY Department
+HAVING COUNT(*) &gt; 2;</pre></div>
+<button onclick="document.getElementById('ans2').style.display='block'">Reveal model answer</button>
+</div>
+
+<h2>6. Find the Error</h2>
+<div class="card">
+<pre>SELECT Department, COUNT(*)
+FROM EMPLOYEE
+WHERE COUNT(*) &gt; 2
+GROUP BY Department;</pre>
+<p>What is wrong?</p>
+<textarea id="err" placeholder="Explain in your own words..."></textarea>
+<div id="ans3" class="answer">COUNT(*) is an aggregate expression. An aggregate condition on grouped results should be placed in HAVING, not WHERE.</div>
+<button onclick="document.getElementById('ans3').style.display='block'">Reveal explanation</button>
+</div>
+
+<h2>7. CBSE-Style Challenge</h2>
+<div class="card">
+<p>Write a query to display total sales region-wise, keep only regions whose total exceeds ₹10,000, and show the result in descending order.</p>
+<textarea id="code3" placeholder="Write your SQL query here..."></textarea>
+<div id="ans4" class="answer"><pre>SELECT Region, SUM(Amount)
+FROM SALES
+GROUP BY Region
+HAVING SUM(Amount) &gt; 10000
+ORDER BY SUM(Amount) DESC;</pre></div>
+<button onclick="document.getElementById('ans4').style.display='block'">Reveal model answer</button>
+</div>
+
+<h2>8. Self-Assessment</h2>
+<div class="card">
+<p>How confident are you?</p>
+<label><input type="radio" name="confidence"> 😀 I can solve independently</label><br>
+<label><input type="radio" name="confidence"> 🙂 I need a little practice</label><br>
+<label><input type="radio" name="confidence"> 😕 I need to revise the concepts</label>
+</div>
+
+<button onclick="checkWorksheet()">Check my worksheet</button>
+<button onclick="window.print()">Print / Save as PDF</button>
+<button onclick="location.reload()">Reset</button>
+<div id="result" class="score" style="display:none"></div>
+</div>
+
+<script>
+function checkWorksheet(){
+ let score=0,total=10;
+ const q1=document.querySelector('input[name="q1"]:checked');
+ const q2=document.querySelector('input[name="q2"]:checked');
+ function mark(id,ok,msg){
+   const el=document.getElementById(id); el.textContent=msg; el.className='feedback '+(ok?'correct':'wrong');
+ }
+ mark('f1',q1&&q1.value==='B',q1&&q1.value==='B'?'✓ Correct':'✗ Correct answer: GROUP BY');
+ mark('f2',q2&&q2.value==='C',q2&&q2.value==='C'?'✓ Correct':'✗ Correct answer: HAVING');
+ if(q1&&q1.value==='B')score++; if(q2&&q2.value==='C')score++;
+ if(document.getElementById('q3').value.trim()==='3')score++;
+ if(document.getElementById('q4').value.replace(/[,₹ ]/g,'').trim()==='60000')score++;
+ if(document.getElementById('hr').value.trim()==='2')score++;
+ if(document.getElementById('it').value.trim()==='3')score++;
+ if(document.getElementById('sales').value.trim()==='2')score++;
+ const ws=[['w1','WHERE'],['w2','HAVING'],['w3','WHERE'],['w4','HAVING']];
+ ws.forEach(x=>{if(document.getElementById(x[0]).value===x[1])score++;});
+ document.getElementById('result').style.display='block';
+ document.getElementById('result').textContent='Auto-check score: '+score+' / '+total+' (MCQ, data and clause questions). Query-writing tasks are teacher/self-reviewed.';
+}
+</script>
+</body></html>
