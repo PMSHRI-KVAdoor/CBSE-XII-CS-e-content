@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Class XII SQL - Equi-Join & Natural Join Dynamic MCQ</title>
+<style>
+body{font-family:Arial,sans-serif;background:#f4f7fb;margin:0;color:#1f2937}
+.container{max-width:900px;margin:30px auto;padding:25px;background:white;border-radius:18px;box-shadow:0 8px 30px #0001}
+h1{text-align:center;color:#17365d;margin-bottom:5px}.sub{text-align:center;color:#64748b}
+.card{background:#f8fafc;border:1px solid #dbe3ee;border-radius:14px;padding:20px;margin:18px 0}
+.q{font-weight:700;margin-bottom:12px}.option{display:block;padding:10px;margin:7px 0;background:white;border:1px solid #d7dee8;border-radius:9px;cursor:pointer}
+.option:hover{background:#eef5ff}.option input{margin-right:9px}
+button{border:0;border-radius:10px;padding:12px 18px;margin:6px;font-weight:700;cursor:pointer}
+#submit{background:#17365d;color:white}.secondary{background:#e8eef7}.next{background:#2e7d32;color:white}
+#result{display:none;padding:18px;border-radius:12px;background:#e9f7ef;margin-top:20px}
+.feedback{margin-top:10px;font-weight:700}.correct{color:#177245}.wrong{color:#b42318}
+.progress{height:12px;background:#e5e7eb;border-radius:8px;overflow:hidden}.bar{height:100%;width:0;background:#3b82f6}
+#timer{font-size:18px;font-weight:700;text-align:right;color:#b42318}
+.small{font-size:14px;color:#64748b}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Class XII Computer Science</h1>
+<div class="sub">Dynamic MCQ Worksheet: SQL Equi-Join & Natural Join</div>
+<div id="timer">Time: 10:00</div>
+<div class="progress"><div class="bar" id="bar"></div></div>
+<p class="small">Select one answer for each question. Submit to receive an instant score and feedback.</p>
+<div id="quiz"></div>
+<button id="submit" onclick="submitQuiz()">Submit Quiz</button>
+<button class="secondary" onclick="resetQuiz()">Reset</button>
+<div id="result"></div>
+</div>
+<script>
+const questions=[
+["Which operator is normally used in an equi-join condition?",["A. >","B. =","C. <>","D. LIKE"],1],
+["An equi-join matches rows when:",["A. Values are equal","B. Values are different","C. Values are greater","D. Columns are sorted"],0],
+["Which clause explicitly specifies the matching condition in an explicit JOIN?",["A. GROUP BY","B. HAVING","C. ON","D. ORDER BY"],2],
+["A NATURAL JOIN automatically matches columns that have:",["A. Different names","B. Same names","C. Same data only","D. Primary keys only"],1],
+["Compared with SELECT * in an equi-join, NATURAL JOIN normally displays a common join column:",["A. Twice","B. Three times","C. Once","D. Never"],2],
+["Which query correctly represents an equi-join?",["A. SELECT * FROM S JOIN D ON S.DeptID = D.DeptID;","B. SELECT * FROM S JOIN D ON S.DeptID > D.DeptID;","C. SELECT * FROM S NATURAL D;","D. SELECT * FROM S WHERE JOIN D;"],0],
+["Which join gives the programmer more explicit control over the matching condition?",["A. Natural join","B. Equi-join with ON","C. Cartesian product only","D. None"],1],
+["If two tables have no same-named columns, a NATURAL JOIN has no common named column on which to match.",["A. True","B. False","C. Only in Python","D. Only in HTML"],0],
+["Which statement is correct?",["A. Every equi-join is a natural join","B. Natural join is based on equality of same-named columns","C. Natural join uses >","D. Equi-join cannot use ON"],1],
+["Which query is most precise when you want to explicitly specify DeptID as the matching column?",["A. NATURAL JOIN","B. JOIN ... ON S.DeptID = D.DeptID","C. JOIN without a condition","D. ORDER BY DeptID"],1],
+["For STUDENT(DeptID) and DEPARTMENT(DeptID), NATURAL JOIN automatically uses:",["A. RollNo","B. Name","C. DeptID","D. DeptName"],2],
+["If STUDENT has four rows and each has a matching department, the equi-join produces:",["A. 2 rows","B. 3 rows","C. 4 rows","D. 12 rows"],2]
+];
+
+let quiz=document.getElementById("quiz");
+questions.forEach((q,i)=>{
+ let card=document.createElement("div"); card.className="card";
+ card.innerHTML="<div class='q'>"+(i+1)+". "+q[0]+"</div>";
+ q[1].forEach((o,j)=>{
+   card.innerHTML+=`<label class="option"><input type="radio" name="q${i}" value="${j}">${o}</label>`;
+ });
+ quiz.appendChild(card);
+});
+
+let seconds=600, submitted=false;
+const timer=setInterval(()=>{
+ if(submitted)return;
+ seconds--;
+ let m=Math.floor(seconds/60),s=seconds%60;
+ document.getElementById("timer").textContent=`Time: ${m}:${String(s).padStart(2,"0")}`;
+ document.getElementById("bar").style.width=((600-seconds)/600*100)+"%";
+ if(seconds<=0){clearInterval(timer);submitQuiz();}
+},1000);
+
+function submitQuiz(){
+ if(submitted)return;
+ submitted=true;
+ let score=0;
+ questions.forEach((q,i)=>{
+   const card=quiz.children[i];
+   const selected=document.querySelector(`input[name="q${i}"]:checked`);
+   let feedback=document.createElement("div"); feedback.className="feedback";
+   if(selected && Number(selected.value)===q[2]){
+     score++; feedback.classList.add("correct"); feedback.textContent="✓ Correct";
+   }else{
+     feedback.classList.add("wrong");
+     feedback.textContent="✗ Incorrect — Correct answer: "+q[1][q[2]];
+   }
+   card.appendChild(feedback);
+ });
+ let pct=Math.round(score/questions.length*100);
+ let level=pct>=90?"SQL Join Master":pct>=75?"Strong":pct>=60?"Developing":"Needs Revision";
+ let result=document.getElementById("result");
+ result.style.display="block";
+ result.innerHTML=`<strong>Score: ${score}/${questions.length} (${pct}%)</strong><br>Performance: <strong>${level}</strong><br><br>Review the explanations shown below each question, then use Reset to attempt the quiz again.`;
+ document.getElementById("submit").disabled=true;
+ window.scrollTo({top:document.body.scrollHeight,behavior:"smooth"});
+}
+function resetQuiz(){location.reload();}
+</script>
+</body>
+</html>
