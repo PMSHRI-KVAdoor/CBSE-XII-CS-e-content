@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Class 12 CBSE - MySQL Interactive Module</title>
+  <style>
+    :root {
+      --primary: #1e293b;
+      --secondary: #2563eb;
+      --accent: #10b981;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --border: #cbd5e1;
+      --code-bg: #fce7f3; /* Light pink background */
+      --code-text: #831843; /* Dark pink/maroon text for readability */
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg);
+      color: var(--text);
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary), #0f172a);
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 { margin: 0; font-size: 2rem; letter-spacing: 0.5px; }
+    header p { margin: 8px 0 0 0; font-size: 1rem; opacity: 0.85; }
+
+    /* Navigation Bar / Menus */
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: #0f172a;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    nav button {
+      background: none;
+      border: none;
+      color: #94a3b8;
+      padding: 16px 24px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 600;
+    }
+
+    nav button:hover {
+      color: #ffffff;
+      background-color: rgba(255,255,255,0.05);
+    }
+
+    nav button.active {
+      color: #ffffff;
+      background-color: var(--secondary);
+      border-bottom: 4px solid var(--accent);
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 1100px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    .tab-content {
+      display: none;
+      background: var(--card-bg);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    /* Mind Map Styling */
+    .mindmap-wrapper {
+      border: 2px solid var(--secondary);
+      border-radius: 12px;
+      padding: 25px;
+      background: #ffffff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    .mindmap-header {
+      text-align: center;
+      border-bottom: 2px dashed var(--border);
+      padding-bottom: 15px;
+      margin-bottom: 25px;
+    }
+
+    .mindmap-header h2 {
+      margin: 0;
+      color: var(--secondary);
+      font-size: 1.5rem;
+      letter-spacing: 1px;
+    }
+
+    .mindmap-header h3 {
+      margin: 5px 0 0 0;
+      color: #64748b;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .mindmap-section-title {
+      background: var(--primary);
+      color: white;
+      padding: 8px 15px;
+      border-radius: 6px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin: 25px 0 15px 0;
+      display: inline-block;
+    }
+
+    .mindmap-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 15px;
+    }
+
+    .mindmap-card {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-top: 4px solid var(--secondary);
+      border-radius: 8px;
+      padding: 15px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .mindmap-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+    }
+
+    .mindmap-card h4 {
+      margin: 0 0 10px 0;
+      color: var(--secondary);
+      font-size: 1rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 5px;
+    }
+
+    .mindmap-card ul {
+      margin: 0;
+      padding-left: 18px;
+      font-size: 0.9rem;
+      color: #334155;
+    }
+
+    .mindmap-card li {
+      margin-bottom: 6px;
+    }
+
+    .flow-step {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      background: #eff6ff;
+      padding: 15px;
+      border-radius: 8px;
+      border: 1px solid #bfdbfe;
+      margin-top: 15px;
+      font-weight: 600;
+      color: #1e40af;
+    }
+
+    .flow-arrow {
+      color: var(--secondary);
+      font-weight: bold;
+    }
+
+    .exam-memory-box {
+      background: linear-gradient(90deg, #10b981, #059669);
+      color: white;
+      padding: 15px 20px;
+      border-radius: 8px;
+      margin-top: 25px;
+      font-weight: bold;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    /* Voice Controls Toolbar */
+    .voice-toolbar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      padding: 12px 20px;
+      border-radius: 8px;
+      margin-bottom: 25px;
+    }
+
+    .btn-voice {
+      background-color: var(--secondary);
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.9rem;
+      transition: background 0.2s;
+    }
+
+    .btn-voice:hover {
+      background-color: #1d4ed8;
+    }
+
+    .btn-stop {
+      background-color: #ef4444;
+    }
+
+    .btn-stop:hover {
+      background-color: #dc2626;
+    }
+
+    /* Concept Card Styling */
+    .concept-card {
+      border-left: 5px solid var(--secondary);
+      background: #f8fafc;
+      padding: 20px;
+      margin-bottom: 25px;
+      border-radius: 0 8px 8px 0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    }
+
+    .concept-card header {
+      background: none;
+      box-shadow: none;
+      padding: 0;
+      text-align: left;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .concept-card h3 {
+      margin: 0;
+      color: var(--primary);
+    }
+
+    /* Updated code styling to Pink Background */
+    code {
+      background: var(--code-bg);
+      color: var(--code-text);
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.9rem;
+      font-weight: bold;
+      border: 1px solid #fbcfe8;
+    }
+
+    pre {
+      background: var(--code-bg);
+      color: var(--code-text);
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+      border: 1px solid #fbcfe8;
+      font-weight: 600;
+    }
+
+    pre code {
+      background: none;
+      padding: 0;
+      border: none;
+    }
+
+    /* Quiz Styling */
+    .quiz-form-group {
+      margin-bottom: 15px;
+    }
+
+    .quiz-form-group label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .quiz-form-group input {
+      width: 100%;
+      max-width: 300px;
+      padding: 10px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+    }
+
+    .question-card {
+      border: 1px solid var(--border);
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      background-color: #fff;
+    }
+
+    .question-card p {
+      font-weight: 600;
+      margin-top: 0;
+      font-size: 1.05rem;
+    }
+
+    .option {
+      margin: 10px 0;
+    }
+
+    .option label {
+      cursor: pointer;
+      font-weight: normal;
+    }
+
+    .btn-submit {
+      background-color: var(--accent);
+      color: white;
+      border: none;
+      padding: 14px 28px;
+      font-size: 1.05rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.2s;
+    }
+
+    .btn-submit:hover {
+      background-color: #059669;
+    }
+
+    .score-box {
+      display: none;
+      padding: 20px;
+      background-color: #ecfdf5;
+      border: 2px solid var(--accent);
+      border-radius: 8px;
+      margin-bottom: 20px;
+      text-align: center;
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #065f46;
+    }
+
+    /* Downloader Section */
+    .download-box {
+      text-align: center;
+      padding: 50px 20px;
+      border: 2px dashed var(--secondary);
+      border-radius: 12px;
+      background: #eff6ff;
+    }
+
+    .btn-download {
+      background-color: var(--secondary);
+      color: white;
+      border: none;
+      padding: 14px 28px;
+      font-size: 1.05rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .btn-download:hover {
+      background-color: #1d4ed8;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Class 12 CBSE Computer Science: MySQL</h1>
+    <p>Diagrammatic Mind Map, Audio Explanations & Assessment Module</p>
+  </header>
+
+  <nav>
+    <button class="nav-btn active" onclick="openTab(event, 'overview')">Overview & Mind Map</button>
+    <button class="nav-btn" onclick="openTab(event, 'concepts')">MySQL Concepts 🔊</button>
+    <button class="nav-btn" onclick="openTab(event, 'quiz')">Quiz</button>
+    <button class="nav-btn" onclick="openTab(event, 'download')">Download HTML</button>
+  </nav>
+
+  <div class="container">
+
+    <!-- TAB 1: OVERVIEW & MIND MAP -->
+    <div id="overview" class="tab-content active">
+      <div class="mindmap-wrapper">
+        <div class="mindmap-header">
+          <h2>CLASS 12 CBSE COMPUTER SCIENCE</h2>
+          <h3>SQL-DIAGRAMMATIC MIND MAP: SQL COMMANDS, OPERATORS & CLAUSES</h3>
+        </div>
+
+        <!-- TOP CORE COMMANDS GRID -->
+        <div class="mindmap-grid">
+          <div class="mindmap-card">
+            <h4>TABLE MANAGEMENT</h4>
+            <ul>
+              <li><strong>SHOW TABLES:</strong> <code>SHOW TABLES;</code></li>
+              <li><strong>CREATE TABLE:</strong> <code>CREATE TABLE T (...);</code></li>
+              <li><strong>DESCRIBE:</strong> <code>DESC T;</code></li>
+              <li><strong>ALTER TABLE:</strong> <code>ADD / DROP / MODIFY</code></li>
+            </ul>
+          </div>
+
+          <div class="mindmap-card">
+            <h4>DATA RETRIEVAL</h4>
+            <ul>
+              <li><strong>SELECT:</strong> <code>SELECT columns FROM T;</code></li>
+              <li><strong>ALIASING:</strong> <code>AS</code> / temporary name</li>
+              <li><strong>DISTINCT:</strong> Removes duplicates</li>
+            </ul>
+          </div>
+
+          <div class="mindmap-card">
+            <h4>OPERATORS</h4>
+            <ul>
+              <li><strong>MATHEMATICAL:</strong> <code>+  -  *  /  %</code></li>
+              <li><strong>RELATIONAL:</strong> <code>=  &lt;&gt;  &lt;  &gt;  &lt;=  &gt;=</code></li>
+              <li><strong>LOGICAL:</strong> <code>AND  OR  NOT</code></li>
+            </ul>
+          </div>
+
+          <div class="mindmap-card">
+            <h4>FILTERING & CONDITIONS</h4>
+            <ul>
+              <li><strong>WHERE:</strong> Filters rows</li>
+              <li><strong>IN:</strong> Matches a list</li>
+              <li><strong>BETWEEN:</strong> Inclusive range</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- DETAILED CONCEPT MAP SECTION -->
+        <div class="mindmap-section-title">DETAILED CONCEPT MAP</div>
+
+        <div class="mindmap-grid">
+          <div class="mindmap-card">
+            <h4>① TABLE STRUCTURE</h4>
+            <div class="flow-step">
+              <code>SHOW TABLES</code>
+              <span class="flow-arrow">↓</span>
+              <code>CREATE TABLE</code>
+              <span class="flow-arrow">↓</span>
+              <code>DESCRIBE / DESC</code>
+              <span class="flow-arrow">↓</span>
+              <code>ALTER TABLE</code>
+            </div>
+          </div>
+
+          <div class="mindmap-card">
+            <h4>② OPERATORS</h4>
+            <p style="margin:5px 0 0 0; font-size:0.9rem;">Math + Relational + Logical</p>
+          </div>
+
+          <div class="mindmap-card">
+            <h4>③ SELECT & OUTPUT</h4>
+            <div class="flow-step">
+              <code>SELECT</code>
+              <span class="flow-arrow">↓</span>
+              Column selection
+              <span class="flow-arrow">↓</span>
+              <code>ALIASING (AS)</code>
+              <span class="flow-arrow">↓</span>
+              <code>DISTINCT</code>
+            </div>
+          </div>
+
+          <div class="mindmap-card">
+            <h4>④ FILTERING</h4>
+            <div class="flow-step">
+              <code>WHERE</code> Condition
+              <span class="flow-arrow">↓</span>
+              <code>IN (list)</code>
+              <span class="flow-arrow">↓</span>
+              <code>BETWEEN (range)</code>
+            </div>
+            <p style="font-size:0.85rem; margin-top:8px;"><em>Example:</em> <code>WHERE Marks BETWEEN 60 AND 80</code></p>
+          </div>
+        </div>
+
+        <!-- SUMMARY FLOW BAR -->
+        <div class="flow-step" style="margin-top:20px; background:#f1f5f9; border-color:#cbd5e1;">
+          <strong>TABLES:</strong> 
+          <code>CREATE</code> <span class="flow-arrow">|</span>
+          <code>DESCRIBE</code> <span class="flow-arrow">|</span>
+          <code>ALTER</code> <span class="flow-arrow">|</span>
+          <code>SELECT</code> <span class="flow-arrow">|</span>
+          <code>WHERE</code> <span class="flow-arrow">|</span>
+          <code>IN / BETWEEN</code>
+        </div>
+
+        <!-- EXAM MEMORY FLOW -->
+        <div class="exam-memory-box">
+          📌 EXAM MEMORY FLOW: Remember: <code>CREATE/ALTER</code> = structure | <code>SELECT</code> = retrieve | <code>WHERE</code> = filter | <code>DISTINCT</code> = unique values
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2: CONCEPTS WITH VOICE -->
+    <div id="concepts" class="tab-content">
+      <h2>MySQL Explanations with Voice 🔊</h2>
+      
+      <div class="voice-toolbar">
+        <span><strong>Voice Controls:</strong> Click "🔊 Listen" on any concept card below to listen to its audio explanation.</span>
+        <button class="btn-voice btn-stop" onclick="stopSpeech()">🛑 Stop Audio</button>
+      </div>
+
+      <div class="concept-card">
+        <header>
+          <h3>1. SHOW TABLES & DESCRIBE</h3>
+          <button class="btn-voice" onclick="readConcept('c1')">🔊 Listen</button>
+        </header>
+        <div id="c1">
+          <p>The <code>SHOW TABLES</code> command lists all tables in the current database. The <code>DESCRIBE</code> or <code>DESC</code> command is used to view the field names, datatypes, and structure of a specific table.</p>
+        </div>
+        <pre><code>SHOW TABLES;
+DESCRIBE STUDENT; -- or DESC STUDENT;</code></pre>
+      </div>
+
+      <div class="concept-card">
+        <header>
+          <h3>2. CREATE TABLE & ALTER TABLE</h3>
+          <button class="btn-voice" onclick="readConcept('c2')">🔊 Listen</button>
+        </header>
+        <div id="c2">
+          <p>Use <code>CREATE TABLE</code> to construct a brand new table. Use <code>ALTER TABLE</code> to modify the existing table structure, such as adding, modifying, or dropping columns, or altering the primary key.</p>
+        </div>
+        <pre><code>CREATE TABLE STUDENT (
+    RollNo INT PRIMARY KEY,
+    Name VARCHAR(30),
+    Marks DECIMAL(5,2)
+);
+
+ALTER TABLE EMPLOYEE ADD Email VARCHAR(25);
+ALTER TABLE EMPLOYEE MODIFY Name VARCHAR(50);
+ALTER TABLE EMPLOYEE RENAME COLUMN Name TO ENAME;
+ALTER TABLE EMPLOYEE DROP COLUMN Gender;</code></pre>
+      </div>
+
+      <div class="concept-card">
+        <header>
+          <h3>3. SELECT, DISTINCT & ALIASING</h3>
+          <button class="btn-voice" onclick="readConcept('c3')">🔊 Listen</button>
+        </header>
+        <div id="c3">
+          <p><code>SELECT</code> retrieves data. <code>DISTINCT</code> removes duplicate rows from output. The <code>AS</code> keyword provides temporary column aliases for cleaner output.</p>
+        </div>
+        <pre><code>SELECT DISTINCT gender FROM EMPLOYEE;
+SELECT Name AS Student_Name, Marks + 5 FROM STUDENT;</code></pre>
+      </div>
+
+      <div class="concept-card">
+        <header>
+          <h3>4. WHERE Clause, IN & BETWEEN Operators</h3>
+          <button class="btn-voice" onclick="readConcept('c4')">🔊 Listen</button>
+        </header>
+        <div id="c4">
+          <p>The <code>WHERE</code> clause filters table rows based on conditions. The <code>BETWEEN</code> operator checks for values within an inclusive range. The <code>IN</code> operator checks if a value matches any element in a specific list.</p>
+        </div>
+        <pre><code>SELECT * FROM EMPLOYEE WHERE salary BETWEEN 30000 AND 50000;
+SELECT * FROM EMPLOYEE WHERE deptno IN (10, 20, 30);
+SELECT * FROM EMPLOYEE WHERE gender = 'F' AND salary > 50000;</code></pre>
+      </div>
+    </div>
+
+    <!-- TAB 3: QUIZ -->
+    <div id="quiz" class="tab-content">
+      <h2>MySQL Interactive MCQ Worksheet</h2>
+      <p>Answer all 24 questions below and click submit to evaluate your total marks.</p>
+
+      <div class="quiz-form-group">
+        <label>Name:</label>
+        <input type="text" id="studentName" placeholder="Enter full name">
+      </div>
+      <div class="quiz-form-group">
+        <label>Class / Section:</label>
+        <input type="text" id="studentClass" placeholder="e.g. XII-A">
+      </div>
+
+      <div id="scoreBox" class="score-box"></div>
+
+      <form id="quizForm">
+        <div id="questionsContainer"></div>
+        <button type="button" class="btn-submit" onclick="gradeQuiz()">Submit Quiz</button>
+      </form>
+    </div>
+
+    <!-- TAB 4: DOWNLOAD -->
+    <div id="download" class="tab-content">
+      <h2>Download Complete Module File</h2>
+      <div class="download-box">
+        <h3>Save content.html</h3>
+        <p>Click the button below to generate and download a complete local copy of this interactive web app.</p>
+        <button class="btn-download" onclick="downloadCurrentHTML()">Download content.html</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // Tab Switching Functionality
+    function openTab(evt, tabId) {
+      stopSpeech();
+      const contents = document.getElementsByClassName("tab-content");
+      for (let i = 0; i < contents.length; i++) {
+        contents[i].classList.remove("active");
+      }
+      const buttons = document.getElementsByClassName("nav-btn");
+      for (let i = 0; i < buttons.length; i++) {
+        buttons[i].classList.remove("active");
+      }
+      document.getElementById(tabId).classList.add("active");
+      evt.currentTarget.classList.add("active");
+    }
+
+    // Voice Explanation Text-To-Speech (Web Speech API)
+    function readConcept(elementId) {
+      stopSpeech();
+      const textToRead = document.getElementById(elementId).innerText;
+      if ('speechSynthesis' in window) {
+        const utterance = new SpeechSynthesisUtterance(textToRead);
+        utterance.rate = 0.95;
+        utterance.pitch = 1.0;
+        window.speechSynthesis.speak(utterance);
+      } else {
+        alert("Sorry, your browser does not support voice text-to-speech explanations.");
+      }
+    }
+
+    function stopSpeech() {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      }
+    }
+
+    // Quiz Questions Data Source
+    const quizData = [
+      { id: 1, q: "Which command displays the names of all tables in the currently selected database?", options: ["SHOW TABLES;", "DESCRIBE TABLES;", "SELECT TABLES;", "DISPLAY TABLES;"], ans: 0 },
+      { id: 2, q: "Which command is used to view the structure of a table?", options: ["SHOW TABLE;", "DESCRIBE table_name;", "STRUCTURE table_name;", "VIEW table_name;"], ans: 1 },
+      { id: 3, q: "What is the result of SELECT 15 + 5;?", options: ["10", "20", "75", "155"], ans: 1 },
+      { id: 4, q: "Which mathematical operator is used for multiplication in MySQL?", options: ["x", "*", "#", "%"], ans: 1 },
+      { id: 5, q: "Which relational operator checks whether two values are equal?", options: ["<>", "=", ">", "=="], ans: 1 },
+      { id: 6, q: "Which operator means 'not equal to' in MySQL?", options: ["=", "<>", ">=", "=="], ans: 1 },
+      { id: 7, q: "Which logical operator requires both conditions to be TRUE?", options: ["OR", "NOT", "AND", "XOR"], ans: 2 },
+      { id: 8, q: "Which logical operator returns TRUE when at least one condition is TRUE?", options: ["AND", "OR", "NOT", "NAND"], ans: 1 },
+      { id: 9, q: "Which logical operator reverses a condition?", options: ["NOT", "AND", "OR", "XOR"], ans: 0 },
+      { id: 10, q: "In SELECT name AS student_name FROM student;, what is student_name?", options: ["A database", "An alias", "A table", "A condition"], ans: 1 },
+      { id: 11, q: "What does SELECT DISTINCT city FROM student; do?", options: ["Sorts cities", "Shows only unique city values", "Deletes duplicate cities", "Counts cities"], ans: 1 },
+      { id: 12, q: "Which clause is used to filter rows based on a condition?", options: ["WHERE", "FROM", "AS", "DISTINCT"], ans: 0 },
+      { id: 13, q: "Which query selects students whose marks are greater than 80?", options: ["SELECT * FROM student WHERE marks > 80;", "SELECT * FROM student marks > 80;", "SELECT WHERE marks > 80 FROM student;", "SELECT * WHERE marks > 80 FROM student;"], ans: 0 },
+      { id: 14, q: "Which operator checks whether a value matches any value in a given list?", options: ["BETWEEN", "IN", "LIKE", "AS"], ans: 1 },
+      { id: 15, q: "Which query selects employees from departments 10, 20, or 30?", options: ["SELECT * FROM employee WHERE deptno IN (10,20,30);", "SELECT * FROM employee WHERE deptno BETWEEN (10,20,30);", "SELECT * FROM employee WHERE deptno = IN (10,20,30);", "SELECT * FROM employee WHERE deptno OR (10,20,30);"], ans: 0 },
+      { id: 16, q: "Which operator is used to test whether a value lies within a range?", options: ["IN", "BETWEEN", "RANGE", "WITHIN"], ans: 1 },
+      { id: 17, q: "Which query selects salaries from 30000 to 50000, including both limits?", options: ["SELECT * FROM employee WHERE salary BETWEEN 30000 AND 50000;", "SELECT * FROM employee WHERE salary IN 30000 AND 50000;", "SELECT * FROM employee WHERE salary > 30000 OR < 50000;", "SELECT * FROM employee WHERE salary RANGE 30000,50000;"], ans: 0 },
+      { id: 18, q: "What does SELECT 20 % 6; return?", options: ["2", "3", "14", "0"], ans: 0 },
+      { id: 19, q: "Which query uses aliasing correctly?", options: ["SELECT name AS Employee_Name FROM employee;", "SELECT AS name Employee_Name FROM employee;", "ALIAS name AS Employee_Name FROM employee;", "SELECT name Employee_Name AS FROM employee;"], ans: 0 },
+      { id: 20, q: "Which condition selects records where gender is 'F' AND age is greater than 18?", options: ["WHERE gender='F' AND age>18", "WHERE gender='F' OR age>18", "WHERE gender IN 'F' AND age>18", "WHERE gender BETWEEN 'F' AND age>18"], ans: 0 },
+      { id: 21, q: "Which query displays unique department numbers?", options: ["SELECT UNIQUE deptno FROM employee;", "SELECT DISTINCT deptno FROM employee;", "SELECT DIFFERENT deptno FROM employee;", "SELECT deptno DISTINCT FROM employee;"], ans: 1 },
+      { id: 22, q: "What does WHERE salary BETWEEN 20000 AND 40000 mean?", options: ["Salary is only 20000 or 40000", "Salary is from 20000 through 40000, inclusive", "Salary is below 20000 or above 40000", "Salary is exactly 30000"], ans: 1 },
+      { id: 23, q: "Which query selects records where city is either Kochi or Kottayam?", options: ["WHERE city IN ('Kochi','Kottayam')", "WHERE city BETWEEN ('Kochi','Kottayam')", "WHERE city = IN ('Kochi','Kottayam')", "WHERE city OR ('Kochi','Kottayam')"], ans: 0 },
+      { id: 24, q: "Which clause is normally used after FROM to restrict the rows returned?", options: ["WHERE", "DISTINCT", "AS", "SHOW"], ans: 0 }
+    ];
+
+    // Render Quiz Questions
+    function renderQuiz() {
+      const container = document.getElementById("questionsContainer");
+      container.innerHTML = "";
+      quizData.forEach((item, index) => {
+        const qDiv = document.createElement("div");
+        qDiv.className = "question-card";
+        
+        let optionsHTML = "";
+        item.options.forEach((opt, optIdx) => {
+          optionsHTML += `
+            <div class="option">
+              <label>
+                <input type="radio" name="q${item.id}" value="${optIdx}">
+                ${String.fromCharCode(65 + optIdx)}. ${escapeHTML(opt)}
+              </label>
+            </div>
+          `;
+        });
+
+        qDiv.innerHTML = `<p>${index + 1}. ${escapeHTML(item.q)}</p>${optionsHTML}`;
+        container.appendChild(qDiv);
+      });
+    }
+
+    function escapeHTML(str) {
+      return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    }
+
+    // Auto-Grading Logic
+    function gradeQuiz() {
+      let score = 0;
+      const total = quizData.length;
+      
+      quizData.forEach((item) => {
+        const selected = document.querySelector(`input[name="q${item.id}"]:checked`);
+        if (selected && parseInt(selected.value) === item.ans) {
+          score++;
+        }
+      });
+
+      const studentName = document.getElementById("studentName").value || "Student";
+      const scoreBox = document.getElementById("scoreBox");
+      scoreBox.style.display = "block";
+      scoreBox.innerHTML = `${studentName}, your total score is: <strong>${score} / ${total}</strong>`;
+      window.scrollTo({ top: scoreBox.offsetTop - 70, behavior: 'smooth' });
+    }
+
+    // File Downloader Function
+    function downloadCurrentHTML() {
+      const htmlContent = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+      const blob = new Blob([htmlContent], { type: "text/html" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "content.html";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    // Initialize Quiz on page load
+    window.onload = renderQuiz;
+  </script>
+</body>
+</html>
