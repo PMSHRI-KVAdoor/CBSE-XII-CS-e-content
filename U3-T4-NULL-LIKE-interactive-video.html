@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SQL Ledger — Class XII Computer Science</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F3EFE3;
+    --card:#FBF9F2;
+    --ink:#1C2B3A;
+    --ink-soft:#4A5A68;
+    --rule:#D8D0BC;
+    --ledger-green:#245C4A;
+    --ledger-green-dark:#163F32;
+    --pen-red:#B23A2E;
+    --gold:#C7902F;
+    --shadow: 0 1px 0 rgba(28,43,58,0.06);
+    --mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    --serif: 'Lora', Georgia, serif;
+    --sans: 'Source Sans 3', system-ui, -apple-system, sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse at top left, rgba(36,92,74,0.05), transparent 55%),
+      var(--paper);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.55;
+  }
+
+  /* ===== punch-card binder rail ===== */
+  .rail{
+    position:fixed; top:0; left:0; bottom:0; width:34px;
+    background:linear-gradient(180deg,var(--ledger-green-dark),var(--ledger-green));
+    display:flex; flex-direction:column; align-items:center; justify-content:space-evenly;
+    z-index:50;
+  }
+  .rail .hole{ width:11px; height:11px; border-radius:50%; background:var(--paper); box-shadow:inset 0 1px 2px rgba(0,0,0,0.35);}
+  @media (max-width:720px){ .rail{display:none;} .wrap{padding-left:0 !important;} }
+
+  .wrap{ padding-left:34px; }
+  .page{ max-width:920px; margin:0 auto; padding:0 24px 100px; }
+
+  /* ===== hero ===== */
+  header.hero{
+    padding:64px 24px 40px;
+    max-width:920px; margin:0 auto;
+    position:relative;
+  }
+  .eyebrow{
+    font-family:var(--mono); font-size:12.5px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--ledger-green); display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{ content:''; width:26px; height:1px; background:var(--ledger-green); }
+  h1.title{
+    font-family:var(--serif); font-weight:700; font-size:clamp(34px,5.4vw,54px);
+    margin:14px 0 6px; letter-spacing:-0.01em; color:var(--ink);
+  }
+  h1.title em{ font-style:italic; color:var(--ledger-green); }
+  .subtitle{ color:var(--ink-soft); font-size:17px; max-width:560px; margin:0 0 26px; }
+  .stamp{
+    position:absolute; top:56px; right:20px; width:112px; height:112px;
+    border:2.5px solid var(--pen-red); border-radius:50%;
+    color:var(--pen-red); font-family:var(--mono); font-weight:600; font-size:11px;
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    transform:rotate(9deg); opacity:.82; letter-spacing:.05em; line-height:1.35;
+    text-transform:uppercase;
+  }
+  @media (max-width:640px){ .stamp{display:none;} }
+
+  nav.toc{
+    display:flex; flex-wrap:wrap; gap:8px; margin-top:8px;
+  }
+  nav.toc a{
+    font-family:var(--mono); font-size:12.5px; color:var(--ledger-green-dark);
+    background:var(--card); border:1px solid var(--rule); padding:7px 12px; border-radius:3px;
+    text-decoration:none; transition:all .15s ease;
+  }
+  nav.toc a:hover{ background:var(--ledger-green); color:#fff; border-color:var(--ledger-green);}
+
+  /* ===== generic section ===== */
+  section{ padding:46px 0; border-top:1px solid var(--rule); }
+  section:first-of-type{border-top:none;}
+  .kicker{
+    font-family:var(--mono); font-size:11.5px; color:var(--gold); letter-spacing:.14em;
+    text-transform:uppercase; margin:0 0 8px;
+  }
+  h2{
+    font-family:var(--serif); font-size:28px; font-weight:700; margin:0 0 14px; color:var(--ink);
+    display:flex; align-items:baseline; gap:10px;
+  }
+  h2 .num{ font-family:var(--mono); font-size:15px; color:var(--rule); font-weight:500; }
+  h3{ font-family:var(--serif); font-size:19px; font-weight:600; margin:22px 0 8px; color:var(--ledger-green-dark);}
+  p{ margin:0 0 12px; color:var(--ink); }
+  .lede{ color:var(--ink-soft); }
+
+  .note{
+    background:var(--card); border:1px solid var(--rule); border-left:3px solid var(--gold);
+    padding:14px 16px; border-radius:2px; margin:14px 0; font-size:14.5px; color:var(--ink-soft);
+  }
+  .note b{color:var(--ink);}
+
+  /* syntax box */
+  .syntax{
+    font-family:var(--mono); font-size:14px; background:var(--ledger-green-dark); color:#EAF3EE;
+    padding:14px 16px; border-radius:4px; margin:14px 0; overflow-x:auto; white-space:pre;
+    box-shadow:var(--shadow);
+  }
+  .syntax .opt{ color:#9FCBB6; }
+  .syntax .kw{ color:#F4CE7C; }
+
+  /* example query/output pairing */
+  .example{
+    border:1px solid var(--rule); border-radius:6px; overflow:hidden; margin:16px 0; background:var(--card);
+  }
+  .example .q{
+    font-family:var(--mono); font-size:13.5px; background:#1B2A38; color:#E7E2D3;
+    padding:12px 16px; display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+  }
+  .example .q .prompt{ color:var(--gold); }
+  .example .out{ padding:4px 16px 14px; }
+  .example .caption{ font-size:12.5px; color:var(--ink-soft); padding:10px 16px 0; font-style:italic;}
+
+  table.data{
+    border-collapse:collapse; width:100%; font-size:13.5px; margin:10px 0;
+  }
+  table.data th{
+    font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:.05em;
+    background:var(--ledger-green); color:#fff; padding:8px 10px; text-align:left; font-weight:500;
+  }
+  table.data td{
+    padding:7px 10px; border-bottom:1px solid var(--rule); color:var(--ink);
+  }
+  table.data tr:nth-child(even) td{ background:rgba(36,92,74,0.045); }
+  .nullcell{ color:var(--pen-red); font-family:var(--mono); font-size:11.5px; font-style:italic; }
+
+  .try-btn{
+    font-family:var(--mono); font-size:12px; background:var(--gold); color:#2A2005; border:none;
+    padding:6px 12px; border-radius:3px; cursor:pointer; font-weight:600; letter-spacing:.02em;
+  }
+  .try-btn:hover{ filter:brightness(1.08); }
+
+  /* base student table pinned card */
+  .basetable{
+    background:var(--card); border:1px solid var(--rule); border-radius:6px; padding:18px 18px 8px;
+  }
+
+  /* ===== console ===== */
+  .console{
+    background:var(--ledger-green-dark); border-radius:8px; padding:22px; color:#EAF3EE;
+    box-shadow:0 10px 30px rgba(22,63,50,0.28);
+  }
+  .console .cline{ font-family:var(--mono); font-size:12.5px; color:#8FBFA9; margin-bottom:10px; letter-spacing:.03em;}
+  .console textarea{
+    width:100%; min-height:78px; background:#0F241C; color:#EFEADA; border:1px solid #2B5445;
+    border-radius:5px; font-family:var(--mono); font-size:14px; padding:12px 14px; resize:vertical;
+  }
+  .console .btnrow{ display:flex; gap:10px; margin-top:12px; flex-wrap:wrap; align-items:center;}
+  .run-btn{
+    font-family:var(--mono); font-weight:600; font-size:13px; background:var(--gold); color:#2A2005;
+    border:none; padding:9px 18px; border-radius:4px; cursor:pointer;
+  }
+  .run-btn:hover{filter:brightness(1.08);}
+  .reset-btn{
+    font-family:var(--mono); font-size:12.5px; background:transparent; color:#B9C9C0; border:1px solid #3B6656;
+    padding:9px 14px; border-radius:4px; cursor:pointer;
+  }
+  .reset-btn:hover{ color:#fff; border-color:#8FBFA9; }
+  .presets{ display:flex; gap:8px; flex-wrap:wrap; margin-top:2px;}
+  .chip{
+    font-family:var(--mono); font-size:11.5px; background:rgba(255,255,255,0.06); color:#CFE3D8;
+    border:1px solid #2B5445; padding:5px 10px; border-radius:20px; cursor:pointer;
+  }
+  .chip:hover{ background:rgba(255,255,255,0.14); }
+  #resultBox{ margin-top:16px; background:var(--card); border-radius:6px; padding:14px 16px; color:var(--ink); min-height:40px;}
+  #resultBox table.data th{background:var(--ledger-green-dark);}
+  .msg-ok{ font-family:var(--mono); font-size:13px; color:var(--ledger-green-dark); }
+  .msg-err{ font-family:var(--mono); font-size:13px; color:var(--pen-red); }
+
+  /* practice questions */
+  details.q{
+    border:1px solid var(--rule); border-radius:5px; margin:10px 0; background:var(--card);
+    overflow:hidden;
+  }
+  details.q summary{
+    padding:13px 16px; cursor:pointer; font-weight:600; color:var(--ink); list-style:none;
+    display:flex; justify-content:space-between; gap:10px; align-items:center; font-size:14.5px;
+  }
+  details.q summary::-webkit-details-marker{ display:none; }
+  details.q summary .marks{
+    font-family:var(--mono); font-size:11px; color:var(--ledger-green); border:1px solid var(--ledger-green);
+    padding:2px 8px; border-radius:20px; white-space:nowrap;
+  }
+  details.q summary::after{
+    content:'reveal answer ▾'; font-family:var(--mono); font-size:11px; color:var(--gold); margin-left:auto; font-weight:500;
+  }
+  details.q[open] summary::after{ content:'hide ▴'; }
+  details.q .ans{
+    padding:0 16px 16px; border-top:1px dashed var(--rule); margin-top:2px; padding-top:12px; font-size:14.5px; color:var(--ink-soft);
+  }
+  details.q .ans code, .ans .code-block{ font-family:var(--mono); font-size:13px; color:var(--ledger-green-dark); }
+  .code-block{
+    display:block; background:#0F241C; color:#EFEADA; padding:10px 12px; border-radius:4px; margin:8px 0;
+    font-family:var(--mono); font-size:13px; white-space:pre-wrap;
+  }
+  .qgroup-title{ font-family:var(--mono); font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft); margin:26px 0 10px;}
+
+  footer{
+    text-align:center; padding:40px 24px 60px; font-family:var(--mono); font-size:12px; color:var(--ink-soft);
+  }
+  .backtop{ display:inline-block; margin-top:10px; color:var(--ledger-green); text-decoration:none; font-weight:600;}
+
+  ::selection{ background:var(--gold); color:#2A2005;}
+</style>
+</head>
+<body>
+
+<div class="rail" aria-hidden="true">
+  <div class="hole"></div><div class="hole"></div><div class="hole"></div><div class="hole"></div>
+  <div class="hole"></div><div class="hole"></div><div class="hole"></div><div class="hole"></div>
+  <div class="hole"></div><div class="hole"></div>
+</div>
+
+<div class="wrap">
+<header class="hero" id="top">
+  <div class="stamp">Marks<br>Reserved<br>for<br>Board Exam</div>
+  <p class="eyebrow">Class XII · Computer Science · CBSE</p>
+  <h1 class="title">The SQL <em>Ledger</em></h1>
+  <p class="subtitle">Ordering rows, handling missing data, pattern search, and editing tables in SQL — worked out on a live table you can query yourself, with board-style questions at the end.</p>
+  <nav class="toc">
+    <a href="#basetable">Sample table</a>
+    <a href="#orderby">Order By</a>
+    <a href="#null">Null</a>
+    <a href="#like">Like</a>
+    <a href="#update">Update</a>
+    <a href="#delete">Delete</a>
+    <a href="#aggregate">Aggregate functions</a>
+    <a href="#console">Try it yourself</a>
+    <a href="#practice">Practice questions</a>
+  </nav>
+</header>
+
+<div class="page">
+
+<section id="basetable">
+  <p class="kicker">Working table</p>
+  <h2><span class="num">00</span> The Student table</h2>
+  <p class="lede">Every example below runs against this one table. <code>Grade</code> and <code>Remarks</code> are deliberately left blank for some students — that's where <b>NULL</b> comes in later.</p>
+  <div class="basetable">
+    <table class="data" id="baseTablePreview"></table>
+  </div>
+  <div class="note">Table name: <b>Student</b> &nbsp;·&nbsp; Columns: <b>RollNo, SName, Stream, Marks, Grade, City, Remarks</b> &nbsp;·&nbsp; a blank cell means the value is <b>NULL</b>, not the text "NULL".</div>
+</section>
+
+<section id="orderby">
+  <p class="kicker">Clause</p>
+  <h2><span class="num">01</span> The ORDER BY clause</h2>
+  <p><b>ORDER BY</b> arranges the rows of the result in ascending or descending order of one or more columns. By default, sorting is <b>ascending (ASC)</b>; use <b>DESC</b> for descending. It is always the <em>last</em> clause in a SELECT statement.</p>
+  <div class="syntax"><span class="kw">SELECT</span> column_list
+<span class="kw">FROM</span> table_name
+<span class="opt">[WHERE condition]</span>
+<span class="kw">ORDER BY</span> column1 [ASC|DESC], column2 [ASC|DESC], ...;</div>
+
+  <div class="example">
+    <div class="q"><span class="prompt">SQL&gt;</span> SELECT SName, Stream, Marks FROM Student ORDER BY Marks DESC;
+      <button class="try-btn" onclick="loadAndRun(&quot;SELECT SName, Stream, Marks FROM Student ORDER BY Marks DESC;&quot;)">Run in console ▸</button></div>
+    <div class="caption">Highest scorer first — the whole table, sorted by one numeric column.</div>
+    <div class="out" id="ex-orderby1"></div>
+  </div>
+
+  <div class="example">
+    <div class="q"><span class="prompt">SQL&gt;</span> SELECT SName, Stream, Marks FROM Student ORDER BY Stream, Marks DESC;
+      <button class="try-btn" onclick="loadAndRun(&quot;SELECT SName, Stream, Marks FROM Student ORDER BY Stream, Marks DESC;&quot;)">Run in console ▸</button></div>
+    <div class="caption">Multi-column sort: streams alphabetically, and within each stream, highest marks first.</div>
+    <div class="out" id="ex-orderby2"></div>
+  </div>
+
+  <div class="note">Exam tip: <b>"ORDER BY 2 DESC"</b> is also valid — <code>2</code> refers to the position of the column in the SELECT list. Sorting on a column not shown in the output is allowed too.</div>
+</section>
+
+<section id="null">
+  <p class="kicker">Special value</p>
+  <h2><span class="num">02</span> Meaning of NULL, IS NULL, IS NOT NULL</h2>
+  <p><b>NULL</b> means a value that is <em>unknown, unavailable, or not applicable</em> — it is not zero, not blank text, and not equal to anything, including another NULL. That is why <code>WHERE Grade = NULL</code> never matches any row; SQL provides a dedicated test instead.</p>
+  <div class="syntax">column_name <span class="kw">IS NULL</span>        <span class="opt">-- true only when the value is missing</span>
+column_name <span class="kw">IS NOT NULL</span>    <span class="opt">-- true only when a value is present</span></div>
+
+  <div class="example">
+    <div class="q"><span class="prompt">SQL&gt;</span> SELECT SName, Grade FROM Student WHERE Grade IS NULL;
+      <button class="try-btn" onclick="loadAndRun(&quot;SELECT SName, Grade FROM Student WHERE Grade IS NULL;&quot;)">Run in console ▸</button></div>
+    <div class="caption">Students whose grade has not been entered yet.</div>
+    <div class="out" id="ex-null1"></div>
+  </div>
+
+  <div class="example">
+    <div class="q"><span class="prompt">SQL&gt;</span> SELECT SName, Remarks FROM Student WHERE Remarks IS NOT NULL;
+      <button class="try-btn" onclick="loadAndRun(&quot;SELECT SName, Remarks FROM Student WHERE Remarks IS NOT NULL;&quot;)">Run in console ▸</button></div>
+    <div class="caption">Only students who actually have a remark on file.</div>
+    <div class="out" id="ex-null2"></div>
+  </div>
+
+  <div class="note"><b>Common board slip:</b> writing <code>WHERE Grade = NULL</code> or <code>WHERE Grade != NULL</code>. Both return zero rows — NULL can only be tested with <b>IS NULL</b> / <b>IS NOT NULL</b>.</div>
+</section>
+
+<section id="like">
+  <p class="kicker">Pattern matching</p>
+  <h2><span class="num">03</span> The LIKE operator</h2>
+  <p><b>LIKE</b> searches for a pattern within a text column, using two wildcards:</p>
+  <div class="syntax">%   <span class="opt">any sequence of zero or more characters</span>
+_   <span class="opt">exactly one character</span></div>
+
+  <div class="example">
+    <div class="q"><span class="prompt">SQL&gt;</span> SELECT SName FROM Student WHERE SName LIKE 'S%';
+      <button class="try-btn" onclick="loadAndRun(&quot;SELECT SName FROM Student WHERE SName LIKE 'S%';&quot;)">Run in console ▸</button></div>
+    <div class="caption">Names starting with "S".</div>
+    <div class="out" id="ex-like1"></div>
+  </div>
+
+  <div class="example">
+    <div class="q"><span class="prompt">SQL&gt;</span> SELECT SName FROM Student WHERE SName LIKE '%a';
+      <button class="try-btn" onclick="loadAndRun(&quot;SELECT SName FROM Student WHERE SName LIKE '%a';&quot;)">Run in console ▸</button></div>
+    <div class="caption">Names ending in "a".</div>
+    <div class="out" id="ex-like2"></div>
+  </div>
+
+  <div class="example">
+    <div class="q"><span class="prompt">SQL&gt;</span> SELECT SName FROM Student WHERE SName LIKE '_a%';
+      <button class="try-btn" onclick="loadAndRun(&quot;SELECT SName FROM Student WHERE SName LIKE '_a%';&quot;)">Run in console ▸</button></div>
+    <div class="caption">Second letter is exactly "a" — one underscore, then anything.</div>
+    <div class="out" id="ex-like3"></div>
+  </div>
+
+  <div class="note">Use <b>NOT LIKE</b> for the opposite match, e.g. <code>WHERE City NOT LIKE 'D%'</code> excludes every city beginning with "D".</div>
+</section>
+
+<section id="update">
+  <p class="kicker">Data manipulation</p>
+  <h2><span class="num">04</span> The UPDATE command</h2>
+  <p><b>UPDATE</b> changes the values of existing rows. Without a <code>WHERE</code> clause it changes <em>every</em> row in the table — almost always a mistake in an exam answer unless the question explicitly asks for it.</p>
+  <div class="syntax"><span class="kw">UPDATE</span> table_name
+<span class="kw">SET</span> column1 = value1, column2 = value2, ...
+<span class="opt">[WHERE condition];</span></div>
+
+  <div class="example">
+    <div class="q"><span class="prompt">SQL&gt;</span> UPDATE Student SET Grade = 'A' WHERE Marks &gt;= 90;
+      <button class="try-btn" onclick="loadAndRun(&quot;UPDATE Student SET Grade = 'A' WHERE Marks >= 90;&quot;)">Run in console ▸</button></div>
+    <div class="caption">Run this in the console below, then SELECT the table again — you'll see the change persist.</div>
+  </div>
+  <div class="note">To clear a value rather than replace it, set it to NULL: <code>UPDATE Student SET Remarks = NULL WHERE RollNo = 9;</code></div>
+</section>
+
+<section id="delete">
+  <p class="kicker">Data manipulation</p>
+  <h2><span class="num">05</span> The DELETE command</h2>
+  <p><b>DELETE</b> removes entire rows from a table — never individual column values (use UPDATE ... SET col = NULL for that). Like UPDATE, leaving out WHERE removes <em>every</em> row, though the empty table itself still exists.</p>
+  <div class="syntax"><span class="kw">DELETE FROM</span> table_name
+<span class="opt">[WHERE condition];</span></div>
+
+  <div class="example">
+    <div class="q"><span class="prompt">SQL&gt;</span> DELETE FROM Student WHERE Marks &lt; 40;
+      <button class="try-btn" onclick="loadAndRun(&quot;DELETE FROM Student WHERE Marks < 40;&quot;)">Run in console ▸</button></div>
+    <div class="caption">Removes any student who failed outright. Try it, then use Reset Table to bring the row back.</div>
+  </div>
+  <div class="note"><b>DELETE</b> vs <b>DROP</b>: DELETE removes rows (structure stays); DROP removes the entire table (structure gone). Only DELETE is on this syllabus's DML list.</div>
+</section>
+
+<section id="aggregate">
+  <p class="kicker">Summarising data</p>
+  <h2><span class="num">06</span> Aggregate functions</h2>
+  <p>Aggregate functions collapse many rows into one summary value. All five ignore NULL values except <code>COUNT(*)</code>.</p>
+  <div class="syntax"><span class="kw">MAX</span>(column)    <span class="opt">-- largest value</span>
+<span class="kw">MIN</span>(column)    <span class="opt">-- smallest value</span>
+<span class="kw">AVG</span>(column)    <span class="opt">-- average of non-NULL values</span>
+<span class="kw">SUM</span>(column)    <span class="opt">-- total of non-NULL values</span>
+<span class="kw">COUNT</span>(column)  <span class="opt">-- number of non-NULL values in that column</span>
+<span class="kw">COUNT</span>(*)       <span class="opt">-- number of rows, NULLs included</span></div>
+
+  <div class="example">
+    <div class="q"><span class="prompt">SQL&gt;</span> SELECT MAX(Marks), MIN(Marks), AVG(Marks), COUNT(*) FROM Student;
+      <button class="try-btn" onclick="loadAndRun(&quot;SELECT MAX(Marks), MIN(Marks), AVG(Marks), COUNT(*) FROM Student;&quot;)">Run in console ▸</button></div>
+    <div class="caption">One row of summary statistics for the whole table.</div>
+    <div class="out" id="ex-agg1"></div>
+  </div>
+
+  <div class="example">
+    <div class="q"><span class="prompt">SQL&gt;</span> SELECT Stream, COUNT(*), AVG(Marks) FROM Student GROUP BY Stream;
+      <button class="try-btn" onclick="loadAndRun(&quot;SELECT Stream, COUNT(*), AVG(Marks) FROM Student GROUP BY Stream;&quot;)">Run in console ▸</button></div>
+    <div class="caption">GROUP BY produces one summary row per distinct value of Stream.</div>
+    <div class="out" id="ex-agg2"></div>
+  </div>
+
+  <div class="example">
+    <div class="q"><span class="prompt">SQL&gt;</span> SELECT COUNT(Grade), COUNT(*) FROM Student;
+      <button class="try-btn" onclick="loadAndRun(&quot;SELECT COUNT(Grade), COUNT(*) FROM Student;&quot;)">Run in console ▸</button></div>
+    <div class="caption">COUNT(Grade) skips the NULL grades; COUNT(*) counts every row regardless.</div>
+    <div class="out" id="ex-agg3"></div>
+  </div>
+</section>
+
+<section id="console">
+  <p class="kicker">Dynamic worksheet</p>
+  <h2><span class="num">07</span> Try it yourself</h2>
+  <p class="lede">Type a query against the <b>Student</b> table and run it. Supports SELECT (with WHERE, LIKE, IS NULL/IS NOT NULL, GROUP BY, ORDER BY, and MAX/MIN/AVG/SUM/COUNT), UPDATE, and DELETE. Changes stick until you reset the table.</p>
+  <div class="console">
+    <div class="cline">SQL&gt; type your statement, end with a semicolon (optional)</div>
+    <textarea id="sqlInput" spellcheck="false">SELECT * FROM Student WHERE Marks &gt; 70 ORDER BY Marks DESC;</textarea>
+    <div class="btnrow">
+      <button class="run-btn" onclick="runFromInput()">▸ Run query</button>
+      <button class="reset-btn" onclick="resetTable()">↺ Reset table</button>
+    </div>
+    <div class="btnrow presets" id="presetRow"></div>
+    <div id="resultBox"></div>
+  </div>
+</section>
+
+<section id="practice">
+  <p class="kicker">Board-based practice</p>
+  <h2><span class="num">08</span> Practice questions</h2>
+  <p class="lede">Tap a question to reveal the answer. Wherever a query is asked, try typing it into the console above first.</p>
+
+  <p class="qgroup-title">A · Short answer (1–2 marks)</p>
+
+  <details class="q">
+    <summary>What is the default sorting order of ORDER BY? How do you reverse it? <span class="marks">2</span></summary>
+    <div class="ans">The default is <b>ascending (ASC)</b>. Append <code>DESC</code> after the column name to sort in descending order, e.g. <code class="code-block">SELECT * FROM Student ORDER BY Marks DESC;</code></div>
+  </details>
+
+  <details class="q">
+    <summary>Why does <code>Grade = NULL</code> fail to select any row, even where Grade is genuinely blank? <span class="marks">2</span></summary>
+    <div class="ans">NULL represents an unknown value, so it cannot be compared using <code>=</code> — an unknown value is never "equal to" anything, not even another NULL. SQL requires the special predicates <code>IS NULL</code> and <code>IS NOT NULL</code> to test for missing values.</div>
+  </details>
+
+  <details class="q">
+    <summary>Differentiate between the DELETE and UPDATE commands. <span class="marks">2</span></summary>
+    <div class="ans">UPDATE modifies the value(s) of existing column(s) in rows that match a condition — the row stays, only the data changes. DELETE removes entire rows that match a condition from the table; the columns of the table remain, but the row itself is gone.</div>
+  </details>
+
+  <details class="q">
+    <summary>What is the difference between COUNT(*) and COUNT(column_name)? <span class="marks">2</span></summary>
+    <div class="ans"><code>COUNT(*)</code> counts every row in the result, including rows where the column is NULL. <code>COUNT(column_name)</code> counts only the rows where that specific column has a non-NULL value.</div>
+  </details>
+
+  <details class="q">
+    <summary>What will <code>SELECT SName FROM Student WHERE SName LIKE '__a%';</code> return? <span class="marks">2</span></summary>
+    <div class="ans">Names whose <b>third</b> character is "a": two underscores match any two characters, then a literal "a", then <code>%</code> matches anything after. <button class="try-btn" onclick="loadAndRun(&quot;SELECT SName FROM Student WHERE SName LIKE '__a%';&quot;)">Run in console ▸</button></div>
+  </details>
+
+  <p class="qgroup-title">B · Query writing, using the Student table above (2–4 marks)</p>
+
+  <details class="q">
+    <summary>Write a query to display the name and marks of students in descending order of marks. <span class="marks">2</span></summary>
+    <div class="ans"><span class="code-block">SELECT SName, Marks FROM Student ORDER BY Marks DESC;</span><button class="try-btn" onclick="loadAndRun(&quot;SELECT SName, Marks FROM Student ORDER BY Marks DESC;&quot;)">Run in console ▸</button></div>
+  </details>
+
+  <details class="q">
+    <summary>Write a query to display students who have not yet been given a grade. <span class="marks">2</span></summary>
+    <div class="ans"><span class="code-block">SELECT SName FROM Student WHERE Grade IS NULL;</span><button class="try-btn" onclick="loadAndRun(&quot;SELECT SName FROM Student WHERE Grade IS NULL;&quot;)">Run in console ▸</button></div>
+  </details>
+
+  <details class="q">
+    <summary>Write a query to display students from Mumbai or Pune whose name contains the letter "a". <span class="marks">3</span></summary>
+    <div class="ans"><span class="code-block">SELECT SName, City FROM Student
+WHERE (City = 'Mumbai' OR City = 'Pune') AND SName LIKE '%a%';</span><button class="try-btn" onclick="loadAndRun(&quot;SELECT SName, City FROM Student WHERE (City = 'Mumbai' OR City = 'Pune') AND SName LIKE '%a%';&quot;)">Run in console ▸</button>
+    <p style="margin-top:8px;">(This console accepts one level of OR grouped with AND — try it above.)</p></div>
+  </details>
+
+  <details class="q">
+    <summary>Write a query to change the grade to 'B' for every student scoring between 60 and 80 marks (both inclusive). <span class="marks">3</span></summary>
+    <div class="ans"><span class="code-block">UPDATE Student SET Grade = 'B' WHERE Marks &gt;= 60 AND Marks &lt;= 80;</span><button class="try-btn" onclick="loadAndRun(&quot;UPDATE Student SET Grade = 'B' WHERE Marks >= 60 AND Marks <= 80;&quot;)">Run in console ▸</button></div>
+  </details>
+
+  <details class="q">
+    <summary>Write a query to delete the record of the student with RollNo 7. <span class="marks">2</span></summary>
+    <div class="ans"><span class="code-block">DELETE FROM Student WHERE RollNo = 7;</span><button class="try-btn" onclick="loadAndRun(&quot;DELETE FROM Student WHERE RollNo = 7;&quot;)">Run in console ▸</button></div>
+  </details>
+
+  <details class="q">
+    <summary>Write a query to display the highest and lowest marks scored, stream-wise. <span class="marks">3</span></summary>
+    <div class="ans"><span class="code-block">SELECT Stream, MAX(Marks), MIN(Marks) FROM Student GROUP BY Stream;</span><button class="try-btn" onclick="loadAndRun(&quot;SELECT Stream, MAX(Marks), MIN(Marks) FROM Student GROUP BY Stream;&quot;)">Run in console ▸</button></div>
+  </details>
+
+  <details class="q">
+    <summary>Write a query to count how many students scored above 80 marks. <span class="marks">2</span></summary>
+    <div class="ans"><span class="code-block">SELECT COUNT(*) FROM Student WHERE Marks &gt; 80;</span><button class="try-btn" onclick="loadAndRun(&quot;SELECT COUNT(*) FROM Student WHERE Marks > 80;&quot;)">Run in console ▸</button></div>
+  </details>
+
+  <p class="qgroup-title">C · Predict the output</p>
+
+  <details class="q">
+    <summary>Predict the output: <code>SELECT SName FROM Student WHERE Remarks IS NOT NULL ORDER BY SName;</code> <span class="marks">2</span></summary>
+    <div class="ans">Alphabetically-ordered names of only those students who have some entry in the Remarks column — students with a blank Remarks are excluded entirely. Run it in the console to check your prediction.<button class="try-btn" onclick="loadAndRun(&quot;SELECT SName FROM Student WHERE Remarks IS NOT NULL ORDER BY SName;&quot;)">Run in console ▸</button></div>
+  </details>
+
+  <details class="q">
+    <summary>Predict the output: <code>SELECT AVG(Marks) FROM Student WHERE Stream = 'Arts';</code> <span class="marks">2</span></summary>
+    <div class="ans">A single value: the average Marks of only the rows where Stream is 'Arts'. Try it, then compare with the same query for 'Science' and 'Commerce'.<button class="try-btn" onclick="loadAndRun(&quot;SELECT AVG(Marks) FROM Student WHERE Stream = 'Arts';&quot;)">Run in console ▸</button></div>
+  </details>
+
+</section>
+
+</div>
+</div>
+
+<footer>
+  SQL Ledger · Class XII Computer Science, CBSE syllabus
+  <br><a class="backtop" href="#top">↑ back to top</a>
+</footer>
+
+<script>
+/* ============ Sample dataset ============ */
+const INITIAL_STUDENT = [
+  {RollNo:1, SName:'Aarav Sharma', Stream:'Science',  Marks:88, Grade:null, City:'Delhi',       Remarks:null},
+  {RollNo:2, SName:'Priya Singh',  Stream:'Commerce', Marks:76, Grade:'B',  City:'Mumbai',       Remarks:'Good improvement'},
+  {RollNo:3, SName:'Rohan Verma',  Stream:'Science',  Marks:45, Grade:null, City:'Delhi',        Remarks:'Needs improvement'},
+  {RollNo:4, SName:'Simran Kaur',  Stream:'Arts',     Marks:92, Grade:'A',  City:'Chandigarh',   Remarks:null},
+  {RollNo:5, SName:'Aditya Rao',   Stream:'Commerce', Marks:67, Grade:'C',  City:'Mumbai',       Remarks:null},
+  {RollNo:6, SName:'Sneha Gupta',  Stream:'Science',  Marks:55, Grade:null, City:'Delhi',        Remarks:'Absent in unit test'},
+  {RollNo:7, SName:'Karan Mehta',  Stream:'Arts',     Marks:38, Grade:'D',  City:'Pune',         Remarks:'Failed'},
+  {RollNo:8, SName:'Anjali Nair',  Stream:'Commerce', Marks:81, Grade:'B',  City:'Kochi',        Remarks:null},
+  {RollNo:9, SName:'Saanvi Iyer',  Stream:'Science',  Marks:95, Grade:'A',  City:'Chennai',      Remarks:'Topper'},
+  {RollNo:10,SName:'Vikram Joshi', Stream:'Arts',     Marks:60, Grade:'C',  City:'Pune',         Remarks:null},
+];
+const COLS = ['RollNo','SName','Stream','Marks','Grade','City','Remarks'];
+let tableData = deepCopy(INITIAL_STUDENT);
+
+function deepCopy(a){ return a.map(r => ({...r})); }
+
+/* ============ Rendering helpers ============ */
+function renderTable(rows, cols){
+  if(!rows.length){ return '<p class="msg-ok">(0 rows)</p>'; }
+  let html = '<table class="data"><thead><tr>' + cols.map(c=>`<th>${c}</th>`).join('') + '</tr></thead><tbody>';
+  for(const r of rows){
+    html += '<tr>' + cols.map(c=>{
+      const v = r[c];
+      if(v === null || v === undefined || v === '') return '<td class="nullcell">NULL</td>';
+      return `<td>${escapeHtml(String(v))}</td>`;
+    }).join('') + '</tr>';
+  }
+  html += '</tbody></table>';
+  return html;
+}
+function escapeHtml(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+/* ============ WHERE parsing ============ */
+function parseValue(raw){
+  raw = raw.trim();
+  const strMatch = raw.match(/^'(.*)'$/);
+  if(strMatch) return strMatch[1];
+  if(/^NULL$/i.test(raw)) return null;
+  if(/^-?\d+(\.\d+)?$/.test(raw)) return parseFloat(raw);
+  return raw;
+}
+function likeMatch(val, pattern){
+  if(val === null || val === undefined) return false;
+  let re = '^' + pattern.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+                          .replace(/%/g, '.*')
+                          .replace(/_/g, '.') + '$';
+  return new RegExp(re, 'i').test(String(val));
+}
+function compareVals(a, op, b){
+  let x = a, y = b;
+  if(typeof x === 'string' && typeof y === 'string'){ x = x.toLowerCase(); y = y.toLowerCase(); }
+  switch(op){
+    case '=': return x == y;
+    case '!=': case '<>': return x != y;
+    case '>': return x > y;
+    case '<': return x < y;
+    case '>=': return x >= y;
+    case '<=': return x <= y;
+  }
+  return false;
+}
+function evalAtom(cond, row){
+  cond = cond.trim().replace(/^\(|\)$/g,'').trim();
+  let m;
+  if(m = cond.match(/^(\w+)\s+IS\s+NOT\s+NULL$/i)) return row[m[1]] !== null && row[m[1]] !== undefined;
+  if(m = cond.match(/^(\w+)\s+IS\s+NULL$/i)) return row[m[1]] === null || row[m[1]] === undefined;
+  if(m = cond.match(/^(\w+)\s+NOT\s+LIKE\s+('(?:[^']*)')$/i)) return !likeMatch(row[m[1]], parseValue(m[2]));
+  if(m = cond.match(/^(\w+)\s+LIKE\s+('(?:[^']*)')$/i)) return likeMatch(row[m[1]], parseValue(m[2]));
+  if(m = cond.match(/^(\w+)\s*(>=|<=|!=|<>|=|>|<)\s*(.+)$/)){
+    const col = m[1], op = m[2], val = parseValue(m[3]);
+    const cv = row[col];
+    if(cv === null || cv === undefined) return false;
+    return compareVals(cv, op, val);
+  }
+  throw new Error('Could not understand condition: ' + cond);
+}
+function evalWhere(whereStr, row){
+  const orParts = splitTopLevel(whereStr, /\s+OR\s+/i);
+  return orParts.some(orPart=>{
+    const andParts = splitTopLevel(orPart, /\s+AND\s+/i);
+    return andParts.every(c => evalAtom(c, row));
+  });
+}
+// split on a keyword but respect one level of parentheses grouping
+function splitTopLevel(str, re){
+  str = str.trim();
+  const stripped = str.match(/^\((.*)\)$/);
+  if(stripped) str = stripped[1];
+  return str.split(re);
+}
+
+/* ============ Column / SELECT parsing ============ */
+const AGG_RE = /^(COUNT|SUM|AVG|MIN|MAX)\s*\(\s*(\*|[\w]+)\s*\)$/i;
+
+function splitCols(str){
+  // simple split on commas not inside parentheses
+  const parts = []; let depth=0, cur='';
+  for(const ch of str){
+    if(ch==='(') depth++;
+    if(ch===')') depth--;
+    if(ch===',' && depth===0){ parts.push(cur.trim()); cur=''; }
+    else cur += ch;
+  }
+  if(cur.trim()) parts.push(cur.trim());
+  return parts;
+}
+
+function computeAgg(fn, col, rows){
+  if(fn.toUpperCase()==='COUNT'){
+    if(col==='*') return rows.length;
+    return rows.filter(r=>r[col]!==null && r[col]!==undefined).length;
+  }
+  const vals = rows.map(r=>r[col]).filter(v=>v!==null && v!==undefined).map(Number);
+  if(!vals.length) return null;
+  switch(fn.toUpperCase()){
+    case 'SUM': return vals.reduce((a,b)=>a+b,0);
+    case 'AVG': return Math.round((vals.reduce((a,b)=>a+b,0)/vals.length)*100)/100;
+    case 'MIN': return Math.min(...vals);
+    case 'MAX': return Math.max(...vals);
+  }
+}
+
+function runSelect(colsStr, whereStr, groupByStr, orderByStr){
+  let rows = tableData.filter(r => whereStr ? evalWhere(whereStr, r) : true);
+  const rawCols = colsStr.trim()==='*' ? ['*'] : splitCols(colsStr);
+
+  const colSpecs = rawCols.map(spec=>{
+    let alias = null, expr = spec;
+    const aliasM = spec.match(/^(.*)\s+AS\s+(\w+)$/i);
+    if(aliasM){ expr = aliasM[1].trim(); alias = aliasM[2]; }
+    const aggM = expr.match(AGG_RE);
+    if(aggM) return {type:'agg', fn:aggM[1], col:aggM[2], alias: alias || `${aggM[1]}(${aggM[2]})`};
+    if(expr === '*') return {type:'star'};
+    return {type:'col', col:expr, alias: alias || expr};
+  });
+
+  const hasAgg = colSpecs.some(c=>c.type==='agg');
+
+  if(groupByStr){
+    const groupCols = groupByStr.split(',').map(s=>s.trim());
+    const groups = {};
+    for(const r of rows){
+      const key = groupCols.map(c=>r[c]).join('||');
+      (groups[key] = groups[key] || []).push(r);
+    }
+    const outRows = Object.values(groups).map(grp=>{
+      const o = {};
+      for(const spec of colSpecs){
+        if(spec.type==='agg') o[spec.alias] = computeAgg(spec.fn, spec.col, grp);
+        else if(spec.type==='col') o[spec.alias] = grp[0][spec.col];
+        else if(spec.type==='star') Object.assign(o, grp[0]);
+      }
+      return o;
+    });
+    const outCols = colSpecs.flatMap(s => s.type==='star'? COLS : [s.alias]);
+    return applyOrder(outRows, outCols, orderByStr);
+  }
+
+  if(hasAgg){
+    const o = {};
+    for(const spec of colSpecs){
+      if(spec.type==='agg') o[spec.alias] = computeAgg(spec.fn, spec.col, rows);
+      else if(spec.type==='col') o[spec.alias] = rows[0] ? rows[0][spec.col] : null;
+    }
+    const outCols = colSpecs.map(s=>s.alias);
+    return {rows:[o], cols: outCols};
+  }
+
+  let outRows, outCols;
+  if(colSpecs.length===1 && colSpecs[0].type==='star'){
+    outRows = rows.map(r=>({...r}));
+    outCols = COLS;
+  } else {
+    outCols = colSpecs.map(s=>s.alias);
+    outRows = rows.map(r=>{
+      const o={};
+      colSpecs.forEach(s=>{ o[s.alias] = r[s.col]; });
+      return o;
+    });
+  }
+  return applyOrder(outRows, outCols, orderByStr);
+}
+
+function applyOrder(rows, cols, orderByStr){
+  if(!orderByStr) return {rows, cols};
+  const keys = orderByStr.split(',').map(part=>{
+    part = part.trim();
+    const m = part.match(/^(\S+)\s*(ASC|DESC)?$/i);
+    let col = m[1];
+    const idx = parseInt(col,10);
+    if(!isNaN(idx)) col = cols[idx-1];
+    return {col, dir: (m[2]||'ASC').toUpperCase()};
+  });
+  const sorted = [...rows].sort((a,b)=>{
+    for(const k of keys){
+      let av=a[k.col], bv=b[k.col];
+      if(av===null||av===undefined) av = '';
+      if(bv===null||bv===undefined) bv = '';
+      if(av<bv) return k.dir==='ASC'?-1:1;
+      if(av>bv) return k.dir==='ASC'?1:-1;
+    }
+    return 0;
+  });
+  return {rows: sorted, cols};
+}
+
+/* ============ UPDATE / DELETE ============ */
+function runUpdate(setStr, whereStr){
+  const assigns = splitCols(setStr).map(p=>{
+    const m = p.match(/^(\w+)\s*=\s*(.+)$/);
+    return {col:m[1], val:parseValue(m[2])};
+  });
+  let count=0;
+  tableData.forEach(r=>{
+    if(!whereStr || evalWhere(whereStr, r)){
+      assigns.forEach(a=>{ r[a.col]=a.val; });
+      count++;
+    }
+  });
+  return count;
+}
+function runDelete(whereStr){
+  const before = tableData.length;
+  tableData = tableData.filter(r => whereStr ? !evalWhere(whereStr, r) : false);
+  return before - tableData.length;
+}
+
+/* ============ Top-level dispatcher ============ */
+function execute(sqlRaw){
+  let sql = sqlRaw.trim().replace(/;\s*$/,'');
+  if(!sql) throw new Error('Empty query.');
+
+  let m;
+  if(m = sql.match(/^SELECT\s+(.+?)\s+FROM\s+\w+\s*(?:WHERE\s+(.+?))?\s*(?:GROUP\s+BY\s+(.+?))?\s*(?:ORDER\s+BY\s+(.+?))?$/is)){
+    const {rows, cols} = runSelect(m[1], m[2], m[3], m[4]);
+    return {kind:'select', rows, cols};
+  }
+  if(m = sql.match(/^UPDATE\s+\w+\s+SET\s+(.+?)\s*(?:WHERE\s+(.+?))?$/is)){
+    const n = runUpdate(m[1], m[2]);
+    return {kind:'write', message: `${n} row(s) updated.`};
+  }
+  if(m = sql.match(/^DELETE\s+FROM\s+\w+\s*(?:WHERE\s+(.+?))?$/is)){
+    const n = runDelete(m[1]);
+    return {kind:'write', message: `${n} row(s) deleted.`};
+  }
+  throw new Error('Only SELECT, UPDATE and DELETE on the Student table are supported here.');
+}
+
+/* ============ UI wiring ============ */
+function runQueryInto(sql, targetId){
+  const el = document.getElementById(targetId);
+  try{
+    const res = execute(sql);
+    el.innerHTML = res.kind==='select' ? renderTable(res.rows, res.cols) : `<p class="msg-ok">${res.message}</p>`;
+  }catch(e){
+    el.innerHTML = `<p class="msg-err">Error: ${e.message}</p>`;
+  }
+}
+
+function runFromInput(){
+  const sql = document.getElementById('sqlInput').value;
+  const box = document.getElementById('resultBox');
+  try{
+    const res = execute(sql);
+    if(res.kind==='select'){
+      box.innerHTML = `<p class="msg-ok">${res.rows.length} row(s) returned.</p>` + renderTable(res.rows, res.cols);
+    } else {
+      box.innerHTML = `<p class="msg-ok">${res.message}</p>` + renderTable(tableData, COLS);
+    }
+  }catch(e){
+    box.innerHTML = `<p class="msg-err">Error: ${e.message}</p>`;
+  }
+}
+function loadAndRun(sql){
+  document.getElementById('sqlInput').value = sql;
+  document.getElementById('console') ? null : null;
+  document.querySelector('.console').scrollIntoView({behavior:'smooth', block:'center'});
+  runFromInput();
+}
+function resetTable(){
+  tableData = deepCopy(INITIAL_STUDENT);
+  document.getElementById('resultBox').innerHTML = '<p class="msg-ok">Table reset to original 10 rows.</p>';
+  refreshBasePreview();
+}
+function refreshBasePreview(){
+  document.getElementById('baseTablePreview').outerHTML =
+    renderTable(INITIAL_STUDENT, COLS).replace('<table class="data">','<table class="data" id="baseTablePreview">');
+}
+
+const PRESETS = [
+  "SELECT * FROM Student;",
+  "SELECT SName, Marks FROM Student ORDER BY Marks DESC;",
+  "SELECT SName FROM Student WHERE Grade IS NULL;",
+  "SELECT SName FROM Student WHERE SName LIKE 'S%';",
+  "SELECT Stream, COUNT(*), AVG(Marks) FROM Student GROUP BY Stream;",
+  "UPDATE Student SET Grade='B' WHERE Marks>=60 AND Marks<=80;",
+  "DELETE FROM Student WHERE Marks<40;"
+];
+function buildPresets(){
+  const row = document.getElementById('presetRow');
+  row.innerHTML = PRESETS.map(p=>`<button class="chip" onclick="loadAndRun(${JSON.stringify(p).replace(/"/g,'&quot;')})">${p.length>44? p.slice(0,44)+'…':p}</button>`).join('');
+}
+
+/* ============ init ============ */
+window.addEventListener('DOMContentLoaded', ()=>{
+  document.getElementById('baseTablePreview').outerHTML =
+    renderTable(INITIAL_STUDENT, COLS).replace('<table class="data">','<table class="data" id="baseTablePreview">');
+  runQueryInto('SELECT SName, Stream, Marks FROM Student ORDER BY Marks DESC;', 'ex-orderby1');
+  runQueryInto('SELECT SName, Stream, Marks FROM Student ORDER BY Stream, Marks DESC;', 'ex-orderby2');
+  runQueryInto("SELECT SName, Grade FROM Student WHERE Grade IS NULL;", 'ex-null1');
+  runQueryInto("SELECT SName, Remarks FROM Student WHERE Remarks IS NOT NULL;", 'ex-null2');
+  runQueryInto("SELECT SName FROM Student WHERE SName LIKE 'S%';", 'ex-like1');
+  runQueryInto("SELECT SName FROM Student WHERE SName LIKE '%a';", 'ex-like2');
+  runQueryInto("SELECT SName FROM Student WHERE SName LIKE '_a%';", 'ex-like3');
+  runQueryInto("SELECT MAX(Marks), MIN(Marks), AVG(Marks), COUNT(*) FROM Student;", 'ex-agg1');
+  runQueryInto("SELECT Stream, COUNT(*), AVG(Marks) FROM Student GROUP BY Stream;", 'ex-agg2');
+  runQueryInto("SELECT COUNT(Grade), COUNT(*) FROM Student;", 'ex-agg3');
+  buildPresets();
+  runFromInput();
+});
+</script>
+</body>
+</html>
