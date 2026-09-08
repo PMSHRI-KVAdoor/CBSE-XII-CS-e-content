@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Class XII SQL Dynamic Worksheet - Equi Join & Natural Join</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:linear-gradient(135deg,#eef5ff,#f8fbff);color:#172033}
+.wrap{max-width:1000px;margin:25px auto;padding:20px}.hero{background:#17365d;color:white;border-radius:20px;padding:28px;text-align:center;box-shadow:0 10px 25px #17365d33}
+.hero h1{margin:0 0 8px;font-size:30px}.hero p{margin:5px}
+.panel{background:#fff;border-radius:16px;padding:22px;margin:18px 0;box-shadow:0 5px 20px #0000000d}
+h2{color:#17365d}.data{display:flex;gap:15px;flex-wrap:wrap}.tablebox{flex:1;min-width:280px}
+table{border-collapse:collapse;width:100%;margin:8px 0}th,td{border:1px solid #ccd6e4;padding:9px;text-align:center}th{background:#e7f0fb}
+.question{border:1px solid #dce5ef;border-radius:13px;padding:17px;margin:14px 0;background:#fbfdff}
+.qtitle{font-weight:700;margin-bottom:10px}.opt{display:block;border:1px solid #d5deea;padding:9px;margin:6px 0;border-radius:8px;cursor:pointer;background:#fff}.opt:hover{background:#eef6ff}
+button{border:0;padding:12px 18px;border-radius:10px;font-weight:bold;cursor:pointer;margin:5px}.primary{background:#17365d;color:#fff}.green{background:#27804d;color:#fff}.gray{background:#e8eef6}
+#result{display:none;padding:20px;border-radius:14px;background:#eaf7ef;margin-top:15px}.good{color:#187343}.bad{color:#b42318}
+.timer{font-size:20px;font-weight:bold;text-align:right;color:#b42318}.bar{height:10px;background:#e4eaf2;border-radius:8px;overflow:hidden}.fill{height:100%;width:0;background:#3b82f6}
+.hidden{display:none}.code{font-family:Consolas,monospace;background:#f2f4f7;padding:10px;border-radius:8px;white-space:pre-wrap}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="hero"><h1>Class XII Computer Science</h1><p>Interactive Dynamic Worksheet</p><p><b>SQL: Equi-Join & Natural Join</b></p></div>
+
+<div class="panel">
+<div class="timer" id="timer">Time: 15:00</div><div class="bar"><div class="fill" id="fill"></div></div>
+<p><b>Instructions:</b> Study the tables, complete the activities, answer the MCQs, then click <b>Check My Score</b>. You will receive instant feedback.</p>
+</div>
+
+<div class="panel">
+<h2>1. Explore the Data</h2>
+<div class="data">
+<div class="tablebox"><h3>STUDENT</h3><table><tr><th>RollNo</th><th>Name</th><th>DeptID</th></tr><tr><td>101</td><td>Asha</td><td>10</td></tr><tr><td>102</td><td>Binu</td><td>20</td></tr><tr><td>103</td><td>Charu</td><td>10</td></tr><tr><td>104</td><td>Dev</td><td>30</td></tr></table></div>
+<div class="tablebox"><h3>DEPARTMENT</h3><table><tr><th>DeptID</th><th>DeptName</th></tr><tr><td>10</td><td>Computer Science</td></tr><tr><td>20</td><td>Commerce</td></tr><tr><td>30</td><td>Science</td></tr></table></div>
+</div>
+</div>
+
+<div class="panel">
+<h2>2. Predict Before You Query</h2>
+<p><b>A.</b> How many students will match a department? <select id="p1"><option value="">Choose</option><option>2</option><option>3</option><option>4</option><option>12</option></select></p>
+<p><b>B.</b> Which column connects the tables? <select id="p2"><option value="">Choose</option><option>RollNo</option><option>Name</option><option>DeptID</option><option>DeptName</option></select></p>
+<p><b>C.</b> Which join automatically uses same-named columns? <select id="p3"><option value="">Choose</option><option>Equi-Join</option><option>Natural Join</option><option>Self Join</option><option>Cross Join</option></select></p>
+</div>
+
+<div class="panel">
+<h2>3. SQL Query Builder</h2>
+<p>Complete the equi-join:</p>
+<div class="code">SELECT S.Name, D.DeptName
+FROM STUDENT S JOIN DEPARTMENT D
+ON S.<select id="q1"><option value="">?</option><option>RollNo</option><option>Name</option><option>DeptID</option></select>
+= D.<select id="q2"><option value="">?</option><option>DeptID</option><option>DeptName</option><option>RollNo</option></select>;</div>
+<p>Complete the natural join:</p>
+<div class="code">SELECT S.Name, D.DeptName
+FROM STUDENT S NATURAL JOIN DEPARTMENT D;</div>
+</div>
+
+<div class="panel">
+<h2>4. Dynamic MCQ Challenge</h2>
+<div id="quiz"></div>
+<button class="primary" onclick="checkAll()">Check My Score</button>
+<button class="gray" onclick="location.reload()">Reset Worksheet</button>
+<div id="result"></div>
+</div>
+
+<div class="panel">
+<h2>5. Reflection</h2>
+<p>One difference I can explain:</p><textarea id="reflection" style="width:100%;height:80px;border:1px solid #ccd6e4;border-radius:8px;padding:10px"></textarea>
+</div>
+</div>
+
+<script>
+const qs=[
+["Which operator is central to an equi-join condition?",["=","<",">","LIKE"],0],
+["Which clause explicitly specifies a join condition?",["GROUP BY","ON","HAVING","ORDER BY"],1],
+["NATURAL JOIN matches columns primarily because they have:",["same names","same position","same data type only","primary keys only"],0],
+["For the supplied tables, how many rows will an equi-join on DeptID return?",["2","3","4","12"],2],
+["Which student belongs to Computer Science?",["Asha and Charu","Binu","Dev","Asha only"],0],
+["Which query explicitly controls the matching columns?",["NATURAL JOIN","JOIN ... ON","CROSS JOIN","ORDER BY"],1],
+["In a natural join, the common DeptID is normally displayed:",["twice","once","three times","not at all"],1],
+["If another same-named column is added to both tables, NATURAL JOIN may:",["automatically use it in the match","ignore all common columns","delete it","become a Cartesian product"],0],
+["Which is a correct equi-join?",["SELECT * FROM S JOIN D ON S.DeptID=D.DeptID;","SELECT * FROM S NATURAL D;","SELECT * FROM S JOIN D ON S.DeptID>D.DeptID;","SELECT * FROM S WHERE JOIN D;"],0],
+["Best summary of the difference:",["Equi-join explicitly states equality; natural join automatically uses same-named columns","They are always identical","Natural join uses >","Equi-join cannot use ON"],0]
+];
+const quiz=document.getElementById("quiz");
+qs.forEach((q,i)=>{
+let d=document.createElement("div");d.className="question";
+d.innerHTML=`<div class="qtitle">${i+1}. ${q[0]}</div>`;
+q[1].forEach((o,j)=>d.innerHTML+=`<label class="opt"><input type="radio" name="m${i}" value="${j}"> ${o}</label>`);
+quiz.appendChild(d);
+});
+let seconds=900,done=false;
+const timer=setInterval(()=>{
+if(done)return;seconds--;let m=Math.floor(seconds/60),s=seconds%60;
+document.getElementById("timer").textContent=`Time: ${m}:${String(s).padStart(2,"0")}`;
+document.getElementById("fill").style.width=((900-seconds)/900*100)+"%";
+if(seconds<=0){clearInterval(timer);checkAll();}
+},1000);
+
+function checkAll(){
+if(done)return;done=true;
+let score=0;
+qs.forEach((q,i)=>{
+let selected=document.querySelector(`input[name="m${i}"]:checked`);
+let d=quiz.children[i], old=d.querySelector(".feedback");if(old)old.remove();
+let f=document.createElement("div");f.className="feedback";
+if(selected&&+selected.value===q[2]){score++;f.className="feedback good";f.textContent="✓ Correct";}
+else{f.className="feedback bad";f.textContent="✗ Correct answer: "+q[1][q[2]];}
+d.appendChild(f);
+});
+let bonus=0;
+if(document.getElementById("p1").value==="4")bonus++;
+if(document.getElementById("p2").value==="DeptID")bonus++;
+if(document.getElementById("p3").value==="Natural Join")bonus++;
+if(document.getElementById("q1").value==="DeptID"&&document.getElementById("q2").value==="DeptID")bonus+=2;
+let total=score+bonus,max=15;
+let pct=Math.round(total/max*100);
+let level=pct>=90?"SQL Join Master":pct>=75?"Strong Performer":pct>=60?"Developing":"Needs Revision";
+let r=document.getElementById("result");r.style.display="block";
+r.innerHTML=`<h3>🎯 Your Result</h3><b>MCQ Score: ${score}/10</b><br><b>Activity Bonus: ${bonus}/5</b><br><b>Total: ${total}/${max} (${pct}%)</b><p>Performance: <b>${level}</b></p><p>Review the feedback, revise the difference between Equi-Join and Natural Join, and reset the worksheet for another attempt.</p>`;
+window.scrollTo({top:document.body.scrollHeight,behavior:"smooth"});
+}
+</script>
+</body>
+</html>
